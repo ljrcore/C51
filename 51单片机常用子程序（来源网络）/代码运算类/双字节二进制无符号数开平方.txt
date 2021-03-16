@@ -1,0 +1,30 @@
+标号： ＳＨ２功能：双字节二进制无符号数开平方（快速）
+
+入口条件：被开方数在R2、R3中。
+出口信息：平方根仍在R2、R3中，整数部分的位数为原数的一半，其余为小数。
+影响资源：PSW、A、B、R2～R7 堆栈需求： ２字节
+
+SH2: MOV A,R2
+	ORL A,R3
+	JNZ SH20
+	RET ；被开方数为零，不必运算
+SH20: MOV R7,#0 ；左规次数初始化
+	MOV A,R2
+SH22: ANL A,#0C0H ；被开方数高字节小于４０Ｈ否？
+	JNZ SQRH ；不小于４０Ｈ，左规格化完成，转开方过程
+	CLR C ；每左规一次，被开方数左移两位
+	MOV A,R3
+	RLC A
+	MOV F0,C
+	CLR C
+	RLC A
+	MOV R3,A
+	MOV A,R2
+	MOV ACC.7,C
+	MOV C,F0
+	RLC A
+	RLC A
+	MOV R2,A
+	INC R7 ；左规次数加一
+	SJMP SH22 ；继续左规
+

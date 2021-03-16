@@ -1,0 +1,51 @@
+
+    （１１）  标号：  ＤＩＶＳ    功能：双字节二进制有符号数除法（补码）
+
+入口条件：被除数在R2、R3、R4、R5中，除数在R6、R7中。
+出口信息：OV=0时商在R2、R3中，OV=1时溢出。
+影响资源：PSW、A、B、R1～R7    堆栈需求：  ５字节
+
+DIVS:	LCALL	MDS	；计算结果的符号和两个操作数的绝对值
+	PUSH	PSW	；保存结果的符号
+	LCALL	DIVD	；计算两个绝对值的商
+	JNB	OV,DVS1	；溢出否？
+	POP	ACC	；溢出，放去结果的符号，保留溢出标志
+	RET
+DVS1:	POP	PSW	；未溢出，取出结果的符号
+	MOV	R4,#0
+	MOV	R5,#0
+MDSE:	JB	F0,MDS2	；用补码表示结果
+	CLR	OV	；结果为正，原码即补码，计算成功
+	RET
+MDS:	CLR	F0	；结果符号初始化
+	MOV	A,R6	；判断第二操作数的符号
+	JNB	ACC.7,MDS1；为正，不必处理
+	CPL	F0	；为负，结果符号取反
+	XCH	A,R7	；第二操作数取补，得到其绝对值
+	CPL	A
+	ADD	A,#1
+	XCH	A,R7
+	CPL	A
+	ADDC	A,#0
+	MOV	R6,A
+MDS1:	MOV	A,R2	；判断第一操作数或运算结果的符号
+	JNB	ACC.7,MDS3；为正，不必处理
+	CPL	F0	；为负，结果符号取反
+MDS2:	MOV	A,R5	；求第一操作数的绝对值或运算结果的补码
+	CPL	A
+	ADD	A,#1
+	MOV	R5,A
+	MOV	A,R4
+	CPL	A
+	ADDC	A,#0
+	MOV	R4,A
+	MOV	A,R3
+	CPL	A
+	ADDC	A,#0
+	MOV	R3,A
+	MOV	A,R2
+	CPL	A
+	ADDC	A,#0
+	MOV	R2,A
+MDS3:	CLR	OV	；运算成功
+	RET

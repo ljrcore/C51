@@ -1,0 +1,582 @@
+
+
+
+<html>
+
+<head>
+<title>CETINet 中国电子技术信息网---综合文章---编程规范与范例(1)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<link rel="stylesheet" href="style.css" type="text/css">
+<style type="text/css">body         { scrollbar-face-color: 5B9595; scrollbar-shadow-color: ffffff; 
+               scrollbar-highlight-color: ffffff; scrollbar-3dlight-color: 
+               ffffff; scrollbar-darkshadow-color: ffffff; 
+               scrollbar-track-color: ffffff; scrollbar-arrow-color: ffffff }
+</style>
+</head>
+
+<body bgcolor="#F3F3F3" text="#000000">
+
+<div align="center">
+  <table width="750" border="0" height="60" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="150">
+        <div align="center">
+          <img border="0" src="images/myad.gif">
+         </div>
+      </td>
+      <td width="450">
+        <div align="center">
+         <a href="images/ad2.asp" target="_blank"><img border="0" src="images/ad2.gif"></a>
+        </div>
+      </td>
+      <td width="150">
+        <div align="center">
+        <a href="images/adsmall.asp" target="_blank"><img border="0" src="images/adsmall.gif"></a>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table width="750" border="0" cellspacing="0" cellpadding="0" height="20">
+    <tr>
+      <td width="57" bgcolor="#5B9595" align="center"><font color="#FFFFFF">其他栏目</font></td>
+      <td width="57" bgcolor="#D7E3E3" align="center"><a href="../bbs/index.asp" target="_blank">技术论坛</a></td>
+      <td width="57" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=1" target="_blank">微控制器</a></td>
+      <td width="57" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=2" target="_blank">IC设计</a></td>
+      <td bgcolor="#D7E3E3" align="center" width="58"><a href="../t_article/index.asp?topid=3" target="_blank">EDA技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=4" target="_blank">电路基础</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=5" target="_blank">电源技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=6" target="_blank">通信技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=7" target="_blank">测试测量</a></td>
+      <td bgcolor="#D7E3E3" align="center" width="58"><a href="../t_article/index.asp?topid=8" target="_blank">综合技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=9" target="_blank">编程学堂</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=10" target="_blank">版主专栏</a></td>
+      <td bgcolor="#D7E3E3" width="58" align="center"><a href="../download/Default.asp" target="_blank">下载中心</a></td>
+    </tr>
+  </table>
+  <br>
+</div>
+
+</body>
+
+<body bgcolor="#F3F3F3" text="#000000">
+
+<div align="center">
+  <table width="750" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>您目前的位置：<a href=index.asp?topid=9>编程学堂</a> - <a href=step.asp?topid=9&topname=编程学堂&typeid=106&typename=综合文章>综合文章</a> - 编程规范与范例(1)</td>       
+    </tr>
+  </table>
+  <table width="750" border="0" cellspacing="0" cellpadding="0" height="250">
+    <tr>
+      <td width="150" valign="top" bgcolor="#5B9595" height="240">
+        <table width="150" border="0" cellspacing="0">
+          <tr>
+            <td height="20"></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">文章类别：</font></td>
+          </tr>
+          <tr>
+            <td height="20">
+              <p align="center"><font color="#F3F3F3">综合文章</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">文章来源：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">未知</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">文章作者：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">未知</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">关 键 字：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">规范</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">今天阅读：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">9</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">总共阅读：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">2007</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">加入日期：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">2004-3-20 16:45:48</font></td>
+          </tr>
+        </table>
+        <table width="150" border="0" cellspacing="0">
+          <tr>
+            <td height="20">
+                <font color="#FFFFFF">相关文章：</font>
+            </td>
+          </tr>
+          <tr>
+            <td height="20">
+              <div align="center">
+                <a href=list.asp?indexid=1811><font color='#FFFFFF'>编程规范与范例(6)</font></a><br><a href=list.asp?indexid=1810><font color='#FFFFFF'>编程规范与范例(5)</font></a><br><a href=list.asp?indexid=1809><font color='#FFFFFF'>编程规范与范例(4)</font></a><br><a href=list.asp?indexid=1808><font color='#FFFFFF'>编程规范与范例(3)</font></a><br><a href=list.asp?indexid=1807><font color='#FFFFFF'>编程规范与范例(2)</font></a><br><a href=list.asp?indexid=1479><font color='#FFFFFF'>NUXAS代码风格规范</font></a><br><a href=list.asp?indexid=1461><font color='#FFFFFF'>C语言编程规范</font></a><br><a href=list.asp?indexid=706><font color='#FFFFFF'>电路板最新国际规范导读</font></a><br><a href=list.asp?indexid=633><font color='#FFFFFF'>改进电路设计规程提高可测试性</font></a><br><a href=list.asp?indexid=632><font color='#FFFFFF'>PCB全面质量管理</font></a><br>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table width="150" border="0" cellspacing="0">
+          <tr>
+            <td height="20"></td>
+          </tr>
+          <tr>
+            <td height="20">
+              <p align="center"><font color="#FFFFFF">==关于文章版权==</font></td>
+          </tr>
+		  <tr>
+            <td height="20"><font color="#FFFFFF"><br>
+              “本站”本站站主原创文章，未经本人（帝国老手/aoe）许可其他媒体一律不得转载。<br><br>
+              “本站整理”本站站主根据个人见解及他人经验总结整理的文章，其他媒体转载必须标明出处为我站。<br><br>
+              “某单位或个人”全文转载来自网络上的文章，其他媒体转载与我站无关。<br><br>
+              “未知”（1）来自网络，由于来源混乱，无从考证作者，其他媒体转载与我站无关。<br><br>
+              “未知”（2）其文章也是本站站主原创的，只所以标注“未知”，主要是因为引用文字过多或其他原因。建议其他媒体转载标明出处为我站。<br><br>
+              我站版权请标注：“www.cetinet.com”或“中国电子技术信息网”字样。</font></td>
+          </tr>
+          <tr>
+            <td height="20"></td>
+          </tr>
+		</table>
+      </td>
+      <td width="600" valign="top" height="240">
+        <table width="600" border="0" cellspacing="0" cellpadding="0" height="20">
+          <tr>
+            <td bgcolor="#5B9595">&nbsp;</td>
+          </tr>
+        </table>
+        <table width="600" border="0" cellspacing="3" cellpadding="0">
+          <tr>
+            <td height="20" bgcolor="#AECECE">
+              <div align="center">
+                <font color="#0A52D8"><b>编程规范与范例(1)</b></font>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td width="600">〖文章转载或出处〗≡中国电子技术信息网≡ 网址：www.CETINet.com</td>  
+          </tr>
+          <tr>
+            <td width="600">编程规范与范例(1)<br>
+<br>
+目&nbsp;&nbsp;录<br>
+1&nbsp;排版&nbsp;6<br>
+2&nbsp;注释&nbsp;11<br>
+3&nbsp;标识符命名&nbsp;18<br>
+4&nbsp;可读性&nbsp;20<br>
+5&nbsp;变量、结构&nbsp;22<br>
+6&nbsp;函数、过程&nbsp;28<br>
+7&nbsp;可测性&nbsp;36<br>
+8&nbsp;程序效率&nbsp;40<br>
+9&nbsp;质量保证&nbsp;44<br>
+10&nbsp;代码编辑、编译、审查&nbsp;50<br>
+11&nbsp;代码测试、维护&nbsp;52<br>
+12&nbsp;宏&nbsp;53<br>
+&nbsp;<br>
+1&nbsp;排版<br>
+&amp;sup1;&nbsp;1-1：程序块要采用缩进风格编写，缩进的空格数为4个。<br>
+说明：对于由开发工具自动生成的代码可以有不一致。<br>
+&amp;sup1;&nbsp;1-2：相对独立的程序块之间、变量说明之后必须加空行。<br>
+示例：如下例子不符合规范。<br>
+if&nbsp;(!valid_ni(ni))<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+repssn_ind&nbsp;=&nbsp;ssn_data[index].repssn_index;<br>
+repssn_ni&nbsp;&nbsp;=&nbsp;ssn_data[index].ni;<br>
+<br>
+应如下书写<br>
+if&nbsp;(!valid_ni(ni))<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+<br>
+repssn_ind&nbsp;=&nbsp;ssn_data[index].repssn_index;<br>
+repssn_ni&nbsp;&nbsp;=&nbsp;ssn_data[index].ni;<br>
+&amp;sup1;&nbsp;1-3：较长的语句（&gt;80字符）要分成多行书写，长表达式要在低优先级操作符处划分新行，操作符放在新行之首，划分出的新行要进行适当的缩进，使排版整齐，语句可读。<br>
+示例：<br>
+perm_count_msg.head.len&nbsp;=&nbsp;NO7_TO_STAT_PERM_COUNT_LEN<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;STAT_SIZE_PER_FRAM&nbsp;*&nbsp;sizeof(&nbsp;_UL&nbsp;);<br>
+<br>
+act_task_table[frame_id&nbsp;*&nbsp;STAT_TASK_CHECK_NUMBER&nbsp;+&nbsp;index].occupied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;stat_poi[index].occupied;<br>
+<br>
+act_task_table[taskno].duration_true_or_false<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;SYS_get_sccp_statistic_state(&nbsp;stat_item&nbsp;);<br>
+<br>
+report_or_not_flag&nbsp;=&nbsp;((taskno&nbsp;&lt;&nbsp;MAX_ACT_TASK_NUMBER)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;(n7stat_stat_item_valid&nbsp;(stat_item))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;(act_task_table[taskno].result_data&nbsp;!=&nbsp;0));<br>
+&nbsp;<br>
+&amp;sup1;&nbsp;1-4：循环、判断等语句中若有较长的表达式或语句，则要进行适应的划分，长表达式要在低优先级操作符处划分新行，操作符放在新行之首。<br>
+示例：<br>
+if&nbsp;((taskno&nbsp;&lt;&nbsp;max_act_task_number)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;(n7stat_stat_item_valid&nbsp;(stat_item)))<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+<br>
+for&nbsp;(i&nbsp;=&nbsp;0,&nbsp;j&nbsp;=&nbsp;0;&nbsp;(i&nbsp;&lt;&nbsp;BufferKeyword[word_index].word_length)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;(j&nbsp;&lt;&nbsp;NewKeyword.word_length);&nbsp;i++,&nbsp;j++)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+<br>
+for&nbsp;(i&nbsp;=&nbsp;0,&nbsp;j&nbsp;=&nbsp;0;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(i&nbsp;&lt;&nbsp;first_word_length)&nbsp;&amp;&amp;&nbsp;(j&nbsp;&lt;&nbsp;second_word_length);&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++,&nbsp;j++)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code&nbsp;<br>
+}<br>
+&amp;sup1;&nbsp;1-5：若函数或过程中的参数较长，则要进行适当的划分。<br>
+示例：<br>
+n7stat_str_compare((BYTE&nbsp;*)&nbsp;&amp;&nbsp;stat_object,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(BYTE&nbsp;*)&nbsp;&amp;&nbsp;(act_task_table[taskno].stat_object),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sizeof&nbsp;(_STAT_OBJECT));<br>
+<br>
+n7stat_flash_act_duration(&nbsp;stat_item,&nbsp;frame_id&nbsp;*STAT_TASK_CHECK_NUMBER<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;index,&nbsp;stat_object&nbsp;);<br>
+&amp;sup1;&nbsp;1-6：不允许把多个短语句写在一行中，即一行只写一条语句。<br>
+示例：如下例子不符合规范。<br>
+rect.length&nbsp;=&nbsp;0;&nbsp;&nbsp;rect.width&nbsp;=&nbsp;0;<br>
+<br>
+应如下书写<br>
+rect.length&nbsp;=&nbsp;0;<br>
+rect.width&nbsp;&nbsp;=&nbsp;0;<br>
+&amp;sup1;&nbsp;1-7：if、for、do、while、case、switch、default等语句自占一行，且if、for、do、while等语句的执行语句部分无论多少都要加括号{}。&nbsp;<br>
+示例：如下例子不符合规范。<br>
+if&nbsp;(pUserCR&nbsp;==&nbsp;NULL)&nbsp;return;<br>
+<br>
+应如下书写：<br>
+if&nbsp;(pUserCR&nbsp;==&nbsp;NULL)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+}<br>
+&amp;sup1;&nbsp;1-8：对齐只使用空格键，不使用TAB键。<br>
+说明：以免用不同的编辑器阅读程序时，因TAB键所设置的空格数目不同而造成程序布局不整齐，不要使用BC作为编辑器合版本，因为BC会自动将8个空格变为一个TAB键，因此使用BC合入的版本大多会将缩进变乱。<br>
+&amp;sup1;&nbsp;1-9：函数或过程的开始、结构的定义及循环、判断等语句中的代码都要采用缩进风格，case语句下的情况处理语句也要遵从语句缩进要求。<br>
+&amp;sup1;&nbsp;1-10：程序块的分界符（如C/C++语言的大括号‘{’和‘}’）应各独占一行并且位于同一列，同时与引用它们的语句左对齐。在函数体的开始、类的定义、结构的定义、枚举的定义以及if、for、do、while、switch、case语句中的程序都要采用如上的缩进方式。<br>
+示例：如下例子不符合规范。<br>
+for&nbsp;(...)&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+<br>
+if&nbsp;(...)&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+void&nbsp;example_fun(&nbsp;void&nbsp;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+应如下书写。<br>
+for&nbsp;(...)&nbsp;<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+<br>
+if&nbsp;(...)&nbsp;<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+<br>
+void&nbsp;example_fun(&nbsp;void&nbsp;)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+&amp;sup1;&nbsp;1-11：在两个以上的关键字、变量、常量进行对等操作时，它们之间的操作符之前、之后或者前后要加空格；进行非对等操作时，如果是关系密切的立即操作符（如－&gt;），后不应加空格。<br>
+说明：采用这种松散方式编写代码的目的是使代码更加清晰。<br>
+由于留空格所产生的清晰性是相对的，所以，在已经非常清晰的语句中没有必要再留空格，如果语句已足够清晰则括号内侧(即左括号后面和右括号前面)不需要加空格，多重括号间不必加空格，因为在C/C++语言中括号已经是最清晰的标志了。<br>
+在长语句中，如果需要加的空格非常多，那么应该保持整体清晰，而在局部不加空格。给操作符留空格时不要连续留两个以上空格。<br>
+<br>
+示例：<br>
+(1)&nbsp;逗号、分号只在后面加空格。<br>
+int&nbsp;a,&nbsp;b,&nbsp;c;&nbsp;<br>
+<br>
+(2)比较操作符,&nbsp;赋值操作符&quot;=&quot;、&nbsp;&quot;+=&quot;，算术操作符&quot;+&quot;、&quot;%&quot;，逻辑操作符&quot;&amp;&amp;&quot;、&quot;&amp;&quot;，位域操作符&quot;&lt;&lt;&quot;、&quot;^&quot;等双目操作符的前后加空格。<br>
+if&nbsp;(current_time&nbsp;&gt;=&nbsp;MAX_TIME_VALUE)&nbsp;<br>
+a&nbsp;=&nbsp;b&nbsp;+&nbsp;c;<br>
+a&nbsp;*=&nbsp;2;<br>
+a&nbsp;=&nbsp;b&nbsp;^&nbsp;2;<br>
+<br>
+(3)&quot;!&quot;、&quot;~&quot;、&quot;++&quot;、&quot;--&quot;、&quot;&amp;&quot;（地址运算符）等单目操作符前后不加空格。<br>
+*p&nbsp;=&nbsp;'a';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;内容操作&quot;*&quot;与内容之间<br>
+flag&nbsp;=&nbsp;!isEmpty;&nbsp;//&nbsp;非操作&quot;!&quot;与内容之间<br>
+p&nbsp;=&nbsp;&amp;mem;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;地址操作&quot;&amp;&quot;&nbsp;与内容之间<br>
+i++;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&quot;++&quot;,&quot;--&quot;与内容之间<br>
+<br>
+(4)&quot;-&gt;&quot;、&quot;.&quot;前后不加空格。<br>
+p-&gt;id&nbsp;=&nbsp;pid;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&quot;-&gt;&quot;指针前后不加空格<br>
+<br>
+(5)&nbsp;if、for、while、switch等与后面的括号间应加空格，使if等关键字更为突出、明显。<br>
+if&nbsp;(a&nbsp;&gt;=&nbsp;b&nbsp;&amp;&amp;&nbsp;c&nbsp;&gt;&nbsp;d)<br>
+&amp;frac12;&nbsp;1-1：一行程序以小于80字符为宜，不要写得过长。<br>
+&nbsp;<br>
+2&nbsp;注释<br>
+&amp;sup1;&nbsp;2-1：一般情况下，源程序有效注释量必须在20％以上。<br>
+说明：注释的原则是有助于对程序的阅读理解，在该加的地方都加了，注释不宜太多也不能太少，注释语言必须准确、易懂、简洁。<br>
+&amp;sup1;&nbsp;2-2：说明性文件（如头文件.h文件、.inc文件、.def文件、编译说明文件.cfg等）头部应进行注释，注释必须列出：版权说明、版本号、生成日期、作者、内容、功能、与其它文件的关系、修改日志等，头文件的注释中还应有函数功能简要说明。<br>
+示例：下面这段头文件的头注释比较标准，当然，并不局限于此格式，但上述信息建议要包含在内。<br>
+/*************************************************<br>
+&nbsp;&nbsp;Copyright&nbsp;(C),&nbsp;1988-1999,&nbsp;Huawei&nbsp;Tech.&nbsp;Co.,&nbsp;Ltd.<br>
+&nbsp;&nbsp;File&nbsp;name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;文件名<br>
+&nbsp;&nbsp;Author:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;//&nbsp;作者、版本及完成日期<br>
+&nbsp;&nbsp;Description:&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;用于详细说明此程序文件完成的主要功能，与其他模块<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;或函数的接口，输出值、取值范围、含义及参数间的控<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;制、顺序、独立或依赖等关系<br>
+&nbsp;&nbsp;Others:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;其它内容的说明<br>
+&nbsp;&nbsp;Function&nbsp;List:&nbsp;&nbsp;//&nbsp;主要函数列表，每条记录应包括函数名及功能简要说明<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;....<br>
+&nbsp;&nbsp;History:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;修改历史记录列表，每条修改记录应包括修改日期、修改<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;者及修改内容简述&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;Date:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modification:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;...<br>
+*************************************************/<br>
+&amp;sup1;&nbsp;2-3：源文件头部应进行注释，列出：版权说明、版本号、生成日期、作者、模块目的/功能、主要函数及其功能、修改日志等。<br>
+示例：下面这段源文件的头注释比较标准，当然，并不局限于此格式，但上述信息建议要包含在内。<br>
+/************************************************************<br>
+&nbsp;&nbsp;Copyright&nbsp;(C),&nbsp;1988-1999,&nbsp;Huawei&nbsp;Tech.&nbsp;Co.,&nbsp;Ltd.<br>
+&nbsp;&nbsp;FileName:&nbsp;test.cpp<br>
+&nbsp;&nbsp;Author:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:<br>
+&nbsp;&nbsp;Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;模块描述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;Version:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;版本信息<br>
+&nbsp;&nbsp;Function&nbsp;List:&nbsp;&nbsp;&nbsp;//&nbsp;主要函数及其功能<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;-------<br>
+&nbsp;&nbsp;History:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;历史修改记录<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;author&gt;&nbsp;&nbsp;&lt;time&gt;&nbsp;&nbsp;&nbsp;&lt;version&nbsp;&gt;&nbsp;&nbsp;&nbsp;&lt;desc&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;David&nbsp;&nbsp;&nbsp;&nbsp;96/10/12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;build&nbsp;this&nbsp;moudle&nbsp;&nbsp;<br>
+***********************************************************/<br>
+说明：Description一项描述本文件的内容、功能、内部各部分之间的关系及本文件与其它文件关系等。History是修改历史记录列表，每条修改记录应包括修改日期、修改者及修改内容简述。<br>
+&amp;sup1;&nbsp;2-4：函数头部应进行注释，列出：函数的目的/功能、输入参数、输出参数、返回值、调用关系（函数、表）等。<br>
+示例：下面这段函数的注释比较标准，当然，并不局限于此格式，但上述信息建议要包含在内。<br>
+/*************************************************<br>
+&nbsp;&nbsp;Function:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;函数名称<br>
+&nbsp;&nbsp;Description:&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;函数功能、性能等的描述<br>
+&nbsp;&nbsp;Calls:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;被本函数调用的函数清单<br>
+&nbsp;&nbsp;Called&nbsp;By:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;调用本函数的函数清单<br>
+&nbsp;&nbsp;Table&nbsp;Accessed:&nbsp;//&nbsp;被访问的表（此项仅对于牵扯到数据库操作的程序）<br>
+&nbsp;&nbsp;Table&nbsp;Updated:&nbsp;&nbsp;//&nbsp;被修改的表（此项仅对于牵扯到数据库操作的程序）<br>
+&nbsp;&nbsp;Input:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;输入参数说明，包括每个参数的作<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;用、取值说明及参数间关系。<br>
+&nbsp;&nbsp;Output:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;对输出参数的说明。<br>
+&nbsp;&nbsp;Return:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;函数返回值的说明<br>
+&nbsp;&nbsp;Others:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;其它说明<br>
+*************************************************/<br>
+&amp;sup1;&nbsp;2-5：边写代码边注释，修改代码同时修改相应的注释，以保证注释与代码的一致性。不再有用的注释要删除。<br>
+&amp;sup1;&nbsp;2-6：注释的内容要清楚、明了，含义准确，防止注释二义性。<br>
+说明：错误的注释不但无益反而有害。<br>
+规则2-7：避免在注释中使用缩写，特别是非常用缩写。<br>
+说明：在使用缩写时或之前，应对缩写进行必要的说明。<br>
+&amp;sup1;&nbsp;2-8：注释应与其描述的代码相近，对代码的注释应放在其上方或右方（对单条语句的注释）相邻位置，不可放在下面，如放于上方则需与其上面的代码用空行隔开。<br>
+示例：如下例子不符合规范。<br>
+例1：<br>
+/*&nbsp;get&nbsp;replicate&nbsp;sub&nbsp;system&nbsp;index&nbsp;and&nbsp;net&nbsp;indicator&nbsp;*/<br>
+<br>
+<br>
+repssn_ind&nbsp;=&nbsp;ssn_data[index].repssn_index;<br>
+repssn_ni&nbsp;=&nbsp;ssn_data[index].ni;<br>
+<br>
+例2：<br>
+repssn_ind&nbsp;=&nbsp;ssn_data[index].repssn_index;<br>
+repssn_ni&nbsp;=&nbsp;ssn_data[index].ni;<br>
+/*&nbsp;get&nbsp;replicate&nbsp;sub&nbsp;system&nbsp;index&nbsp;and&nbsp;net&nbsp;indicator&nbsp;*/<br>
+<br>
+应如下书写<br>
+/*&nbsp;get&nbsp;replicate&nbsp;sub&nbsp;system&nbsp;index&nbsp;and&nbsp;net&nbsp;indicator&nbsp;*/<br>
+repssn_ind&nbsp;=&nbsp;ssn_data[index].repssn_index;<br>
+repssn_ni&nbsp;=&nbsp;ssn_data[index].ni;<br>
+&amp;sup1;&nbsp;2-9：对于所有有物理含义的变量、常量，如果其命名不是充分自注释的，在声明时都必须加以注释，说明其物理含义。变量、常量、宏的注释应放在其上方相邻位置或右方。<br>
+示例：<br>
+/*&nbsp;active&nbsp;statistic&nbsp;task&nbsp;number&nbsp;*/<br>
+#define&nbsp;MAX_ACT_TASK_NUMBER&nbsp;1000<br>
+<br>
+#define&nbsp;MAX_ACT_TASK_NUMBER&nbsp;1000&nbsp;/*&nbsp;active&nbsp;statistic&nbsp;task&nbsp;number&nbsp;*/<br>
+&amp;sup1;&nbsp;2-10：数据结构声明(包括数组、结构、类、枚举等)，如果其命名不是充分自注释的，必须加以注释。对数据结构的注释应放在其上方相邻位置，不可放在下面；对结构中的每个域的注释放在此域的右方。<br>
+示例：可按如下形式说明枚举/数据/联合结构。<br>
+/*&nbsp;sccp&nbsp;interface&nbsp;with&nbsp;sccp&nbsp;user&nbsp;primitive&nbsp;message&nbsp;name&nbsp;*/<br>
+enum&nbsp;&nbsp;SCCP_USER_PRIMITIVE<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N_UNITDATA_IND,&nbsp;/*&nbsp;sccp&nbsp;notify&nbsp;sccp&nbsp;user&nbsp;unit&nbsp;data&nbsp;come&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N_NOTICE_IND,&nbsp;&nbsp;&nbsp;/*&nbsp;sccp&nbsp;notify&nbsp;user&nbsp;the&nbsp;No.7&nbsp;network&nbsp;can&nbsp;not&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;transmission&nbsp;this&nbsp;message&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;N_UNITDATA_REQ,&nbsp;/*&nbsp;sccp&nbsp;user's&nbsp;unit&nbsp;data&nbsp;transmission&nbsp;request*/<br>
+};<br>
+&amp;sup1;&nbsp;2-11：全局变量要有较详细的注释，包括对其功能、取值范围、哪些函数或过程存取它以及存取时注意事项等的说明。<br>
+示例：<br>
+/*&nbsp;The&nbsp;ErrorCode&nbsp;when&nbsp;SCCP&nbsp;translate&nbsp;*/<br>
+/*&nbsp;Global&nbsp;Title&nbsp;failure,&nbsp;as&nbsp;follows&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;变量作用、含义<br>
+/*&nbsp;0&nbsp;－&nbsp;SUCCESS&nbsp;&nbsp;&nbsp;1&nbsp;－&nbsp;GT&nbsp;Table&nbsp;error&nbsp;*/<br>
+/*&nbsp;2&nbsp;－&nbsp;GT&nbsp;error&nbsp;&nbsp;Others&nbsp;－&nbsp;no&nbsp;use&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;变量取值范围<br>
+/*&nbsp;only&nbsp;&nbsp;function&nbsp;&nbsp;SCCPTranslate()&nbsp;in&nbsp;*/<br>
+/*&nbsp;this&nbsp;modual&nbsp;can&nbsp;modify&nbsp;it,&nbsp;&nbsp;and&nbsp;&nbsp;other&nbsp;*/<br>
+/*&nbsp;module&nbsp;can&nbsp;visit&nbsp;it&nbsp;through&nbsp;call&nbsp;*/<br>
+/*&nbsp;the&nbsp;&nbsp;function&nbsp;GetGTTransErrorCode()&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;使用方法<br>
+BYTE&nbsp;g_GTTranErrorCode;&nbsp;&nbsp;<br>
+&amp;sup1;&nbsp;2-12：注释与所描述内容进行同样的缩排。<br>
+说明：可使程序排版整齐，并方便注释的阅读与理解。<br>
+示例：如下例子，排版不整齐，阅读稍感不方便。<br>
+void&nbsp;example_fun(&nbsp;void&nbsp;)<br>
+{<br>
+/*&nbsp;code&nbsp;one&nbsp;comments&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CodeBlock&nbsp;One<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;code&nbsp;two&nbsp;comments&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CodeBlock&nbsp;Two<br>
+}<br>
+<br>
+应改为如下布局。<br>
+void&nbsp;example_fun(&nbsp;void&nbsp;)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;code&nbsp;one&nbsp;comments&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CodeBlock&nbsp;One<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;code&nbsp;two&nbsp;comments&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CodeBlock&nbsp;Two<br>
+}<br>
+&amp;sup1;&nbsp;2-13：将注释与其上面的代码用空行隔开。<br>
+示例：如下例子，显得代码过于紧凑。<br>
+/*&nbsp;code&nbsp;one&nbsp;comments&nbsp;*/<br>
+program&nbsp;code&nbsp;one<br>
+/*&nbsp;code&nbsp;two&nbsp;comments&nbsp;*/<br>
+program&nbsp;code&nbsp;two<br>
+<br>
+应如下书写<br>
+/*&nbsp;code&nbsp;one&nbsp;comments&nbsp;*/<br>
+program&nbsp;code&nbsp;one<br>
+<br>
+/*&nbsp;code&nbsp;two&nbsp;comments&nbsp;*/<br>
+program&nbsp;code&nbsp;two<br>
+&amp;sup1;&nbsp;2-14：对变量的定义和分支语句（条件分支、循环语句等）必须编写注释。<br>
+说明：这些语句往往是程序实现某一特定功能的关键，对于维护人员来说，良好的注释帮助更好的理解程序，有时甚至优于看设计文档。<br>
+&amp;sup1;&nbsp;2-15：对于switch语句下的case语句，如果因为特殊情况需要处理完一个case后进入下一个case处理，必须在该case语句处理完、下一个case语句前加上明确的注释。<br>
+说明：这样比较清楚程序编写者的意图，有效防止无故遗漏break语句。<br>
+示例（注意斜体加粗部分）：<br>
+case&nbsp;CMD_UP:&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProcessUp();&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+<br>
+case&nbsp;CMD_DOWN:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProcessDown();&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+<br>
+case&nbsp;CMD_FWD:&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProcessFwd();&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+if&nbsp;(...)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+}<br>
+else<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProcessCFW_B();&nbsp;&nbsp;&nbsp;//&nbsp;now&nbsp;jump&nbsp;into&nbsp;case&nbsp;CMD_A<br>
+}<br>
+<br>
+case&nbsp;CMD_A:&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProcessA();&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+<br>
+case&nbsp;CMD_B:&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProcessB();&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+<br>
+case&nbsp;CMD_C:&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProcessC();&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;break;<br>
+<br>
+case&nbsp;CMD_D:&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProcessD();&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+...<br>
+&amp;frac12;&nbsp;2-1：避免在一行代码或表达式的中间插入注释。<br>
+说明：除非必要，不应在代码或表达中间插入注释，否则容易使代码可理解性变差。<br>
+&amp;frac12;&nbsp;2-2：通过对函数或过程、变量、结构等正确的命名以及合理地组织代码的结构，使代码成为自注释的。<br>
+说明：清晰准确的函数、变量等的命名，可增加代码可读性，并减少不必要的注释。<br>
+&amp;frac12;&nbsp;2-3：在代码的功能、意图层次上进行注释，提供有用、额外的信息。<br>
+说明：注释的目的是解释代码的目的、功能和采用的方法，提供代码以外的信息，帮助读者理解代码，防止没必要的重复注释信息。<br>
+示例：如下注释意义不大。<br>
+/*&nbsp;if&nbsp;receive_flag&nbsp;is&nbsp;TRUE&nbsp;*/<br>
+if&nbsp;(receive_flag)<br>
+<br>
+而如下的注释则给出了额外有用的信息。&nbsp;<br>
+/*&nbsp;if&nbsp;mtp&nbsp;receive&nbsp;a&nbsp;message&nbsp;from&nbsp;links&nbsp;*/<br>
+if&nbsp;(receive_flag)<br>
+&amp;frac12;&nbsp;2-4：在程序块的结束行右方加注释标记，以表明某程序块的结束。<br>
+说明：当代码段较长，特别是多重嵌套时，这样做可以使代码更清晰，更便于阅读。<br>
+示例：参见如下例子。<br>
+if&nbsp;(...)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;program&nbsp;code<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(index&nbsp;&lt;&nbsp;MAX_INDEX)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;program&nbsp;code<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;/*&nbsp;end&nbsp;of&nbsp;while&nbsp;(index&nbsp;&lt;&nbsp;MAX_INDEX)&nbsp;*/&nbsp;//&nbsp;指明该条while语句结束<br>
+}&nbsp;/*&nbsp;end&nbsp;of&nbsp;&nbsp;if&nbsp;(...)*/&nbsp;//&nbsp;指明是哪条if语句结束<br>
+&amp;frac12;&nbsp;2-5：注释格式尽量统一，建议使用“/*&nbsp;……&nbsp;*/”。<br>
+&amp;frac12;&nbsp;2-6：注释应考虑程序易读及外观排版的因素，使用的语言若是中、英兼有的，建议多使用中文，除非能用非常流利准确的英文表达。<br>
+说明：注释语言不统一，影响程序易读性和外观排版，出于对维护人员的考虑，建议使用中文。<br>
+</td> 
+          </tr>
+          <tr>
+            <td width="600"></td> 
+          </tr>
+		  <tr>
+            <td width="600"><b>郑重声明</b><br>
+              &nbsp;&nbsp; 近年来我站数百篇“原创文章”被一些媒体肆意转载，不但不标明出自“中国电子技术信息网”，而且把相关字眼删除！这是无视技术价值的盗窃行为，是对技术人员辛勤劳动的蔑视，我对此种行为表示强烈的谴责。<br>
+              &nbsp;&nbsp; “本是同根生，相煎何太急”，考虑到我们做技术的都是同门兄弟，对以前的盗窃行为不再追究，今后再有此类事件，最低处理限度是“明示于天下”。在这里向转载过又标注了出处的兄弟媒体表示崇高的敬意！<br>
+              &nbsp;&nbsp; 兄弟网站如果引用本站“原创文章”，请首先经本人许可，并标注“www.cetinet.com”或“中国电子技术信息网”字样。<br>
+              &nbsp;&nbsp; 欢迎个人下载使用！</td> 
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+</div>
+
+</body>
+<body bgcolor="#FFFFFF" text="#000000">
+  <p align="center">
+  本站所载文章力求原创，部分资料转自网上，假如您认为某些文章侵犯了您的权益，<br>
+  请告知我们，我们将在最短的时间内删除有关文章。本站转载文章均注明出处。<br>
+  兄弟网站如果转载本站文章请注明本站版权，谢谢！
+  <p align="center">中国电子技术信息网 文章管理系统由：Aoe 制作<br>      
+  Copyright (C) 2001-2004 CETINet.COM All Rights Reserved      
+</body>    
+
+</html>
+

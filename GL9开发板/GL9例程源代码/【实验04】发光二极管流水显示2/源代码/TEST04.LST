@@ -1,0 +1,56 @@
+C51 COMPILER V7.00  TEST04                                                                 07/14/2013 22:37:23 PAGE 1   
+
+
+C51 COMPILER V7.00, COMPILATION OF MODULE TEST04
+OBJECT MODULE PLACED IN TEST04.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE TEST04.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          ////////////////////////////////////////////////////////////////////////////
+   2          //                给力者单片机开发学习系统，开发学习都给力！              //
+   3          ////////////////////////////////////////////////////////////////////////////
+   4          //                     学习51单片机，其实可以很简单                       //
+   5          ////////////////////////////////////////////////////////////////////////////
+   6          //                宁波芯动电子有限公司  www.MovingChip.com                //
+   7          ////////////////////////////////////////////////////////////////////////////
+   8          
+   9          #include <AT89X52.h>       //调用51单片机的头文件
+  10          
+  11          
+  12          //---------------------------------------
+  13          //名称: 主函数
+  14          //适用：给力者GL9单片机开发学习系统
+  15          //公司：宁波芯动电子有限公司
+  16          //网址：www.MovingChip.com
+  17          //日期：20120913
+  18          //---------------------------------------
+  19          void main(void)            //主函数,单片机开机后就是从这个函数开始运行
+  20          {
+  21   1      
+  22   1         unsigned int a;        //定义一个int型变量，做延时用
+  23   1              P0=0;
+  24   1         while(1)               //死循环,单片机初始化后,将一直运行这个死循环
+  25   1         {
+  26   2            for(a=0;a<20000;a++); //延时若干时间，具体时长暂不理会
+  27   2                      if(P0==0) 
+  28   2                              P0=0x01;
+  29   2                      else
+  30   2                      P0=P0<<1;            //将PO左移
+  31   2         }
+  32   1      }
+  33          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     34    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

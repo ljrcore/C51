@@ -1,0 +1,166 @@
+
+<html>
+<head>
+<title>控制步进电机正反转的实际应用程序</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="STYLE.CSS" rel="stylesheet" type="text/css">
+</head>
+<bgsound src="../article/img/1000.wav" loop="0">
+<body leftmargin="10" topmargin="0" >
+<div id=menuDiv style='Z-INDEX: 2; VISIBILITY: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: #9cc5f8'></div>
+
+<table align="center" cellpadding="0" cellspacing="0" style="border:1px #44A938 solid; border-top-width: 0px; border-right-width: 1px; border-bottom-width: 0px; border-left-width: 1px;width:760;">
+  <tr class="topbg"><td height="9"></td></tr>
+  <tr>
+    <td>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="180"><a href='http://www.89s51.com/' title='编程器自制家园网'><object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0' width='180' height='60'><param name='movie' value='http://www.1000.com.cn/article/img/logo.swf'><param name='quality' value='high'><embed src='http://www.1000.com.cn/article/img/logo.swf' pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash' type='application/x-shockwave-flash' width='480' height='60'></embed></object></a></td>
+    <td><object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0' width='480' height='60'><param name='movie' value='http://www.1000.com.cn/article/img/banner.swf'><param name='quality' value='high'><embed src='http://www.1000.com.cn/article/img/banner.swf' pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash' type='application/x-shockwave-flash' width='480' height='60'></embed></object></td>
+    <td width="80"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" align="center">
+              <tr valign="middle"> 
+                <td align="center"><img src="images/home.gif" align="absmiddle" width="20" height="20"></td>
+                <td align="center"><a href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.89s51.com/')">设为首页</a></td>
+              </tr>
+              <tr valign="middle"> 
+                <td align="center"><img src="images/email.gif" align="absmiddle" width="20" height="20"></td>
+                <td align="center"><a href="mailto:21007@163.com">联系站长</a></td>
+              </tr>
+              <tr valign="middle"> 
+                <td align="center"><img src="images/bookmark.gif" align="absmiddle" width="20" height="20"></td>
+                <td align="center"><a href="javascript:window.external.addFavorite('http://www.89s51.com/','编程器自制家园网')">加入收藏</a></td>
+              </tr>
+            </table></td>
+  </tr>
+</table>
+	</td>
+  </tr>
+  <tr class="bottombg"><td height="9"></td></tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="2" cellspacing="0" class="border">
+  <tr class="title">
+    <td height="20">|&nbsp;<a href='http://www.89s51.com/'>首页</a>&nbsp;|&nbsp;<a href='Default.asp?BigClassName=初学乐园'>初学乐园</a> | <a href='Default.asp?BigClassName=51单片机'><font color='red'>51单片机</font></a> | <a href='Default.asp?BigClassName=自制编程器'>自制编程器</a> | <a href='Default.asp?BigClassName=源代码下载'>源代码下载</a> | <a href='Default.asp?BigClassName=自制单片机编程器'>自制单片机编程器</a> | <a href='Default.asp?BigClassName=单片机仿真器'>单片机仿真器</a> | <a href='Default.asp?BigClassName=单片机入门'>单片机入门</a> | <a href='Default.asp?BigClassName=软件下载'>软件下载</a> | </td>
+  </tr>
+<tr class='tdbg'><td>&nbsp;<a href='Default.asp?BigClassName=51单片机&SmallClassName=单片机编程'>单片机编程</a>&nbsp;&nbsp;&nbsp;<a href='Default.asp?BigClassName=51单片机&SmallClassName=单片机教学'>单片机教学</a>&nbsp;&nbsp;&nbsp;<font color='red'>单片机制作</font>&nbsp;&nbsp;</td></tr>
+</table>
+<br>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td valign="top"><table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" class="border" style="word-break:break-all">
+        <tr class="title"> 
+          <td width="*">
+|&nbsp;<a href='Default.asp?BigClassName=51单片机'>51单片机&nbsp;</a>&gt;&gt;&nbsp;<a href='Default.asp?BigClassName=51单片机&SmallClassName=单片机制作'>单片机制作&nbsp;</a>&gt;&gt;&nbsp;控制步进电机正反转的实际应用程序
+		  </td>
+          
+          <td width="50" align="right"> &nbsp;&nbsp;&nbsp;热&nbsp;&nbsp;&nbsp; </td>
+        </tr>
+        <tr class="tdbg"> 
+          <td colspan="3"><p align="center"><font size="5">控制步进电机正反转的实际应用程序</font><br>
+              作者：佚名&nbsp;&nbsp;&nbsp;&nbsp;转贴自：本站原创&nbsp;&nbsp;&nbsp;&nbsp;点击数：291&nbsp;&nbsp;&nbsp;&nbsp;资料录入：自制编程器</p>
+            <p><P>控制步进电机正反转的实际应用程序 <BR>/*这是一个控制步进电机正反转的实际应用程序*/<BR>/*选用的是三相步进电机驱动器,p14口线用做步进电机的脉冲控制*/<BR>/*p13口线用做步进电机的方向控制。p15,p16,p17是光耦开关量输入*/<BR>/*信号端，p20,p21,p22,p23与x25045看门狗存储器相连*/<BR>/*k7,k8键是设定步进电机转动速度参数的加减键*/<BR>/*k9是启动运行键，按一下k9，步进电机开始运行，直到p17口线有信号输入才停止*/<BR>/*k10是停止键，任何时候按下k10都将停止步进电机当前的运行*/<BR>/*k11是步进运行键，按一下，步进电机动一下*/<BR>/*k12键是反向运行键，按一下，步进电机开始反向运行，知道p15口线有信号才停止*/<BR>/*如果p16口线有信号输入，则只有k12键才起作用，其它键都没反应。*/<BR>START:do;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>$INCLUDE(REG51.DCL)<BR>DECLARE (addrl,n,I,j,ok,ds) byte; /*定义变量*/<BR>declare l(5) byte;<BR>declare (dat,data) byte at (30h);<BR>declare delay word;<BR>DECLARE ACO(11) BYTE CONSTANT (05h,9fh,23h,0bh,99h,49h,/*定义LED段码表*/<BR>&nbsp; 41h,1fh,01h,09h,00h);<BR>declare si literally 'p21',sck literally 'p20';&nbsp; /*X25045囗线定义*/<BR>declare so literally 'p22',cs literally 'p23';<BR>dog:procedure;&nbsp; /* 初始化看门狗x25045 */<BR>cs=1;<BR>call time(1);<BR>cs=0;<BR>call time(1);<BR>cs=1;<BR>end dog;</P>
+<P>run:procedure;&nbsp; /*步进电机运行脉冲输出程序*/<BR>&nbsp; if ok=1 then&nbsp; <BR>&nbsp; call dog;<BR>&nbsp; do;<BR>&nbsp;&nbsp;&nbsp; p14=0;<BR>&nbsp;&nbsp;&nbsp;&nbsp; call time(1);<BR>&nbsp;&nbsp;&nbsp; p14=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp; call time(1);<BR>&nbsp; end;<BR>end run;</P>
+<P>DISPLAY:PROCEDURE(L0,L10); /*显示子程序*/<BR>DECLARE (L0,L10) BYTE; /*定义显示二位*/<BR>n=L10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp; n=aco(n);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*十位数BCD码译成段码*/<BR>&nbsp; sbuf=n;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*十位数送164显示*/<BR>&nbsp; do while ti=0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*等待发送结束*/<BR>&nbsp;&nbsp;&nbsp;&nbsp; call dog;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*看门狗定时器复位*/&nbsp; <BR>&nbsp; end;<BR>n=L0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; n=aco(n);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp; sbuf=n;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*个位数送164显示*/ <BR>&nbsp;&nbsp; do while ti=0;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; call dog;<BR>&nbsp;&nbsp; end;<BR>end display;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>outbyt:&nbsp; procedure(da);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*向看门狗存储器写入一字节*/<BR>declare (i,da) byte;<BR>j=da;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*将要写入的字节赋给临时变量J */<BR>do i=0 to 7;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*左移8位，送到口线si */<BR>&nbsp;&nbsp; sck=0;<BR>&nbsp;&nbsp; j=scl(j,1);<BR>&nbsp;&nbsp; si=cy;<BR>&nbsp;&nbsp; sck=1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*每移一位数据，跟一个时钟信号*/ <BR>end;<BR>end outbyt;&nbsp;&nbsp; </P>
+<P>inbyt:&nbsp; procedure;&nbsp;&nbsp; /* 从看门狗存储器读出一字节 */<BR>declare (i,di) byte;<BR>j=0;<BR>do i=0 to 7;&nbsp;&nbsp; <BR>&nbsp;&nbsp; sck=1;<BR>&nbsp;&nbsp; sck=0;<BR>&nbsp;&nbsp; cy=so;<BR>&nbsp;&nbsp; j=scl(j,1);&nbsp; /*从看门狗存储器读出一字节送入临时变量j*/<BR>end;<BR>dat=j;<BR>end inbyt;</P>
+<P>wrenable: procedure;&nbsp;&nbsp; /* 置看门狗写使能*/<BR>sck=0; <BR>cs=0;<BR>;&nbsp; /* write enable command */<BR>call outbyt(06h); /* x25045 写使能指令06h */<BR>cs=1;<BR>sck=0;<BR>end wrenable;</P>
+<P>wrdisable: procedure;&nbsp; /* 置看门狗写禁止 */<BR>sck=0;<BR>cs=0;<BR>; /* write disable command */<BR>call outbyt(04h);<BR>sck=0;<BR>cs=1;<BR>end wrdisable;</P>
+<P>wrregister: procedure;&nbsp;&nbsp; /* 写状态寄存器 */<BR>sck=0;<BR>cs=0;<BR>dat=01h;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* write register command */ <BR>call outbyt(dat);<BR>;&nbsp;&nbsp;&nbsp;&nbsp; /* 00h--1.4S, 20h--200MS, 10h--600MS, 30h--disable Wdog */<BR>call outbyt(00h); /* 设定看门狗定时时间 */<BR>;<BR>sck=0;<BR>cs=1;<BR>call time(200); /* wait to complete writting cycle */<BR>end wrregister;</P>
+<P>rdregister:procedure;&nbsp; /*&nbsp; 读看门狗状态寄存器 */<BR>sck=0;<BR>cs=0;<BR>;&nbsp;&nbsp; /* register read command */<BR>call outbyt(05h);<BR>call inbyt; /* status register read in &lt;DAT&gt; */<BR>sck=0;<BR>cs=1;<BR>end rdregister;</P>
+<P>wbyte:procedure;&nbsp;&nbsp; /*&nbsp; 看门狗存储器字节写入子程序 */<BR>&nbsp; declare comm byte;<BR>&nbsp; sck=0;<BR>&nbsp; cs=0;<BR>&nbsp; comm=02h;&nbsp; /*&nbsp; 写指令 02h */<BR>&nbsp; call outbyt(comm);<BR>&nbsp; call outbyt(addrl);<BR>&nbsp; call outbyt(dat);&nbsp; /*&nbsp; send one byte data to X25043 */<BR>&nbsp; cs=1;<BR>&nbsp; sck=0;<BR>&nbsp; call time(150);<BR>end wbyte;</P>
+<P>rbyte:procedure;&nbsp; /*看门狗存储器字节读出子程序&nbsp; */<BR>&nbsp; declare comm byte;<BR>&nbsp; sck=0;<BR>&nbsp; cs=0;<BR>&nbsp; comm=03h;&nbsp;&nbsp;&nbsp;&nbsp; /* read command */<BR>&nbsp; call outbyt(comm);<BR>&nbsp; call outbyt(addrl);<BR>&nbsp; call inbyt;&nbsp;&nbsp; /* read one byte to &lt;DAT&gt;&nbsp; */<BR>&nbsp; sck=0;<BR>&nbsp; cs=1;<BR>end rbyte;</P>
+<P>incdata:&nbsp;&nbsp; procedure;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 参数修改--"加"键处理子程序+ */<BR>if p10=0 then&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 如果K7键按下*/<BR>&nbsp;&nbsp;&nbsp; do;<BR>do while p10=0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 等待键松开有效 */<BR>&nbsp; call dog;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 此处必需调用看门狗复位子程序（"喂狗"），否则程序将被看门狗复位*/<BR>end;<BR>data=data+1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 设定值+1 */<BR>if data&gt;99 then data=1;&nbsp; /* 规定设定值的上限*/<BR>L(1)=data MOD 10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*将设定值的十位数拆出来送给十位数显示变量L(1) */<BR>L(2)=data/10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*将设定值的个位数拆出来送给个位数显示变量L(2) */<BR>call display(L(1),L(2)); /* 将改变后的设定值送164显示出来*/<BR>call time(200);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 延时 */<BR>call dog;<BR>call time(200);<BR>call dog;<BR>call wrenable;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 置存储器写使能 */<BR>addrl=00h;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 置存储器地址 */<BR>dat=l(1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>call wbyte;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 将变量L(1)的值写入存储器00h位置 */&nbsp; <BR>call wrenable;<BR>addrl=01h;<BR>dat=l(2);<BR>call wbyte;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 将变量L(2)的值写入存储器01h位置 */&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;<BR>end incdata;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>decdata:&nbsp;&nbsp; PROCEDURE;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 参数修改---"减"键处理子程序- */&nbsp;&nbsp;&nbsp; <BR>IF p11=0 THEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* k8 键处理子程序 */&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp; do;<BR>do while p11=0;<BR>&nbsp;&nbsp; call dog;<BR>end;<BR>DATA=DATA-1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 设定值-1 */<BR>if data=0 then data=99;<BR>L(1)=data MOD 10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>L(2)=data/10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>call display(l(1),l(2));<BR>call dog;<BR>call time(200);&nbsp; <BR>call dog; <BR>call time(200);<BR>call dog;<BR>call wrenable;<BR>addrl=00h;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>dat=l(1);<BR>call wbyte;<BR>call wrenable;<BR>addrl=01h;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>dat=l(2);<BR>call wbyte;<BR>&nbsp;&nbsp; end;<BR>END decdata;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </P</p><p align='center'><b><font color='red'>[1]</font>&nbsp;<a href='ArticleShow.asp?ArticleID=13&ArticlePage=2'>[2]</a>&nbsp;<a href='ArticleShow.asp?ArticleID=13&ArticlePage=3'>[3]</a>&nbsp;&nbsp;<a href='ArticleShow.asp?ArticleID=13&ArticlePage=2'>下一页</a></b></p></p> 
+            <li>上一篇资料：没有了</li><br>
+            <li>下一篇资料：<a href='ArticleShow.asp?ArticleID=16' title='资料标题：基于SA868的超小型变频器研制
+作    者：佚名
+更新时间：2003-7-4 18:02:51
+点击次数：280'>基于SA868的超小型变频器研制</a></li>
+			<div align="right">【<a href="Comment.asp?ArticleID=13" target="_blank">发表评论</a>】【<a href="SendMail.asp?ArticleID=13" target="_blank">告诉好友</a>】【<a href="printpage.asp?ArticleID=13">打印此文</a>】【<a href="javascript:window.close();">关闭窗口</a>】</div></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="33%" valign="top"> <table width="100%" border="0" cellspacing="0" cellpadding="2" class="border" style="word-break:break-all">
+              <tr class="title"> 
+                <td><strong>&nbsp;最新5篇热点文章资料</strong></td>
+              </tr>
+              <tr class="tdbg"> 
+                <td height="100" valign="top"><li><a href='ArticleShow.asp?ArticleID=60' title='资料标题：学单片机要多少钱
+作    者：佚名
+更新时间：2003-7-6 9:33:30
+点击次数：240' target='_blank'>学单片机要多少钱</a>[<font color=red>240</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=36' title='资料标题：电子制作之制作工具篇
+作    者：佚名
+更新时间：2003-7-5 8:48:01
+点击次数：250' target='_blank'>电子制作之制作工具篇</a>[<font color=red>250</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=30' title='资料标题：8515和LCD的接口源程序
+作    者：佚名
+更新时间：2003-7-5 7:35:43
+点击次数：254' target='_blank'>8515和LCD的接口源程序</a>[<font color=red>254</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=29' title='资料标题：功能强大的时钟中断
+作    者：佚名
+更新时间：2003-7-5 7:34:46
+点击次数：258' target='_blank'>功能强大的时钟中断</a>[<font color=red>258</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=12' title='资料标题：pic&nbsp;单片机编程器制作
+作    者：佚名
+更新时间：2003-7-4 17:51:31
+点击次数：279' target='_blank'>pic&nbsp;单片机编程器制作</a>[<font color=red>279</font>]</li><br></td>
+              </tr>
+            </table></td>
+          <td width="34%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2" class="border" style="word-break:break-all">
+              <tr class="title"> 
+                <td><strong>&nbsp;最新5篇推荐资料</strong></td>
+              </tr>
+              <tr class="tdbg"> 
+                <td height="100" valign="top">
+                  <li><a href='ArticleShow.asp?ArticleID=61' title='文章资料标题：PLCC44适配器的制作
+作    者：佚名
+更新时间：2003-7-6 9:58:40
+点击次数：147' target='_blank'>PLCC44适配器的制作</a>[<font color=red>147</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=60' title='文章资料标题：学单片机要多少钱
+作    者：佚名
+更新时间：2003-7-6 9:33:30
+点击次数：240' target='_blank'>学单片机要多少钱</a>[<font color=red>240</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=38' title='文章资料标题：电子制作之经验总结篇
+作    者：佚名
+更新时间：2003-7-5 8:54:40
+点击次数：91' target='_blank'>电子制作之经验总结篇</a>[<font color=red>91</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=37' title='文章资料标题：电子制作之元件采购篇
+作    者：佚名
+更新时间：2003-7-5 8:50:01
+点击次数：371' target='_blank'>电子制作之元件采购篇</a>[<font color=red>371</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=36' title='文章资料标题：电子制作之制作工具篇
+作    者：佚名
+更新时间：2003-7-5 8:48:01
+点击次数：250' target='_blank'>电子制作之制作工具篇</a>[<font color=red>250</font>]</li><br>
+                </td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="top"> <table width="100%" border="0" cellspacing="0" cellpadding="2" class="border" style="word-break:break-all">
+              <tr class="title"> 
+                <td><strong>&nbsp;相关资料</strong></td>
+              </tr>
+              <tr class="tdbg"> 
+                <td height="100" valign="top"><li><a href='ArticleShow.asp?ArticleID=61' title='资料标题：PLCC44适配器的制作
+作    者：佚名
+更新时间：2003-7-6 9:58:40
+点击次数：147'>PLCC44适配器的制作</a>[<font color=red>147</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=60' title='资料标题：学单片机要多少钱
+作    者：佚名
+更新时间：2003-7-6 9:33:30
+点击次数：240'>学单片机要多少钱</a>[<font color=red>240</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=59' title='资料标题：仿真器试验板
+作    者：佚名
+更新时间：2003-7-6 9:25:32
+点击次数：597'>仿真器试验板</a>[<font color=red>597</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=58' title='资料标题：LZ多功能编程器
+作    者：佚名
+更新时间：2003-5-6 9:14:00
+点击次数：609'>LZ多功能编程器</a>[<font color=red>609</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=57' title='资料标题：自制2051单片机编程器
+作    者：佚名
+更新时间：2003-7-5 17:10:15
+点击次数：541'>自制2051单片机编程器</a>[<font color=red>541</font>]</li><br></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" class="border" style="word-break:break-all">
+        <tr class="title"> 
+          <td><strong>网友评论：</strong>（只显示最新10条。评论内容只代表网友观点，与本站立场无关！）</td>
+        </tr>
+        <tr class="tdbg"> 
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;没有任何评论</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width='760' align='center' border='0' class='border' cellpadding='0' cellspacing='0'><tr height='20' align='center' class='title'><td>|&nbsp;<a href='#' onClick=this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.89s51.com/');>设为首页</a>&nbsp;|&nbsp;<a href=javascript:window.external.addFavorite('http://www.89s51.com/','编程器自制家园网')>加入收藏</a>&nbsp;|&nbsp;<a href='mailto:21007@163.com'>联系站长</a>&nbsp;|&nbsp;<a href='FriendSite.asp' target='_blank'>友情链接</a>&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有 Copyright &copy 2003 <a href='http://www.89s51.com/' target='_blank'>编程器自制家园网</a></td></tr><tr align='center' class='tdbg' height='20' valign='bottom'><td><b><a href='http://www.89s51.com' target='_blank'>编程器制作家园</a>&nbsp;&nbsp;<a href='http://www.89s51.com' target='_blank'>www.89s51.com</a></b>&nbsp;&nbsp;站长信箱：<a href='mailto:web21007@163.com'>小惠</a>&nbsp;&nbsp;</td></tr><tr align='center' class='tdbg' height='16' valign='bottom'><td>页面执行时间：62.5毫秒</td></tr></table>
+</body>
+</html>

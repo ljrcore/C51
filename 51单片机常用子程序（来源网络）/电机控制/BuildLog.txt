@@ -1,0 +1,193 @@
+Flyto teamView C51 输出文件
+这个文件记录的是编译器的原始输出信息
+
+MS-DOS MCS-51 MACRO ASSEMBLER A51 V4.86
+*
+
+(C) KEIL ELEKTRONIK GmbH / Franklin Software Inc. 1988-1994
+
+*
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
+
+*
+
+
+
+*
+
+MS-DOS BL51 BANKED LINKER/LOCATER V2.10
+*
+
+Copyright (c) Franklin Software, Inc. 1988 - 1993
+"DIANJI1.obj"
+to "__tmpomf"
+RS( 256 )
+
+
+
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
+
+*
+
+
+
+*
+M
+*
+S-DO
+*
+S 
+*
+MC
+*
+S-
+*
+51
+*
+ O
+*
+BJ
+*
+EC
+*
+T 
+*
+TO
+*
+ H
+*
+EX
+*
+ A
+*
+ND
+*
+ S
+*
+YM
+*
+BO
+*
+L 
+*
+FI
+*
+LE
+*
+ C
+*
+ON
+*
+VE
+*
+RT
+*
+ER
+*
+ V
+*
+1.
+*
+4
+*
+
+C
+*
+op
+*
+yr
+*
+ig
+*
+ht
+*
+ 
+*
+Fr
+*
+an
+*
+kl
+*
+in
+*
+ S
+*
+of
+*
+tw
+*
+ar
+*
+e, 
+*
+In
+*
+c 
+*
+19
+*
+87
+*
+-1
+*
+99
+*
+0
+*
+
+
+*
+
+G
+*
+EN
+*
+ER
+*
+AT
+*
+IN
+*
+G 
+*
+PU
+*
+RE
+*
+ I
+*
+NT
+*
+EL
+*
+ H
+*
+EX
+*
+FIL
+*
+E:
+*
+ _
+*
+_T
+*
+M
+*
+PO
+*
+MF
+*
+.H
+*
+EX
+*
+
+
+*
+
+
+
+*

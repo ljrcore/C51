@@ -1,0 +1,30 @@
+标号：ＤＤＭ２功能：求双字节十六进制无符号数据块的平均值
+
+入口条件：数据块的首址在DPTR中，双字节数据总个数在R7中。
+出口信息：平均值在R4、R5中。
+影响资源：PSW、A、R2～R6 堆栈需求： ４字节
+
+  DDM2: MOV A,R7 ；保存数据个数
+	MOV R2,A ；初始化数据指针
+	PUSH DPL ；保持首址
+	PUSH DPH
+	CLR A ；初始化累加和
+	MOV R3,A
+	MOV R4,A
+	MOV R5,A
+  DM20: MOVX A,@DPTR ；读取一个数据的高字节
+	MOV B,A
+	INC DPTR
+	MOVX A,@DPTR ；读取一个数据的低字节
+	INC DPTR
+	ADD A,R5 ；累加到累加和中
+	MOV R5,A
+	MOV A,B
+	ADDC A,R4
+	MOV R4,A
+	JNC DM21
+	INC R3
+  DM21: DJNZ R2,DM20 ；累加完全部数据
+	POP DPH ；恢复首址
+	POP DPL
+	LJMP DV31 ；求R3R4R5／R7－→R4R5，得到平均值

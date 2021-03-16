@@ -1,0 +1,12 @@
+单字节十翻二
+
+ CONVERT:MOV R2,A
+ 	 ANL A,#0F0H
+	 SWAP A
+	 MOV B,#10
+	 MUL AB
+	 MOV R3,A
+	 MOV A,R2
+	 ANL A,#0FH
+	 ADD A,R3
+	 RET 

@@ -1,0 +1,19 @@
+
+   单字节小于100数转化为BCD码
+
+
+ CONVERT:PUSH ACC	;入栈
+         MOV A,R2
+         MOV B,#0AH
+	 DIV AB
+	 MOV 70H,B	;确定要放入单元
+	 MOV 71H,A 	;同上
+ 	 POP ACC
+	 RET
+
+
+
+
+
+
+  

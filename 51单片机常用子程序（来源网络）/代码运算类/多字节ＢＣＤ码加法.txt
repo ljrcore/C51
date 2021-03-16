@@ -1,0 +1,22 @@
+ 标号： ＢＣＤＡ功能：多字节ＢＣＤ码加法
+
+入口条件：字节数在R7中，被加数在[R0]中，加数在[R1]中。
+出口信息：和在[R0]中，最高位进位在CY中。
+影响资源：PSW、A、R2 堆栈需求： ２字节
+
+BCDA: MOV A,R7 ；取字节数至R2中
+	MOV R2,A
+	ADD A,R0 ；初始化数据指针
+	MOV R0,A
+	MOV A,R2
+	ADD A,R1
+	MOV R1,A
+	CLR C
+BCD1: DEC R0 ；调整数据指针
+	DEC R1
+	MOV A,@R0
+	ADDC A,@R1 ；按字节相加
+	DA A ；十进制调整
+	MOV @R0,A ；和存回[R0]中
+	DJNZ R2,BCD1 ；处理完所有字节
+	RET

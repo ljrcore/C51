@@ -1,0 +1,99 @@
+BL51 BANKED LINKER/LOCATER V5.00                                                        01/28/2014  11:04:03  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE TEST88.obj TO TEST88 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  TEST88.obj (TEST88)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  TEST88 (TEST88)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?TEST88
+            DATA    000AH     0002H     UNIT         _DATA_GROUP_
+                    000CH     0014H                  *** GAP ***
+            BIT     0020H.0   0000H.4   UNIT         ?BI?TEST88
+                    0020H.4   0000H.4                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     01C2H     UNIT         ?CO?TEST88
+            CODE    01C5H     010EH     UNIT         ?PR?KEYPRO?TEST88
+            CODE    02D3H     00C2H     UNIT         ?PR?_DISP_MENU?TEST88
+            CODE    0395H     004AH     UNIT         ?PR?_NUM?TEST88
+            CODE    03DFH     0033H     UNIT         ?PR?SCANKEY?TEST88
+            CODE    0412H     0032H     UNIT         ?PR?MAIN?TEST88
+            CODE    0444H     002EH     UNIT         ?PR?DISP_START?TEST88
+            CODE    0472H     002BH     UNIT         ?PR?_WRITE_XY?TEST88
+            CODE    049DH     002BH     UNIT         ?PR?INIT_LCD?TEST88
+            CODE    04C8H     001FH     UNIT         ?PR?_WRITE_COM?TEST88
+            CODE    04E7H     001EH     UNIT         ?PR?_DELAY?TEST88
+            CODE    0505H     001AH     UNIT         ?PR?_WRITE_DATA?TEST88
+            CODE    051FH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   TEST88 (TEST88)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?TEST88
+
+?PR?MAIN?TEST88                -----    -----
+  +--> ?PR?INIT_LCD?TEST88
+  +--> ?PR?DISP_START?TEST88
+  +--> ?PR?KEYPRO?TEST88
+BL51 BANKED LINKER/LOCATER V5.00                                                      01/28/2014  11:04:03  PAGE 2
+
+
+  +--> ?PR?_DISP_MENU?TEST88
+
+?PR?INIT_LCD?TEST88            -----    -----
+  +--> ?PR?_DELAY?TEST88
+  +--> ?PR?_WRITE_COM?TEST88
+
+?PR?_DELAY?TEST88              -----    -----
+  +--> ?PR?_WRITE_DATA?TEST88
+
+?PR?_WRITE_DATA?TEST88         -----    -----
+  +--> ?PR?_NUM?TEST88
+
+?PR?_WRITE_COM?TEST88          -----    -----
+  +--> ?PR?_NUM?TEST88
+
+?PR?DISP_START?TEST88          -----    -----
+  +--> ?PR?_WRITE_XY?TEST88
+  +--> ?CO?TEST88
+  +--> ?PR?_DELAY?TEST88
+
+?PR?_WRITE_XY?TEST88           -----    -----
+  +--> ?PR?_WRITE_COM?TEST88
+
+?PR?KEYPRO?TEST88              -----    -----
+  +--> ?PR?SCANKEY?TEST88
+
+?PR?_DISP_MENU?TEST88          000AH    0002H
+  +--> ?PR?_WRITE_COM?TEST88
+  +--> ?PR?_WRITE_DATA?TEST88
+  +--> ?PR?_WRITE_XY?TEST88
+  +--> ?CO?TEST88
+  +--> ?PR?_DELAY?TEST88
+
+Program Size: data=13.4 xdata=0 code=1323
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

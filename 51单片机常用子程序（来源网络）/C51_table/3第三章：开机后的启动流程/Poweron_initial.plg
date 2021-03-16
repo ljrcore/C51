@@ -1,0 +1,23 @@
+<html>
+<body>
+<pre>
+<h1>礦ision2 Build Log</h1>
+<h2>Project:</h2>
+F:\有用资料\C51_table\第三章：开机后的启动流程\Poweron_initial.uv2
+Project File Date:  07/08/2003
+
+<h2>Output:</h2>
+compiling Poweron_initial.c...
+POWERON_INITIAL.C(52): error C195: '*' illegal indirection
+Poweron_initial.c - 1 Error(s), 0 Warning(s).
+compiling Poweron_initial.c...
+POWERON_INITIAL.C(52): error C195: '*' illegal indirection
+Poweron_initial.c - 1 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Poweron_initial.c...
+POWERON_INITIAL.C(52): error C195: '*' illegal indirection
+Target not created
+Build target 'Target 1'
+compiling Poweron_initial.c...
+POWERON_INITIAL.C(52): error C195: '*' illegal indirection
+Target not created

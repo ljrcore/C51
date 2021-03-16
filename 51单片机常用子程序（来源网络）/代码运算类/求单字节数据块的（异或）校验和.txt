@@ -1,0 +1,21 @@
+标号： ＸＲ１功能：求单字节数据块的（异或）校验和
+
+入口条件：数据块的首址在DPTR中，数据的个数在R6、R7中。
+出口信息：校验和在累加器A中。
+影响资源：PSW、A、B、R4～R7 堆栈需求： ２字节
+
+  XR1: MOV R4,DPH ；保存数据块的首址
+	MOV R5,DPL
+	MOV A,R7 ；双字节计数器调整
+	JZ XR10
+	INC R6
+  XR10: MOV B,#0 ；校验和初始化
+  XR11: MOVX A,@DPTR ；读取一个数据
+	XRL B,A ；异或运算
+	INC DPTR ；指向下一个数据
+	DJNZ R7,XR11 ；双字节计数器减一
+	DJNZ R6,XR11
+	MOV DPH,R4 ；恢复数据首址
+	MOV DPL,R5
+	MOV A,B ；取校验和
+	RET

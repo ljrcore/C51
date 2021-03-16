@@ -1,0 +1,48 @@
+ 标号： ＭＭＳ功能：求单字节十六进制有符号数据块的极值
+
+入口条件：数据块的首址在DPTR中，数据个数在R7中。
+出口信息：最大值在R6中， 地址在R2R3中；最小值在R7中，地址在R4R5中。
+影响资源：PSW、A、B、R1～R7 堆栈需求： ４字节
+
+   MMS: MOV B,R7 ；保存数据个数
+	MOVX A,@DPTR ；读取第一个数据
+	MOV R6,A ；作为最大值的初始值
+	MOV R7,A ；也作为最小值的初始值
+	MOV A,DPL ；取第一个数据的地址
+	MOV R3,A ；作为最大值存放地址的初始值
+	MOV R5,A ；也作为最小值存放地址的初始值
+	MOV A,DPH
+	MOV R2,A
+	MOV R4,A
+	MOV A,B ；取数据个数
+	DEC A ；减一，得到需要比较的次数
+	JZ MMSE ；只有一个数据，不需要比较
+	MOV R1,A ；保存比较次数
+	PUSH DPL ；保护数据块的首址
+	PUSH DPH
+  MMS1: INC DPTR ；调整数据指针
+	MOVX A,@DPTR ；读取一个数据
+	MOV B,A ；保存
+	SETB C ；与最大值比较
+	SUBB A,R6
+	JZ MMS4 ；相同，不更新最大值
+	JNB OV,MMS2 ；差未溢出，符号位有效
+	CPL ACC.7 ；差溢出，符号位取反
+  MMS2: JB ACC.7,MMS4；差为负，不更新最大值
+	MOV R6,B ；更新最大值
+	MOV R2,DPH ；更新最大值存放地址
+	MOV R3,DPL
+	SJMP MMS7
+  MMS4: MOV A,B ；与最小值比较
+	CLR C
+	SUBB A,R7
+	JNB OV,MMS6 ；差未溢出，符号位有效
+	CPL ACC.7 ；差溢出，符号位取反
+  MMS6: JNB ACC.7,MMS7；差为正，不更新最小值
+	MOV R7,B ；更新最小值
+	MOV R4,DPH ；更新最小值存放地址
+	MOV R5,DPL
+  MMS7: DJNZ R1,MMS1 ；处理完全部数据
+	POP DPH ；恢复数据首址
+	POP DPL
+  MMSE: RET

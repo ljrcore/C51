@@ -1,0 +1,145 @@
+BL51 BANKED LINKER/LOCATER V5.00                                                        07/20/2013  10:22:13  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE TEST73.obj TO TEST73 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  TEST73.obj (TEST73)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?CASTF)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SLDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LNEG)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SLCMP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  TEST73 (TEST73)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0006H     UNIT         _DATA_GROUP_
+            DATA    000EH     0001H     UNIT         ?DT?TEST73
+                    000FH     0011H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         ?BI?TEST73
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0006H     UNIT         ?PR?_LCD1602_WRITE_COM_BUSY?TEST73
+                    0009H     0002H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0357H     UNIT         ?C?LIB_CODE
+            CODE    0365H     01BAH     UNIT         ?PR?MAIN?TEST73
+            CODE    051FH     008CH     UNIT         ?C_C51STARTUP
+            CODE    05ABH     0044H     UNIT         ?C?LDIV
+            CODE    05EFH     002AH     UNIT         ?PR?LCD1602_INIT?TEST73
+            CODE    0619H     0018H     UNIT         ?PR?_LCD1602_WRITE_ADDRESS?TEST73
+            CODE    0631H     0012H     UNIT         ?PR?_DELAY1602?TEST73
+            CODE    0643H     0010H     UNIT         ?PR?_LCD1602_WRITE_COM?TEST73
+            CODE    0653H     000EH     UNIT         ?PR?LCD1602_BUSY?TEST73
+            CODE    0661H     000EH     UNIT         ?PR?_LCD1602_WRITE_DATA_BUSY?TEST73
+            CODE    066FH     000AH     UNIT         ?PR?_LCD1602_DISP?TEST73
+            CODE    0679H     0003H     UNIT         ?PR?TIMER0?TEST73
+            CODE    067CH     0003H     UNIT         ?C_INITSEG
+
+
+
+BL51 BANKED LINKER/LOCATER V5.00                                                      07/20/2013  10:22:13  PAGE 2
+
+
+OVERLAY MAP OF MODULE:   TEST73 (TEST73)
+
+
+SEGMENT                                       DATA_GROUP 
+  +--> CALLED SEGMENT                       START    LENGTH
+-----------------------------------------------------------
+?C_C51STARTUP                               -----    -----
+  +--> ?PR?MAIN?TEST73
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEST73                             0008H    0006H
+  +--> ?PR?LCD1602_INIT?TEST73
+  +--> ?PR?_LCD1602_DISP?TEST73
+
+?PR?LCD1602_INIT?TEST73                     -----    -----
+  +--> ?PR?_LCD1602_WRITE_COM?TEST73
+  +--> ?PR?_LCD1602_WRITE_COM_BUSY?TEST73
+
+?PR?_LCD1602_WRITE_COM?TEST73               -----    -----
+  +--> ?PR?_DELAY1602?TEST73
+
+?PR?_LCD1602_WRITE_COM_BUSY?TEST73          -----    -----
+  +--> ?PR?LCD1602_BUSY?TEST73
+  +--> ?PR?_LCD1602_WRITE_COM?TEST73
+
+?PR?_LCD1602_DISP?TEST73                    -----    -----
+  +--> ?PR?_LCD1602_WRITE_ADDRESS?TEST73
+  +--> ?PR?_LCD1602_WRITE_DATA_BUSY?TEST73
+
+?PR?_LCD1602_WRITE_ADDRESS?TEST73           -----    -----
+  +--> ?PR?_LCD1602_WRITE_COM_BUSY?TEST73
+
+?PR?_LCD1602_WRITE_DATA_BUSY?TEST73         -----    -----
+  +--> ?PR?LCD1602_BUSY?TEST73
+
+
+
+SYMBOL TABLE OF MODULE:  TEST73 (TEST73)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C?FPMUL
+  C:000EH         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPDIV
+  C:0117H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FCAST
+  C:01BEH         PUBLIC        ?C?FCASTC
+  C:01B9H         PUBLIC        ?C?FCASTI
+  C:01B4H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+BL51 BANKED LINKER/LOCATER V5.00                                                      07/20/2013  10:22:13  PAGE 3
+
+
+  C:01F2H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?SLDIV
+  C:05ABH         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?LNEG
+  C:0273H         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+  -------         MODULE        ?C?SLCMP
+  C:0281H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+  -------         MODULE        ?C?ULDIV
+  C:02D3H         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+Program Size: data=16.1 xdata=0 code=1661
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

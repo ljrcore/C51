@@ -1,0 +1,16 @@
+ 标号： ＨＡＳＣ功能：单字节十六进制数转换成双字节ASCII码
+
+入口条件：待转换的单字节十六进制数在累加器A中。
+出口信息：高四位的ASCII码在A中，低四位的ASCII码在B中。
+影响资源：PSW、A、B 堆栈需求： ４字节
+
+HASC: MOV B,A ；暂存待转换的单字节十六进制数
+	LCALL HAS1 ；转换低四位
+	XCH A,B ；存放低四位的ASCII码
+	SWAP A ；准备转换高四位
+HAS1: ANL A,#0FH ；将累加器的低四位转换成ASCII码
+	ADD A,#90H
+	DA A
+	ADDC A,#40H
+	DA A
+	RET

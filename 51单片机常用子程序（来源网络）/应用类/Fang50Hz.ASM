@@ -1,0 +1,11 @@
+ 用T1产生一个50HZ的方波，由P1.1输出。使用程序查询方式
+ fosc=12MHz
+ Fang50Hz:MOV TMOD,#10H
+	SETB TR1
+ LOOP:	MOV TH1,#0D8H
+	MOV TL1,#0F0H
+	JNB TF1,$
+	CLR TF1
+	CPL P1.1
+	SJMP LOOP
+	RET

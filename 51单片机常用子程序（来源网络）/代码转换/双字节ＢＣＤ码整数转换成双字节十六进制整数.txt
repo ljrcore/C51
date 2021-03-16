@@ -1,0 +1,19 @@
+ 标号:ＢＨ２功能：双字节ＢＣＤ码整数转换成双字节十六进制整数
+
+入口条件：待转换的双字节ＢＣＤ码整数在R2、R3中。
+出口信息：转换后的双字节十六进制整数仍在R2、R3中。
+影响资源：PSW、A、B、R2、R3、R4 堆栈需求：４字节
+
+ BH2: MOV A,R3 ；将低字节转换成十六进制
+	LCALL BCDH
+	MOV R3,A
+	MOV A,R2 ；将高字节转换成十六进制
+	LCALL BCDH
+	MOV B,#100 ；扩大一百倍
+	MUL AB
+	ADD A,R3 ；和低字节按十六进制相加
+	MOV R3,A
+	CLR A
+	ADDC A,B
+	MOV R2,A
+	RET

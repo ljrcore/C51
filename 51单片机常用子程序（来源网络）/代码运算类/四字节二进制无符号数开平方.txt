@@ -1,0 +1,113 @@
+标号： ＳＨ４功能：四字节二进制无符号数开平方（快速）
+
+入口条件：被开方数在R2、R3、R4、R5中。
+出口信息：平方根在R2、R3中，整数部分的位数为原数的一半，其余为小数。
+影响资源：PSW、A、B、R2～R7 堆栈需求： ２字节
+
+SH4: MOV A,R2
+	ORL A,R3
+	ORL A,R4
+	ORL A,R5
+	JNZ SH40
+	RET ；被开方数为零，不必运算
+SH40: MOV R7,#0 ；左规次数初始化
+	MOV A,R2
+SH41: ANL A,#0C0H ；被开方数高字节小于４０Ｈ否？
+	JNZ SQRH ；不小于４０Ｈ，左规格化完成
+	MOV R6,#2 ；每左规一次，被开方数左移两位
+SH42: CLR C ；被开方数左移一位
+	MOV A,R5
+	RLC A
+	MOV R5,A
+	MOV A,R4
+	RLC A
+	MOV R4,A
+	MOV A,R3
+	RLC A
+	MOV R3,A
+	MOV A,R2
+	RLC A
+	MOV R2,A
+	DJNZ R6,SH42 ；被开方数左移完两位
+	INC R7 ；左规次数加一
+	SJMP SH41 ；继续左规
+SQRH: MOV A,R2 ；规格化后高字节按折线法分为三个区间
+	ADD A,#57H
+	JC SQR2
+	ADD A,#45H
+	JC SQR1
+	ADD A,#24H
+	MOV B,#0E3H ；第一区间的斜率
+	MOV R4,#80H ；第一区间的平方根基数
+	SJMP SQR3
+SQR1: MOV B,#0B2H ；第二区间的斜率
+	MOV R4,#0A0H；第二区间的平方根基数
+	SJMP SQR3
+SQR2: MOV B,#8DH ；第三区间的斜率
+	MOV R4,#0D0H；第三区间的平方根基数
+SQR3: MUL AB ；与区间基点的偏移量乘区间斜率
+	MOV A,B
+	ADD A,R4 ；累加到平方根的基数上
+	MOV R4,A
+	MOV B,A
+	MUL AB ；求当前平方根的幂
+	XCH A,R3 ；求偏移量（存放在R2R3中）
+	CLR C
+	SUBB A,R3
+	MOV R3,A
+	MOV A,R2
+	SUBB A,B
+	MOV R2,A
+SQR4: SETB C ；用减奇数法校正一个字节的平方根
+	MOV A,R4 ；当前平方根的两倍加一存入R5R6中
+	RLC A
+	MOV R6,A
+	CLR A
+	RLC A
+	MOV R5,A
+	MOV A,R3 ；偏移量小于该奇数否？
+	SUBB A,R6
+	MOV B,A
+	MOV A,R2
+	SUBB A,R5
+	JC SQR5 ；小于，校正结束，已达到一个字节的精度
+	INC R4 ；不小于，平方根加一
+	MOV R2,A ；保存新的偏移量
+	MOV R3,B
+	SJMP SQR4 ；继续校正
+SQR5: MOV A,R4 ；将一个字节精度的根存入R2
+	XCH A,R2
+	RRC A
+	MOV F0,C ；保存最终偏移量的最高位
+	MOV A,R3
+	MOV R5,A ；将最终偏移量的低八位存入R5中
+	MOV R4,#8 ；通过（R5R6／R2）求根的低字节
+SQR6: CLR C
+	MOV A,R3
+	RLC A
+	MOV R3,A
+	CLR C
+	MOV A,R5
+	SUBB A,R2
+	JB F0,SQR7
+	JC SQR8
+SQR7: MOV R5,A
+	INC R3
+SQR8: CLR C
+	MOV A,R5
+	RLC A
+	MOV R5,A
+	MOV F0,C
+	DJNZ R4,SQR6 ；根的第二字节计算完，在R3中
+	MOV A,R7 ；取原被开方数的左规次数
+	JZ SQRE ；未左规，开方结束
+SQR9: CLR C ；按左规次数右移平方根，得到实际根
+	MOV A,R2
+	RRC A
+	MOV R2,A
+	MOV A,R3
+	RRC A
+	MOV R3,A
+	DJNZ R7,SQR9
+SQRE: RET
+

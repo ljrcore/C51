@@ -1,0 +1,90 @@
+BL51 BANKED LINKER/LOCATER V5.00                                                        09/18/2012  22:28:43  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE TEST78.obj TO TEST78 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  TEST78.obj (TEST78)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDPTR)
+
+
+LINK MAP OF MODULE:  TEST78 (TEST78)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     004AH     UNIT         ?PR?_NUM?TEST78
+            CODE    004DH     002DH     UNIT         ?CO?TEST78
+            CODE    007AH     002BH     UNIT         ?PR?_WRITE_XY?TEST78
+            CODE    00A5H     002BH     UNIT         ?PR?INIT_LCD?TEST78
+            CODE    00D0H     0027H     UNIT         ?PR?MAIN?TEST78
+            CODE    00F7H     001DH     UNIT         ?PR?_WRITE_STRING?TEST78
+            CODE    0114H     001AH     UNIT         ?PR?_WRITE_COM?TEST78
+            CODE    012EH     001AH     UNIT         ?PR?_WRITE_DATA?TEST78
+            CODE    0148H     0019H     UNIT         ?C?LIB_CODE
+            CODE    0161H     0012H     UNIT         ?PR?_DELAY?TEST78
+            CODE    0173H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   TEST78 (TEST78)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEST78
+
+?PR?MAIN?TEST78
+  +--> ?PR?INIT_LCD?TEST78
+  +--> ?CO?TEST78
+  +--> ?PR?_WRITE_STRING?TEST78
+
+?PR?INIT_LCD?TEST78
+  +--> ?PR?_DELAY?TEST78
+  +--> ?PR?_WRITE_COM?TEST78
+
+?PR?_WRITE_COM?TEST78
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/18/2012  22:28:43  PAGE 2
+
+
+  +--> ?PR?_NUM?TEST78
+
+?PR?_WRITE_STRING?TEST78
+  +--> ?PR?_WRITE_XY?TEST78
+  +--> ?PR?_WRITE_DATA?TEST78
+  +--> ?PR?_DELAY?TEST78
+
+?PR?_WRITE_XY?TEST78
+  +--> ?PR?_WRITE_COM?TEST78
+
+?PR?_WRITE_DATA?TEST78
+  +--> ?PR?_NUM?TEST78
+
+
+
+SYMBOL TABLE OF MODULE:  TEST78 (TEST78)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C?CLDPTR
+  C:0148H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+Program Size: data=9.0 xdata=0 code=383
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

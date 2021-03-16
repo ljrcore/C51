@@ -1,0 +1,27 @@
+ 标号： ＸＲ２功能：求双字节数据块的（异或）校验和
+
+入口条件：数据块的首址在DPTR中，双字节数据总个数在R6、R7中。
+出口信息：校验和在R2、R3中。
+影响资源：PSW、A、R2～R7 堆栈需求： ２字节
+
+  XR2: MOV R4,DPH ；保存数据块的首址
+	MOV R5,DPL
+	MOV A,R7 ；双字节计数器调整
+	JZ XR20
+	INC R6
+  XR20: CLR A ；校验和初始化
+	MOV R2,A
+	MOV R3,A
+  XR21: MOVX A,@DPTR ；读取一个数据的高字节
+ 	XRL A,R2 ；异或运算
+	MOV R2,A
+	INC DPTR
+	MOVX A,@DPTR ；读取一个数据的低字节
+	XRL A,R3 ；异或运算
+	MOV R3,A
+	INC DPTR ；指向下一个数据
+	DJNZ R7,XR21 ；双字节计数器减一
+	DJNZ R6,XR21
+	MOV DPH,R4 ；恢复数据首址
+	MOV DPL,R5
+	RET

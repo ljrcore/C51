@@ -1,0 +1,971 @@
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(329): 错误 C193: '=': illegal type conversion from/to 'void'
+LD788BS.C(330): 错误 C193: '=': illegal type conversion from/to 'void'
+LD788BS.C(343): 错误 C141: syntax error near 'P2'
+LD788BS.C(344): 错误 C141: syntax error near 'P1'
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(329): 错误 C193: '=': illegal type conversion from/to 'void'
+LD788BS.C(330): 错误 C193: '=': illegal type conversion from/to 'void'
+LD788BS.C(343): 错误 C141: syntax error near 'P2'
+LD788BS.C(344): 错误 C141: syntax error near 'P1'
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(345): 错误 C141: syntax error near 'P2'
+LD788BS.C(346): 错误 C141: syntax error near 'P1'
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NEIMA?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=57.0 xdata=512 code=914
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 2   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NEIMA?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=57.0 xdata=512 code=904
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 2   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NEIMA?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=57.0 xdata=512 code=882
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 2   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NEIMA?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=57.0 xdata=512 code=894
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 2   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NEIMA?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=57.0 xdata=512 code=894
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 2   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NEIMA?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=57.0 xdata=512 code=894
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 2   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(329): 错误 C202: 'buf': undefined identifier
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=951
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=973
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=951
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=961
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=961
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=961
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=961
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=963
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=950
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(339): 错误 C141: syntax error near '/'
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=950
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=963
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=963
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=950
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=951
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=61.0 xdata=512 code=961
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(337): 警告 C173: missing return-expression
+LD788BS.C(342): 警告 C280: 'buf': unreferenced local variable
+LD788BS.C(381): 错误 C202: 'Address': undefined identifier
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(344): 警告 C275: expression with possibly no effect
+LD788BS.C(345): 警告 C275: expression with possibly no effect
+LD788BS.C(355): 警告 C275: expression with possibly no effect
+LD788BS.C(356): 警告 C275: expression with possibly no effect
+LD788BS.C(373): 警告 C275: expression with possibly no effect
+LD788BS.C(374): 警告 C275: expression with possibly no effect
+LD788BS.C(384): 警告 C275: expression with possibly no effect
+LD788BS.C(385): 警告 C275: expression with possibly no effect
+LD788BS.C(411): 错误 C202: 'Address': undefined identifier
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(344): 警告 C275: expression with possibly no effect
+LD788BS.C(345): 警告 C275: expression with possibly no effect
+LD788BS.C(355): 警告 C275: expression with possibly no effect
+LD788BS.C(356): 警告 C275: expression with possibly no effect
+LD788BS.C(373): 警告 C275: expression with possibly no effect
+LD788BS.C(374): 警告 C275: expression with possibly no effect
+LD788BS.C(384): 警告 C275: expression with possibly no effect
+LD788BS.C(385): 警告 C275: expression with possibly no effect
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1128
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 9   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(345): 警告 C275: expression with possibly no effect
+LD788BS.C(355): 警告 C275: expression with possibly no effect
+LD788BS.C(356): 警告 C275: expression with possibly no effect
+LD788BS.C(373): 警告 C275: expression with possibly no effect
+LD788BS.C(374): 警告 C275: expression with possibly no effect
+LD788BS.C(384): 警告 C275: expression with possibly no effect
+LD788BS.C(385): 警告 C275: expression with possibly no effect
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1160
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 8   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(355): 警告 C275: expression with possibly no effect
+LD788BS.C(356): 警告 C275: expression with possibly no effect
+LD788BS.C(373): 警告 C275: expression with possibly no effect
+LD788BS.C(374): 警告 C275: expression with possibly no effect
+LD788BS.C(384): 警告 C275: expression with possibly no effect
+LD788BS.C(385): 警告 C275: expression with possibly no effect
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1166
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 7   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(373): 警告 C275: expression with possibly no effect
+LD788BS.C(374): 警告 C275: expression with possibly no effect
+LD788BS.C(384): 警告 C275: expression with possibly no effect
+LD788BS.C(385): 警告 C275: expression with possibly no effect
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1184
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 5   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1234
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1234
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1244
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1244
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1233
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1233
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1220
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1388
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1423
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1423
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1591
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1591
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1591
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1591
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1591
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=512 code=1614
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(371): 错误 C141: syntax error near '}'
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1255
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1255
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1255
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1255
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1255
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1255
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(56): 警告 C173: missing return-expression
+LD788BS.C(52): 警告 C280: 'qh': unreferenced local variable
+LD788BS.C(54): 警告 C280: 'vb': unreferenced local variable
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NEIMA?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=71.0 xdata=512 code=1258
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 5   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1255
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1285
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1297
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1297
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1326
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=512 code=1316
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=1024 code=1322
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=1024 code=1291
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=1024 code=1291
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=1024 code=1291
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=1024 code=1291
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(321): 错误 C141: syntax error near '{'
+LD788BS.C(325): 错误 C141: syntax error near 'else'
+LD788BS.C(326): 错误 C141: syntax error near '{'
+LD788BS.C(330): 错误 C141: syntax error near 'else'
+LD788BS.C(346): 错误 C193: '<<': bad operand type
+LD788BS.C(357): 错误 C193: '<<': bad operand type
+LD788BS.C(369): 错误 C193: '<<': bad operand type
+LD788BS.C(380): 错误 C193: '<<': bad operand type
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=64.0 xdata=1024 code=1386
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1414
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1414
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(397): 错误 C202: 'USARTbuf': undefined identifier
+LD788BS.C(399): 错误 C202: 'USARTbuf': undefined identifier
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(417): 错误 C231: 'RI': redefinition
+LD788BS.C(417): 错误 C231: 'RI': redefinition
+LD788BS.C(418): 错误 C141: syntax error near 'for'
+LD788BS.C(418): 错误 C141: syntax error near '=', expected ')'
+LD788BS.C(418): 错误 C129: missing ';' before '<'
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1496
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1498
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(442): 错误 C141: syntax error near '}'
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1518
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1518
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1518
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1518
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1518
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_W25X_SECTORERASE?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1503
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 3   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(424): 错误 C141: syntax error near ']'
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1511
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 2   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WAITDATA?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1553
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 3   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WAITDATA?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1538
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 3   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_W25X_SECTORERASE?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WAITDATA?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1530
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 4   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_W25X_SECTORERASE?LD788BS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1486
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 3   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=65.0 xdata=1024 code=1501
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+LD788BS.C(504): 错误 C141: syntax error near 'v'
+目标没产生
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=66.0 xdata=1024 code=1527
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=66.0 xdata=1024 code=1553
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=66.0 xdata=1024 code=1553
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).
+建造目标 'Target 1'
+正在编绎 LD788BS.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?LD788BS
+
+Program Size: data=66.0 xdata=1024 code=1553
+正在从 "LD788BS" 产生 HEX文件...   
+"LD788BS" - 0 错误 (s), 1   警告 (s).

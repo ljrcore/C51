@@ -1,0 +1,119 @@
+ DVCC系列产品的88部分(含DV598JH/DV8086JH)的0832和8255来
+ 产生方波和正弦波
+ 接线:8255CS和DACS接到070-07F，PC0接开关，ADCS接060-06F，
+  IN0接到W1。
+ 加载执行程序，用示波器查看 0832输出 AOUT
+   	 CODE SEGMENT
+  	 ASSUME CS:CODE
+  	 ADPORT   EQU 0060H
+  	 DAPORT	 EQU 0070H
+  	 IOBPT	 EQU 0071H
+  	 IOCPT	 EQU 0072H
+  	 IOCONPT  EQU 0073H
+  	 CONTPORT EQU 00DFH
+ 	 DATAPORT EQU 00DEH
+  	 ST11     EQU  START
+START:  CALL GETPC
+        JMP DACONTORL
+GETPC:  MOV BX,SP       ;取得开始IP地址子程序
+        MOV AL,DS:[BX+0]
+        MOV AH,DS:[BX+1]
+        SUB AX,3
+        MOV ES,AX
+        RET
+
+DACONTORL: MOV DX,ADPORT
+        MOV AL,0H
+        OUT DX,AL
+        MOV AL,89H
+	MOV DX,IOCONPT
+	OUT DX,AL        ;初始化8255
+        CALL LEDDISP
+        MOV BX,ES
+DACON1: MOV DX,DAPORT    ;正弦波产生
+        MOV AL,CS:[BX+DATA2]
+        OUT DX,AL
+        CALL DELAY1
+        MOV DX,IOCPT
+	IN  AL,DX         ;取得8255状态
+        CMP AL,0H
+        JE  FANGBO
+	INC BL
+        MOV AL,BL
+        CMP AL,63
+        JE  DACON2
+        INC BL
+        JMP DACON1
+DACON2: MOV BX,ES
+	JMP DACON1
+
+FANGBO: CMP BH,1          ;方波产生
+	JE  FAN1
+        MOV AL,0
+	MOV BH,1
+        JMP FAN2
+FAN1  : MOV AL,0FFH
+	MOV BH,0
+FAN2  : MOV DX,DAPORT
+        OUT DX,AL
+        MOV DX,IOCPT
+	IN  AL,DX         ;取得8255状态
+        CMP AL,1
+        JE  DACON1
+        CALL DELAY1
+        CALL DELAY1
+        CALL DELAY1
+        CALL DELAY1
+        CALL DELAY1
+        CALL DELAY1
+        CALL DELAY1
+        CALL DELAY1
+        CALL DELAY1
+        CALL DELAY1
+        JMP FANGBO
+
+DELAY1: PUSH CX          ;延时子程序1
+        MOV DX,ADPORT
+        IN  AL,DX
+        MOV CL,AL
+        MOV AL,0
+        OUT DX,AL
+        MOV AL,CL
+        MOV CL,4         ;移位数
+        SAR AL,cl
+        AND AL,0FH
+        ADD AL,1
+        MOV CL,AL
+        MOV CH,0
+DELA2:  CALL DELAY2
+	LOOP DELA2
+        POP CX
+	RET
+
+DELAY2: PUSH CX          ;延时子程序2
+ 	MOV CX,8
+DELA1:	LOOP DELA1
+        POP CX
+	RET
+
+LEDDISP:MOV AL,90H      ;显示子程序
+	MOV DX,CONTPORT
+	OUT DX,AL
+	MOV BYTE PTR DS:[0600H],00
+        MOV BX,ES
+LED1:	CMP BYTE PTR DS:[0600H],07H
+	JA  LED2
+	MOV AL,CS:[BX+DATA1]
+	MOV DX,DATAPORT
+	OUT DX,AL
+	INC BX
+	ADD BYTE PTR DS:[0600H],01H
+	JNZ LED1
+LED2:	RET
+DATA1   DB  6DH,6DH,5BH,7FH,5BH,4FH,7FH,3FH  ;LED显示0832--3
+DATA2   DB  143,153,165,177,189,200,210,219,228,235,242,247,251,254,255,255
+        DB  254,252,249,244,238,231,223,214,204,193,182,170,158,146,133,120
+        DB  107,95 ,83 ,71 ,60 ,49 ,39 ,31 ,23 ,16 ,10 ,6  ,2  ,0  ,0  ,0
+        DB  2  ,5  ,9  ,14 ,21 ,29 ,37 ,47 ,57 ,68 ,80 ,92 ,104,117,130,140 ;SIN正弦波数据表
+CODE ENDS
+END START

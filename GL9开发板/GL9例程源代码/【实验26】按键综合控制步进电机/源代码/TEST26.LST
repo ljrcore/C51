@@ -1,0 +1,164 @@
+C51 COMPILER V7.00  TEST26                                                                 08/06/2015 14:14:26 PAGE 1   
+
+
+C51 COMPILER V7.00, COMPILATION OF MODULE TEST26
+OBJECT MODULE PLACED IN C:\Users\云奥高科\Desktop\TEST26.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE TEST26.c BROWSE DEBUG OBJECTEXTEND OBJECT(C:\Users\云奥高科\Desktop\TEST26.
+                    -obj)
+
+stmt level    source
+
+   1          #include <AT89X52.h>       //调用51单片机的头文件
+   2          
+   3          sbit P1key=P2^0;           //按键P1接在P2.0口上
+   4          sbit P2key=P2^1;           //按键P2接在P2.1口上
+   5          sbit P3key=P2^2;           //按键P3接在P2.2口上
+   6          sbit P4key=P2^3;           //按键P4接在P2.3口上
+   7          sbit P5key=P2^4;           //按键P5接在P2.4口上
+   8          sbit P6key=P2^5;           //按键P6接在P2.5口上
+   9          sbit P7key=P2^6;           //按键P7接在P2.6口上
+  10          sbit P8key=P2^7;           //按键P8接在P2.7口上
+  11          //---------------------------------------
+  12          //定义一个数据表格
+  13          unsigned char code TAB[8]=
+  14          {                          //定义表格一定要使用code，这样会做到程序存储区中
+  15              0x77,                  //表格第1步数据0b 01110111
+  16              0x33,                  //表格第2步数据0b 00110011
+  17              0xBF,                  //表格第3步数据0b 10111011
+  18              0x9F,                  //表格第4步数据0b 10011001
+  19              0xDF,                  //表格第5步数据0b 11011101
+  20              0xCF,                  //表格第6步数据0b 11001100
+  21              0xEF,                  //表格第7步数据0b 11101110
+  22              0x6F,                  //表格第8步数据0b 01100110
+  23          };
+  24          
+  25          //---------------------------------------
+  26          //8独立按键相关I/O设置
+  27          
+  28          //---------------------------------------
+  29          
+  30          //---------------------------------------
+  31          //按键部分用寄存器设置
+  32          unsigned char KEYbuf;      //设置8位的寄存器用来暂存按键键值数据
+  33          unsigned char KEYcon;
+  34          bit KEYbit;
+  35          //---------------------------------------
+  36          bit STEPbit;
+  37          bit ZFbit;
+  38          unsigned char STEPspeed;
+  39          //---------------------------------------
+  40          //名称: 主函数
+  41          
+  42          //---------------------------------------
+  43          void main(void)            //主函数,单片机开机后就是从这个函数开始运行
+  44          {
+  45   1      
+  46   1          unsigned int a=0;      //定义一个int型变量，做延时用
+  47   1          unsigned char b=0;    //定义一个char型变量，显示内容用
+  48   1      
+  49   1          while(1)               //死循环,单片机初始化后,将一直运行这个死循环
+  50   1          {
+  51   2                      //***8独立按键扫描部分***
+  52   2          //按P1-P8键，KEYbuf赋值1-8
+  53   2              if(P1key==0) KEYbuf=1;     //如果P1键按下，KEYbuf赋值写1
+  54   2              else if(P2key==0) KEYbuf=2; //如果P2键按下，KEYbuf赋值写2
+C51 COMPILER V7.00  TEST26                                                                 08/06/2015 14:14:26 PAGE 2   
+
+  55   2              else if(P3key==0) KEYbuf=3; //如果P3键按下，KEYbuf赋值写3
+  56   2              else if(P4key==0) KEYbuf=4; //如果P4键按下，KEYbuf赋值写4
+  57   2              else if(P5key==0) KEYbuf=5; //如果P5键按下，KEYbuf赋值写5
+  58   2              else if(P6key==0) KEYbuf=6; //如果P6键按下，KEYbuf赋值写6
+  59   2              else if(P7key==0) KEYbuf=7; //如果P7键按下，KEYbuf赋值写7
+  60   2              else if(P8key==0) KEYbuf=8; //如果P8键按下，KEYbuf赋值写8
+  61   2                        else 
+  62   2                        {
+  63   3                              KEYbuf=0;
+  64   3                              if(KEYbit==0)
+  65   3                              {
+  66   4                                      if(++KEYcon>100)
+  67   4                                      {
+  68   5                                              KEYcon=0;
+  69   5                                              KEYbit=1;              //无按键按下，KEYbit赋值为1
+  70   5                                      }
+  71   4                              }
+  72   3                      }
+  73   2          //*********************    
+  74   2              
+  75   2                      if(KEYbuf==1)               //P1键控制步进电机启停
+  76   2                      {                       
+  77   3                              if(KEYbit==1)
+  78   3                              {
+  79   4                                      KEYbit=0;
+  80   4                                      STEPbit=!STEPbit;     //步进电机启动标志位      
+  81   4                              }                       
+  82   3                      }
+  83   2                      if(KEYbuf==2)               //P2键控制步进电机转向
+  84   2                      {               
+  85   3                              if(KEYbit==1)
+  86   3                              {                               
+  87   4                                      ZFbit=!ZFbit;            //步进电机转向标志位    
+  88   4                                      P1=0xFF;                        //关闭步进电机  
+  89   4                              }                       
+  90   3                      }
+  91   2                      if(KEYbuf==3)               //P3键控制步进电机转速
+  92   2                      {                       
+  93   3                              if(KEYbit==1)
+  94   3                              {                               
+  95   4                                      if(++STEPspeed>3) STEPspeed=0;     //速度加1，并限制在0-3间                             
+  96   4                              }               
+  97   3                      }               
+  98   2      
+  99   2                      if(STEPspeed==0) 
+ 100   2                      {
+ 101   3                              for(a=0;a<1700;a++);            //速度1延时
+ 102   3                      }
+ 103   2                      else if(STEPspeed==1) 
+ 104   2                      {
+ 105   3                              for(a=0;a<1300;a++);            //速度2延时
+ 106   3                      }
+ 107   2                      else if(STEPspeed==2) 
+ 108   2                      {
+ 109   3                              for(a=0;a<900;a++);                     //速度3延时             
+ 110   3                      }
+ 111   2                      else  
+ 112   2                      {
+ 113   3                              for(a=0;a<500;a++);                     //速度4延时
+ 114   3                      }
+ 115   2                      if(STEPbit==1)
+ 116   2                      {
+C51 COMPILER V7.00  TEST26                                                                 08/06/2015 14:14:26 PAGE 3   
+
+ 117   3                              if(ZFbit==1)
+ 118   3                              {
+ 119   4                                      if(++b>7) b=0;              //b做+1操作，并限制在0-7以内        
+ 120   4                              }
+ 121   3                              else
+ 122   3                              {
+ 123   4                                      if(b==0) b=7;            //并限制在0-7以内     
+ 124   4                                      else b--;           //b做-1操作                         
+ 125   4                              }
+ 126   3                      P1=TAB[b];                              //将TAB[b]的值送入P1口输出
+ 127   3                      }
+ 128   2                      else
+ 129   2                      {
+ 130   3                              P1=0xFF;                        //关闭步进电机  
+ 131   3                      }
+ 132   2         }
+ 133   1      }
+ 134          
+ 135          
+ 136          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    247    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      3    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

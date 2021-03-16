@@ -1,0 +1,42 @@
+ＤＶ３１功能：三字节二进制无符号数除以单字节二进制数
+
+入口条件：被除数在R3、R4、R5中，除数在R7中。
+出口信息：OV=0 时，双字节商在R4、R5中，OV=1 时溢出。
+影响资源：PSW、A、B、R2～R7 堆栈需求： ２字节
+
+DV31: CLR C
+	MOV A,R3
+	SUBB A,R7
+	JC DV30
+	SETB OV ；商溢出
+	RET
+DV30: MOV R2,#10H ；求R3R4R5／R7－→R4R5
+DM23: CLR C
+	MOV A,R5
+	RLC A
+	MOV R5,A
+	MOV A,R4
+	RLC A
+	MOV R4,A
+	MOV A,R3
+	RLC A
+	MOV R3,A
+	MOV F0,C
+	CLR C
+	SUBB A,R7
+	ANL C,/F0
+	JC DM24
+	MOV R3,A
+	INC R5
+DM24: DJNZ R2,DM23
+	MOV A,R3 ；四舍五入
+	ADD A,R3
+	JC DM25
+	SUBB A,R7
+	JC DM26
+DM25: INC R5
+	MOV A,R5
+	JNZ DM26
+	INC R4
+DM26: CLR OV
+	RET ；商在R4R5中

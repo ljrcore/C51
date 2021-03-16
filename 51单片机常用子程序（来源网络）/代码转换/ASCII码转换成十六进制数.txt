@@ -1,0 +1,11 @@
+ 标号： ＡＳＣＨ 功能：ASCII码转换成十六进制数
+
+入口条件：待转换的ASCII码（30H～39H或41H～46H）在A中。
+出口信息：转换后的十六进制数（00H～0FH）仍在累加器A中。
+影响资源：PSW、A 堆栈需求： ２字节
+
+ASCH: CLR C
+	SUBB A,#30H
+	JNB ACC.4,ASH1
+	SUBB A,#7
+ASH1: RET

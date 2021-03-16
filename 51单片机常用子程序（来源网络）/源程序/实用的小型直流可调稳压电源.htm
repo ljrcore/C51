@@ -1,0 +1,173 @@
+<SCRIPT LANGUAGE="JavaScript" SRC="/-fs0/sys/pop-up.js"></SCRIPT>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0042)http://wuljia.home.chinaren.com/smake1.htm -->
+<HTML><HEAD><TITLE>实用的小型直流可调稳压电源</TITLE>
+<META content=text/html; charset=gb2312 http-equiv=Content-Type>
+<STYLE type=text/css>A {
+	TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #444444
+}
+A:visited {
+	COLOR: #444444
+}
+A:active {
+	COLOR: #0000ff
+}
+A:hover {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+.p9 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13pt
+}
+TD {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13pt
+}
+.p12 {
+	FONT-SIZE: 12pt
+}
+.p7 {
+	FONT-SIZE: 8pt
+}
+</STYLE>
+
+<META content=MSHTML 5.00.2614.3500 name=GENERATOR></HEAD>
+<BODY bgColor=#FFFFFF leftMargin=0 topMargin=0 background=../tv/pic/bg.gif>
+<table width=768 border=0 cellspacing=0 cellpadding=0 align=center>
+ <tr> 
+ <td height=10> 
+ <hr size=1>
+ </td>
+ </tr>
+ <tr> 
+ <td bgcolor=#3399FF height=40> 
+ <div align=center><font face=宋体 size=3><font class=imcu1><font color=#800000 size=6><b><font color=#009900><b><font color=#FF0033>实用小型稳压电源制作</font></b></font><font color=#FF0033 face=楷体_GB2312> 
+ </font></b></font></font></font></div>
+ </td>
+ </tr>
+ <tr> 
+ <td> 
+ <hr size=1>
+ </td>
+ </tr>
+</table>
+<DIV align=center> 
+ <TABLE border=0 borderColor=#CCCCCC 
+cellPadding=0 cellSpacing=0 width=770>
+ <TBODY> 
+ <TR> 
+ <TD height=120 width=770> 
+ <div align=center> </div>
+ 市场上有许多可调的整流电源，可输出3-12V的电压。但这类电源大多工艺粗糙，存在许多问题。我们这次将制作一个性能比较好的可调直流稳压电源，相信能满足你的大部分需求。<BR>
+ &nbsp;&nbsp;&nbsp; 本制作需要的元件都可以在电子商店买到，主要元件清单如下：<br>
+ <DIV align=center> 
+ <CENTER>
+ <TABLE border=1 cellPadding=0 cellSpacing=0 width=451>
+ <TBODY> 
+ <TR> 
+ <TD align=middle width=57>编号</TD>
+ <TD align=middle width=105>名称</TD>
+ <TD align=middle width=85>型号</TD>
+ <TD align=middle width=39>数量</TD>
+ <TD align=middle width=105>LM317外型图</TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>D1-D5</TD>
+ <TD width=105>二极管</TD>
+ <TD align=middle width=85>1N4007</TD>
+ <TD align=middle width=39>5</TD>
+ <TD align=middle rowSpan=10 width=105><IMG border=0 height=191 
+ src=../tv/pic/make1-2.gif width=91></TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>T1</TD>
+ <TD width=105>变压器</TD>
+ <TD align=middle width=85>3W 9V</TD>
+ <TD align=middle width=39>1</TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>C1</TD>
+ <TD width=105>电解电容</TD>
+ <TD align=middle width=85>25V 470μF</TD>
+ <TD align=middle width=39>1</TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>C2</TD>
+ <TD width=105>电解电容</TD>
+ <TD align=middle width=85>0.1μF</TD>
+ <TD align=middle width=39>1</TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>C3</TD>
+ <TD width=105>电解电容</TD>
+ <TD align=middle width=85>16V 100μF</TD>
+ <TD align=middle width=39>1</TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>IC</TD>
+ <TD width=105>三端稳压集成电路</TD>
+ <TD align=middle width=85>LM317T</TD>
+ <TD align=middle width=39>1</TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>R1</TD>
+ <TD width=105>电阻</TD>
+ <TD align=middle width=85>470Ω</TD>
+ <TD align=middle width=39>1</TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>R2</TD>
+ <TD width=105>电阻</TD>
+ <TD align=middle width=85>150Ω</TD>
+ <TD align=middle width=39>1</TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>PR1</TD>
+ <TD width=105>可调电阻</TD>
+ <TD align=middle width=85>200Ω</TD>
+ <TD align=middle width=39>1</TD>
+ </TR>
+ <TR> 
+ <TD align=middle width=57>　</TD>
+ <TD width=105>保险管</TD>
+ <TD align=middle width=85>0.5A</TD>
+ <TD align=middle width=39>1</TD>
+ </TR>
+ </TBODY> 
+ </TABLE>
+ </CENTER>
+ </DIV>
+ <P><FONT color=#0000ff size=3><B>电路工作原理：</B></FONT><br>
+ &nbsp;&nbsp;&nbsp; 220V的交流电从插头经保险管送到变压器的初级线圈，并从次级线圈感应出经约9V的交流电压送到4个二极管。二极管在电路中的符号有短线的一端称为它的负极（或阴极），有三角前进标志的一端称为它的正极（或阳极）。的基本作用是只允许电流从它的正极流向它的负极（即只能按三角标示的方向流动），而不允许从负极流向正极。我们知道，交流电的特点是方向和电压大小一直随时间变化，用通俗的话说，它的正负极是不固定的。但是对照图１来看，不管从变压器中出来的两根线中那根电压高，电流都能而且只能由D3或D4流入右边的电路，由D1或D2流回去。这样，从右边的电路来看，正极永远都是D3和D4连接的那一端，负极永远是D1和D2连接的那一端。这便是二极管整流的原理。二极管把把交流电方向变化的问题解决了，但是它的电压大小还在变化。而电容器有可以存储电能的特性，正好可以用来解决这个问题。在电压较高时向电容器中充电，电压较低时便由电容器向电路供电。这个过程叫作滤波。图中的C1便是用来完成这个工作的。<BR>
+ &nbsp;&nbsp;&nbsp; 经过C1滤波后的比较稳定的直流电送到三端稳压集成电路LM317T的Vin端(3脚)。LM317T是一种这样的器件：<FONT 
+ color=#0000ff><B>由Vin端给它提供工作电压以后，它便可以保持其+Vout端(2脚)比其ADJ端(1脚)的电压高1.25V。</B></FONT>因此，我们只需要用极小的电流来调整ADJ端的电压，便可在+Vout端得到比较大的电流输出，并且电压比ADJ端高出恒定的1.25V。我们还可以通过调整PR1的抽头位置来改变输出电压－反正LM317T会保证接入ADJ端和+Vout端的那部分电阻上的电压为1.25V！所以，可以想到：当抽头向上滑动时，输出电压将会升高！ 
+<br>
+ &nbsp;&nbsp;&nbsp; 图中C2的作用是对LM317T 1脚的电压进行小小的滤波，以提高输出电压的质量。图中D5的作用是当有意外情况使得LM317T的3脚电压比2脚电压还低的时候防止从C3上有电流倒灌入LM317T引起其损坏。 
+<br>
+ </P>
+ <P><FONT color=#0000ff size=3><B>元件选择：</B></FONT><br>
+ &nbsp;&nbsp;&nbsp; 大部分元件的选择都有弹性。IC选用LM317T或与其功能相同的其它型号（如KA317等，可向售货员咨询）。变压器可以选择一般常见的9-12V的小型变压器，二极管选1N4001-1N4007均可。C1选择耐压大于16V、容量470-2200μF的电解电容均可。值得注意的是C2的容量表示法：前两位数表示容量的两位有效数字，第三位表示倍率。如果第三位数字为N，则它的容量为前两位数字乘以10的N次方，单位为PF。如C2的容量为10×10<SUP>4</SUP>=100000PF=0.1μF。C2选用普通的磁片电容即可。C3的选择类似于C1。电阻选用1/8W的小型电阻。现在的小电阻一般用色环来标示其阻值，如果你还不会识别这种表示法，请看这篇文章-色环电阻的识别。 
+<br>
+ </P>
+ <P><FONT color=#0000ff size=3><B>制作过程：</B></FONT><br>
+ &nbsp;&nbsp;&nbsp; 电路并不复杂，只要按照原理图去装配，一般不会有什么问题。装配时要注意的是二极管的极性，拿1N400X系列的二极管来说，标有白色色环的一端是它的负极。还有电解电容的极性，新买来的电解电容，它的两个引脚是不一样长的。较长的一端是它的正极，也可以从柱体上的印刷标志来区分，一般在负极对应的一则标有“-”号。装配时，可以制作一块小的线路板，也可以直接用元件搭接。LM317因工作电流较小，可以不加散热片。装好后再检查一遍，无误后接通电源。这时用万用表测量C1两端，应有11V左右的电压，再测C3两端，应有2-7V的电压。再调节PR1，C3两端的电压应该能够改变，调到你所需要的电压即可。输出端可以接一根十字插头线，以便与随身听等用电器相连。 
+ </P>
+ <P><FONT color=#0000ff size=4><B>扩展应用：</B></FONT><br>
+ &nbsp;&nbsp;&nbsp; LM317的输出电压可以从1.25V连续调节到37V。其输出电压可以由下式算出： </P>
+ <P><FONT color=#ff0000>&nbsp;&nbsp;&nbsp; 输出电压=1.25×（1+ADJ端到地的电阻/ADJ端到+Vout端的电阻）。</FONT> 
+ </P>
+ <P>&nbsp;&nbsp;&nbsp; 如果你需要其它的电压值，即可自选改变有关电阻的阻值来得到。值得注意的是，<FONT 
+ color=#ff0000>LM317T有一个最小负载电流的问题，</FONT>即只有负载电流超过某一值时，它才能起到稳压的作用。这个电流随器件的生产厂家不同在3-8mA不等。这个可以通过在负载端接一个合适的电阻来解决。 
+ </P>
+ </TD>
+ </TR>
+ <TR> 
+ <TD height=2 vAlign=top width=770> 
+ <div align=center><img border=0 height=317 src=pic/make1-1.gif width=709></div>
+ </TD>
+ </TR>
+ </TBODY> 
+ </TABLE>
+ <p></P></DIV></BODY></HTML>

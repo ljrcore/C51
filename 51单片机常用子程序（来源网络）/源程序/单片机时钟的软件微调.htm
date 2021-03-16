@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>news--Post Message</title>
+<meta name="FORMATTER" content="Microsoft FrontPage 2.0">
+</head>
+
+<body bgcolor=white>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>电子报新闻和重要文章</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+</head>
+
+<body bgcolor="#FFFFFF">
+<style type="text/css">
+<!--
+.linktop{font-size:9pt}
+.linktop a{color: #000000; font-style: normal; text-decoration: none; cursor: hand}
+.linktop a:visited {color: rgb(0,0,0); font-style: normal; text-decoration: none}
+.linktop a:active  {color:  rgb(100,0,0); font-style: normal; text-decoration: none}
+.linktop a:hover {color: rgb(255,255,255); font-style:bold; text-decoration: none}	 
+-->
+</style>
+
+<div align="center"><center>
+
+<table border="0" width="700" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="700" align="center"><a href="/index.asp"><img src="/images/dzblogo.gif" width="228" height="60" border="0"></a><img src="/IMAGES1/kantou1.JPG" border="0" width="279" height="60"><a href="/pav/index.asp"><img src="/IMAGES1/kantou2.jpg" border="0"width="184" height="60"></a></td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0" width="700" cellpadding="4" height="25">
+  <tr>
+    <td height="11" align="center" bgcolor="#12BEC2" width="77"><span
+    style="font-family: 宋体; font-size: 9pt" class="linktop"><a href="/about/aboutus.asp" target="_top">关于我们</a></span></td>
+    <td height="11" align="center" bgcolor="#12BEC2" width="78"><span
+    style="font-family: 宋体; font-size: 9pt" class="linktop"><a href="#" target="_top">联系方式</a></span></td>
+    <td height="11" align="center" bgcolor="#12BEC2" width="78"><span
+    style="font-family: 宋体; font-size: 9pt" class="linktop"><a href="/zhongyao/zywz.asp" target="_top">电子报网络版</a></span></td>
+    <td height="11" align="center" bgcolor="#12BEC2" width="78"><span
+    style="font-family: 宋体; font-size: 9pt" class="linktop"><a href="/bbs/bbs.asp" target="_top">BBS</a></span></td>
+   <!--
+    <td height="11" align="center" bgcolor="#12BEC2" width="78"><span
+    style="font-family: 宋体; font-size: 9pt" class="linktop"><a href="/QuestionAnswer/question/index.htm" target="_top">专家热线</a></span></td>
+   -->
+    <td height="11" align="center" bgcolor="#12BEC2" width="78"><span
+    style="font-family: 宋体; font-size: 9pt" class="linktop"><a href="/shudian/shudian.asp" target="_top">网上书店</a></span></td>
+    <td height="11" align="center" bgcolor="#12BEC2" width="78"><span
+    style="font-family: 宋体; font-size: 9pt" class="linktop"><a href="/weixiu/wxzlk.asp" target="_top">电子报刊检索</a></span></td>
+    <td height="11" align="center" bgcolor="#12BEC2" width="78"><span
+    style="font-family: 宋体; font-size: 9pt" class="linktop"><a href="/pav/index.asp" target="_top">实用影音技术</a></span></td>
+    <td height="11" align="center" bgcolor="#12BEC2" width="78"><span
+    style="font-family: 宋体; font-size: 9pt" class="linktop"><a href="/jiaoliu/jiaoliu.asp" target="_top">个人链接</a></span></td>
+  </tr>
+</table>
+</center></div>
+<div align="center"><center>
+
+<div align="center"><center><table border="0" width="650" cellspacing="1" cellpadding="2">
+      <tr>
+        <td width="100%" valign="top" bgcolor="#DDDDDD"><span style="font-family:宋体;font-size: 9pt"><b><p align="center">新闻和重要文章</b></span></td>
+      </tr>
+      <tr>
+        <td width="100%" valign="top"><span style="font-family:宋体;font-size: 14px">
+
+
+<strong><BR><p align="center">
+<font color="darkblue">单片机时钟的软件微调</strong></font><br>
+2000年,第49期,类别:单片机应用<br></p>
+
+		<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;在设计单片机定时控制系统时，常常会遇到系统的时钟误差问题。在时间精度要求较高的场合通常采取微调石英晶振的并联谐振电容的方法来校正时钟误差。此方法虽然简便，但也有缺点，如制作麻烦、调校不能定量进行，不易校准，而且微调电容本身就是一个频漂因素。笔者在开发一套自动广播控制系统时，选用稳定性较好的固定云母电容作为晶振的并联谐振电容，编制了时间微调程序，用软件对时间进行微调。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;单片机系统中通常利用片内定时器定时发出中断请求，ＣＰＵ响应中断后在中断服务程序中对中断计数，根据计数结果进行秒、分、时各寄存计数单元的处理，得到所需要的时间值。改变定时器的初值即可改变产生中断的时间，达到时间调整的目的。用户可根据时钟运行的误差，从键盘输入调整量，ＣＰＵ经计算得到定时器修正后的初值。此后定时器运行均采用修正后的值，就实现了时钟的调校。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;设系统采用６Ｍ晶振，每１００ｍｓ产生一次中断信号，那么定时器初值每增（减）１，１次中断减（增）２μｓ，时钟每天的增（减）值为：△ｔ＝２４小时×６０分／时×６０秒／分×１秒／１００毫秒×２微秒≈１．７秒。时钟最小调整幅度为１．７秒，显然不实用。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;由于大多数系统以秒为计数单位，若定时器每１００ｍｓ中断一次，则计满１０次向秒进１。如果第１～第９次中断定时器均用原来的初值，只在第１０次才装入修正后的初值，即修正值每增减１个单位，时钟每天变化量为：△ｔ＝２４小时×６０分／小时×６０秒／分×２微秒≈０．１７秒。忽略其它因素，时钟经调校后的最大误差为△ｔ，即０．０８６秒／日。为了使用方便，笔者设计的系统采用初始化时存入某标准值（譬如选５０），进行时钟微调时使该值在０～９９之间变化。调校输入完成后，进行运算处理，根据该值与标准值的差，对微调修正值进行调整。该值每增（减）１，定时器修正值也就增（减）１，每天时钟就快（慢）０．１７秒。修正结果存于寄存器中以备调用。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;下面是时钟调校及修正量输入完成后的运算处理的源程序。<br>
+　　；２ＦＨ——定时器低位修正初装值单元<br>
+　　；２２Ｈ——１００ｍｓ计数次数单元<br>
+　　；２０Ｈ——校正数据存放单元<br>
+　　；时钟调校程序：<br>
+　&nbsp;&nbsp;&nbsp;&nbsp;　　&nbsp;&nbsp;ＯＲＧ&nbsp;&nbsp;００００Ｈ<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＡＪＭＰ ＭＡＩＮ<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＯＲＧ&nbsp;&nbsp;&nbsp;０００ＢＨ　&nbsp;&nbsp;&nbsp;；Ｔ０中断入口<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＡＪＭＰ ＣＬＯＣＫ<br>
+ＭＡＩＮ&nbsp;&nbsp;：ＭＯＶ&nbsp;&nbsp;&nbsp;ＴＭＯＤ，＃０１&nbsp;&nbsp;；置Ｔ０为工作方式１<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;ＴＬ０，＃０Ｂ０Ｈ ；送定时器初值<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;ＴＨ０，＃３ＣＨ<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;ＩＥ，＃８２Ｈ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;；开中断<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＳＥＴＢ ＴＲ０　　　&nbsp;&nbsp;；启动Ｔ０<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;２２Ｈ，＃１０Ｄ&nbsp;&nbsp;&nbsp;&nbsp;；１００ｍｓ计数次数<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;２０Ｈ，＃５０Ｄ&nbsp;&nbsp;&nbsp;&nbsp;；调校预设值<br>
+ＨＥＲＥ&nbsp;&nbsp;：ＡＪＭＰ ＨＥＲＥ　　&nbsp;&nbsp;；等待中断<br>
+ＣＬＯＣＫ：ＤＪＮＺ ２２Ｈ，ＣＬＯ２&nbsp;&nbsp;&nbsp;；未计满０．９ｓ，继续计数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;　　　&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;ＴＬ０，２ＦＨ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;；已计数满０．９ｓ，进行<br>
+　&nbsp;&nbsp;&nbsp;&nbsp;　　&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;ＴＨ０，＃３ＣＨ&nbsp;&nbsp;&nbsp;；调整<br>
+&nbsp;&nbsp;&nbsp;&nbsp;　　　&nbsp;&nbsp;ＳＥＴＢ ＴＲ０<br>
+&nbsp;&nbsp;&nbsp;&nbsp;　　　&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;２２Ｈ，＃１０Ｄ&nbsp;&nbsp;&nbsp;&nbsp;；重设计数值<br>
+　　&nbsp;&nbsp;&nbsp;&nbsp;　&nbsp;&nbsp;ＲＥＴＩ<br>
+ＣＬＯ２&nbsp;&nbsp;：ＭＯＶ&nbsp;&nbsp;ＴＬ０，＃０Ａ６Ｈ&nbsp;&nbsp;；Ｔ０原始设定值<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;ＴＨ０，＃３ＣＨ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;　　　&nbsp;&nbsp;ＳＥＴＢ ＴＲ０<br>
+　　&nbsp;&nbsp;&nbsp;&nbsp;　&nbsp;&nbsp;ＲＥＴＩ<br>
+　　；校正输入完成后处理子程序：<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＣＬＲ&nbsp;&nbsp;&nbsp;Ｃ<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;Ａ，＃０Ａ６Ｈ<br>
+　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＳＵＢＢ Ａ，＃５０Ｄ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;；计算修正时Ｔ０的实际值<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＡＤＤ Ａ， ２０Ｈ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ＭＯＶ&nbsp;&nbsp;２ＦＨ， Ａ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;；计算结果暂存备用<br>
+        <br>
+         <a href="" target="_blank"> </a><br>
+        <br>
+        </font>
+</span></td>
+      </tr>
+    </table>
+    </center></div>
+</body>
+</html>

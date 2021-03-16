@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: W25Q16PRO - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\云奥高科\AppData\Local\Temp\RSP8CFC.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/W25Q16PRO.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\大学学习资料\单片机\Disc\综合实验源代码\综合实验2：W25Q16编程器1\W25Q16编程器C51原代码\W25Q16PRO.c"
+]
+Creating command line "cl.exe @"C:\Users\云奥高科\AppData\Local\Temp\RSP8CFC.tmp"" 
+<h3>Output Window</h3>
+Compiling...
+W25Q16PRO.c
+e:\大学学习资料\单片机\disc\综合实验源代码\综合实验2：w25q16编程器1\w25q16编程器c51原代码\w25q16pro.c(8) : fatal error C1083: Cannot open include file: 'AT89X52.h': No such file or directory
+执行 cl.exe 时出错.
+
+
+
+<h3>Results</h3>
+W25Q16PRO.obj - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

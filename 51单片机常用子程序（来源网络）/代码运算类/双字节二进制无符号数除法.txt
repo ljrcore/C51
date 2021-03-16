@@ -1,0 +1,47 @@
+ 标号： ＤＩＶＤ功能：双字节二进制无符号数除法
+
+入口条件：被除数在R2、R3、R4、R5中，除数在R6、R7中。
+出口信息：OV=0 时，双字节商在R2、R3中，OV=1 时溢出。
+影响资源：PSW、A、B、R1～R7 堆栈需求： ２字节
+
+DIVD: CLR C ；比较被除数和除数
+	MOV A,R3
+	SUBB A,R7
+	MOV A,R2
+	SUBB A,R6
+	JC DVD1
+	SETB OV ；溢出
+	RET
+DVD1: MOV B,#10H ；计算双字节商
+DVD2: CLR C ；部分商和余数同时左移一位
+	MOV A,R5
+	RLC A
+	MOV R5,A
+	MOV A,R4
+	RLC A
+	MOV R4,A
+	MOV A,R3
+	RLC A
+	MOV R3,A
+	XCH A,R2
+	RLC A
+	XCH A,R2
+	MOV F0,C ；保存溢出位
+	CLR C
+	SUBB A,R7 ；计算（R2R3－R6R7）
+	MOV R1,A
+	MOV A,R2
+	SUBB A,R6
+	ANL C,/F0 ；结果判断
+	JC DVD3
+	MOV R2,A ；够减，存放新的余数
+	MOV A,R1
+	MOV R3,A
+	INC R5 ；商的低位置一
+DVD3: DJNZ B,DVD2 ；计算完十六位商（R4R5）
+	MOV A,R4 ；将商移到R2R3中
+	MOV R2,A
+	MOV A,R5
+	MOV R3,A
+	CLR OV ；设立成功标志
+	RET

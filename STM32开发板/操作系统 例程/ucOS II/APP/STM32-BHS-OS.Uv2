@@ -1,0 +1,272 @@
+### uVision2 Project, (C) Keil Software
+### Do not modify !
+
+Target (Flash), 0x0004 // Tools: 'ARM-ADS'
+Target (RAM), 0x0004 // Tools: 'ARM-ADS'
+
+Group (APP)
+Group (BSP)
+Group (FWLib)
+Group (FWSource)
+Group (uC-CPU)
+Group (uC-OS-II/Source)
+Group (uC-OS-II/Port)
+Group (uC-LIB)
+Group (usart)
+Group (Documentation)
+
+File 1,1,<.\app.c><app.c>
+File 1,2,<.\vectors.s><vectors.s>
+File 2,1,<..\BSP\bsp.c><bsp.c>
+File 2,2,<..\BSP\init.s><init.s>
+File 2,1,<..\BSP\bsp_int.c><bsp_int.c>
+File 3,4,<..\STM32F10xR.LIB><STM32F10xR.LIB>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_adc.c><stm32f10x_adc.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_bkp.c><stm32f10x_bkp.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_can.c><stm32f10x_can.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_crc.c><stm32f10x_crc.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_dac.c><stm32f10x_dac.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_dbgmcu.c><stm32f10x_dbgmcu.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_dma.c><stm32f10x_dma.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_exti.c><stm32f10x_exti.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_flash.c><stm32f10x_flash.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_fsmc.c><stm32f10x_fsmc.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_gpio.c><stm32f10x_gpio.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_i2c.c><stm32f10x_i2c.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_it.c><stm32f10x_it.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_iwdg.c><stm32f10x_iwdg.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_lib.c><stm32f10x_lib.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_nvic.c><stm32f10x_nvic.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_pwr.c><stm32f10x_pwr.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_rcc.c><stm32f10x_rcc.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_rtc.c><stm32f10x_rtc.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_sdio.c><stm32f10x_sdio.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_spi.c><stm32f10x_spi.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_systick.c><stm32f10x_systick.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_tim.c><stm32f10x_tim.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_usart.c><stm32f10x_usart.c>
+File 4,1,<D:\Keil\ARM\RV31\LIB\ST\STM32F10x\stm32f10x_wwdg.c><stm32f10x_wwdg.c>
+File 5,2,<..\uC-CPU\ARM-Cortex-M3\cpu_a.asm><cpu_a.asm>
+File 5,1,<..\uC-CPU\ARM-Cortex-M3\cpu_c.c><cpu_c.c>
+File 6,1,<..\uCOS-II\Source\os_core.c><os_core.c>
+File 6,1,<..\uCOS-II\Source\os_flag.c><os_flag.c>
+File 6,1,<..\uCOS-II\Source\os_mbox.c><os_mbox.c>
+File 6,1,<..\uCOS-II\Source\os_mem.c><os_mem.c>
+File 6,1,<..\uCOS-II\Source\os_mutex.c><os_mutex.c>
+File 6,1,<..\uCOS-II\Source\os_q.c><os_q.c>
+File 6,1,<..\uCOS-II\Source\os_sem.c><os_sem.c>
+File 6,1,<..\uCOS-II\Source\os_task.c><os_task.c>
+File 6,1,<..\uCOS-II\Source\os_time.c><os_time.c>
+File 6,1,<..\uCOS-II\Source\os_tmr.c><os_tmr.c>
+File 7,1,<..\uCOS-II\Ports\os_cpu_c.c><os_cpu_c.c>
+File 7,1,<..\uCOS-II\Ports\os_dbg.c><os_dbg.c>
+File 7,2,<..\uCOS-II\Ports\os_cpu_a.asm><os_cpu_a.asm>
+File 8,1,<..\uC-LIB\lib_mem.c><lib_mem.c>
+File 8,1,<..\uC-LIB\lib_str.c><lib_str.c>
+File 8,2,<..\uC-LIB\Ports\lib_mem_a.asm><lib_mem_a.asm>
+File 9,1,<..\usart\Com.c><Com.c>
+File 10,5,<.\readme.txt><readme.txt>
+
+
+Options 1,0,0  // Target 'Flash'
+ Device (STM32F103VB)
+ Vendor (STMicroelectronics)
+ Cpu (IRAM(0x20000000-0x20004FFF) IROM(0x8000000-0x801FFFF) CLOCK(8000000) CPUTYPE("Cortex-M3"))
+ FlashUt ()
+ StupF ("STARTUP\ST\STM32F10x.s" ("STM32 Startup Code"))
+ FlashDR (UL2CM3(-O14 -S0 -C0 -N00("ARM Cortex-M3") -D00(1BA00477) -L00(4) -FO7 -FD20000000 -FC800 -FN1 -FF0STM32F10x_128 -FS08000000 -FL020000))
+ DevID (4223)
+ Rgf (stm32f10x_lib.h)
+ Mem ()
+ C ()
+ A ()
+ RL ()
+ OH ()
+ DBC_IFX ()
+ DBC_CMS ()
+ DBC_AMS ()
+ DBC_LMS ()
+ UseEnv=0
+ EnvBin ()
+ EnvInc ()
+ EnvLib ()
+ EnvReg (ÿST\STM32F10x\)
+ OrgReg (ÿST\STM32F10x\)
+ TgStat=16
+ OutDir (..\ObjFlash\)
+ OutName (STM32)
+ GenApp=1
+ GenLib=0
+ GenHex=1
+ Debug=1
+ Browse=1
+ LstDir (..\LstFlash\)
+ HexSel=1
+ MG32K=0
+ TGMORE=0
+ RunUsr 0 0 <>
+ RunUsr 1 0 <>
+ BrunUsr 0 0 <>
+ BrunUsr 1 0 <>
+ CrunUsr 0 0 <>
+ CrunUsr 1 0 <>
+ SVCSID <>
+ GLFLAGS=1790
+ ADSFLGA { 242,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ACPUTYP ("Cortex-M3")
+ RVDEV ()
+ ADSTFLGA { 0,12,0,18,99,0,0,66,0,0,0,0,0,0,0,0,0,0,0,0 }
+ OCMADSOCM { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ OCMADSIRAM { 0,0,0,0,32,0,80,0,0 }
+ OCMADSIROM { 1,0,0,0,8,0,0,2,0 }
+ OCMADSXRAM { 0,0,0,0,0,0,0,0,0 }
+ OCR_RVCT { 1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,8,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,0,80,0,0,0,0,0,0,0,0,0,0,0 }
+ RV_STAVEC ()
+ ADSCCFLG { 4,34,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ADSCMISC ()
+ ADSCDEFN ()
+ ADSCUDEF ()
+ ADSCINCD ()
+ ADSASFLG { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ADSAMISC ()
+ ADSADEFN ()
+ ADSAUDEF ()
+ ADSAINCD ()
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=1
+ AlwaysBuild=0
+ GenAsm=0
+ AsmAsm=0
+ PublicsOnly=0
+ StopCode=3
+ CustArgs ()
+ LibMods ()
+ ADSLDFG { 16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ADSLDTA (0x00000000)
+ ADSLDDA (0x20000000)
+ ADSLDSC (..\BSP\STM32_Flash.scat)
+ ADSLDIB ()
+ ADSLDIC ()
+ ADSLDMC (--entry ResetHndlr)
+ ADSLDIF ()
+ ADSLDDW ()
+  OPTDL (SARMCM3.DLL)()(DARMSTM.DLL)(-pSTM32F103VB)(SARMCM3.DLL)()(TARMSTM.DLL)(-pSTM32F103VB)
+  OPTDBG 48125,7,()()()()()()()()()() (Segger\JL2CM3.dll)()()()
+ FLASH1 { 9,0,0,0,1,0,0,0,5,16,0,0,0,0,0,0,0,0,0,0 }
+ FLASH2 (Segger\JL2CM3.dll)
+ FLASH3 ("" ())
+ FLASH4 ()
+EndOpt
+
+Options 2,0,0  // Target 'RAM'
+ Device (STM32F103VB)
+ Vendor (STMicroelectronics)
+ Cpu (IRAM(0x20000000-0x20004FFF) IROM(0x8000000-0x801FFFF) CLOCK(8000000) CPUTYPE("Cortex-M3"))
+ FlashUt ()
+ StupF ("STARTUP\ST\STM32F10x.s" ("STM32 Startup Code"))
+ FlashDR (UL2CM3(-O14 -S0 -C0 -N00("ARM Cortex-M3") -D00(1BA00477) -L00(4) -FO7 -FD20000000 -FC800 -FN1 -FF0STM32F10x_128 -FS08000000 -FL020000))
+ DevID (4223)
+ Rgf (stm32f10x_lib.h)
+ Mem ()
+ C ()
+ A ()
+ RL ()
+ OH ()
+ DBC_IFX ()
+ DBC_CMS ()
+ DBC_AMS ()
+ DBC_LMS ()
+ UseEnv=0
+ EnvBin ()
+ EnvInc ()
+ EnvLib ()
+ EnvReg (ÿST\STM32F10x\)
+ OrgReg (ÿST\STM32F10x\)
+ TgStat=16
+ OutDir (..\ObjRAM\)
+ OutName (STM32)
+ GenApp=1
+ GenLib=0
+ GenHex=0
+ Debug=1
+ Browse=0
+ LstDir (..\LstRAM\)
+ HexSel=1
+ MG32K=0
+ TGMORE=0
+ RunUsr 0 0 <>
+ RunUsr 1 0 <>
+ BrunUsr 0 0 <>
+ BrunUsr 1 0 <>
+ CrunUsr 0 0 <>
+ CrunUsr 1 0 <>
+ SVCSID <>
+ GLFLAGS=1790
+ ADSFLGA { 242,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ACPUTYP ("Cortex-M3")
+ RVDEV ()
+ ADSTFLGA { 0,12,0,18,99,0,0,66,0,0,0,0,0,0,0,0,0,0,0,0 }
+ OCMADSOCM { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ OCMADSIRAM { 0,0,0,0,32,0,80,0,0 }
+ OCMADSIROM { 1,0,0,0,8,0,0,2,0 }
+ OCMADSXRAM { 0,0,0,0,0,0,0,0,0 }
+ OCR_RVCT { 1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,32,0,48,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,0,32,0,32,0,0,0,0,0,0,0,0,0,0,0 }
+ RV_STAVEC ()
+ ADSCCFLG { 8,34,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ADSCMISC ()
+ ADSCDEFN ("VECT_TAB_RAM")
+ ADSCUDEF ()
+ ADSCINCD ()
+ ADSASFLG { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ADSAMISC ()
+ ADSADEFN ()
+ ADSAUDEF ()
+ ADSAINCD ()
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=1
+ AlwaysBuild=0
+ GenAsm=0
+ AsmAsm=0
+ PublicsOnly=0
+ StopCode=3
+ CustArgs ()
+ LibMods ()
+ ADSLDFG { 16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ADSLDTA (0x00000000)
+ ADSLDDA (0x20000000)
+ ADSLDSC (..\BSP\STM32_Flash.scat)
+ ADSLDIB ()
+ ADSLDIC ()
+ ADSLDMC (--entry ResetHndlr)
+ ADSLDIF ()
+ ADSLDDW ()
+  OPTDL (SARMCM3.DLL)()(DARMSTM.DLL)(-pSTM32F103VB)(SARMCM3.DLL)()(TARMSTM.DLL)(-pSTM32F103VB)
+  OPTDBG 49150,7,()()()()()()()()()(.\RAM.ini) (Segger\JL2CM3.dll)()()()
+ FLASH1 { 1,0,0,0,1,0,0,0,5,16,0,0,0,0,0,0,0,0,0,0 }
+ FLASH2 (Segger\JL2CM3.dll)
+ FLASH3 ("" ())
+ FLASH4 ()
+EndOpt
+
+Options 1,3,0  // Group 'FWLib'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=0
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ ADSCCFLG { 2,84,85,33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ADSCMISC ()
+ ADSCDEFN ()
+ ADSCUDEF ()
+ ADSCINCD ()
+ ADSASFLG { 170,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ ADSAMISC ()
+ ADSADEFN ()
+ ADSAUDEF ()
+ ADSAINCD ()
+EndOpt
+

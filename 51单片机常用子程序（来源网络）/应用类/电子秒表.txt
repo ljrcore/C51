@@ -1,0 +1,337 @@
+     8279键盘显示实验（电子秒表)
+
+
+	Z8279 EQU 08701H ;8279 状态/命令口地址
+	D8279 EQU 08700H ;8279 数据口地址
+	LEDMOD EQU 00H ;左边输入 八位字符显示
+			;外部译码键扫描方式,双键互锁
+	LEDFEQ EQU 2FH ;扫描速率
+	LEDCLS EQU 0C1H ;清除显示 RAM
+	LEDWR0 EQU 80H ;设定的将要写入的显示RAM地址
+	READKB EQU 40H ;读 FIFO RAM 地址 0 的命令字
+
+	ORG 0000H
+	AJMP MAIN
+	ORG 001BH ;INT T1 入口地址
+	AJMP INT_T1
+	ORG 0040H
+  MAIN:
+	MOV SP,#60H
+	LCALL INIT8279 ;初始化8279
+	MOV R3,#0H ;时
+	MOV R2,#0H ;分
+	MOV R1,#0H ;秒
+	MOV R0,#0H ;10毫秒
+	MOV R6,#0FFH ;标志
+	MOV TMOD,#10H
+	MOV TL1,#00H ;10毫秒的时间常数
+	MOV TH1,#0DCH
+	LCALL DIS_mS
+	SETB ET1
+	SETB EA ;允许中断
+ WAIT:
+	LCALL GETKEY ;读键盘
+	CJNE A,#0FFH,CONT ;判断是否有键输入
+	MOV A,B
+	CJNE A,#3CH,KEY_G ;输入键是'C',转CLEAR_T
+	LCALL CLEAR_T
+ KEY_G: CJNE A,#3AH,KEY_D ;输入键是'G',转START_T
+	LCALL START_T
+ KEY_D: CJNE A,#3DH,KEY_P ;输入键是'D',转STOP_T
+	LCALL STOP_T
+ KEY_P: CJNE A,#3BH,KEY_E ;输入键是'P',转SET_T
+	LCALL SET_T
+ KEY_E: CJNE A,#3EH,CONT ;输入键是'E',转MONITOR
+	AJMP MONITOR
+ CONT: CJNE R6,#0FFH,WAIT ;若无秒标志则循环
+	LCALL DISPLAY ;显示时间
+	MOV R6,#0 ;清标志
+	SJMP WAIT ;循环
+ MONITOR:NOP
+	SJMP $ ;等待回到监控
+
+ CLEAR_T: ;时间清零子程序
+	CLR TR1 ;关计数器
+	MOV R3,#0H ;小时清零
+	MOV R2,#0H ;分钟清零
+	MOV R1,#0H ;秒清零
+	MOV R0,#0H ;10毫秒清零
+	MOV R6,#0FFH ;置秒标志
+	LCALL DIS_mS ;显示毫秒
+	RET
+ START_T: ;电子钟计时子程序
+	SETB TR1
+	RET
+ STOP_T: ;电子钟停止计时子程序
+	CLR TR1
+	RET
+ SET_T: ;设置初值子程序
+	CLR TR1 ;关计数器
+
+	MOV R4,#7
+	LCALL GETWORD ;读小时数
+	CJNE A,#0FFH,INVALID ;判断输入合法性
+	MOV A,B
+	ADD A,#232
+	JC INVALID ;判断输入小时值 < 24
+	MOV A,B
+	MOV B,#10
+	DIV AB
+	SWAP A
+	ADD A,B
+	MOV R3,A ;保存输入的值
+
+	MOV R4,#5
+	LCALL GETWORD ;读分钟数
+	CJNE A,#0FFH,INVALID ;判断输入合法性
+	MOV A,B
+	ADD A,#196
+	JC INVALID ;判断输入分钟数 < 60
+	MOV A,B
+	MOV B,#10
+	DIV AB
+	SWAP A
+	ADD A,B
+	MOV R2,A ;保存输入的值
+
+	MOV R4,#3
+	LCALL GETWORD ;读分钟数
+	CJNE A,#0FFH,INVALID ;判断输入合法性
+	MOV A,B
+	ADD A,#196
+	JC INVALID ;判断输入分钟值 < 60
+	MOV A,B
+	MOV B,#10
+	DIV AB
+	SWAP A
+	ADD A,B
+	MOV R1,A ;保存输入的值
+
+	MOV R4,#1
+	LCALL GETWORD ;读10毫秒数
+	CJNE A,#0FFH,INVALID ;判断输入合法性
+	MOV A,B
+	MOV B,#10
+	DIV AB
+	SWAP A
+	ADD A,B
+	MOV R0,A ;保存输入的值
+	AJMP SET_TOK
+ INVALID:
+	LCALL CLEAR_T ;时间清零
+ SET_TOK:LCALL DIS_mS ;显示10毫秒
+	LCALL DISPLAY ;显示时间
+	RET
+
+ GETWORD: ;读数子程序
+ WKEY1: LCALL GETKEY ;读键盘
+	CJNE A,#0FFH,WKEY1 ;无键输入,则再读
+	MOV A,B
+	ADD A,#0C6H
+	JC ERROR1 ;判断输入是否大于9
+	MOV A,B
+	SUBB A,#30H
+	JC ERROR1 ;判断输入是否小于0
+	MOV R5,A
+	LCALL DISLED ;显示输入的字符
+	MOV B,#10
+	MUL AB
+	PUSH ACC ;保存输入的值
+ WKEY2: LCALL GETKEY ;读键盘
+	CJNE A,#0FFH,WKEY2 ;无键输入则再读
+	MOV A,B
+	ADD A,#0C6H ;判断输入是否大于9
+	JC ERROR2
+	MOV A,B
+	SUBB A,#30H ;判断输入是否小于0
+	JC ERROR2
+	DEC R4
+	MOV R5,A
+	LCALL DISLED ;显示输入的字符
+	MOV B,A
+	POP ACC
+	ADD A,B
+	MOV B,A ;把得到的值存在B
+	MOV A,#0FFH ;置合法输入标志
+	AJMP KEYOK
+ ERROR2: POP ACC
+ ERROR1: MOV A,#0 ;置非法输入标志
+ KEYOK: RET
+
+ INIT8279:	 ;8279初始化子程序
+	PUSH DPH ;保存现场
+	PUSH DPL
+	PUSH ACC
+	LCALL DELAY ;延时
+	MOV DPTR ,#Z8279
+	MOV A,#LEDMOD ;置8279工作方式
+	MOVX @DPTR,A
+	MOV A,#LEDFEQ ;置键盘扫描速率
+	MOVX @DPTR,A
+	MOV A,#LEDCLS ;清除 LED 显示
+	MOVX @DPTR,A
+	POP ACC ;恢复现场
+	POP DPL
+	POP DPH
+	RET
+            	  ;读取键盘子程序
+              	;输入: 无 ; 输出: B: 读到的键码 A: 按键的标志
+ GETKEY: PUSH DPH ;保存现场
+	PUSH DPL
+	PUSH PSW
+	MOV DPTR,#Z8279
+	MOVX A,@DPTR ;读8279状态
+	ANL A,#07H ;屏蔽D7-D3
+	JNZ GETVAL ;判断是否有键输入
+	MOV A,#0H ;置标志(无键输入)
+	SJMP NKBHIT
+ GETVAL: MOV A,#READKB ;读 FIFO RAM 命令
+	MOVX @DPTR,A
+	MOV DPTR,#D8279
+	MOVX A,@DPTR ;读键
+	ANL A,#3FH ;屏蔽 SHIFT 和 CTRL 键
+	MOV DPTR,#KEYCODE ;键码表起始地址
+	MOVC A,@A+DPTR ;查表
+	MOV B,A ;置返回键值
+	MOV A,#0FFH ;置标志(有键输入)
+ NKBHIT: POP PSW ;恢复现场
+	POP DPL
+	POP DPH
+	RET
+            	   ;显示字符子程序
+            	   ;输入: R4,位置 R5,值
+ DISLED: PUSH DPH ;保存现场
+	PUSH DPL
+	PUSH ACC
+	MOV A,#LEDWR0 ;置显示起始地址
+	ADD A,R4 ;加位置偏移量
+	MOV DPTR,#Z8279
+	MOVX @DPTR,A ;设定显示位置
+	MOV DPTR,#LEDSEG ;置显示常数表起始位置
+	MOV A,R5
+	MOVC A,@A+DPTR ;查表
+	MOV DPTR,#D8279
+	MOVX @DPTR,A ;显示数据
+	POP ACC ;恢复现场
+	POP DPL
+	POP DPH
+	RET
+
+ DELAY: ;延时子程序
+	PUSH 0 ;保存现场
+	PUSH 1
+	MOV 0,#0H
+ DELAY1: MOV 1,#0H
+	DJNZ 1,$
+	DJNZ 0,DELAY1
+	POP 1 ;恢复现场
+	POP 0
+	RET
+ DIS_mS:
+	MOV A,R0
+	ANL A,#0FH
+	MOV R5,A
+	MOV R4,#0
+	LCALL DISLED ;显示10毫秒低位
+	MOV A,R0
+	SWAP A ;高低半字节交换
+	ANL A,#0FH
+	MOV R5,A
+	MOV R4,#1
+	LCALL DISLED ;显示10毫秒高位
+	RET
+
+ INT_T1: ;INT_T1中断服务子程序
+	PUSH DPH ;保护现场
+	PUSH DPL
+	PUSH ACC
+	PUSH PSW
+	CLR TR1
+	MOV TL1,#00H ;10毫秒定时常数
+	MOV TH1,#0DCH
+	SETB TR1
+
+	MOV A,R0
+	ADD A,#1 ;10毫秒数加 1
+	DA A
+	MOV R0,A
+
+	LCALL DIS_mS ;显示10毫秒
+
+	CJNE R0,#0,EXIT ;判断10毫秒=0
+	MOV R6,#0FFH ;置秒标志
+	CJNE R1,#59H,SECOND ;判断秒=59
+	MOV R1,#99H
+	CJNE R2,#59H,MINUTE ;判断分=59
+	MOV R2,#99H
+	CJNE R3,#23H,HOUR ;判断时=23
+	MOV R3,#99H
+ HOUR:
+	MOV A,R3
+	ADD A,#1 ;时加1
+	DA A
+	MOV R3,A
+ MINUTE:
+	MOV A,R2
+	ADD A,#1 ;分加1
+	DA A
+	MOV R2,A
+ SECOND:
+	MOV A,R1
+	ADD A,#1 ;秒加1
+	DA A
+	MOV R1,A
+ EXIT:
+	POP PSW ;恢复现场
+	POP ACC
+	POP DPL
+	POP DPH
+	RETI ;中断返回
+ DISPLAY:
+	MOV A,R3
+	ANL A,#0FH
+	ADD A,#10H
+	MOV R5,A
+	MOV R4,#6
+	LCALL DISLED ;显示小时低位
+	MOV A,R3
+	SWAP A
+	ANL A,#0FH
+	MOV R5,A
+	MOV R4,#7
+	MOV A,R2
+	ANL A,#0FH
+	ADD A,#10H
+	MOV R5,A
+	MOV R4,#4
+	LCALL DISLED ;显示分钟低位
+	MOV A,R2
+	SWAP A
+	ANL A,#0FH
+	MOV R5,A
+	MOV R4,#5
+	LCALL DISLED ;显示分钟高位
+	MOV A,R1
+	ANL A,#0FH
+	ADD A,#10H
+	MOV R5,A
+	MOV R4,#2
+	LCALL DISLED ;显示秒低位
+	MOV A,R1
+	SWAP A
+	MOV R5,A
+	MOV R4,#3
+	LCALL DISLED ;显示秒高位
+	RET
+
+              ;LED显示常数表
+ LEDSEG: DB 3FH,06H,5BH,4FH,66H,6DH,7DH,07H ;'0,1,2,3,4,5,6,7'
+	DB 7FH,6FH,77H,7CH,39H,5EH,79H,71H ;'8,9,A,B,C,D,E,F'
+	DB 0BFH,86H,0DBH,0CFH,0E6H,0EDH,0FDH,087H ;'0.,1.,2.,3.,4.,5.,6.,7.'
+	DB 0FFH,0EFH,0F7H,0FCH,0B9H,0DEH,0F9H,0F1H ;'8.,9.,A.,B.,C.,D.,E.,F.'
+	DB 6DH,02H,08H,00H,59H,0FH,76H ;'U,-,_, ,I,O,P, '
+              ;键盘键码表
+ KEYCODE:DB 30H,31H,32H,33H,34H,35H,36H,37H ;'1,2,Q,W,A,S,+,Z'
+	DB 38H,39H,3AH,3BH,3CH,3DH,3EH,3FH ;'3,4,E,R,D,F,X,C'
+	ENDF
+ 

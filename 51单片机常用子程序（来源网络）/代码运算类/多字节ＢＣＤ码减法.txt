@@ -1,0 +1,21 @@
+ 标号： ＢＣＤＢ功能：多字节ＢＣＤ码减法
+
+入口条件：字节数在R7中，被减数在[R0]中，减数在[R1]中。
+出口信息：差在[R0]中，最高位借位在CY中。
+影响资源：PSW、A、R2、R3 堆栈需求： ６字节
+
+BCDB: LCALL NEG1 ；减数[R1]十进制取补
+	LCALL BCDA ；按多字节ＢＣＤ码加法处理
+	CPL C ；将补码加法的进位标志转换成借位标志
+	MOV F0,C ；保护借位标志
+	LCALL NEG1 ；恢复减数[R1]的原始值
+	MOV C,F0 ；恢复借位标志
+	RET
+NEG1: MOV A,R0 ；[R1]十进制取补子程序入口
+	XCH A,R1 ；交换指针
+	XCH A,R0
+	LCALL NEG ；通过[R0]实现[R1]取补
+	MOV A,R0
+	XCH A,R1 ；换回指针
+	XCH A,R0
+	RET

@@ -1,0 +1,379 @@
+BL51 BANKED LINKER/LOCATER V5.00                                                        10/17/2012  12:04:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Music.obj TO Music RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Music.obj (MUSIC)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SLCMP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULSHR)
+
+
+LINK MAP OF MODULE:  Music (MUSIC)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?MUSIC
+            DATA    000CH     0004H     UNIT         _DATA_GROUP_
+            IDATA   0010H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0058H     UNIT         ?PR?_W25X_FLASH_BYTE_READ?MUSIC
+            CODE    005BH     0056H     UNIT         ?PR?MAIN?MUSIC
+            CODE    00B1H     0029H     UNIT         ?C?LIB_CODE
+            CODE    00DAH     0026H     UNIT         ?PR?_WRITE1BYTE?MUSIC
+            CODE    0100H     0019H     UNIT         ?PR?_SEND_ONEBYTE?MUSIC
+            CODE    0119H     0019H     UNIT         ?PR?READ_ONEBYTE?MUSIC
+            CODE    0132H     0017H     UNIT         ?PR?_WRITEPCF8591?MUSIC
+            CODE    0149H     0016H     UNIT         ?PR?W25X_BUSY_ORNOT?MUSIC
+            CODE    015FH     000DH     UNIT         ?PR?IICSTART?MUSIC
+            CODE    016CH     000DH     UNIT         ?PR?IICSTOP?MUSIC
+            CODE    0179H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   Music (MUSIC)
+
+
+SEGMENT                                   DATA_GROUP 
+  +--> CALLED SEGMENT                   START    LENGTH
+-------------------------------------------------------
+?C_C51STARTUP                           -----    -----
+  +--> ?PR?MAIN?MUSIC
+
+?PR?MAIN?MUSIC                          -----    -----
+  +--> ?PR?_W25X_FLASH_BYTE_READ?MUSIC
+  +--> ?PR?_WRITEPCF8591?MUSIC
+
+?PR?_W25X_FLASH_BYTE_READ?MUSIC         000CH    0004H
+  +--> ?PR?W25X_BUSY_ORNOT?MUSIC
+  +--> ?PR?_SEND_ONEBYTE?MUSIC
+BL51 BANKED LINKER/LOCATER V5.00                                                      10/17/2012  12:04:18  PAGE 2
+
+
+  +--> ?PR?READ_ONEBYTE?MUSIC
+
+?PR?W25X_BUSY_ORNOT?MUSIC               -----    -----
+  +--> ?PR?_SEND_ONEBYTE?MUSIC
+  +--> ?PR?READ_ONEBYTE?MUSIC
+
+?PR?_WRITEPCF8591?MUSIC                 -----    -----
+  +--> ?PR?IICSTART?MUSIC
+  +--> ?PR?_WRITE1BYTE?MUSIC
+  +--> ?PR?IICSTOP?MUSIC
+
+
+
+SYMBOL TABLE OF MODULE:  Music (MUSIC)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MUSIC
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00D0H.6       PUBLIC        AC
+  B:00B0H.4       PUBLIC        T0
+  D:0008H         PUBLIC        counter
+  B:00B0H.5       PUBLIC        T1
+  B:00A8H.7       PUBLIC        EA
+  B:0090H.0       PUBLIC        T2
+  C:0100H         PUBLIC        _Send_OneByte
+  C:015FH         PUBLIC        IICstart
+  B:0080H.0       PUBLIC        P0_0
+  B:0090H.0       PUBLIC        P1_0
+  B:0080H.1       PUBLIC        P0_1
+  C:0149H         PUBLIC        W25X_BUSY_OrNot
+  B:00D0H.1       PUBLIC        FL
+  B:00A0H.0       PUBLIC        P2_0
+  B:0090H.1       PUBLIC        P1_1
+  B:0080H.2       PUBLIC        P0_2
+  B:00B0H.7       PUBLIC        DO
+  B:00B0H.0       PUBLIC        P3_0
+  B:00A0H.1       PUBLIC        P2_1
+  B:0090H.2       PUBLIC        P1_2
+  B:0080H.3       PUBLIC        P0_3
+  B:00B0H.1       PUBLIC        P3_1
+  B:00A0H.2       PUBLIC        P2_2
+  B:0090H.3       PUBLIC        P1_3
+  B:0080H.4       PUBLIC        P0_4
+  B:00B0H.2       PUBLIC        P3_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:0090H.4       PUBLIC        P1_4
+  B:0080H.5       PUBLIC        P0_5
+  B:00B0H.6       PUBLIC        CS
+  B:00C8H.6       PUBLIC        EXF2
+  B:00B0H.7       PUBLIC        RD
+  B:00B0H.3       PUBLIC        P3_3
+  B:00A0H.4       PUBLIC        P2_4
+  B:0090H.5       PUBLIC        P1_5
+BL51 BANKED LINKER/LOCATER V5.00                                                      10/17/2012  12:04:18  PAGE 3
+
+
+  B:0080H.6       PUBLIC        P0_6
+  B:00B0H.4       PUBLIC        P3_4
+  B:00A0H.5       PUBLIC        P2_5
+  B:0090H.6       PUBLIC        P1_6
+  B:0080H.7       PUBLIC        P0_7
+  B:00B0H.5       PUBLIC        P3_5
+  B:00A8H.4       PUBLIC        ES
+  B:00A0H.6       PUBLIC        P2_6
+  B:0090H.7       PUBLIC        P1_7
+  C:0119H         PUBLIC        Read_OneByte
+  B:00B0H.6       PUBLIC        P3_6
+  B:00A0H.7       PUBLIC        P2_7
+  B:00B0H.7       PUBLIC        P3_7
+  B:0098H.0       PUBLIC        RI
+  B:00D0H.7       PUBLIC        CY
+  B:00B0H.2       PUBLIC        INT0
+  B:00B0H.3       PUBLIC        INT1
+  B:0098H.1       PUBLIC        TI
+  C:0003H         PUBLIC        _W25X_Flash_Byte_Read
+  C:016CH         PUBLIC        IICstop
+  C:0132H         PUBLIC        _WritePCF8591
+  B:00B8H.4       PUBLIC        PS
+  B:0090H.1       PUBLIC        T2EX
+  B:00D0H.2       PUBLIC        OV
+  C:005BH         PUBLIC        main
+  B:00C8H.1       PUBLIC        C_T2
+  B:00B0H.6       PUBLIC        WR
+  B:00C8H.5       PUBLIC        RCLK
+  B:00B0H.4       PUBLIC        SCLK
+  B:00C8H.4       PUBLIC        TCLK
+  C:00DAH         PUBLIC        _Write1Byte
+  B:0088H.1       PUBLIC        IE0
+  B:0088H.3       PUBLIC        IE1
+  B:00C8H.0       PUBLIC        CP_RL2
+  B:00A8H.1       PUBLIC        ET0
+  B:00A8H.3       PUBLIC        ET1
+  B:0088H.5       PUBLIC        TF0
+  B:00A8H.5       PUBLIC        ET2
+  B:0088H.7       PUBLIC        TF1
+  B:00C8H.7       PUBLIC        TF2
+  B:0098H.2       PUBLIC        RB8
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  B:00A8H.2       PUBLIC        EX1
+  B:0098H.3       PUBLIC        TB8
+  B:0088H.2       PUBLIC        IT1
+  B:00D0H.0       PUBLIC        P
+  B:0098H.7       PUBLIC        SM0
+  B:0098H.6       PUBLIC        SM1
+  B:0098H.5       PUBLIC        SM2
+  B:00B8H.1       PUBLIC        PT0
+  B:00D0H.3       PUBLIC        RS0
+  B:00B8H.3       PUBLIC        PT1
+  B:00D0H.4       PUBLIC        RS1
+  B:00B8H.5       PUBLIC        PT2
+  B:0088H.4       PUBLIC        TR0
+  B:0088H.6       PUBLIC        TR1
+BL51 BANKED LINKER/LOCATER V5.00                                                      10/17/2012  12:04:18  PAGE 4
+
+
+  B:0090H.6       PUBLIC        SDA
+  B:00C8H.2       PUBLIC        TR2
+  B:00B8H.0       PUBLIC        PX0
+  B:00B8H.2       PUBLIC        PX1
+  B:00B0H.5       PUBLIC        DIO
+  B:0090H.7       PUBLIC        SCL
+  B:00C8H.3       PUBLIC        EXEN2
+  B:0098H.4       PUBLIC        REN
+  B:00B0H.0       PUBLIC        RXD
+  B:00B0H.1       PUBLIC        TXD
+  B:00D0H.5       PUBLIC        F0
+  -------         PROC          _SEND_ONEBYTE
+  D:0007H         SYMBOL        DATA8
+  -------         DO            
+  D:0006H         SYMBOL        x
+  -------         ENDDO         
+  C:0100H         LINE#         51
+  C:0100H         LINE#         52
+  C:0100H         LINE#         54
+  C:0102H         LINE#         55
+  C:0102H         LINE#         56
+  C:0104H         LINE#         57
+  C:010CH         LINE#         58
+  C:010EH         LINE#         59
+  C:0110H         LINE#         60
+  C:0114H         LINE#         61
+  C:0118H         LINE#         62
+  -------         ENDPROC       _SEND_ONEBYTE
+  -------         PROC          READ_ONEBYTE
+  -------         DO            
+  D:0007H         SYMBOL        DATA8
+  D:0006H         SYMBOL        x
+  -------         ENDDO         
+  C:0119H         LINE#         70
+  C:0119H         LINE#         71
+  C:0119H         LINE#         74
+  C:011BH         LINE#         75
+  C:011DH         LINE#         76
+  C:011EH         LINE#         77
+  C:011EH         LINE#         78
+  C:011FH         LINE#         79
+  C:0121H         LINE#         80
+  C:0125H         LINE#         81
+  C:012BH         LINE#         82
+  C:012DH         LINE#         83
+  C:0131H         LINE#         84
+  C:0131H         LINE#         85
+  -------         ENDPROC       READ_ONEBYTE
+  -------         PROC          W25X_BUSY_ORNOT
+  -------         DO            
+  D:0007H         SYMBOL        k
+  -------         ENDDO         
+  C:0149H         LINE#         93
+  C:0149H         LINE#         94
+  C:0149H         LINE#         96
+  C:014BH         LINE#         97
+  C:014CH         LINE#         98
+BL51 BANKED LINKER/LOCATER V5.00                                                      10/17/2012  12:04:18  PAGE 5
+
+
+  C:014EH         LINE#         99
+  C:0153H         LINE#         100
+  C:0156H         LINE#         101
+  C:0159H         LINE#         102
+  C:015BH         LINE#         103
+  C:015CH         LINE#         104
+  C:015EH         LINE#         105
+  C:015EH         LINE#         106
+  -------         ENDPROC       W25X_BUSY_ORNOT
+  -------         PROC          _W25X_FLASH_BYTE_READ
+  D:000CH         SYMBOL        Addre24
+  -------         DO            
+  D:0007H         SYMBOL        J
+  D:0005H         SYMBOL        Addre3
+  D:0002H         SYMBOL        Addre2
+  D:0003H         SYMBOL        Addre1
+  -------         ENDDO         
+  C:0003H         LINE#         116
+  C:000BH         LINE#         117
+  C:000BH         LINE#         122
+  C:0013H         LINE#         123
+  C:0015H         LINE#         124
+  C:002AH         LINE#         125
+  C:002CH         LINE#         126
+  C:0039H         LINE#         127
+  C:003BH         LINE#         128
+  C:003DH         LINE#         129
+  C:0042H         LINE#         130
+  C:0047H         LINE#         131
+  C:004CH         LINE#         132
+  C:0051H         LINE#         133
+  C:0054H         LINE#         134
+  C:0056H         LINE#         135
+  C:0057H         LINE#         136
+  C:0058H         LINE#         137
+  C:005AH         LINE#         138
+  C:005AH         LINE#         139
+  -------         ENDPROC       _W25X_FLASH_BYTE_READ
+  -------         PROC          IICSTART
+  C:015FH         LINE#         147
+  C:015FH         LINE#         148
+  C:015FH         LINE#         149
+  C:0161H         LINE#         150
+  C:0163H         LINE#         151
+  C:0164H         LINE#         152
+  C:0165H         LINE#         153
+  C:0167H         LINE#         154
+  C:0168H         LINE#         155
+  C:0169H         LINE#         156
+  C:016BH         LINE#         157
+  -------         ENDPROC       IICSTART
+  -------         PROC          IICSTOP
+  C:016CH         LINE#         166
+  C:016CH         LINE#         167
+  C:016CH         LINE#         168
+  C:016EH         LINE#         169
+  C:0170H         LINE#         170
+BL51 BANKED LINKER/LOCATER V5.00                                                      10/17/2012  12:04:18  PAGE 6
+
+
+  C:0171H         LINE#         171
+  C:0172H         LINE#         172
+  C:0174H         LINE#         173
+  C:0175H         LINE#         174
+  C:0176H         LINE#         175
+  C:0178H         LINE#         176
+  -------         ENDPROC       IICSTOP
+  -------         PROC          _WRITE1BYTE
+  D:0007H         SYMBOL        Buf1
+  -------         DO            
+  D:0006H         SYMBOL        k
+  -------         ENDDO         
+  C:00DAH         LINE#         185
+  C:00DAH         LINE#         186
+  C:00DAH         LINE#         188
+  C:00DCH         LINE#         189
+  C:00DCH         LINE#         190
+  C:00E0H         LINE#         191
+  C:00E0H         LINE#         192
+  C:00E2H         LINE#         193
+  C:00E4H         LINE#         195
+  C:00E4H         LINE#         196
+  C:00E6H         LINE#         197
+  C:00E6H         LINE#         198
+  C:00E7H         LINE#         199
+  C:00E8H         LINE#         200
+  C:00EAH         LINE#         201
+  C:00EEH         LINE#         202
+  C:00EFH         LINE#         203
+  C:00F1H         LINE#         204
+  C:00F2H         LINE#         205
+  C:00F6H         LINE#         206
+  C:00F8H         LINE#         207
+  C:00F9H         LINE#         208
+  C:00FBH         LINE#         209
+  C:00FCH         LINE#         210
+  C:00FDH         LINE#         211
+  C:00FFH         LINE#         212
+  -------         ENDPROC       _WRITE1BYTE
+  -------         PROC          _WRITEPCF8591
+  D:0005H         SYMBOL        Databuf
+  C:0132H         LINE#         222
+  C:0134H         LINE#         223
+  C:0134H         LINE#         224
+  C:0137H         LINE#         226
+  C:013CH         LINE#         228
+  C:0141H         LINE#         230
+  C:0146H         LINE#         232
+  -------         ENDPROC       _WRITEPCF8591
+  -------         PROC          MAIN
+  C:005BH         LINE#         241
+  C:005BH         LINE#         242
+  C:005BH         LINE#         243
+  C:0065H         LINE#         244
+  C:0065H         LINE#         245
+  C:0065H         LINE#         246
+  C:007EH         LINE#         247
+BL51 BANKED LINKER/LOCATER V5.00                                                      10/17/2012  12:04:18  PAGE 7
+
+
+  C:009DH         LINE#         248
+  C:00AFH         LINE#         249
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MUSIC
+
+  -------         MODULE        ?C?SLCMP
+  C:00B1H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+  -------         MODULE        ?C?ULSHR
+  C:00C7H         PUBLIC        ?C?ULSHR
+  -------         ENDMOD        ?C?ULSHR
+
+Program Size: data=17.0 xdata=0 code=389
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

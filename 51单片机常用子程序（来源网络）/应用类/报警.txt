@@ -1,0 +1,9 @@
+  ±¨¾¯×Ó³ÌÐò
+
+SOUND£º SETB P1.0
+	MOV R7£¬#1EH
+   DL£º MOV R6£¬#0F9H
+  DL1£º DJNZ R6£¬DL1
+	DJNZ R7£¬DL
+	CLR P1.0
+	RET		

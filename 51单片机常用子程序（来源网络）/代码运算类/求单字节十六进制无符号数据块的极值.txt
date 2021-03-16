@@ -1,0 +1,43 @@
+ 标号： ＭＭ功能：求单字节十六进制无符号数据块的极值
+
+入口条件：数据块的首址在DPTR中，数据个数在R7中。
+出口信息：最大值在R6中，地址在R2R3中；最小值在R7中，地址在R4R5中。
+影响资源：PSW、A、B、R1～R7 堆栈需求： ４字节
+
+   MM: 	MOV B,R7 ；保存数据个数
+	MOVX A,@DPTR ；读取第一个数据
+	MOV R6,A ；作为最大值的初始值
+	MOV R7,A ；也作为最小值的初始值
+	MOV A,DPL ；取第一个数据的地址
+	MOV R3,A ；作为最大值存放地址的初始值
+	MOV R5,A ；也作为最小值存放地址的初始值
+	MOV A,DPH
+	MOV R2,A
+	MOV R4,A
+	MOV A,B ；取数据个数
+	DEC A ；减一，得到需要比较的次数
+	JZ MME ；只有一个数据，不需要比较
+	MOV R1,A ；保存比较次数
+	PUSH DPL ；保护数据块的首址
+	PUSH DPH
+   MM1: INC DPTR ；指向一个新的数据
+	MOVX A,@DPTR ；读取这个数据
+	MOV B,A ；保存
+	SETB C ；与最大值比较
+	SUBB A,R6
+	JC MM2 ；不超过当前最大值，保持当前最大值
+	MOV R6,B ；超过当前最大值，更新最大值存放地址
+	MOV R2,DPH ；同时更新最大值存放地址
+	MOV R3,DPL
+	SJMP MM3
+   MM2: MOV A,B ；与最小值比较
+	CLR C
+	SUBB A,R7
+	JNC MM3 ；大于或等于当前最小值，保持当前最小值
+	MOV R7,B ；更新最小值
+	MOV R4,DPH ；更新最小值存放地址
+	MOV R5,DPL
+   MM3: DJNZ R1,MM1 ；处理完全部数据
+	POP DPH ；恢复数据首址
+	POP DPL
+   MME: RET

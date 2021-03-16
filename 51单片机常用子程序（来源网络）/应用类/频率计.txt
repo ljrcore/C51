@@ -1,0 +1,91 @@
+
+        ORG 0000H
+	AJMP MAIN
+  	ORG 001BH
+	AJMP INT_T1
+	ORG 0040H
+ MAIN:	MOV 30H,#00H
+	MOV 31H,#00H
+	MOV 32H,#00H
+
+	MOV DPTR,#0FF82H
+	MOV A,#0D1H
+	MOVX @DPTR,A
+  LP: 	MOVX A,#DPTR
+	JB ACC.7,LP
+	MOV A,#00H
+	MOVX #DPTR,A
+	MOV A,#2AH	
+
+	MOV R2,#14H
+        MOV TMOD,#10011101B
+	MOV TL1,#00H
+	MOV TH1,#4CH
+	SETB TR1
+	SETB ET1
+	
+	MOV TL0,#00H
+	MOV TH0,#00H
+	SETB TR0
+	SETB ET0
+	SJMP $
+ INT_T1: MOV TL0,#00H
+	MOV TH0,#00H
+  	MOV TL1,#00H
+	MOV TH1,#4CH
+ 	DJNZ R2,LOOP
+        LCALL DELAY1
+	CLR TR0
+        CLR TR1
+ LOOP:	RETI
+        
+
+ DELAY1:
+	LCALL HB2
+	LCALL DIR
+
+
+
+HB2:    CLR A          ；ＢＣＤ码初始化
+	MOV R3,A
+	MOV R4,A
+	MOV R5,A
+	MOV R2,#10H ；转换双字节十六进制整数
+      
+HB3:    MOV A,R7 ；从高端移出待转换数的一位到CY中
+	RLC A
+	MOV R7,A
+	MOV A,R6
+	RLC A
+	MOV R6,A
+	MOV A,R5 ；ＢＣＤ码带进位自身相加，相当于乘２
+	ADDC A,R5
+	DA A ；十进制调整
+	MOV R5,A
+	MOV A,R4
+	ADDC A,R4
+	DA A
+	MOV R4,A
+	MOV A,R3
+	ADDC A,R3
+	MOV R3,A ；双字节十六进制数的万位数不超过６，不用调整
+	DJNZ R2,HB3 ；处理完１６ｂｉｔ
+	RET
+ 
+  DIR: MOV DPTR,#0FF82H		;初始化端口
+        MOV A,#90H
+        MOV @DPTR,A	
+	MOV R0,#70H		;显示器端口
+	MOV R7,#06H		;确定要显示个数
+        MOV DPTR,#0FF80H
+ LOOP: MOV A,@R0
+	ADD A,#05H
+	MOVX A,@A+PC
+	INC R0
+ 	DJNZ R7,LOOP
+	RET
+TAB:	 DB 3FH,06H,5BH,4FH,66H,6DH,7DH,07H 
+	DB 7FH,6FH,77H,7CH,39H,5EH,79H,71H
+	DB 6DH,02H,08H,00H,59H,0FH,76H 
+	END
+ 	

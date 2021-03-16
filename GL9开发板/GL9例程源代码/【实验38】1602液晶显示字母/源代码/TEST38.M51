@@ -1,0 +1,252 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        02/11/2016  17:20:07  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+D:\PROGRAM FILES (X86)\KELL\C51\BIN\BL51.EXE TEST38.obj TO TEST38 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  TEST38.obj (TEST38)
+  D:\PROGRAM FILES (X86)\KELL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  TEST38 (TEST38)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0100H     UNIT         ?PR?MAIN?TEST38
+            CODE    0900H     002AH     UNIT         ?PR?LCD1602_INIT?TEST38
+            CODE    092AH     0018H     UNIT         ?PR?_LCD1602_WRITE_ADDRESS?TEST38
+            CODE    0942H     0012H     UNIT         ?PR?_DELAY1602?TEST38
+            CODE    0954H     0010H     UNIT         ?PR?_LCD1602_WRITE_COM?TEST38
+            CODE    0964H     000EH     UNIT         ?PR?LCD1602_BUSY?TEST38
+            CODE    0972H     000EH     UNIT         ?PR?_LCD1602_WRITE_DATA_BUSY?TEST38
+            CODE    0980H     000DH     UNIT         ?PR?_LCD1602_DISP?TEST38
+            CODE    098DH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0999H     0006H     UNIT         ?PR?_LCD1602_WRITE_COM_BUSY?TEST38
+
+
+
+OVERLAY MAP OF MODULE:   TEST38 (TEST38)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEST38
+
+?PR?MAIN?TEST38
+  +--> ?PR?LCD1602_INIT?TEST38
+  +--> ?PR?_LCD1602_DISP?TEST38
+
+?PR?LCD1602_INIT?TEST38
+  +--> ?PR?_LCD1602_WRITE_COM?TEST38
+  +--> ?PR?_LCD1602_WRITE_COM_BUSY?TEST38
+
+?PR?_LCD1602_WRITE_COM?TEST38
+  +--> ?PR?_DELAY1602?TEST38
+
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/11/2016  17:20:07  PAGE 2
+
+
+?PR?_LCD1602_WRITE_COM_BUSY?TEST38
+  +--> ?PR?LCD1602_BUSY?TEST38
+  +--> ?PR?_LCD1602_WRITE_COM?TEST38
+
+?PR?_LCD1602_DISP?TEST38
+  +--> ?PR?_LCD1602_WRITE_ADDRESS?TEST38
+  +--> ?PR?_LCD1602_WRITE_DATA_BUSY?TEST38
+
+?PR?_LCD1602_WRITE_ADDRESS?TEST38
+  +--> ?PR?_LCD1602_WRITE_COM_BUSY?TEST38
+
+?PR?_LCD1602_WRITE_DATA_BUSY?TEST38
+  +--> ?PR?LCD1602_BUSY?TEST38
+
+
+
+SYMBOL TABLE OF MODULE:  TEST38 (TEST38)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEST38
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:0983H         PUBLIC        _LCD1602_Disp
+  B:0080H.7       PUBLIC        P0_7
+  B:00A0H.5       PUBLIC        RS
+  C:0800H         PUBLIC        main
+  B:00A0H.4       PUBLIC        RW
+  C:0959H         PUBLIC        _LCD1602_Write_com
+  C:0972H         PUBLIC        _LCD1602_Write_data_busy
+  C:0900H         PUBLIC        LCD1602_init
+  C:0942H         PUBLIC        _Delay1602
+  C:0964H         PUBLIC        LCD1602_busy
+  B:00A0H.3       PUBLIC        E
+  C:0999H         PUBLIC        _LCD1602_Write_com_busy
+  C:092AH         PUBLIC        _LCD1602_Write_address
+  -------         PROC          _DELAY1602
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        k
+  -------         ENDDO         
+  C:0942H         LINE#         12
+  C:0942H         LINE#         13
+  C:0942H         LINE#         15
+  C:0953H         LINE#         16
+  -------         ENDPROC       _DELAY1602
+  -------         PROC          LCD1602_BUSY
+  C:0964H         LINE#         21
+  C:0964H         LINE#         22
+  C:0964H         LINE#         23
+  C:0966H         LINE#         24
+  C:0968H         LINE#         25
+  C:096AH         LINE#         26
+  C:096CH         LINE#         27
+  C:096FH         LINE#         28
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/11/2016  17:20:07  PAGE 3
+
+
+  C:0971H         LINE#         29
+  -------         ENDPROC       LCD1602_BUSY
+  C:0954H         SYMBOL        L?0023
+  -------         PROC          L?0022
+  -------         ENDPROC       L?0022
+  C:0954H         SYMBOL        L?0023
+  -------         PROC          _LCD1602_WRITE_COM
+  D:0007H         SYMBOL        combuf
+  C:0959H         LINE#         34
+  C:0959H         LINE#         35
+  C:0959H         LINE#         36
+  C:095BH         LINE#         37
+  C:095DH         LINE#         38
+  C:095FH         LINE#         39
+  C:0961H         LINE#         40
+  C:0963H         LINE#         41
+  -------         ENDPROC       _LCD1602_WRITE_COM
+  -------         PROC          _LCD1602_WRITE_COM_BUSY
+  D:0007H         SYMBOL        combuf
+  C:0999H         LINE#         46
+  C:0999H         LINE#         47
+  C:0999H         LINE#         48
+  C:099CH         LINE#         49
+  -------         ENDPROC       _LCD1602_WRITE_COM_BUSY
+  -------         PROC          _LCD1602_WRITE_DATA_BUSY
+  D:0007H         SYMBOL        databuf
+  C:0972H         LINE#         55
+  C:0972H         LINE#         56
+  C:0972H         LINE#         57
+  C:0975H         LINE#         58
+  C:0977H         LINE#         59
+  C:0979H         LINE#         60
+  C:097BH         LINE#         61
+  C:097DH         LINE#         62
+  C:097FH         LINE#         63
+  -------         ENDPROC       _LCD1602_WRITE_DATA_BUSY
+  -------         PROC          _LCD1602_WRITE_ADDRESS
+  D:0006H         SYMBOL        x
+  D:0005H         SYMBOL        y
+  C:092AH         LINE#         68
+  C:092CH         LINE#         69
+  C:092CH         LINE#         70
+  C:092FH         LINE#         71
+  C:0932H         LINE#         72
+  C:0935H         LINE#         73
+  C:0938H         LINE#         75
+  C:0941H         LINE#         76
+  -------         ENDPROC       _LCD1602_WRITE_ADDRESS
+  -------         PROC          LCD1602_INIT
+  C:0900H         LINE#         81
+  C:0900H         LINE#         82
+  C:0900H         LINE#         83
+  C:0904H         LINE#         84
+  C:0907H         LINE#         85
+  C:090BH         LINE#         86
+  C:090EH         LINE#         87
+  C:0910H         LINE#         88
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/11/2016  17:20:07  PAGE 4
+
+
+  C:0913H         LINE#         89
+  C:0916H         LINE#         90
+  C:091BH         LINE#         91
+  C:0920H         LINE#         92
+  C:0925H         LINE#         93
+  -------         ENDPROC       LCD1602_INIT
+  -------         PROC          L?0021
+  -------         ENDPROC       L?0021
+  -------         PROC          _LCD1602_DISP
+  D:0006H         SYMBOL        x
+  D:0005H         SYMBOL        y
+  D:0004H         SYMBOL        buf
+  C:0983H         LINE#         99
+  C:0985H         LINE#         100
+  C:0985H         LINE#         101
+  C:0988H         LINE#         102
+  -------         ENDPROC       _LCD1602_DISP
+  -------         PROC          MAIN
+  C:0800H         LINE#         108
+  C:0800H         LINE#         109
+  C:0800H         LINE#         111
+  C:0803H         LINE#         115
+  C:080BH         LINE#         116
+  C:0810H         LINE#         117
+  C:0815H         LINE#         118
+  C:081DH         LINE#         119
+  C:0825H         LINE#         120
+  C:082DH         LINE#         121
+  C:0835H         LINE#         122
+  C:083DH         LINE#         123
+  C:0845H         LINE#         124
+  C:084DH         LINE#         125
+  C:0855H         LINE#         126
+  C:085DH         LINE#         127
+  C:0865H         LINE#         128
+  C:086DH         LINE#         129
+  C:0875H         LINE#         130
+  C:087DH         LINE#         131
+  C:0886H         LINE#         132
+  C:088EH         LINE#         133
+  C:0896H         LINE#         134
+  C:089EH         LINE#         135
+  C:08A6H         LINE#         136
+  C:08AEH         LINE#         137
+  C:08B6H         LINE#         138
+  C:08BEH         LINE#         139
+  C:08C6H         LINE#         140
+  C:08CEH         LINE#         141
+  C:08D6H         LINE#         142
+  C:08DEH         LINE#         143
+  C:08E6H         LINE#         144
+  C:08EEH         LINE#         145
+  C:08F6H         LINE#         146
+  C:08FEH         LINE#         149
+  C:08FEH         LINE#         150
+  C:08FEH         LINE#         152
+  -------         ENDPROC       MAIN
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/11/2016  17:20:07  PAGE 5
+
+
+  -------         ENDMOD        TEST38
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0193H BYTE (19%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=418
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

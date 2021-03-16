@@ -1,0 +1,9 @@
+建造目标 'Target 1'
+正在编绎 TEST58.c... 
+连接中... 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_READPCF8591?TEST58
+
+Program Size: data=10.0 xdata=0 code=169
+正在从 "TEST58" 产生 HEX文件...   
+"TEST58" - 0 错误 (s), 1   警告 (s).

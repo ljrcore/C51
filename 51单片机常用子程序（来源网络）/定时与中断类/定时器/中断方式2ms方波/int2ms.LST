@@ -1,0 +1,42 @@
+C51 COMPILER V6.23a  INT2MS                                                                02/18/2003 15:45:28 PAGE 1   
+
+
+C51 COMPILER V6.23a, COMPILATION OF MODULE INT2MS
+OBJECT MODULE PLACED IN int2ms.OBJ
+COMPILER INVOKED BY: D:\Program Files\Keil\C51\BIN\C51.EXE int2ms.c DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*fosc=12MHz,要求P1.0输出T=2ms的方波.*/
+   2          /*使用中断方式*/
+   3          #include<reg51.h>
+   4          sbit p2_0=P2^0;
+   5          
+   6          timer0() interrupt 1 using 1
+   7          {p2_0=!p2_0;
+   8   1      TH0=0xff;TL0=0xce;
+   9   1      }
+  10          main()
+  11          {TMOD=0X01;
+  12   1      P1=0x00;
+  13   1      P2=0x00;
+  14   1      P0=0x00;
+  15   1      P3=0x00;
+  16   1      p2_0=0;
+  17   1      EA=1;ET0=1;TR0=1;
+  18   1      do{}while(1);
+  19   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     31    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

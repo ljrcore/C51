@@ -1,0 +1,146 @@
+BL51 BANKED LINKER/LOCATER V5.00                                                        10/29/2014  19:13:20  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE TEST69.obj TO TEST69
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  TEST69.obj (TEST69)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULSHR)
+
+
+LINK MAP OF MODULE:  TEST69 (TEST69)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0005H     UNIT         _DATA_GROUP_
+            DATA    000DH     0004H     UNIT         ?DT?_W25X_BLOCKERASE?TEST69
+            DATA    0011H     0001H     UNIT         ?DT?TEST69
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0004H     UNIT         ?XD?TEST69
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0079H     UNIT         ?PR?MAIN?TEST69
+            CODE    007CH     006BH     UNIT         ?PR?_W25X_FLASH_BYTE_WRITE?TEST69
+            CODE    00E7H     0062H     UNIT         ?PR?_W25X_FLASH_BYTE_READ?TEST69
+            CODE    0149H     0045H     UNIT         ?PR?_W25X_BLOCKERASE?TEST69
+            CODE    018EH     0044H     UNIT         ?PR?_W25X_SECTORERASE?TEST69
+            CODE    01D2H     002AH     UNIT         ?PR?LCD1602_INIT?TEST69
+            CODE    01FCH     0028H     UNIT         ?PR?_SEND_ONEBYTE?TEST69
+            CODE    0224H     0019H     UNIT         ?PR?READ_ONEBYTE?TEST69
+            CODE    023DH     0018H     UNIT         ?PR?_LCD1602_WRITE_ADDRESS?TEST69
+            CODE    0255H     0016H     UNIT         ?PR?W25X_BUSY_ORNOT?TEST69
+            CODE    026BH     0013H     UNIT         ?C?LIB_CODE
+            CODE    027EH     0012H     UNIT         ?PR?_DELAY1602?TEST69
+            CODE    0290H     0012H     UNIT         ?PR?_DELAY?TEST69
+            CODE    02A2H     0011H     UNIT         ?PR?W25X_CHIPERASE?TEST69
+            CODE    02B3H     0010H     UNIT         ?PR?_LCD1602_WRITE_COM?TEST69
+            CODE    02C3H     000EH     UNIT         ?PR?LCD1602_BUSY?TEST69
+            CODE    02D1H     000EH     UNIT         ?PR?_LCD1602_WRITE_DATA_BUSY?TEST69
+            CODE    02DFH     000EH     UNIT         ?PR?WRITEENABLE?TEST69
+            CODE    02EDH     000EH     UNIT         ?PR?WRITEDISABLE?TEST69
+            CODE    02FBH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0307H     000AH     UNIT         ?PR?_LCD1602_DISP?TEST69
+            CODE    0311H     0006H     UNIT         ?PR?_LCD1602_WRITE_COM_BUSY?TEST69
+
+
+
+OVERLAY MAP OF MODULE:   TEST69 (TEST69)
+
+BL51 BANKED LINKER/LOCATER V5.00                                                      10/29/2014  19:13:20  PAGE 2
+
+
+
+SEGMENT                                       DATA_GROUP 
+  +--> CALLED SEGMENT                       START    LENGTH
+-----------------------------------------------------------
+?C_C51STARTUP                               -----    -----
+  +--> ?PR?MAIN?TEST69
+
+?PR?MAIN?TEST69                             -----    -----
+  +--> ?PR?LCD1602_INIT?TEST69
+  +--> ?PR?_W25X_FLASH_BYTE_READ?TEST69
+  +--> ?PR?_W25X_SECTORERASE?TEST69
+  +--> ?PR?_DELAY?TEST69
+  +--> ?PR?_W25X_FLASH_BYTE_WRITE?TEST69
+  +--> ?PR?_LCD1602_DISP?TEST69
+
+?PR?LCD1602_INIT?TEST69                     -----    -----
+  +--> ?PR?_LCD1602_WRITE_COM?TEST69
+  +--> ?PR?_LCD1602_WRITE_COM_BUSY?TEST69
+
+?PR?_LCD1602_WRITE_COM?TEST69               -----    -----
+  +--> ?PR?_DELAY1602?TEST69
+
+?PR?_LCD1602_WRITE_COM_BUSY?TEST69          -----    -----
+  +--> ?PR?LCD1602_BUSY?TEST69
+  +--> ?PR?_LCD1602_WRITE_COM?TEST69
+
+?PR?_W25X_FLASH_BYTE_READ?TEST69            0008H    0005H
+  +--> ?PR?W25X_BUSY_ORNOT?TEST69
+  +--> ?PR?_SEND_ONEBYTE?TEST69
+  +--> ?PR?READ_ONEBYTE?TEST69
+
+?PR?W25X_BUSY_ORNOT?TEST69                  -----    -----
+  +--> ?PR?_SEND_ONEBYTE?TEST69
+  +--> ?PR?READ_ONEBYTE?TEST69
+
+?PR?_W25X_SECTORERASE?TEST69                0008H    0004H
+  +--> ?PR?WRITEENABLE?TEST69
+  +--> ?PR?_SEND_ONEBYTE?TEST69
+
+?PR?WRITEENABLE?TEST69                      -----    -----
+  +--> ?PR?_SEND_ONEBYTE?TEST69
+
+?PR?_W25X_FLASH_BYTE_WRITE?TEST69           0008H    0005H
+  +--> ?PR?W25X_BUSY_ORNOT?TEST69
+  +--> ?PR?WRITEENABLE?TEST69
+  +--> ?PR?_SEND_ONEBYTE?TEST69
+
+?PR?_LCD1602_DISP?TEST69                    -----    -----
+  +--> ?PR?_LCD1602_WRITE_ADDRESS?TEST69
+  +--> ?PR?_LCD1602_WRITE_DATA_BUSY?TEST69
+
+?PR?_LCD1602_WRITE_ADDRESS?TEST69           -----    -----
+  +--> ?PR?_LCD1602_WRITE_COM_BUSY?TEST69
+
+?PR?_LCD1602_WRITE_DATA_BUSY?TEST69         -----    -----
+  +--> ?PR?LCD1602_BUSY?TEST69
+
+BL51 BANKED LINKER/LOCATER V5.00                                                      10/29/2014  19:13:20  PAGE 3
+
+
+
+
+SYMBOL TABLE OF MODULE:  TEST69 (TEST69)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C?ULSHR
+  C:026BH         PUBLIC        ?C?ULSHR
+  -------         ENDMOD        ?C?ULSHR
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITEDISABLE?TEST69
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?W25X_CHIPERASE?TEST69
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_W25X_BLOCKERASE?TEST69
+
+Program Size: data=19.0 xdata=4 code=791
+LINK/LOCATE RUN COMPLETE.  3 WARNING(S),  0 ERROR(S)

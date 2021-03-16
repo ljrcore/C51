@@ -1,0 +1,16 @@
+;;æß’Ò12MHZ,—” ±1√Î
+
+
+
+DELAY:MOV 72H,#100
+LOOP3:MOV 71H,#100
+LOOP1:MOV 70H,#47
+LOOP0:DJNZ 70H,LOOP0
+      NOP 
+      DJNZ 71H,LOOP1
+      MOV 70H,#46
+LOOP2:DJNZ 70H,LOOP2
+      NOP
+      DJNZ 72H,LOOP3
+      MOV 70H,#48
+LOOP4:DJNZ 70H,LOOP4                        

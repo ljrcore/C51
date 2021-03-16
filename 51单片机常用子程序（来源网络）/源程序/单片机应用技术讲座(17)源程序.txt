@@ -1,0 +1,805 @@
+单片机应用技术讲座(17)源程序
+
+例1：
+主程序通信参数的初始化：
+         M_Address   DATA  76H
+         Syn       DATA   0EBH
+         ORG  0000H
+         AJMP  MAIN
+         ORG   0023H
+         AJMP  Serial-com
+  MAIN：.......
+         ORL   SCON， #50H
+         MOV  TMOD，#21H ;
+         MOV  PCON， #80H
+         MOV  TH1，  #0E6H；定义通信速率
+         CLR   ET1            ；禁止定时器中断
+....... 略
+         SETB  EA
+         SETB  ES             ；开中断
+         SETB  TR1           ；启动定时器1 
+.......略。
+  上述代码中，“M_Address   EQU   76H”是伪指令定义，定义地址为76H，“Syn”同步字的定义同上。在单片机的中断系统那一讲里，我们曾向读者介绍，89C51单片机的串行通信口的中断入口地址是0023H，因此在0023H地址处安排跳转指令  AJMP  Serial-com，当中断发生时执行Serial-com中断子程序的任务。
+串行ADC TLC2543与单片机的接口源程序
+
+
+进行AD采样的51汇编程序如下：
+;管脚定义   
+ CLK    EQU      P1.3  
+ DIN    EQU      P1.1  
+ DOUT   EQU      P1.2  
+ CS      EQU     P1.0  
+MOV     R1,#00H ；0通道方式/通道数据 
+ CLR    CLK ；
+ SETB   CS ； 
+ CLR    CS ； 
+ MOV     R4,#08 ； 
+ MOV    A, R1 ； 
+LOOP1:  
+ MOV    C,DOUT ；读转换结果 
+ RLC    A ；A寄存器左移，移入结果数据位，移出方式/通道控制位 
+ MOV     DIN,C ；输出方式/通道位 
+ SETB   CLK ；设置I/O时钟为高 
+ CLR    CLK ；清I/O时钟 
+ DJNZ   R4,LOOP1 ；R4不为0，则返回LOOP1 
+ MOV     R2,A ；转换结果的高8位放到R2中 
+ MOV     A,#00H ；复位A寄存器 
+ MOV     R4,#04 ；再读低4位 
+LOOP2:  
+ MOV     C,DOUT ；读转换结果 
+ RLC    A ；A寄存器左移，移入结果数据位 
+ SETB   CLK ；设置I/O时钟为高 
+ CLR    CLK ；清I/O时钟 
+ DJNZ   R4,LOOP2 ；R4不为0，则返回LOOP2 
+ MOV     R3,A ；转换结果的低4位放到R3中 
+ SETB   CS ； 
+STOP:AJMP STOP
+
+
+介绍一种4×4键盘程序的设计源程序
+附：源程序KeyBord.asm
+		K0		equ 01h
+		K1		equ 02h
+		K2		equ 03h
+		K3		equ 04h
+		K4		equ 05h
+		K5		equ 06h
+		K6		equ 07h
+		K7		equ 08h
+		K8		equ 09h
+		K9		equ 0ah
+		Ka		equ 0bh
+		Kb		equ 0ch
+		Kc		equ 0dh
+		Kd		equ 0eh
+		Ke		equ 0fh
+		Kf		equ 010h
+		
+;***************************************************************变量定义
+	KeyData		equ 30h         ；存放键码
+	KeyClick		equ KeyData+1   ；去抖动延时变量
+ 	KeyDBClick		equ KeyClick+1  ；连击延时变量
+	KeyMode		equ KeyDBClick+1；键译程序的任务指针
+;***************************************************************常量定义
+	Click20mS		equ 2           ；20mS延时（主程序执行时间=10mS）
+	DBClick3S		equ 0		  ；连击延时3S
+	DBClick100mS		equ 10		  ；连击间隔时间100mS	
+	KeyPort		equ p1		  ；键盘连接的端口
+	KeyAnlData  		equ  0f0h	  ；掩膜码
+;*************************************************************************
+KeyBord:
+		mov a,KeyMode
+		cjne a,#0,key_bo1
+		;read port for key
+		mov KeyData,#0
+		mov r2,#04d
+		mov r3,#01d
+	scan:
+		mov a,r3
+		cpl a
+		mov KeyPort,a
+		mov a,KeyPort
+		anl a,#KeyAnlData
+		cjne a,#KeyAnlData,key_bo12
+		mov a,r3
+		rl a
+		mov r3,a
+		djnz r2,scan
+		ret
+		
+	key_bo12:	
+		mov KeyClick,#Click20mS
+		mov KeyMode,#01
+		ret		
+	;****************************
+	key_bo1:				
+		cjne a,#1,key_bo2
+		;jb Click20mS
+		djnz KeyClick,key_bo1_end
+		;count KeyData
+		mov KeyData,#0
+		mov r2,#04d
+		mov r3,#01d
+	scan1:
+		mov a,r3
+		cpl a
+		mov KeyPort,a
+		mov a,KeyPort
+		anl a,#KeyAnlData
+		cjne a,#KeyAnlData,key_bo24
+		mov a,r3
+		rl a
+		mov r3,a
+		djnz r2,scan1
+		mov KeyMode,#0
+		setb beep;12.10
+	key_bo1_end:
+		ret
+	key_bo24:	
+		;*** beep 
+		clr Beep ;打开蜂鸣器
+		;****count KeyData
+		call CountKeyData
+		mov KeyClick,KeyDubClick ;3s	
+		mov KeyMode,#02
+	key_bo22:
+		ret
+	;*****************************
+	key_bo2:	
+		cjne a,#2,key_bo3
+		djnz KeyClick,key_bo32
+		;********setb KeyData.6=1
+		mov a,KeyData
+		setb acc.6
+		;**** d7 =1
+		setb acc.7
+		;************
+		mov KeyData,a
+		;**** 
+		mov KeyDubClick,#DBClick100mS
+		sjmp key_bo33
+	key_bo32:
+		;***** 判别释放
+		;;;;!!!!!!!!!!!!
+		mov r2,#04d
+		mov r3,#01d
+	scan2:
+		mov a,r3
+		cpl a
+		mov KeyPort,a
+		mov a,KeyPort
+		anl a,#KeyAnlData
+		cjne a,#KeyAnlData,key_bo3;没有释放
+		mov a,r3
+		rl a
+		mov r3,a
+		djnz r2,scan2
+		;***** use KeyData
+		mov a,KeyData
+		setb acc.7
+		mov KeyData,a
+		mov KeyDubClick,#DBClick3S
+	key_bo33:
+		mov KeyMode,#0
+	key_bo3:	
+		ret		
+
+;***********************************	
+CountKeyData:
+		cpl a
+		add a,r3
+		mov r4,a
+		mov a,r4
+		cjne a,#97h,no_1
+		mov KeyData,#K0
+	no_1:
+		cjne a,#57h,no_2
+		mov KeyData,#k1
+	no_2:
+		cjne a,#37h,no_3
+		mov KeyData,#k2
+	no_3:
+		cjne a,#93h,no_4
+		mov KeyData,#k3
+	no_4:
+		cjne a,#53h,no_5
+		mov KeyData,#k4
+	no_5:
+		cjne a,#33h,no_6
+		mov KeyData,#k5
+	no_6:
+		cjne a,#91h,no_7
+		mov KeyData,#k6
+	no_7:
+		cjne a,#51h,no_8
+		mov KeyData,#k7
+	no_8:
+		cjne a,#31h,no_9
+		mov KeyData,#k8
+	no_9:
+		cjne a,#90h,no_10
+		mov KeyData,#k9
+	no_10:
+		cjne a,#23h,no_11
+		mov KeyData,#ka
+	no_11:
+		cjne a,#21h,no_12
+		mov KeyData,#kb
+	no_12:
+		cjne a,#50h,no_13
+		mov KeyData,#Kc
+	no_13:
+		cjne a,#30h,no_14
+		mov KeyData,#Kd
+	no_14:
+		cjne a,#27h,no_15
+		mov KeyData,#Kf
+	no_15:
+		ret	
+;***************************************************
+		proc KeyJmp  ;用户键功能处理程序
+KeyJmp:
+		;*****************
+		mov a,KeyData
+		jbc acc.7 ,use_k1
+		ret
+use_k1:
+		jbc acc.6 ,use_k_3s
+		;*** click do		
+		mov KeyData,#0
+		;单击处理。。。
+use_k_3s:	;delay 3s click do
+		mov KeyData,#0
+		;** DubClick Kc 0.1s 
+		;连击处理。。。
+key_jmpend:
+		ret
+		end
+
+
+
+程序使用说明
+（1） 为了便于修改各按键对应的功能，以及提高键扫描的效率，在程序的开头定义了一个键值表，只需改动K0-Kf的上下位置即可（右边的十进制代码，不能改动！）。在用户的键散转处理程序中，用#K0-#Kf代替按键值。
+   		K0	equ 01h
+		K1	equ 02h
+		K2	equ 03h
+		K3	equ 04h
+		K4	equ 05h
+		K5	equ 06h
+		K6	equ 07h
+		K7	equ 08h
+		K8	equ 09h
+		K9	equ 0ah
+		Ka	equ 0bh
+		Kb	equ 0ch
+		Kc	equ 0dh
+		Kd	equ 0eh
+		Ke	equ 0fh
+		Kf	equ 010h
+
+（2）键译程序使用的变量、常量说明
+	；*******变量定义
+	KeyData		；存放键码
+	KeyClick		；去抖动延时变量
+ 	KeyDBClick		；连击延时变量
+	KeyMode		；键译程序的任务指针
+	;******常量定义
+	Click20mS		；20mS延时（主程序执行时间=10mS）
+	DBClick3S		；连击延时3S
+	DBClick100mS		；连击间隔时间100mS	
+	KeyPort		；键盘连接的端口
+（3） 单击、连击的判别
+   在KeyData变量的D6位代表:0=单击、1=连击；D7位代表此键码是否有效。（见图四）
+
+
+
+
+
+
+
+
+
+
+
+（4）在主程序中蕴涵键译程序：include “KeyBord.asm”
+（5）根据实际情况修改常量的数值。
+
+
+作者联系信箱：E-mail：lj87c196@163.com
+			 
+
+
+程序说明：此文档是该系统操作运行的所有程序，所提供的程序均在DICE-51单片仿真机上调试仿真，并已经全部通过。
+源程序：
+              ORG  0000H
+                 AJMP MAIN
+              ORG 0003H
+                 AJMP KEYS
+              ORG    000BH
+                 AJMP    PTT0
+              ORG     001BH
+                AJMP  PTT1            ;中断入口及优先级
+  MAIN:      MOV SP,#60H
+             CLR 5EH
+             CLR 5FH                  ;清上、下限越限标志
+             MOV A,#00H
+             MOV  R7,#09H 
+             MOV  R0,#28H 
+  LP1:       MOV  @R0,A
+             INC   R0
+             DJNZ R7,LP1
+             MOV  R7,#06H
+             MOV  R0,#39H
+ LP2:        MOV  @R0,A
+           INC  R0
+           DJNZ R7,LP2                ;清变量暂存单元
+           MOV R7,#06H
+           MOV R0,#50H
+  LP3:     MOV @R0,A
+           INC R0
+           DJNZ R7,LP3                ;清显示缓冲区
+           MOV 33H,#H
+           MOV 34H,#H               ;赋Kp高、低字节
+           MOV 35H,#H
+           MOV 36H,#H               ;赋Ki高、低字节
+           MOV 37H,#H
+           MOV 38H,#H               ;赋Kd高、低字节
+           MOV 42H,#H
+           MOV 43H,#H               ;赋K高、低字节（风扇参数）
+           MOV TMOD,#56H              ;T0方式2，T1方式1计数 
+           MOV TL0,#06H
+           MOV TH0,#06H               ;T0赋初值
+		   MOV 25H，#28H			  ;设定值默认为40摄氏度
+                 SETB TR0             ;键盘高优先级
+                 SETB ET0
+                 SETB EX0
+                 SETB EA               ;开键盘、T0、T1中断
+LOOP:       MOV R0,#56H
+	    MOV R1,#55H
+	    LCALL SCACOV		;调用标度转化-BCD转化子程序 
+	    MOV R0,#53H                
+            LCALL DIR
+			NOP
+			LCALL DLY10MS
+			NOP
+			LCALL DLY10MS
+            AJMP  LOOP                 ;等待中断，循环显示当前温度                            
+
+;****************************************************************************
+  KEYS:         CLR EX0                     ;[键盘子程序]
+                CLR EA
+                PUSH PSW
+                PUSH ACC                ;关中断，压栈
+                LCALL   DLY10MS         ;消抖
+    CC:         JB P3.2,AA
+                SETB 5DH                ;置“显示设定温度”标志
+		MOV A,25H		;取运算位的值(默认为40度)
+		MOV B,#10		;进行BCD码转化
+		DIV AB
+		MOV 52H,A
+		MOV A,B
+		MOV 51H,A
+                MOV R0,#50H
+                LCALL DIR               ;显示设定温度
+				NOP
+				LCALL DLY10MS
+				NOP
+				LCALL DLY10MS
+                JB P1.7,BB
+		        MOV R1,#25H
+                LCALL DAAD1             ;加一操作
+				NOP
+				LCALL DLY10MS
+                AJMP CC
+  BB:           JB P1.6,CC
+                MOV R1,#25H
+                LCALL DEEC1             ;减一操作
+				NOP
+				LCALL DLY10MS
+                AJMP CC
+  AA:           POP ACC                
+                POP PSW
+                SETB EX0
+                SETB EA                 ;出栈，开中断
+                  RETI
+;****************************************************************************
+       　　　　　　　　　　　　　　　　［显示子程序］
+DIR:       MOV SCON,#00H            ;置串行口移位寄存器状态
+                  SETB P1.4             ;开显示
+                  JB 5DH,DL1            ;显示设定温度则转
+         DL2:     MOV DPTR,#SEGT
+        DL0:      MOV A,@R0
+                  MOVC A,@A+DPTR
+                  MOV SBUF,A
+  LOOP1:          JNB TI,LOOP1
+                  CLR TI
+                  INC R0
+                   MOV A,@R0
+                   MOVC A,@A+DPTR
+                   ANL A，#7FH      ;使个位带小数点
+                   MOV SBUF,A
+   LOOP2:          JNB TI,LOOP2
+                   CLR TI
+                   INC R0
+                   MOV A,@R0
+                   MOVC A,@A+DPTR
+                   MOV SBUF,A
+   LOOP3:          JNB TI,LOOP3
+                   CLR TI
+                   CLR P1.4
+                   CLR 5DH
+                   RET
+         DL1:      MOV 50H,#0AH              ;使小数位黑屏
+                   AJMP DL2
+ SEGT:             DB 0C0H,0F9H,0A4H,0B0H,99H,92H,82H,0F8H,80H,90H,0FFH
+;****************************************************************************
+      DAAD1:        MOV A,#00H            ;［加1子程序］          
+                    ORL A,@R1
+                    ADD A,#01H
+                    CJNE A,#5AH,DAAD2	  ;判断超过90度了吗？
+      DAAD3:        MOV @R1,A
+        DAA:          RET                
+      DAAD2:	    JC DAAD3
+	           	    MOV @R1,#28H          ;超过90度则回到40度
+		            AJMP DAA
+ ;***************************************************************************
+	DEEC1:	    MOV A,@R1		  ;［减1子程序］
+		        DEC A
+		        CJNE A,#28H,DEEC2	  ;判断低于40度了吗？
+	DEEC3:	    MOV @R1,A
+	  DEE:	      RET
+	DEEC2:	    JNC DEEC3
+		        MOV @R1,#5AH	  ;低于40度则回到90度
+	  	        AJMP DEE
+;****************************************************************************
+     PTT0:          CLR EA                ;［T0中断子程序］
+                    PUSH ACC
+                    PUSH PSW
+                    PUSH DPL
+                    PUSH DPH
+                    SETB EA               ;压栈后开中断，响应键盘
+      PPP:          LCALL  SMAP               ;采样数据
+                    LCALL  FILTER         ;数字滤波
+                    MOV  A,2AH            ;取采样值
+                    CJNE A,#01H,AAA       ;下限40度比较
+                    AJMP BBB
+      AAA:          JC CCC                 ;小于40度则转移
+                    CJNE A,#0FEH,DDD       ;上限90度比较
+                    AJMP BBB              ;转到40-90度正常范围内处理
+      DDD:          JC  BBB
+                    CLR P1.2              ;大于90度黄灯亮报警
+                    SETB 5EH
+                    CLR P1.1              ; 置标志，启动风扇
+                    AJMP  PPP
+      CCC:          CLR P1.3                  ;小于40度绿灯亮报警
+                    SETB 5FH
+                    CLR P1.0              ;置标志，启动电炉
+                    AJMP PPP
+      BBB:          SETB P1.0
+                     SETB  P1.1
+                     SETB P1.2
+                     SETB P1.3
+                     CLR 5EH 
+                     CLR 5FH               ;40-90度之间则正常
+                      LCALL PID 
+                      JB 20H,EEE           ;设定温度< 实际温度，则转到风扇处理
+                      MOV A,29H
+                      ACALL FFF
+                      CLR P1.0
+      LOOP10:         MOV R0,#56H                ;存放相乘结果的首址
+                      MOV R1,#55H          ;赋显示缓冲区最高位地址（十位）
+                      LCALL SCACOV  ;调用“标度转化------二-十进制转化”子程序
+                       MOV R0,#53H         ;赋显示首址
+                       LCALL DIR
+                       JB D5H,LOOP10        ;等待T1中断
+					   CLR EA
+                       POP DPH
+                       POP DPL                   
+                       POP PSW
+					   SETB EA
+                       POP ACC
+                         RETI
+         EEE:         MOV A,28H                ;风扇处理
+                       LCALL FFF
+                       CLR P1.1
+                       AJMP LOOP10
+         FFF:          CPL  A                   ;根据PID结果计算T1初值
+                      INC A
+                      MOV TL1,A
+	                  MOV TH1,#0FFH
+                      SETB  PI1
+                      SETB TR1 
+                      SETB ET1
+                       RET  
+;****************************************************************************
+    SCACOV:        MOV R7,#00H        ;［“标度转化------二-十进制转化”子程序］
+                    MOV R6,2AH               ;取采样值，并转化为双字节
+                    MOV R5,#33H
+                    MOV R4,#24H              ;赋参数（纯小数）
+                    LCALL MULT               ;调用双字节乘法子程序
+                    MOV R5,#00H
+                    MOV R4,#28H              ;赋参数40度
+                    MOV A,@R0
+		            MOV R3,A
+                    DEC R0
+                    MOV A,@R0                ;存乘法结果的整数
+		            MOV R2,A
+                    LCALL DSUM        ;调用加法子程序，且R7,R6为有效值（R7=00H）
+                    MOV A,R6
+                    MOV B,#10
+                    DIV  AB
+                    MOV @R1,A                ;存十位数
+                    DEC R1
+      	            XCH A,B 
+                    MOV @R1,A                ;存个位数
+                    DEC R0
+                    MOV A,@R0                ;取有效小数
+                    MOV B,#10
+                    DIV  AB
+                    DEC R1
+                    MOV @R1,A                ;送小数到显示缓冲区
+                    MOV A,B
+                    CJNE A,#5,QQ             ;小数四舍五入
+          QQ:       JC PP 
+                    MOV A,@R1
+                    ADD A,#01H
+                    DA  A
+                    MOV @R1,A
+          PP:       RET
+;****************************************************************************
+         SMAP:       MOV R0,#2CH                  ; ［采样子程序］
+                     MOV R1,#03H             ;采样次数
+        SAM1:        MOV DPTR,#7FF8H
+                     MOVX @DPTR,A            ;启动A/D                    
+                     MOV R2,#20H
+        DLY:         DJNZ R2,DLY                 ;延时一小会
+       HERE:         JB P3.3,HERE
+					 MOV DPTR，#7FF8H
+                     MOVX A,@DPTR           ;读取转化结果
+                     MOV @R0,A
+                      INC R0
+                      DJNZ R1,SAM1
+                      RET
+;****************************************************************************
+    FILTER:           MOV A,2CH                    ;［数字虑波子程序］
+                      CJNE A,2DH,CMP1
+                      AJMP CMP2
+       CMP1:          JNC CMP2
+                      XCH A,2DH
+                      XCH A,2CH
+       CMP2:          MOV A,2DH
+                      CJNE A,2EH,CMP3
+                      MOV 2AH,A
+                      AJMP RR
+        CMP3:         JC CMP4
+                      MOV 2AH,A
+                      AJMP RR
+        CMP4:         MOV A,2EH
+                      CJNE A,2CH,CMP5
+                      MOV 2AH,A
+                      AJMP RR
+        CMP5:         JC CMP6
+                      XCH A,2CH
+        CMP6:         MOV 2AH,A 
+        RR:              RET
+;****************************************************************************
+     PTT1:            CLR 00H                     ;［T1中断子程序］
+                      JB 20H,GGG
+                      SETB P1.0                   ;关闭电炉
+      GG:             CLR PT1
+  RETI
+      GGG:            SETB P1.1                   ;关闭风扇
+                      CLR 20H
+                      AJMP GG
+;****************************************************************************
+      DLY10MS:   MOV R7,#0A0H            ;［延时10毫秒子程序］
+         DL00:   MOV R6,#0FFH
+         DL11:   DJNZ R6,DL11
+                 DJNZ R7,DL00
+                 RET
+;****************************************************************************       
+PID:     MOV R5,#00H　　　　　　　　　　　［PID算法子程序］
+		 MOV R4,2DH		 ;取Nx值
+		 MOV R3,#00H
+		 MOV R2,#28H		 ;取40度值
+ 		 LCALL CPL1
+		 LCALL DSUM		 ;求(Nx-28H)的值
+		 MOV R0,#5AH		 ;赋乘法运算暂存单元地址首址
+ 		 MOV R5,#05H
+		 MOV R4,#1CH	 	 ;赋参数(5.12)
+		 LCALL MULT		 ;调无符号数乘法
+		 MOV 31H,5BH
+		 MOV 32H,5AH		 ;存放结果的有效值
+		 MOV R5,31H
+         MOV R4,32H              ;取双字节的Ur(设定值)
+         MOV R3,2AH
+         MOV R2,#00H             ;取双字节的Ui(k)（实测值）
+ 		 ACALL CPL1              ;取Ui(k)的补码
+         ACALL DSUM              ;计算E(k)
+		 MOV 39H,R7
+		 MOV 3AH,R6              ;存E(K)
+		 MOV R5,35H
+         MOV R4,36H              ;取KI参数
+ 		 MOV R0,#4AH
+         ACALL MULT1             ;计算PI=KI*E(K)
+		 MOV R5,39H
+		 MOV R4,3AH              ;取E(K)
+		 MOV R3,3BH
+  		 MOV R2,3CH              ;取E(K-1)
+ 		 ACALL CPL1
+ 		 ACALL DSUB              ;求E(K)-E(K-1)
+		 MOV R5,33H
+		 MOV R4,34H           	 ;取Kp参数
+		 MOV R0,#46H
+		 ACALL MULT1    	 ;求Kp*[E(K)-E(K-1)]
+		 MOV R5,49H
+		 MOV R4,48H
+		 MOV R3,4DH
+		 MOV R2,4CH
+		 ACALL DSUM              ;求Kp*[E(K)-E(K-1)]+KI*E(K)
+		 MOV 4AH,R7
+ 		 MOV 4BH,R6              ;保存上式之和
+		 MOV R5,39H
+		 MOV R4,3AH              ;取E(K)
+		 MOV R3,3DH
+		 MOV R2,3EH              ;取E(K-2)
+		 ACALL DSUM		 ;计算E(K)+E(K-2)
+		 MOV A，R7
+		 MOV R5，A
+		 MOV A，R6
+		 MOV R4，A
+		 MOV R3,3BH
+		 MOV R2,3CH              ;取E(k-1)
+		 ACALL CPL1
+		 ACALL DSUM		 ;求出E(K)+E(K-2)-2*E(K-1)
+		 MOV A，R7
+		 MOV R5，A
+		 MOV A，R6
+		 MOV R4，A
+		 MOV R3，3BH
+		 MOV R2，3CH
+		 ACALL CPL1
+		 ACALL DSUM
+		 MOV R5,37H
+		 MOV R4,38H		 ;取Kd参数
+		 MOV R0,#46H
+		 ACALL MULT1		 ;求出Pd=Kd*[E(K)+E(K-2)-2*E(K-1)]
+		 MOV R5,49H
+		 MOV R4,48H      	 ;取Pd
+		 MOV R3,4AH		
+		 MOV R2,4BH		 ;取Kp*[E(K)-E(K-1)]+KI*E(K)
+		 ACALL DSUM		 ;计算Pd+PI
+		 MOV A,R7
+		 MOV R3，A
+		 MOV A,R6             	 ;取Pd+PI
+		 MOV R2，A
+		 MOV R5,2FH
+		 MOV R4,30H         	 ;取P(k-1)
+		 ACALL DSUM		 ;求P(K)=Pd+Pp+P(K-1)
+		 MOV 2FH,R7
+		 MOV 30H,R6		 ;存P(k)到P(k-1)
+		 MOV 29H，2FH
+		 MOV 3DH,3BH
+		 MOV 3EH,3CH		 ;存E(K-1)到E(K-2)
+		 MOV 3BH,39H
+		 MOV 3CH,3AH		 ;存E(K)到E(k-1)
+		 MOV A，31H			;取设定值
+		 CJNE A，2AH，AA2	;比较设定值与实测值
+   AA3： CLR 20H			;清电炉标志
+   AA1:       RET
+   AA2:	 JNC AA3
+ SETB 20H		 ;清风扇标志位
+ MOV R3,39H
+ MOV R2,3AH
+ LCALL CPL1
+ MOV A,R3
+ MOV R7,A
+ MOV A,R2
+ MOV R6,A
+		 MOV R5,42H
+		 MOV R4,43H		 ;取K(风扇)参数
+		 MOV R0,#5AH
+		 ACALL MULI1		 ; 计算P`=K*E(K),且结果防在51H,50H单元中
+		 MOV 28H,5BH		 ;取8位有效值，放到28H单元中
+		 AJMP AA1
+;****************************************************************************DSUM: 	 MOV A,R4  		 ;［双字节加法子程序］：(R5R4)+(R3R2)-->(R7R6)
+		 ADD A,R2
+		 MOV R6,A
+		 MOV A,R5
+		 ADDC A,R3
+		 MOV R7,A
+		 RET
+;****************************************************************************
+ CPL1:	 MOV A,R2		 ;［双字节求补子程序］：(R3R2)求补
+		 CPL A
+		 ADD A,#01H
+		 MOV R2,A	 	
+		 MOV A,R3
+		 CPL A
+		 ADDC A,#00H
+		 MOV R3,A
+		 RET
+;****************************************************************************
+ MULT1:	 MOV A,R7		 ;［双字节有符号数乘法］：被乘数(R7R6),乘数(R5R4)
+		 RLC A
+		 MOV 5CH,C      	 ;被乘数符号C1-->5CH位
+		 JNC POS1		 ;为正数则转
+		 MOV A,R6		 ;为负数则求补
+		 CPL A
+	 	 ADD A,#01H
+		 MOV R6,A
+	 	 MOV A,R7
+		 CPL A
+	 	 ADDC A,#00H
+		 MOV R7,A
+POS1:	 MOV A,R5		 ;取乘数
+		 RLC A		 	 ;乘数符号C2-->5DH位
+		 MOV 5DH,C
+		 JNC POS2		 ;为整数则转
+		 MOV A,R4
+		 CPL A
+		 ADD A,#01H
+		 MOV R4,A
+		 MOV A,R5
+		 CPL A
+		 ADDC A,#00H
+		 MOV R5,A
+POS2:	 ACALL MULT		 ;调双字节无符号数乘法子程序
+ 		 MOV C，5CH
+		 ANL C,5DH
+		 JC TPL		         ;负负相乘则转
+		 MOV C,5CH
+		 ORL C,5DH
+		 JNC TPL		 ;正正相乘则转
+		 DEC R0
+		 MOV A,@R0
+		 CPL A
+ 		 ADD A,#01H
+		 MOV @R0,A
+		 INC R0
+		 MOV A,@R0
+		 CPL A
+		 ADDC A,#00H
+		 MOV @R0,A
+TPL:	 RET
+;**************************************************************************** MULT:	 MOV A,R6
+		 MOV B,R4		 ;取低位相乘
+		 MUL AB
+		 MOV @R0,A
+	 	 MOV R3,B
+		 MOV A,R4
+		 MOV B,R7
+		 MUL AB
+		 ADD A,R3
+		 MOV R3,A
+		 MOV A,B
+		 ADDC A,#00H
+		 MOV R2,AMOV A,R6
+		 MOV B,R5
+		 MUL AB
+		 ADD A,R3
+		 INC R0
+		 MOV @R0,A
+		 CLR 5BH
+		 MOV A,R2
+		 ADDC A,B
+		 MOV R2,A
+		 JNC LAST
+		 SETB 5BH		 ;置进位标志
+LAST:	 MOV A,R7
+		 MOV B,R5
+		 MUL AB
+		 ADD A,R2
+		 INC R0
+		 MOV @R0,A		 ;存积的第二字节
+		 MOV A,B
+		 ADDC A,#00H
+		 MOV C,5BH
+		 ADDC A,#00H
+		 INC R0      
+         MOV @R0,A             
+       RET
+       END
+
+
+

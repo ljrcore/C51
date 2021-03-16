@@ -1,0 +1,15 @@
+    显示子程序
+
+   DIR: MOV DPTR,#0FF82H	;初始化端口
+        MOV A,#90H
+        MOV @DPTR,A	
+	MOV R0,#70H		;显示器端口
+	MOV R7,#02H		;确定要显示个数
+        MOV DPTR,#0FF80H
+ LOOP: MOV A,@R0
+	ADD A,#05H
+	MOVX A,@A+PC
+	INC R0
+ 	DJNZ R7,LOOP
+	RET
+TAB: ......		

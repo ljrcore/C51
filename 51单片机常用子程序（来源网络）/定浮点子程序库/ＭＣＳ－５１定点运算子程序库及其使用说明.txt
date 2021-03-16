@@ -1,0 +1,1140 @@
+ＭＣＳ－５１定点运算子程序库及其使用说明 
+
+    １．多字节定点操作数：用[R0]或[R1]来表示存放在由R0或R1指示的连续单元中的数
+据。地址小的单元存放数据的高字节。例如：[R0]=123456H，若(R0)=30H，则(30H)=12H，
+(31H)=34H，(32H)=56H。
+    ２．运算精度：单次定点运算精度为结果最低位的当量值。
+    ３．工作区：数据工作区固定在PSW、A、B、R2～R7，用户只要不在工作区中存放无
+关的或非消耗性的信息，程序就具有较好的透明性。
+
+
+    （１）  标号：  ＢＣＤＡ    功能：多字节ＢＣＤ码加法
+
+入口条件：字节数在R7中，被加数在[R0]中，加数在[R1]中。
+出口信息：和在[R0]中，最高位进位在CY中。
+影响资源：PSW、A、R2    堆栈需求：  ２字节
+
+BCDA:	MOV	A,R7	；取字节数至R2中
+	MOV	R2,A
+	ADD	A,R0	；初始化数据指针
+	MOV	R0,A
+	MOV	A,R2
+	ADD	A,R1
+	MOV	R1,A
+	CLR	C
+BCD1:	DEC	R0	；调整数据指针
+	DEC	R1
+	MOV	A,@R0
+	ADDC	A,@R1	；按字节相加
+	DA	A	；十进制调整
+	MOV	@R0,A	；和存回[R0]中
+	DJNZ	R2,BCD1	；处理完所有字节
+	RET
+
+    （２）  标号：  ＢＣＤＢ    功能：多字节ＢＣＤ码减法
+
+入口条件：字节数在R7中，被减数在[R0]中，减数在[R1]中。
+出口信息：差在[R0]中，最高位借位在CY中。
+影响资源：PSW、A、R2、R3    堆栈需求：  ６字节
+
+BCDB:	LCALL	NEG1	；减数[R1]十进制取补
+	LCALL	BCDA	；按多字节ＢＣＤ码加法处理
+	CPL	C	；将补码加法的进位标志转换成借位标志
+	MOV	F0,C	；保护借位标志
+	LCALL	NEG1	；恢复减数[R1]的原始值
+	MOV	C,F0    ；恢复借位标志
+	RET
+NEG1:	MOV	A,R0	；[R1]十进制取补子程序入口
+	XCH	A,R1	；交换指针
+	XCH	A,R0
+	LCALL	NEG	；通过[R0]实现[R1]取补
+
+MOV	A,R0
+	XCH	A,R1	；换回指针
+	XCH	A,R0
+	RET
+
+    （３）  标号：  ＮＥＧ    功能：多字节ＢＣＤ码取补
+
+入口条件：字节数在R7中，操作数在[R0]中。
+出口信息：结果仍在[R0]中。
+影响资源：PSW、A、R2、R3    堆栈需求：  ２字节
+
+NEG:	MOV	A,R7	；取（字节数减一）至R2中
+	DEC	A
+	MOV	R2,A
+	MOV	A,R0	；保护指针
+	MOV	R3,A
+NEG0:	CLR	C	
+	MOV	A,#99H
+	SUBB	A,@R0	；按字节十进制取补
+	MOV	@R0,A	；存回[R0]中
+	INC	R0	；调整数据指针
+	DJNZ	R2,NEG0	；处理完（R2）字节
+
+MOV	A,#9AH	；最低字节单独取补
+	SUBB	A,@R0
+	MOV	@R0,A
+	MOV	A,R3	；恢复指针
+	MOV	R0,A
+	RET
+
+    （４）  标号：  ＢＲＬＮ    功能：多字节ＢＣＤ码左移十进制一位（乘十）
+
+入口条件：字节数在R7中，操作数在[R0]中。
+出口信息：结果仍在[R0]中，移出的十进制最高位在R3中。
+影响资源：PSW、A、R2、R3    堆栈需求：  ２字节
+
+BRLN:	MOV	A,R7	；取字节数至R2中
+   	MOV	R2,A
+	ADD	A,R0	；初始化数据指针
+	MOV	R0,A
+	MOV	R3,#0	；工作单元初始化
+BRL1:	DEC	R0	；调整数据指针
+
+MOV	A,@R0	；取一字节
+	SWAP	A	；交换十进制高低位
+	MOV	@R0,A	；存回
+	MOV	A,R3	；取低字节移出的十进制高位
+	XCHD	A,@R0	；换出本字节的十进制高位
+	MOV	R3,A	；保存本字节的十进制高位
+	DJNZ	R2,BRL1	；处理完所有字节
+	RET
+
+    （５）  标号： ＭＵＬＤ    功能：双字节二进制无符号数乘法
+
+入口条件：被乘数在R2、R3中，乘数在R6、R7中。
+出口信息：乘积在R2、R3、R4、R5中。
+影响资源：PSW、A、B、R2～R7    堆栈需求：  ２字节
+
+MULD:	MOV	A,R3	；计算R3乘R7
+	MOV	B,R7
+
+MUL	AB
+	MOV	R4,B	；暂存部分积
+	MOV	R5,A
+	MOV	A,R3	；计算R3乘R6
+	MOV	B,R6
+	MUL	AB
+	ADD	A,R4	；累加部分积
+	MOV	R4,A
+	CLR	A
+	ADDC	A,B
+	MOV	R3,A
+	MOV	A,R2	；计算R2乘R7
+	MOV	B,R7
+	MUL	AB
+	ADD	A,R4	；累加部分积
+	MOV	R4,A
+	MOV	A,R3
+	ADDC	A,B
+	MOV	R3,A
+	CLR	A
+	RLC	A
+	XCH	A,R2	；计算R2乘R6
+	MOV	B,R6
+	MUL	AB
+	ADD	A,R3	；累加部分积
+	MOV	R3,A
+	MOV	A,R2
+	ADDC	A,B
+	MOV	R2,A
+	RET
+
+    （６）  标号： ＭＵＬ２    功能：双字节二进制无符号数平方
+
+入口条件：待平方数在R2、R3中。
+出口信息：结果在R2、R3、R4、R5中。
+影响资源：PSW、A、B、R2～R5    堆栈需求：  ２字节
+
+MUL2:	MOV	A,R3	；计算R3平方
+	MOV	B,A
+	MUL	AB
+	MOV	R4,B	；暂存部分积
+	MOV	R5,A
+	MOV	A,R2	；计算R2平方
+	MOV	B,A
+	MUL	AB
+	XCH	A,R3	；暂存部分积，并换出R2和R3
+	XCH	A,B
+	XCH	A,R2
+	MUL	AB	；计算2×R2×R3
+	CLR	C
+	RLC	A
+	XCH	A,B
+	RLC	A
+	JNC	MU20
+	INC	R2	；累加溢出量
+MU20:	XCH	A,B	；累加部分积
+	ADD	A,R4
+
+MOV	R4,A
+	MOV	A,R3
+	ADDC	A,B
+	MOV	R3,A
+	CLR	A
+	ADDC	A,R2
+	MOV	R2,A
+	RET
+
+    （７）  标号：  ＤＩＶＤ    功能：双字节二进制无符号数除法
+
+入口条件：被除数在R2、R3、R4、R5中，除数在R6、R7中。
+出口信息：OV=0 时，双字节商在R2、R3中，OV=1 时溢出。
+影响资源：PSW、A、B、R1～R7    堆栈需求：  ２字节
+
+DIVD:	CLR	C	；比较被除数和除数
+	MOV	A,R3	
+	SUBB	A,R7
+	MOV	A,R2
+	SUBB	A,R6
+	JC	DVD1
+	SETB	OV	；溢出
+	RET
+DVD1:	MOV	B,#10H	；计算双字节商
+
+DVD2:	CLR	C	；部分商和余数同时左移一位
+	MOV	A,R5
+	RLC	A
+	MOV	R5,A
+	MOV	A,R4
+	RLC	A
+	MOV	R4,A
+	MOV	A,R3
+	RLC	A
+	MOV	R3,A
+	XCH	A,R2
+	RLC	A
+	XCH	A,R2
+	MOV	F0,C	；保存溢出位
+	CLR	C
+	SUBB	A,R7	；计算（R2R3－R6R7）
+	MOV	R1,A
+	MOV	A,R2
+	SUBB	A,R6
+	ANL	C,/F0	；结果判断
+	JC	DVD3
+	MOV	R2,A	；够减，存放新的余数
+	MOV	A,R1
+	MOV	R3,A
+	INC	R5	；商的低位置一
+DVD3:	DJNZ	B,DVD2	；计算完十六位商（R4R5）
+	MOV	A,R4	；将商移到R2R3中
+
+MOV	R2,A
+	MOV	A,R5
+	MOV	R3,A
+	CLR	OV	；设立成功标志
+	RET
+
+    （８）  标号：  Ｄ４５７   功能：双字节二进制无符号数除以单字节二进制数
+
+入口条件：被除数在R4、R5中，除数在R7中。
+出口信息：OV=0 时，单字节商在R3中，OV=1 时溢出。
+影响资源：PSW、A、R3～R7    堆栈需求：  ２字节
+
+D457:	CLR	C
+	MOV	A,R4
+	SUBB	A,R7
+	JC	DV50
+	SETB	OV	；商溢出
+	RET
+DV50:	MOV	R6,#8	；求平均值（R4R5／R7－→R3）
+DV51:	MOV	A,R5
+	RLC	A
+	MOV	R5,A
+	MOV	A,R4
+
+RLC	A
+	MOV	R4,A
+	MOV	F0,C
+	CLR	C
+	SUBB	A,R7
+	ANL	C,/F0
+	JC	DV52
+	MOV	R4,A
+DV52:	CPL	C
+	MOV	A,R3
+	RLC	A
+	MOV	R3,A
+	DJNZ	R6,DV51
+	MOV	A,R4	；四舍五入
+	ADD	A,R4
+	JC	DV53
+	SUBB	A,R7
+	JC	DV54
+DV53:	INC	R3
+DV54:	CLR	OV
+	RET
+
+    （９）  标号：  ＤＶ３１    功能：三字节二进制无符号数除以单字节二进制数
+
+入口条件：被除数在R3、R4、R5中，除数在R7中。
+出口信息：OV=0 时，双字节商在R4、R5中，OV=1 时溢出。
+影响资源：PSW、A、B、R2～R7    堆栈需求：  ２字节
+
+DV31:	CLR	C
+	MOV	A,R3
+	SUBB	A,R7
+	JC	DV30
+	SETB	OV	；商溢出
+	RET
+DV30:	MOV	R2,#10H	；求R3R4R5／R7－→R4R5
+DM23:	CLR	C
+	MOV	A,R5
+	RLC	A
+	MOV	R5,A
+	MOV	A,R4
+	RLC	A
+	MOV	R4,A
+	MOV	A,R3
+	RLC	A
+	MOV	R3,A
+	MOV	F0,C
+	CLR	C
+	SUBB	A,R7
+	ANL	C,/F0
+	JC	DM24
+	MOV	R3,A
+	INC	R5
+DM24:	DJNZ	R2,DM23
+	MOV	A,R3	；四舍五入
+	ADD	A,R3
+	JC	DM25
+	SUBB	A,R7
+	JC	DM26
+DM25:	INC	R5
+	MOV	A,R5
+	JNZ	DM26
+
+INC	R4
+DM26:	CLR	OV
+	RET             ；商在R4R5中 
+
+
+    （１０）  标号： ＭＵＬＳ    功能：双字节二进制有符号数乘法（补码）
+
+入口条件：被乘数在R2、R3中，乘数在R6、R7中。
+出口信息：乘积在R2、R3、R4、R5中。
+影响资源：PSW、A、B、R2～R7    堆栈需求：  ４字节
+
+MULS:	MOV	R4,#0	；清零R4R5
+	MOV	R5,#0
+	LCALL	MDS	；计算结果的符号和两个操作数的绝对值
+	LCALL	MULD	；计算两个绝对值的乘积
+	SJMP	MDSE	；用补码表示结果
+
+    （１１）  标号：  ＤＩＶＳ    功能：双字节二进制有符号数除法（补码）
+
+入口条件：被除数在R2、R3、R4、R5中，除数在R6、R7中。
+出口信息：OV=0时商在R2、R3中，OV=1时溢出。
+影响资源：PSW、A、B、R1～R7    堆栈需求：  ５字节
+
+DIVS:	LCALL	MDS	；计算结果的符号和两个操作数的绝对值
+	PUSH	PSW	；保存结果的符号
+	LCALL	DIVD	；计算两个绝对值的商
+	JNB	OV,DVS1	；溢出否？
+	POP	ACC	；溢出，放去结果的符号，保留溢出标志
+	RET
+DVS1:	POP	PSW	；未溢出，取出结果的符号
+	MOV	R4,#0
+	MOV	R5,#0
+MDSE:	JB	F0,MDS2	；用补码表示结果
+	CLR	OV	；结果为正，原码即补码，计算成功
+
+RET
+MDS:	CLR	F0	；结果符号初始化
+	MOV	A,R6	；判断第二操作数的符号
+	JNB	ACC.7,MDS1；为正，不必处理
+	CPL	F0	；为负，结果符号取反
+	XCH	A,R7	；第二操作数取补，得到其绝对值
+	CPL	A
+	ADD	A,#1
+	XCH	A,R7
+	CPL	A
+	ADDC	A,#0
+	MOV	R6,A
+MDS1:	MOV	A,R2	；判断第一操作数或运算结果的符号
+	JNB	ACC.7,MDS3；为正，不必处理
+	CPL	F0	；为负，结果符号取反
+MDS2:	MOV	A,R5	；求第一操作数的绝对值或运算结果的补码
+	CPL	A
+	ADD	A,#1
+	MOV	R5,A
+
+MOV	A,R4
+	CPL	A
+	ADDC	A,#0
+	MOV	R4,A
+	MOV	A,R3
+	CPL	A
+	ADDC	A,#0
+	MOV	R3,A
+	MOV	A,R2
+	CPL	A
+	ADDC	A,#0
+	MOV	R2,A
+MDS3:	CLR	OV	；运算成功
+	RET
+
+    （１２）  标号：  ＳＨ２    功能：双字节二进制无符号数开平方（快速）
+
+入口条件：被开方数在R2、R3中。
+出口信息：平方根仍在R2、R3中，整数部分的位数为原数的一半，其余为小数。
+影响资源：PSW、A、B、R2～R7    堆栈需求：  ２字节
+
+SH2:	MOV	A,R2
+	ORL	A,R3
+	JNZ	SH20
+	RET		；被开方数为零，不必运算
+
+SH20:	MOV	R7,#0	；左规次数初始化
+	MOV	A,R2
+SH22:	ANL	A,#0C0H	；被开方数高字节小于４０Ｈ否？
+	JNZ	SQRH	；不小于４０Ｈ，左规格化完成，转开方过程
+	CLR	C	；每左规一次，被开方数左移两位
+	MOV	A,R3
+	RLC	A
+	MOV	F0,C
+	CLR	C
+	RLC	A
+	MOV	R3,A
+	MOV	A,R2
+	MOV	ACC.7,C
+	MOV	C,F0
+	RLC	A
+	RLC	A
+	MOV	R2,A
+	INC	R7	；左规次数加一
+	SJMP	SH22	；继续左规
+
+    （１３）  标号：  ＳＨ４    功能：四字节二进制无符号数开平方（快速）
+
+入口条件：被开方数在R2、R3、R4、R5中。
+
+出口信息：平方根在R2、R3中，整数部分的位数为原数的一半，其余为小数。
+影响资源：PSW、A、B、R2～R7    堆栈需求：  ２字节
+
+SH4:	MOV	A,R2
+	ORL	A,R3
+	ORL	A,R4
+	ORL	A,R5
+	JNZ	SH40
+	RET		；被开方数为零，不必运算
+SH40:	MOV	R7,#0	；左规次数初始化
+	MOV	A,R2
+SH41:	ANL	A,#0C0H	；被开方数高字节小于４０Ｈ否？
+	JNZ	SQRH	；不小于４０Ｈ，左规格化完成
+	MOV	R6,#2	；每左规一次，被开方数左移两位
+SH42:	CLR	C	；被开方数左移一位
+	MOV	A,R5
+	RLC	A
+
+MOV	R5,A
+	MOV	A,R4
+	RLC	A
+	MOV	R4,A
+	MOV	A,R3
+	RLC	A
+	MOV	R3,A
+	MOV	A,R2
+	RLC	A
+	MOV	R2,A
+	DJNZ	R6,SH42	；被开方数左移完两位
+	INC	R7	；左规次数加一
+	SJMP	SH41	；继续左规
+SQRH:	MOV	A,R2    ；规格化后高字节按折线法分为三个区间
+	ADD	A,#57H
+	JC	SQR2
+	ADD	A,#45H
+	JC	SQR1
+	ADD	A,#24H
+	MOV	B,#0E3H	；第一区间的斜率
+	MOV	R4,#80H	；第一区间的平方根基数
+	SJMP	SQR3
+SQR1:	MOV	B,#0B2H	；第二区间的斜率
+	MOV	R4,#0A0H；第二区间的平方根基数
+
+SJMP	SQR3
+SQR2:	MOV	B,#8DH	；第三区间的斜率
+	MOV	R4,#0D0H；第三区间的平方根基数
+SQR3:	MUL	AB	；与区间基点的偏移量乘区间斜率
+	MOV	A,B
+	ADD	A,R4	；累加到平方根的基数上
+	MOV	R4,A
+	MOV	B,A
+	MUL	AB	；求当前平方根的幂
+	XCH	A,R3	；求偏移量（存放在R2R3中）
+	CLR	C
+	SUBB	A,R3
+	MOV	R3,A
+	MOV	A,R2
+	SUBB	A,B
+	MOV	R2,A
+SQR4:	SETB	C	；用减奇数法校正一个字节的平方根
+	MOV	A,R4	；当前平方根的两倍加一存入R5R6中
+	RLC	A
+	MOV	R6,A
+
+CLR	A
+	RLC	A
+	MOV	R5,A
+	MOV	A,R3	；偏移量小于该奇数否？
+	SUBB	A,R6
+	MOV	B,A
+	MOV	A,R2
+	SUBB	A,R5
+	JC	SQR5	；小于，校正结束，已达到一个字节的精度
+	INC	R4	；不小于，平方根加一
+	MOV	R2,A	；保存新的偏移量
+	MOV	R3,B
+	SJMP	SQR4	；继续校正
+SQR5:	MOV	A,R4	；将一个字节精度的根存入R2
+	XCH	A,R2
+	RRC	A
+	MOV	F0,C	；保存最终偏移量的最高位
+	MOV	A,R3
+	MOV	R5,A	；将最终偏移量的低八位存入R5中
+	MOV	R4,#8	；通过（R5R6／R2）求根的低字节
+
+SQR6:	CLR	C
+	MOV	A,R3
+	RLC	A
+	MOV	R3,A
+	CLR	C
+	MOV	A,R5
+	SUBB	A,R2
+	JB	F0,SQR7
+	JC	SQR8
+SQR7:	MOV	R5,A
+	INC	R3
+SQR8:	CLR	C
+	MOV	A,R5
+	RLC	A
+	MOV	R5,A
+	MOV	F0,C
+	DJNZ	R4,SQR6	；根的第二字节计算完，在R3中
+	MOV	A,R7	；取原被开方数的左规次数
+	JZ	SQRE	；未左规，开方结束
+SQR9:	CLR	C	；按左规次数右移平方根，得到实际根
+	MOV	A,R2
+	RRC	A
+	MOV	R2,A
+	MOV	A,R3
+	RRC	A
+	MOV	R3,A
+	DJNZ	R7,SQR9
+SQRE:	RET
+
+    （１４）  标号：  ＨＡＳＣ  功能：单字节十六进制数转换成双字节ASCII码
+
+入口条件：待转换的单字节十六进制数在累加器A中。
+出口信息：高四位的ASCII码在A中，低四位的ASCII码在B中。
+影响资源：PSW、A、B    堆栈需求：  ４字节
+
+HASC:	MOV	B,A	；暂存待转换的单字节十六进制数
+	LCALL	HAS1	；转换低四位
+	XCH	A,B	；存放低四位的ASCII码
+	SWAP	A	；准备转换高四位
+HAS1:	ANL	A,#0FH	；将累加器的低四位转换成ASCII码
+	ADD	A,#90H
+	DA	A
+	ADDC	A,#40H
+	DA	A
+	RET
+
+    （１５）  标号：  ＡＳＣＨ    功能：ASCII码转换成十六进制数
+
+入口条件：待转换的ASCII码（30H～39H或41H～46H）在A中。
+出口信息：转换后的十六进制数（00H～0FH）仍在累加器A中。
+影响资源：PSW、A    堆栈需求：  ２字节
+
+ASCH:	CLR	C
+	SUBB	A,#30H
+	JNB	ACC.4,ASH1
+	SUBB	A,#7
+ASH1:	RET
+
+    （１６）  标号：ＨＢＣＤ  功能：单字节十六进制整数转换成单字节ＢＣＤ码整数
+
+入口条件：待转换的单字节十六进制整数在累加器A中。
+出口信息：转换后的ＢＣＤ码整数（十位和个位）仍在累加器A中，百位在R3中。
+
+影响资源：PSW、A、B、R3    堆栈需求：  ２字节
+
+HBCD:	MOV	B,#100	；分离出百位，存放在R3中
+	DIV	AB
+	MOV	R3,A
+	MOV	A,#10	；余数继续分离十位和个位
+	XCH	A,B
+	DIV	AB
+	SWAP	A
+	ORL	A,B	；将十位和个位拼装成ＢＣＤ码
+	RET
+
+    （１７）  标号： ＨＢ２   功能：双字节十六进制整数转换成双字节ＢＣＤ码整数
+
+入口条件：待转换的双字节十六进制整数在R6、R7中。
+出口信息：转换后的三字节ＢＣＤ码整数在R3、R4、R5中。
+影响资源：PSW、A、R2～R7    堆栈需求：  ２字节
+
+HB2:	CLR	A	；ＢＣＤ码初始化
+	MOV	R3,A
+	MOV	R4,A
+	MOV	R5,A
+	MOV	R2,#10H	；转换双字节十六进制整数
+HB3:	MOV	A,R7	；从高端移出待转换数的一位到CY中
+	RLC	A
+	MOV	R7,A
+	MOV	A,R6
+	RLC	A
+	MOV	R6,A
+	MOV	A,R5	；ＢＣＤ码带进位自身相加，相当于乘２
+	ADDC	A,R5
+	DA	A	；十进制调整
+	MOV	R5,A
+	MOV	A,R4
+	ADDC	A,R4
+	DA	A
+	MOV	R4,A
+	MOV	A,R3
+	ADDC	A,R3
+	MOV	R3,A	；双字节十六进制数的万位数不超过６，不用调整
+	DJNZ	R2,HB3	；处理完１６ｂｉｔ
+
+RET 	
+	    	
+    （１８）  标号：  ＨＢＤ  功能：单字节十六进制小数转换成单字节ＢＣＤ码小数
+
+入口条件：待转换的单字节十六进制小数在累加器A中。
+出口信息：CY=0时转换后的ＢＣＤ码小数仍在A中。CY=1时原小数接近整数１。
+影响资源：PSW、A、B    堆栈需求：  ２字节
+
+HBD:	MOV	B,#100	；原小数扩大一百倍
+	MUL	AB
+	RLC	A	；余数部分四舍五入
+	CLR	A
+	ADDC	A,B
+	MOV	B,#10	；分离出十分位和百分位
+	DIV	AB
+	SWAP	A
+	ADD	A,B	；拼装成单字节ＢＣＤ码小数
+	DA	A	；调整后若有进位，原小数接近整数１
+
+RET
+
+    （１９） 标号： ＨＢＤ２  功能：双字节十六进制小数转换成双字节ＢＣＤ码小数
+
+入口条件：待转换的双字节十六进制小数在R2、R3中。
+出口信息：转换后的双字节ＢＣＤ码小数仍在R2、R3中。
+影响资源：PSW、A、B、R2、R3、R4、R5    堆栈需求：  ６字节
+
+HBD2:	MOV	R4,#4	；四位十进制码
+HBD3:	MOV	A,R3	；原小数扩大十倍
+	MOV	B,#10
+	MUL	AB
+	MOV	R3,A
+	MOV	R5,B
+	MOV	A,R2
+	MOV	B,#10
+	MUL	AB
+	ADD	A,R5
+	MOV	R2,A
+	CLR	A
+	ADDC	A,B
+	PUSH	ACC	；保存溢出的一位十进制码
+
+DJNZ	R4,HBD3	；计算完四位十进制码
+	POP	ACC	；取出万分位
+	MOV	R3,A
+	POP	ACC	；取出千分位
+	SWAP	A
+	ORL	A,R3	；拼装成低字节ＢＣＤ码小数
+	MOV	R3,A
+	POP	ACC	；取出百分位
+	MOV	R2,A
+	POP	ACC	；取出十分位
+	SWAP	A
+	ORL	A,R2	；拼装成高字节ＢＣＤ码小数
+	MOV	R2,A	
+	RET
+
+    （２０）标号：ＢＣＤＨ    功能：单字节ＢＣＤ码整数转换成单字节十六进制整数
+
+入口条件：待转换的单字节ＢＣＤ码整数在累加器A中。
+出口信息：转换后的单字节十六进制整数仍在累加器A中。
+
+影响资源：PSW、A、B、R4    堆栈需求：  ２字节
+
+BCDH:	MOV	B,#10H	；分离十位和个位
+	DIV	AB
+	MOV	R4,B	；暂存个位
+	MOV	B,#10	；将十位转换成十六进制
+	MUL	AB
+	ADD	A,R4	；按十六进制加上个位
+	RET
+
+    （２１）标号：  ＢＨ２   功能：双字节ＢＣＤ码整数转换成双字节十六进制整数
+
+入口条件：待转换的双字节ＢＣＤ码整数在R2、R3中。
+出口信息：转换后的双字节十六进制整数仍在R2、R3中。
+影响资源：PSW、A、B、R2、R3、R4    堆栈需求：  ４字节
+
+BH2:	MOV	A,R3	；将低字节转换成十六进制
+
+LCALL	BCDH
+	MOV	R3,A
+	MOV	A,R2	；将高字节转换成十六进制
+	LCALL	BCDH
+	MOV	B,#100	；扩大一百倍
+	MUL	AB
+	ADD	A,R3	；和低字节按十六进制相加
+	MOV	R3,A
+	CLR	A
+	ADDC	A,B
+	MOV	R2,A
+	RET
+
+    （２２）标号：  ＢＨＤ   功能：单字节ＢＣＤ码小数转换成单字节十六进制小数
+
+入口条件：待转换的单字节ＢＣＤ码数在累加器A中。
+出口信息：转换后的单字节十六进制小数仍在累加器A中。
+影响资源：PSW、A、R2、R3    堆栈需求：  ２字节
+
+BHD:	MOV	R2,#8	；准备计算一个字节小数
+
+BHD0:	ADD	A,ACC	；按十进制倍增
+	DA	A
+	XCH	A,R3
+	RLC	A	；将进位标志移入结果中
+	XCH	A,R3
+	DJNZ	R2,BHD0	；共计算８ｂｉｔ小数
+	ADD	A,#0B0H	；剩余部分达到０．５０否？
+	JNC	BHD1	；四舍
+	INC	R3	；五入
+BHD1:	MOV	A,R3	；取结果
+	RET
+
+    （２３）标号： ＢＨＤ２  功能：双字节ＢＣＤ码小数转换成双字节十六进制小数
+
+入口条件：待转换的双字节ＢＣＤ码小数在R4、R5中。
+出口信息：转换后的双字节十六进制小数在R2、R3中。*
+影响资源：PSW、A、R2～R6    堆栈需求：  ２字节
+
+BHD2:	MOV	R6,#10H	；准备计算两个字节小数
+BHD3:	MOV	A,R5	；按十进制倍增
+	ADD	A,R5
+	DA	A
+	MOV	R5,A
+	MOV	A,R4
+	ADDC	A,R4
+	DA	A
+	MOV	R4,A
+	MOV	A,R3	；将进位标志移入结果中
+	RLC	A
+	MOV	R3,A
+	MOV	A,R2
+	RLC	A
+	MOV	R2,A
+	DJNZ	R6,BHD3	；共计算１６ｂｉｔ小数
+	MOV	A,R4
+	ADD	A,#0B0H	；剩余部分达到０．５０否？
+	JNC	BHD4	；四舍
+	INC	R3	；五入
+	MOV	A,R3
+	JNZ	BHD4
+	INC	R2
+BHD4:	RET
+
+    （２４）  标号：  ＭＭ    功能：求单字节十六进制无符号数据块的极值
+
+入口条件：数据块的首址在DPTR中，数据个数在R7中。
+出口信息：最大值在R6中，地址在R2R3中；最小值在R7中，地址在R4R5中。
+影响资源：PSW、A、B、R1～R7      堆栈需求：  ４字节
+
+MM:	MOV	B,R7	；保存数据个数
+	MOVX	A,@DPTR	；读取第一个数据
+	MOV	R6,A	；作为最大值的初始值
+	MOV	R7,A	；也作为最小值的初始值
+	MOV	A,DPL	；取第一个数据的地址
+	MOV	R3,A	；作为最大值存放地址的初始值
+	MOV	R5,A	；也作为最小值存放地址的初始值
+	MOV	A,DPH
+	MOV	R2,A
+	MOV	R4,A
+
+MOV	A,B	；取数据个数
+	DEC	A	；减一，得到需要比较的次数
+	JZ	MME	；只有一个数据，不需要比较
+	MOV	R1,A	；保存比较次数
+	PUSH	DPL	；保护数据块的首址
+	PUSH	DPH
+MM1:	INC	DPTR	；指向一个新的数据
+	MOVX	A,@DPTR	；读取这个数据
+	MOV	B,A	；保存
+	SETB	C	；与最大值比较
+	SUBB	A,R6
+	JC	MM2	；不超过当前最大值，保持当前最大值
+	MOV	R6,B	；超过当前最大值，更新最大值存放地址
+	MOV	R2,DPH	；同时更新最大值存放地址
+	MOV	R3,DPL
+	SJMP	MM3
+MM2:	MOV	A,B	；与最小值比较
+
+CLR	C
+	SUBB	A,R7
+	JNC	MM3	；大于或等于当前最小值，保持当前最小值
+	MOV	R7,B	；更新最小值
+	MOV	R4,DPH	；更新最小值存放地址
+	MOV	R5,DPL
+MM3:	DJNZ	R1,MM1	；处理完全部数据
+	POP	DPH	；恢复数据首址
+	POP	DPL
+MME:	RET
+
+    （２５）  标号：  ＭＭＳ    功能：求单字节十六进制有符号数据块的极值
+
+入口条件：数据块的首址在DPTR中，数据个数在R7中。
+出口信息：最大值在R6中， 地址在R2R3中；最小值在R7中，地址在R4R5中。
+影响资源：PSW、A、B、R1～R7    堆栈需求：  ４字节
+
+MMS:	MOV	B,R7	；保存数据个数
+	MOVX	A,@DPTR	；读取第一个数据
+	MOV	R6,A	；作为最大值的初始值
+	MOV	R7,A	；也作为最小值的初始值
+	MOV	A,DPL	；取第一个数据的地址
+	MOV	R3,A	；作为最大值存放地址的初始值
+	MOV	R5,A	；也作为最小值存放地址的初始值
+	MOV	A,DPH
+	MOV	R2,A
+	MOV	R4,A
+	MOV	A,B	；取数据个数
+	DEC	A	；减一，得到需要比较的次数
+	JZ	MMSE	；只有一个数据，不需要比较
+	MOV	R1,A	；保存比较次数
+	PUSH	DPL	；保护数据块的首址
+	PUSH	DPH
+
+MMS1:	INC	DPTR	；调整数据指针
+	MOVX	A,@DPTR	；读取一个数据
+	MOV	B,A	；保存
+	SETB	C	；与最大值比较
+	SUBB	A,R6
+	JZ	MMS4	；相同，不更新最大值
+	JNB	OV,MMS2	；差未溢出，符号位有效
+	CPL	ACC.7	；差溢出，符号位取反
+MMS2:	JB	ACC.7,MMS4；差为负，不更新最大值
+	MOV	R6,B	；更新最大值
+	MOV	R2,DPH	；更新最大值存放地址
+	MOV	R3,DPL
+	SJMP	MMS7
+MMS4:	MOV	A,B	；与最小值比较
+	CLR	C
+	SUBB	A,R7
+	JNB	OV,MMS6	；差未溢出，符号位有效
+	CPL	ACC.7	；差溢出，符号位取反
+
+MMS6:	JNB	ACC.7,MMS7；差为正，不更新最小值
+	MOV	R7,B	；更新最小值
+	MOV	R4,DPH	；更新最小值存放地址
+	MOV	R5,DPL
+MMS7:	DJNZ	R1,MMS1	；处理完全部数据
+	POP	DPH	；恢复数据首址
+	POP	DPL
+MMSE:	RET 	
+ 	
+    （２６）  标号：  ＦＤＳ１    功能：顺序查找（ＲＯＭ）单字节表格
+
+入口条件：待查找的内容在A中，表格首址在DPTR中，表格的字节数在R7中。
+出口信息：OV=0时，顺序号在累加器A中；OV=1时，未找到。
+影响资源：PSW、A、B、R2、R6      堆栈需求：  ２字节
+
+FDS1:	MOV	B,A	；保存待查找的内容
+
+MOV	R2,#0	；顺序号初始化（指向表首）
+	MOV	A,R7	；保存表格的长度
+	MOV	R6,A
+FD11:	MOV	A,R2	；按顺序号读取表格内容
+	MOVC	A,@A+DPTR
+	CJNE	A,B,FD12；与待查找的内容比较
+	CLR	OV	；相同，查找成功
+	MOV	A,R2	；取对应的顺序号
+	RET	
+FD12:	INC	R2	；指向表格中的下一个内容
+	DJNZ	R6,FD11	；查完全部表格内容
+	SETB	OV	；未查找到，失败
+	RET
+
+    （２７）  标号：  ＦＤＳ２    功能：顺序查找（ＲＯＭ）双字节表格
+
+入口条件：查找内容在R4、R5中，表格首址在DPTR中，数据总个数在R7中。
+
+出口信息：OV=0时顺序号在累加器A中，地址在DPTR中；OV=1时未找到。
+影响资源：PSW、A、R2、R6、DPTR    堆栈需求：  ２字节
+
+FDS2:	MOV	A,R7	；保存表格中数据的个数
+	MOV	R6,A
+	MOV	R2,#0	；顺序号初始化（指向表首）
+FD21:	CLR	A	；读取表格内容的高字节
+	MOVC	A,@A+DPTR
+	XRL	A,R4	；与待查找内容的高字节比较
+	JNZ	FD22
+	MOV	A,#1	；读取表格内容的低字节
+	MOVC	A,@A+DPTR
+	XRL	A,R5	；与待查找内容的低字节比较
+	JNZ	FD22
+	CLR	OV	；相同，查找成功
+	MOV	A,R2	；取对应的顺序号
+
+RET 	
+FD22:	INC	DPTR	；指向下一个数据
+	INC	DPTR
+	INC	R2	；顺序号加一
+	DJNZ	R6,FD21	；查完全部数据
+	SETB	OV	；未查找到，失败
+	RET
+
+    （２８）  标号：ＦＤＤ１  功能：对分查找（ＲＯＭ）单字节无符号增序数据表格
+
+入口条件：待查找的内容在累加器A中，表格首址在DPTR中，字节数在R7中。
+出口信息：OV=0 时，顺序号在累加器A中；OV=1 时，未找到。
+影响资源：PSW、A、B、R2、R3、R4      堆栈需求：  ２字节
+
+FDD1:	MOV	B,A	；保存待查找的内容
+	MOV	R2,#0	；区间低端指针初始化（指向第一个数据）
+
+MOV	A,R7
+	DEC	A
+	MOV	R3,A	；区间高端指针初始化（指向最后一个数据）
+FD61:	CLR	C	；判断区间大小
+	MOV	A,R3
+	SUBB	A,R2
+	JC	FD69	；区间消失，查找失败
+	RRC	A	；取区间大小的一半
+	ADD	A,R2	；加上区间的低端
+	MOV	R4,A	；得到区间的中心
+	MOVC	A,@A+DPTR；读取该点的内容
+	CJNE	A,B,FD65；与待查找的内容比较
+	CLR	OV	；相同，查找成功
+	MOV	A,R4	；取顺序号
+	RET 	
+FD65:	JC	FD68	；该点的内容比待查找的内容大否？
+	MOV	A,R4	；偏大，取该点位置
+
+DEC	A	；减一
+	MOV	R3,A	；作为新的区间高端
+	SJMP	FD61	；继续查找
+FD68:	MOV	A,R4	；偏小，取该点位置
+	INC	A	；加一
+	MOV	R2,A	；作为新的区间低端
+	SJMP	FD61	；继续查找
+FD69:	SETB	OV	；查找失败
+	RET
+ 	
+    （２９）  标号：ＦＤＤ２  功能：对分查找（ＲＯＭ）双字节无符号增序数据表格
+
+入口条件：查找内容在R4、R5中，表格首址在DPTR中，数据个数在R7中。
+出口信息：OV=0 时顺序号在累加器A中，址在DPTR中；OV=1 时未找到。
+影响资源：PSW、A、B、R1～R7、DPTR    堆栈需求：  ２字节
+
+FDD2:	MOV	R2,#0	；区间低端指针初始化（指向第一个数据）
+	MOV	A,R7
+	DEC	A
+	MOV	R3,A	；区间高端指针初始化，指向最后一个数据
+	MOV	R6,DPH	；保存表格首址
+	MOV	R7,DPL
+FD81:	CLR	C	；判断区间大小
+	MOV	A,R3
+	SUBB	A,R2
+	JC	FD89	；区间消失，查找失败
+	RRC	A	；取区间大小的一半
+	ADD	A,R2	；加上区间的低端
+	MOV	R1,A	；得到区间的中心
+	MOV	DPH,R6
+	CLR	C	；计算区间中心的地址
+	RLC	A
+	JNC	FD82
+	INC	DPH
+FD82:	ADD	A,R7
+	MOV	DPL,A
+
+JNC	FD83
+	INC	DPH
+FD83:	CLR	A	；读取该点的内容的高字节
+	MOVC	A,@A+DPTR
+	MOV	B,R4	；与待查找内容的高字节比较
+	CJNE	A,B,FD84；不相同
+	MOV	A,#1	；读取该点的内容的低字节
+	MOVC	A,@A+DPTR
+	MOV	B,R5
+	CJNE	A,B,FD84；与待查找内容的低字节比较
+	MOV	A,R1	；取顺序号
+	CLR	OV	；查找成功
+	RET
+FD84:	JC	FD86	；该点的内容比待查找的内容大否？
+	MOV	A,R1	；偏大，取该点位置
+	DEC	A	；减一
+	MOV	R3,A	；作为新的区间高端
+	SJMP	FD81	；继续查找
+
+FD86:	MOV	A,R1	；偏小，取该点位置
+	INC	A	；加一
+	MOV	R2,A	；作为新的区间低端
+	SJMP	FD81	；继续查找
+FD89:	MOV	DPH,R6	；相同，恢复首址
+	MOV	DPL,R7
+	SETB	OV	；查找失败
+	RET
+
+
+    （３０）  标号：  ＤＤＭ１    功能：求单字节十六进制无符号数据块的平均值
+
+入口条件：数据块的首址在DPTR中，数据个数在R7中。
+出口信息：平均值在累加器A中。
+影响资源：PSW、A、R2～R6  堆栈需求：  ４字节
+
+DDM1:	MOV	A,R7	；保存数据个数
+	MOV	R2,A
+	PUSH	DPH
+	PUSH	DPL
+
+CLR	A	；初始化累加和
+	MOV	R4,A
+	MOV	R5,A
+DM11:	MOVX	A,@DPTR	；读取一个数据
+	ADD	A,R5	；累加到累加和中
+	MOV	R5,A
+	JNC	DM12
+	INC	R4
+DM12:	INC	DPTR	；调整指针
+	DJNZ	R2,DM11	；累加完全部数据
+	LCALL	D457	；求平均值（R4R5／R7－→R3）
+	MOV	A,R3	；取平均值
+	POP	DPL
+	POP	DPH
+	RET
+
+    （３１）  标号：  ＤＤＭ２    功能：求双字节十六进制无符号数据块的平均值
+
+入口条件：数据块的首址在DPTR中，双字节数据总个数在R7中。
+出口信息：平均值在R4、R5中。
+
+影响资源：PSW、A、R2～R6      堆栈需求：  ４字节
+
+DDM2:	MOV	A,R7	；保存数据个数
+	MOV	R2,A	；初始化数据指针
+	PUSH	DPL	；保持首址
+	PUSH	DPH
+	CLR	A	；初始化累加和
+	MOV	R3,A
+	MOV	R4,A
+	MOV	R5,A
+DM20:	MOVX	A,@DPTR	；读取一个数据的高字节
+	MOV	B,A
+	INC	DPTR
+	MOVX	A,@DPTR	；读取一个数据的低字节
+	INC	DPTR
+	ADD	A,R5	；累加到累加和中
+	MOV	R5,A
+	MOV	A,B
+	ADDC	A,R4
+	MOV	R4,A
+	JNC	DM21
+	INC	R3
+DM21:	DJNZ	R2,DM20	；累加完全部数据
+
+POP	DPH	；恢复首址
+	POP	DPL
+	LJMP	DV31	；求R3R4R5／R7－→R4R5，得到平均值
+
+    （３２）  标号：  ＸＲ１    功能：求单字节数据块的（异或）校验和
+
+入口条件：数据块的首址在DPTR中，数据的个数在R6、R7中。
+出口信息：校验和在累加器A中。
+影响资源：PSW、A、B、R4～R7  堆栈需求：  ２字节
+
+XR1:	MOV	R4,DPH	；保存数据块的首址
+	MOV	R5,DPL
+	MOV	A,R7	；双字节计数器调整
+	JZ	XR10
+	INC	R6
+XR10:	MOV	B,#0	；校验和初始化
+XR11:	MOVX	A,@DPTR	；读取一个数据
+
+XRL	B,A	；异或运算
+	INC	DPTR	；指向下一个数据
+	DJNZ	R7,XR11	；双字节计数器减一
+	DJNZ	R6,XR11
+	MOV	DPH,R4	；恢复数据首址
+	MOV	DPL,R5
+	MOV	A,B	；取校验和
+	RET
+
+    （３３）  标号：  ＸＲ２    功能：求双字节数据块的（异或）校验和
+
+入口条件：数据块的首址在DPTR中，双字节数据总个数在R6、R7中。
+出口信息：校验和在R2、R3中。
+影响资源：PSW、A、R2～R7      堆栈需求：  ２字节
+
+XR2:	MOV	R4,DPH	；保存数据块的首址
+	MOV	R5,DPL
+	MOV	A,R7	；双字节计数器调整
+
+JZ	XR20
+	INC	R6
+XR20:	CLR	A	；校验和初始化
+	MOV	R2,A
+	MOV	R3,A
+XR21:	MOVX	A,@DPTR	；读取一个数据的高字节
+	XRL	A,R2	；异或运算
+	MOV	R2,A
+	INC	DPTR
+	MOVX	A,@DPTR	；读取一个数据的低字节
+	XRL	A,R3	；异或运算
+	MOV	R3,A
+	INC	DPTR	；指向下一个数据
+	DJNZ	R7,XR21	；双字节计数器减一
+	DJNZ	R6,XR21
+	MOV	DPH,R4	；恢复数据首址
+	MOV	DPL,R5
+	RET
+
+    （３４）  标号：  ＳＯＲＴ    功能：单字节无符号数据块排序（增序）
+
+入口条件：数据块的首址在R0中，字节数在R7中。
+
+出口信息：完成排序（增序）
+影响资源：PSW、A、R2～R6      堆栈需求：  ２字节
+
+SORT:	MOV	A,R7
+	MOV	R5,A	；比较次数初始化
+SRT1:	CLR	F0	；交换标志初始化
+	MOV	A,R5	；取上遍比较次数
+	DEC	A	；本遍比上遍减少一次
+	MOV	R5,A	；保存本遍次数
+	MOV	R2,A	；复制到计数器中
+	JZ	SRT5	；若为零，排序结束
+	MOV	A,R0	；保存数据指针
+	MOV	R6,A
+SRT2:	MOV	A,@R0	；读取一个数据
+	MOV	R3,A
+	INC	R0	；指向下一个数据
+	MOV	A,@R0	；再读取一个数据
+	MOV	R4,A
+
+CLR	C
+	SUBB	A,R3	；比较两个数据的大小
+	JNC	SRT4	；顺序正确（增序或相同），不必交换
+	SETB	F0	；设立交换标志
+	MOV	A,R3	；将两个数据交换位置
+	MOV	@R0,A
+	DEC	R0
+	MOV	A,R4
+	MOV	@R0,A
+	INC	R0	；指向下一个数据
+SRT4:	DJNZ	R2,SRT2	；完成本遍的比较次数
+	MOV	A,R6	；恢复数据首址
+	MOV	R0,A
+	JB	F0,SRT1	；本遍若进行过交换，则需继续排序
+SRT5:	RET		；排序结束
+	END

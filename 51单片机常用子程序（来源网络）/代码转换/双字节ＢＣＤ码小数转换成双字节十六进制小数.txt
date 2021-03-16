@@ -1,0 +1,30 @@
+ 标号： ＢＨＤ２功能：双字节ＢＣＤ码小数转换成双字节十六进制小数
+
+入口条件：待转换的双字节ＢＣＤ码小数在R4、R5中。
+出口信息：转换后的双字节十六进制小数在R2、R3中。*
+影响资源：PSW、A、R2～R6 堆栈需求： ２字节
+
+ BHD2: MOV R6,#10H ；准备计算两个字节小数
+ BHD3: MOV A,R5 ；按十进制倍增
+	ADD A,R5
+	DA A
+	MOV R5,A
+	MOV A,R4
+	ADDC A,R4
+	DA A
+	MOV R4,A
+	MOV A,R3 ；将进位标志移入结果中
+	RLC A
+	MOV R3,A
+	MOV A,R2
+	RLC A
+	MOV R2,A
+	DJNZ R6,BHD3 ；共计算１６ｂｉｔ小数
+	MOV A,R4
+	ADD A,#0B0H ；剩余部分达到０．５０否？
+	JNC BHD4 ；四舍
+	INC R3 ；五入
+	MOV A,R3
+	JNZ BHD4
+	INC R2
+ BHD4: RET

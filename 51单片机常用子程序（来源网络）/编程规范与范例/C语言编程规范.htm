@@ -1,0 +1,541 @@
+
+
+
+<html>
+
+<head>
+<title>CETINet 中国电子技术信息网---VCBC/CC++---C语言编程规范</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<link rel="stylesheet" href="style.css" type="text/css">
+<style type="text/css">body         { scrollbar-face-color: 5B9595; scrollbar-shadow-color: ffffff; 
+               scrollbar-highlight-color: ffffff; scrollbar-3dlight-color: 
+               ffffff; scrollbar-darkshadow-color: ffffff; 
+               scrollbar-track-color: ffffff; scrollbar-arrow-color: ffffff }
+</style>
+</head>
+
+<body bgcolor="#F3F3F3" text="#000000">
+
+<div align="center">
+  <table width="750" border="0" height="60" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="150">
+        <div align="center">
+          <img border="0" src="images/myad.gif">
+         </div>
+      </td>
+      <td width="450">
+        <div align="center">
+         <a href="images/ad1.asp" target="_blank"><img border="0" src="images/ad1.gif"></a>
+        </div>
+      </td>
+      <td width="150">
+        <div align="center">
+        <a href="images/adsmall.asp" target="_blank"><img border="0" src="images/adsmall.gif"></a>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table width="750" border="0" cellspacing="0" cellpadding="0" height="20">
+    <tr>
+      <td width="57" bgcolor="#5B9595" align="center"><font color="#FFFFFF">其他栏目</font></td>
+      <td width="57" bgcolor="#D7E3E3" align="center"><a href="../bbs/index.asp" target="_blank">技术论坛</a></td>
+      <td width="57" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=1" target="_blank">微控制器</a></td>
+      <td width="57" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=2" target="_blank">IC设计</a></td>
+      <td bgcolor="#D7E3E3" align="center" width="58"><a href="../t_article/index.asp?topid=3" target="_blank">EDA技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=4" target="_blank">电路基础</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=5" target="_blank">电源技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=6" target="_blank">通信技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=7" target="_blank">测试测量</a></td>
+      <td bgcolor="#D7E3E3" align="center" width="58"><a href="../t_article/index.asp?topid=8" target="_blank">综合技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=9" target="_blank">编程学堂</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=10" target="_blank">版主专栏</a></td>
+      <td bgcolor="#D7E3E3" width="58" align="center"><a href="../download/Default.asp" target="_blank">下载中心</a></td>
+    </tr>
+  </table>
+  <br>
+</div>
+
+</body>
+
+<body bgcolor="#F3F3F3" text="#000000">
+
+<div align="center">
+  <table width="750" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>您目前的位置：<a href=index.asp?topid=9>编程学堂</a> - <a href=step.asp?topid=9&topname=编程学堂&typeid=114&typename=VCBC/CC++>VCBC/CC++</a> - C语言编程规范</td>       
+    </tr>
+  </table>
+  <table width="750" border="0" cellspacing="0" cellpadding="0" height="250">
+    <tr>
+      <td width="150" valign="top" bgcolor="#5B9595" height="240">
+        <table width="150" border="0" cellspacing="0">
+          <tr>
+            <td height="20"></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">文章类别：</font></td>
+          </tr>
+          <tr>
+            <td height="20">
+              <p align="center"><font color="#F3F3F3">VCBC/CC++</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">文章来源：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">本站整理</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">文章作者：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">本站整理</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">关 键 字：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">规范</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">今天阅读：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">13</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">总共阅读：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">4405</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">加入日期：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">2002-2-6 22:03:12</font></td>
+          </tr>
+        </table>
+        <table width="150" border="0" cellspacing="0">
+          <tr>
+            <td height="20">
+                <font color="#FFFFFF">相关文章：</font>
+            </td>
+          </tr>
+          <tr>
+            <td height="20">
+              <div align="center">
+                <a href=list.asp?indexid=1811><font color='#FFFFFF'>编程规范与范例(6)</font></a><br><a href=list.asp?indexid=1810><font color='#FFFFFF'>编程规范与范例(5)</font></a><br><a href=list.asp?indexid=1809><font color='#FFFFFF'>编程规范与范例(4)</font></a><br><a href=list.asp?indexid=1808><font color='#FFFFFF'>编程规范与范例(3)</font></a><br><a href=list.asp?indexid=1807><font color='#FFFFFF'>编程规范与范例(2)</font></a><br><a href=list.asp?indexid=1800><font color='#FFFFFF'>编程规范与范例(1)</font></a><br><a href=list.asp?indexid=1479><font color='#FFFFFF'>NUXAS代码风格规范</font></a><br><a href=list.asp?indexid=706><font color='#FFFFFF'>电路板最新国际规范导读</font></a><br><a href=list.asp?indexid=633><font color='#FFFFFF'>改进电路设计规程提高可测试性</font></a><br><a href=list.asp?indexid=632><font color='#FFFFFF'>PCB全面质量管理</font></a><br>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table width="150" border="0" cellspacing="0">
+          <tr>
+            <td height="20"></td>
+          </tr>
+          <tr>
+            <td height="20">
+              <p align="center"><font color="#FFFFFF">==关于文章版权==</font></td>
+          </tr>
+		  <tr>
+            <td height="20"><font color="#FFFFFF"><br>
+              “本站”本站站主原创文章，未经本人（帝国老手/aoe）许可其他媒体一律不得转载。<br><br>
+              “本站整理”本站站主根据个人见解及他人经验总结整理的文章，其他媒体转载必须标明出处为我站。<br><br>
+              “某单位或个人”全文转载来自网络上的文章，其他媒体转载与我站无关。<br><br>
+              “未知”（1）来自网络，由于来源混乱，无从考证作者，其他媒体转载与我站无关。<br><br>
+              “未知”（2）其文章也是本站站主原创的，只所以标注“未知”，主要是因为引用文字过多或其他原因。建议其他媒体转载标明出处为我站。<br><br>
+              我站版权请标注：“www.cetinet.com”或“中国电子技术信息网”字样。</font></td>
+          </tr>
+          <tr>
+            <td height="20"></td>
+          </tr>
+		</table>
+      </td>
+      <td width="600" valign="top" height="240">
+        <table width="600" border="0" cellspacing="0" cellpadding="0" height="20">
+          <tr>
+            <td bgcolor="#5B9595">&nbsp;</td>
+          </tr>
+        </table>
+        <table width="600" border="0" cellspacing="3" cellpadding="0">
+          <tr>
+            <td height="20" bgcolor="#AECECE">
+              <div align="center">
+                <font color="#0A52D8"><b>C语言编程规范</b></font>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td width="600">〖文章转载或出处〗≡中国电子技术信息网≡ 网址：www.CETINet.com</td>  
+          </tr>
+          <tr>
+            <td width="600">C语言编程规范(仅供参考)<br>
+<br>
+1.&nbsp;基本要求<br>
+1.1&nbsp;程序结构清析，简单易懂，单个函数的程序行数不得超过100行。<br>
+1.2&nbsp;打算干什么，要简单，直接了当，代码精简，避免垃圾程序。<br>
+1.3&nbsp;尽量使用标准库函数和公共函数。<br>
+1.4&nbsp;不要随意定义全局变量，尽量使用局部变量。<br>
+1.5&nbsp;使用括号以避免二义性。<br>
+<br>
+2.可读性要求<br>
+2.1&nbsp;可读性第一，效率第二。<br>
+2.2&nbsp;保持注释与代码完全一致。<br>
+2.3&nbsp;每个源程序文件，都有文件头说明，说明规格见规范。<br>
+2.4&nbsp;每个函数，都有函数头说明，说明规格见规范。<br>
+2.5&nbsp;主要变量（结构、联合、类或对象）定义或引用时，注释能反映其含义。<br>
+2.7&nbsp;常量定义（DEFINE）有相应说明。<br>
+2.8&nbsp;处理过程的每个阶段都有相关注释说明。<br>
+2.9&nbsp;在典型算法前都有注释。<br>
+2.10&nbsp;利用缩进来显示程序的逻辑结构，缩进量一致并以Tab键为单位，定义Tab为&nbsp;6个<br>
+字节。<br>
+2.11&nbsp;循环、分支层次不要超过五层。<br>
+2.12&nbsp;注释可以与语句在同一行，也可以在上行。<br>
+2.13&nbsp;空行和空白字符也是一种特殊注释。<br>
+2.14&nbsp;一目了然的语句不加注释。<br>
+2.15&nbsp;注释的作用范围可以为：定义、引用、条件分支以及一段代码。<br>
+2.16&nbsp;注释行数（不包括程序头和函数头说明部份）应占总行数的&nbsp;1/5&nbsp;到&nbsp;1/3&nbsp;。<br>
+<br>
+3.&nbsp;结构化要求<br>
+3.1&nbsp;禁止出现两条等价的支路。<br>
+3.2&nbsp;禁止GOTO语句。<br>
+3.3&nbsp;用&nbsp;IF&nbsp;语句来强调只执行两组语句中的一组。禁止&nbsp;ELSE&nbsp;GOTO&nbsp;和&nbsp;ELSE&nbsp;RETURN。<br>
+3.4&nbsp;用&nbsp;CASE&nbsp;实现多路分支。<br>
+3.5&nbsp;避免从循环引出多个出口。<br>
+3.6&nbsp;函数只有一个出口。<br>
+3.7&nbsp;不使用条件赋值语句。<br>
+3.8&nbsp;避免不必要的分支。<br>
+3.9&nbsp;不要轻易用条件分支去替换逻辑表达式。<br>
+<br>
+4.&nbsp;正确性与容错性要求<br>
+4.1&nbsp;程序首先是正确，其次是优美<br>
+4.2&nbsp;无法证明你的程序没有错误，因此在编写完一段程序后，应先回头检查。<br>
+4.3&nbsp;改一个错误时可能产生新的错误，因此在修改前首先考虑对其它程序的影响。<br>
+4.4&nbsp;所有变量在调用前必须被初始化。<br>
+4.5&nbsp;对所有的用户输入，必须进行合法性检查。<br>
+4.6&nbsp;不要比较浮点数的相等，<br>
+如：&nbsp;10.0&nbsp;*&nbsp;0.1&nbsp;==&nbsp;1.0&nbsp;，&nbsp;不可靠<br>
+4.7&nbsp;程序与环境或状态发生关系时，必须主动去处理发生的意外事件，如文件能否<br>
+逻辑锁定、打印机是否联机等。<br>
+4.8&nbsp;单元测试也是编程的一部份，提交联调测试的程序必须通过单元测试。<br>
+<br>
+5.&nbsp;可重用性要求<br>
+5.1&nbsp;重复使用的完成相对独立功能的算法或代码应抽象为公共控件或类。<br>
+5.2&nbsp;公共控件或类应考虑OO思想，减少外界联系，考虑独立性或封装性。<br>
+5.3&nbsp;公共控件或类应建立使用模板。<br>
+　　　　　　　　　&nbsp;附：C＋＋&nbsp;编程规范,delphi作相应的参考<br>
+<br>
+1适用范围<br>
+本标准适用于利用Visul&nbsp;C++&nbsp;,Borland&nbsp;C++进行软件程序开发的人员.。<br>
+<br>
+.2变量命名<br>
+命名必须具有一定的实际意义,形式为xAbcFgh,x由变量类型确定,Abc、Fgh表示连续意<br>
+义字符串,如果连续意义字符串仅两个,可都大写.如OK.<br>
+具体例程:<br>
+BOOL类型　　　　　　　　&nbsp;bEnable;<br>
+<br>
+ch　　&nbsp;*　　　　　　&nbsp;char　　　　　　　　　　　　　&nbsp;chText<br>
+c　　&nbsp;*　　　　　　&nbsp;类对象　　　　　　　　　　　　&nbsp;cMain（对象实例）<br>
+h　　&nbsp;*　　　　　　&nbsp;Handle（句柄）　　　　　　　　&nbsp;hWnd<br>
+i　　&nbsp;*　　　　　　&nbsp;int<br>
+n　　&nbsp;*　　　　　　&nbsp;无符号整型<br>
+p　　&nbsp;*　　　　　　&nbsp;指针<br>
+sz,str&nbsp;*　　　　　　&nbsp;字符串<br>
+w　　　　　　　　　　&nbsp;WORD<br>
+x,y　　　　　　　　　&nbsp;坐标<br>
+Char或者TCHAR类型　　　&nbsp;与Windows&nbsp;API有直接联系的用szAppName[10]形式否则用<br>
+FileName[10]形式,单个字符也可用小写字母表示;<br>
+Int类型　　　　　　　　　&nbsp;nCmdShow;<br>
+LONG类型　　　　　　　　&nbsp;lParam;<br>
+UINT类型　　　　　　　　&nbsp;uNotify;<br>
+DWORD类型　　　　　　　&nbsp;dwStart;<br>
+PSTR类型　　　　　　　　&nbsp;pszTip;<br>
+LPSTR类型　　　　　　　&nbsp;lpCmdLine<br>
+LPTSTR类型　　　　　　　&nbsp;lpszClassName;<br>
+LPVOID类型　　　　　　　&nbsp;lpReserved<br>
+WPARAM类型　　　　　　&nbsp;wParam,<br>
+LPARAM类型　　　　　　　&nbsp;lParam<br>
+HWND类型　　　　　　　　&nbsp;hDlg;<br>
+HDC类型　　　　　　　　　&nbsp;hDC;<br>
+HINSTANCE类型　　　　　&nbsp;hInstance<br>
+HANDLE类型　　　　　　　&nbsp;hInstance,<br>
+HICON类型　　　　　　　　&nbsp;hIcon;<br>
+int　　　　　　　　　　　　&nbsp;iTmp<br>
+float　　　　　　　　　　　　&nbsp;fTmp<br>
+DWORD　　　　　　　　　&nbsp;dw*<br>
+String&nbsp;,&nbsp;AnsiString　　　　　　&nbsp;str&nbsp;*<br>
+m_　　　　　　　　　　&nbsp;类成员变量　　　　　　　　　　&nbsp;m_nVal,&nbsp;m_bFlag<br>
+g_　　　　　　　　　　&nbsp;全局变量　　　　　　　　　　　&nbsp;g_nMsg,&nbsp;g_bFlag<br>
+局部变量中可采用如下几个通用变量：nTemp，nResult，I，J（一般用于循环变量）。<br>
+其他资源句柄同上<br>
+.3常量命名和宏定义<br>
+常量和宏定义必须具有一定的实际意义;<br>
+常量和宏定义在#include和函数定义之间;<br>
+常量和宏定义必须全部以大写字母来撰写,中间可根据意义的连续性用下划线连接,每一<br>
+条定义的右侧必须有一简单的注释,说明其作用;<br>
+资源名字定义格式:<br>
+菜单:IDM_XX或者CM_XX<br>
+位图:IDB_XX<br>
+对话框:IDD_XX<br>
+字符串:IDS_XX<br>
+DLGINIT:DIALOG_XX<br>
+　ICON:IDR_XX<br>
+.4函数命名<br>
+函数原型说明包括引用外来函数及内部函数，外部引用必须在右侧注明函数来源：模<br>
+块名及文件名,&nbsp;如是内部函数，只要注释其定义文件名;<br>
+第一个字母必须使用大写字母,要求用大小写字母组合规范函数命名,必要时可用下划线<br>
+间隔,示例如下：<br>
+void　UpdateDB_Tfgd&nbsp;(TRACK_NAME);　&nbsp;file://Module　Name&nbsp;:r01/sdw.c<br>
+void　PrintTrackData&nbsp;(TRACK_NAME);&nbsp;file://Module&nbsp;Name&nbsp;:r04/tern.c<br>
+void　ImportantPoint&nbsp;(void);　　　　　&nbsp;file://Module　Name&nbsp;:r01/sdw.c<br>
+void　ShowChar&nbsp;(int&nbsp;,&nbsp;int&nbsp;,&nbsp;chtype);　&nbsp;file://Local&nbsp;Module<br>
+void　ScrollUp_V　(int&nbsp;,&nbsp;int);　　　　　&nbsp;file://Local&nbsp;Module<br>
+.5结构体命名<br>
+结构体类型命名必须全部用大写字母,原则上前面以下划线开始;结构体变量命名必须用<br>
+大小写字母组合，第一个字母必须使用大写字母,必要时可用下划线间隔。对于私有数<br>
+据区，必须注明其所属的进程。全局数据定义只需注意其用途。<br>
+　　　　　　　　　&nbsp;示例如下：<br>
+　　　　　　　　　&nbsp;typedef&nbsp;struct<br>
+　　　　　　　　　&nbsp;{<br>
+　　　　　　　　　　　　　&nbsp;char&nbsp;　　　　　　　&nbsp;szProductName[20];<br>
+　　　　　　　　　　　　　&nbsp;char&nbsp;　　　　　　　&nbsp;szAuthor[20];<br>
+<br>
+　　　　　　　　　　　　　&nbsp;char&nbsp;　　　　　　　&nbsp;szReleaseDate[16];<br>
+　　　　　　　　　　　　　&nbsp;char&nbsp;　　　　　　　&nbsp;szVersion[10];<br>
+　　　　　　　　　　　　　&nbsp;unsigned&nbsp;long　　　&nbsp;MaxTables;<br>
+　　　　　　　　　　　　　&nbsp;unsigned&nbsp;long　　　&nbsp;UsedTables;<br>
+}DBS_DATABASE;<br>
+DBS_DATABASE&nbsp;GdataBase;<br>
+<br>
+6&nbsp;控件的命名：<br>
+用小写前缀表示类别<br>
+用小写前缀表示类别：<br>
+fm　　　　　　&nbsp;窗口<br>
+cmd　　　　　&nbsp;按钮<br>
+cob　　　　　&nbsp;combo，下拉式列表框<br>
+txt　　　　　&nbsp;文本输入框<br>
+lab　　　　　&nbsp;labal，标签<br>
+img　　　　　&nbsp;image，图象<br>
+pic　　　　　&nbsp;picture<br>
+grd　　　　　&nbsp;Grid，网格<br>
+scr　　　　　&nbsp;滚动条<br>
+lst　　　　　&nbsp;列表框<br>
+frm　　　　　&nbsp;fram<br>
+<br>
+7注释<br>
+原则上注释要求使用中文;<br>
+文件开始注释内容包括:公司名称、版权、作者名称、时间、模块用途、背景介绍等,复<br>
+杂的算法需要加上流程说明;<br>
+函数注释包括:输入、输出、函数描述、流程处理、全局变量、调用样例等,复杂的函数<br>
+需要加上变量用途说明;<br>
+程序中注释包括:修改时间和作者、方便理解的注释等;<br>
+<br>
+<br>
+　　引用一:&nbsp;文件开头的注释模板<br>
+/******************************************************************<br>
+**&nbsp;文件名:<br>
+**&nbsp;Copyright&nbsp;(c)&nbsp;1998-1999&nbsp;*********公司技术开发部<br>
+**&nbsp;创建人:<br>
+**&nbsp;日　期:<br>
+**&nbsp;修改人:<br>
+**&nbsp;日　期:<br>
+**&nbsp;描　述:<br>
+**<br>
+**&nbsp;版　本:<br>
+**--------------------------------------------------------------------------<br>
+---<br>
+<br>
+<br>
+******************************************************************/<br>
+<br>
+　　引用二:&nbsp;函数开头的注释模板<br>
+/*****************************************************************<br>
+**&nbsp;函数名:<br>
+**&nbsp;输　入:&nbsp;a,b,c<br>
+**　　&nbsp;a---<br>
+**　　&nbsp;b---<br>
+**　　&nbsp;c---<br>
+**&nbsp;输　出:&nbsp;x---<br>
+**　　　x&nbsp;为&nbsp;1,&nbsp;表示...<br>
+**　　　x&nbsp;为&nbsp;0,&nbsp;表示...<br>
+**&nbsp;功能描述:<br>
+**&nbsp;全局变量:<br>
+**&nbsp;调用模块:<br>
+**&nbsp;作　者:<br>
+**&nbsp;日　期:<br>
+**&nbsp;修　改:<br>
+**&nbsp;日　期:<br>
+**&nbsp;版本<br>
+****************************************************************/<br>
+　　引用三:&nbsp;程序中的注释模板<br>
+/*----------------------------------------------------------*/<br>
+/*&nbsp;注释内容　　　　　　　　　　　&nbsp;*/<br>
+/*----------------------------------------------------------*/<br>
+8&nbsp;程序<br>
+a.　　&nbsp;程序编码力求简洁，结构清晰，避免太多的分支结构及太过于技巧性的程序，<br>
+尽量不采用递归模式。<br>
+b.　&nbsp;编写程序时，亦必须想好测试的方法，换句话说，”单元测试”&nbsp;的测试方案应<br>
+在程序编写时一并拟好。<br>
+c.　&nbsp;注释一定要与程序一致。<br>
+d.　&nbsp;版本封存以后的修改一定要将老语句用/*&nbsp;*/&nbsp;封闭，不能自行删除或修改,并要<br>
+在文件及函数的修改记录中加以记录。<br>
+e.　　&nbsp;程序中每个block&nbsp;的开头&nbsp;”{&quot;&nbsp;及&nbsp;&quot;}”&nbsp;必须对齐，嵌套的block&nbsp;每进一套，<br>
+缩进一个tab，TAB&nbsp;为4个空格,block类型包括if、for、while、do等关键字引出的。<br>
+f.　对于比较大的函数，每个block&nbsp;和特殊的函数调用，都必须注明其功能，举例如下<br>
+：<br>
+count.divisor&nbsp;=&nbsp;1193280&nbsp;/&nbsp;freq;　　　　　　　&nbsp;//　compute&nbsp;the&nbsp;proper&nbsp;count<br>
+OutByte((unsigned&nbsp;short)67,&nbsp;(unsigned&nbsp;char)182);　//　tell&nbsp;8253&nbsp;that&nbsp;a<br>
+count&nbsp;is&nbsp;coming<br>
+OutByte((unsigned&nbsp;short)66,&nbsp;count.&nbsp;c[0]);　　　//　send&nbsp;low-order&nbsp;byte<br>
+OutByte((unsigned&nbsp;short)66,&nbsp;count.&nbsp;c[1]);　　　//　send&nbsp;high-order&nbsp;byte<br>
+<br>
+&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215;<br>
+bcb，delphi中的变量命名：<br>
+　遵循匈牙利命名法，命<br>
+名必须有意义，制定如下规定<br>
+　窗体：以大写的W开始，如About版权窗体，&nbsp;命名为WAbout<br>
+文件：以大写的F开始，如About版权窗体，文件命名为FAbout.cpp<br>
+按钮(Button)：如退出按钮，命名为btnExit<br>
+　……<br>
+　基类：加base标记，如报表基类,窗体命名为：WBaseRep,&nbsp;文件命名为FBaseRep.cpp<br>
+<br>
+转贴<br>
+&gt;&nbsp;1.&nbsp;在.h/.cpp的开头应有一段格式统一的说明，内容包括：<br>
+&gt;&nbsp;a.&nbsp;文件名&nbsp;(FileName)；<br>
+&gt;&nbsp;b.&nbsp;创建人&nbsp;(Creater)；<br>
+&gt;&nbsp;c.&nbsp;文件创建时间&nbsp;(Date)；<br>
+&gt;&nbsp;d.&nbsp;简短说明文件功能、用途&nbsp;(Comment)。<br>
+好习惯<br>
+&gt;&nbsp;2.&nbsp;除非极其简单，否则对函数应有注释说明。内容包括：功能、入口/出口参数，必<br>
+要<br>
+&gt;&nbsp;时还可有备注或补充说明。<br>
+还是好习惯<br>
+&gt;&nbsp;3.&nbsp;每列代码的长度推荐为&nbsp;80列，最长不得超过120列；折行以对齐为准。<br>
+太宽了，我的限制是60列，因为文本方式下屏幕一共80列，如果你用BC这一类的编辑<br>
+器，窗口边框等又要占据一定空间，所以80列太宽<br>
+&gt;&nbsp;4.&nbsp;循环、分支代码，判断条件与执行代码不得在同一行上。<br>
+很对<br>
+&gt;&nbsp;5.&nbsp;指针的定义，*&nbsp;号既可以紧接类型，也可以在变量名之前。<br>
+&gt;<br>
+&gt;&nbsp;例：可写做：int*　pnsize;<br>
+&gt;<br>
+&gt;&nbsp;也可写做：int　*pnsize;<br>
+&gt;<br>
+&gt;&nbsp;但不得写做：int　*　pnsize;<br>
+建议采用第二种，除非附加另外一条规定：一次只声明一个变量，否则就会让人混淆，<br>
+比如：<br>
+int*&nbsp;a,&nbsp;b;<br>
+看起来b好像也是个指针，其实不是。<br>
+&gt;&nbsp;6.&nbsp;在类的成员函数内调用非成员函数时，在非成员函数名前必须加上&quot;::&quot;。<br>
+这一条我倒觉得并不是必需的，我的看法是决不要让你的类成员函数和全局函数的名称<br>
+相同（或类似）<br>
+&gt;&nbsp;7.&nbsp;函数入口参数有缺省值时，应注释说明。<br>
+&gt;<br>
+&gt;&nbsp;例：BOOL&nbsp;CWpsDib::PaintDIB(CDC*&nbsp;pDC,&nbsp;CRect&amp;&nbsp;rc,<br>
+&gt;　　　int&nbsp;nBrightness,&nbsp;file://*=0*//<br>
+&gt;　　　BOOL&nbsp;bGrayScale&nbsp;file://*=FALSE*//&nbsp;)<br>
+每个变量写一行，必要时加上/*in,&nbsp;out*/注释<br>
+&gt;&nbsp;8.&nbsp;else　if&nbsp;必须写在一行。<br>
+应该尽量避免else&nbsp;if这样的结构<br>
+&gt;&nbsp;9.&nbsp;与‘{’、‘}’有关的各项规定：<br>
+&gt;<br>
+&gt;　9.1‘{’、‘}’应独占一行。在该行内可有注释。<br>
+&gt;&nbsp;9.2&nbsp;‘{’必须另起一行，‘{’&nbsp;之后的代码必须缩进一个Tab。‘{’与‘}’必须在<br>
+同<br>
+&gt;&nbsp;一列上。<br>
+&gt;&nbsp;9.3&nbsp;在循环、分支之后若只有一行代码，虽然可省略‘{’、‘}’，但不推荐这么<br>
+&gt;&nbsp;做。若省略后可能引起歧义，则必须加上‘{’、‘}’。<br>
+持保留意见，因为GNU的代码规范是这样的：<br>
+if&nbsp;(&nbsp;NULL&nbsp;==&nbsp;ptr&nbsp;)<br>
+　　{<br>
+　　　　//&nbsp;do&nbsp;something&nbsp;here<br>
+　　}<br>
+或者<br>
+if&nbsp;(&nbsp;NULL&nbsp;==&nbsp;ptr&nbsp;)&nbsp;{<br>
+　　　　//&nbsp;do&nbsp;something&nbsp;here<br>
+}<br>
+争论哪个更好并没有意义，关键是统一，如果用VC当然你的办法最方便，可是如果你用<br>
+emacs或者vi，就不是这样了。<br>
+&gt;&nbsp;10.&nbsp;与空格有关的各项规定。<br>
+&gt;<br>
+&gt;&nbsp;10.1&nbsp;在所有两目、三目运算符的两边都必须有空格。在单目运算符两端不必空格。<br>
+但<br>
+&gt;&nbsp;在‘—&gt;’、‘::’、‘.’、‘[’、‘]’等运算符前后，及‘&amp;’（取地址）、‘*<br>
+&gt;&nbsp;’（取值）等运算符之后不得有空格。<br>
+&gt;&nbsp;10.2　for、while、if&nbsp;等关键词之后应有1个空格，再接‘(’，之后无空格；在结<br>
+尾<br>
+&gt;&nbsp;的‘)’前不得有空格。<br>
+<br>
+我认为在括号两端加空格并不是什么错误，尤其是在一个条件十分复杂的if语句里<br>
+&gt;&nbsp;10.3&nbsp;调用函数、宏时，‘(’、‘)’前后不得有空格。<br>
+&gt;&nbsp;10.4　类型强制转换时，‘(’‘)’前后不得有空格<br>
+同上<br>
+&gt;&nbsp;11.&nbsp;与缩进有关的各项规定<br>
+&gt;<br>
+&gt;&nbsp;11.1&nbsp;缩进以&nbsp;Tab&nbsp;为单位。1&nbsp;个&nbsp;Tab&nbsp;为&nbsp;4&nbsp;个空格<br>
+我认为这个值应该更大，我自己使用8个空格，如果你的代码因为缩进幅度太大而导致<br>
+折行，那么几乎可以肯定你的程序设计方案有问题。<br>
+&gt;&nbsp;11.2&nbsp;下列情况，代码缩进一个&nbsp;Tab:<br>
+&gt;&nbsp;1.&nbsp;函数体相对函数名及'{'、'}'。<br>
+&gt;&nbsp;2.&nbsp;if、else、for、while、do&nbsp;等之后的代码。<br>
+&gt;&nbsp;3.&nbsp;一行之内写不下，折行之后的代码，应在合理的位置进行折行。若有&nbsp;+&nbsp;-&nbsp;*&nbsp;/&nbsp;等<br>
+运<br>
+&gt;&nbsp;算符，则运算符应在上一行末尾，而不应在下一行的行首。<br>
+这一条我反对，运算符应该放在下一行行首，以使人能清楚的知道这一行是续上一行<br>
+的，比如<br>
+if&nbsp;(&nbsp;something<br>
+　　&amp;&amp;&nbsp;somethingelse<br>
+　　&amp;&amp;&nbsp;otherthings&nbsp;)<br>
+如果写做<br>
+if&nbsp;(&nbsp;something&nbsp;&amp;&amp;<br>
+　　somethingelse&nbsp;&amp;&amp;<br>
+　　otherthings&nbsp;)<br>
+反而看不清楚<br>
+&gt;&nbsp;11.3&nbsp;下列情况，不必缩进：switch&nbsp;之后的&nbsp;case、default。</td> 
+          </tr>
+          <tr>
+            <td width="600"></td> 
+          </tr>
+		  <tr>
+            <td width="600"><b>郑重声明</b><br>
+              &nbsp;&nbsp; 近年来我站数百篇“原创文章”被一些媒体肆意转载，不但不标明出自“中国电子技术信息网”，而且把相关字眼删除！这是无视技术价值的盗窃行为，是对技术人员辛勤劳动的蔑视，我对此种行为表示强烈的谴责。<br>
+              &nbsp;&nbsp; “本是同根生，相煎何太急”，考虑到我们做技术的都是同门兄弟，对以前的盗窃行为不再追究，今后再有此类事件，最低处理限度是“明示于天下”。在这里向转载过又标注了出处的兄弟媒体表示崇高的敬意！<br>
+              &nbsp;&nbsp; 兄弟网站如果引用本站“原创文章”，请首先经本人许可，并标注“www.cetinet.com”或“中国电子技术信息网”字样。<br>
+              &nbsp;&nbsp; 欢迎个人下载使用！</td> 
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+</div>
+
+</body>
+<body bgcolor="#FFFFFF" text="#000000">
+  <p align="center">
+  本站所载文章力求原创，部分资料转自网上，假如您认为某些文章侵犯了您的权益，<br>
+  请告知我们，我们将在最短的时间内删除有关文章。本站转载文章均注明出处。<br>
+  兄弟网站如果转载本站文章请注明本站版权，谢谢！
+  <p align="center">中国电子技术信息网 文章管理系统由：Aoe 制作<br>      
+  Copyright (C) 2001-2004 CETINet.COM All Rights Reserved      
+</body>    
+
+</html>
+

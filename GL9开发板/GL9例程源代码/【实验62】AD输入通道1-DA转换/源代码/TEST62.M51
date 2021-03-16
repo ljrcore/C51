@@ -1,0 +1,329 @@
+BL51 BANKED LINKER/LOCATER V5.00                                                        09/18/2012  21:43:17  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE TEST62.obj TO TEST62 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  TEST62.obj (TEST62)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  TEST62 (TEST62)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?TEST62
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     002DH     UNIT         ?PR?_WRITE1BYTE?TEST62
+            CODE    0030H     0021H     UNIT         ?PR?READ1BYTE?TEST62
+            CODE    0051H     001FH     UNIT         ?PR?_READPCF8591?TEST62
+            CODE    0070H     0011H     UNIT         ?PR?IICSTART?TEST62
+            CODE    0081H     0011H     UNIT         ?PR?IICSTOP?TEST62
+            CODE    0092H     0010H     UNIT         ?PR?_WRITEPCF8591?TEST62
+            CODE    00A2H     000CH     UNIT         ?PR?MAIN?TEST62
+            CODE    00AEH     000CH     UNIT         ?C_C51STARTUP
+            CODE    00BAH     0007H     UNIT         ?PR?DELAY?TEST62
+
+
+
+OVERLAY MAP OF MODULE:   TEST62 (TEST62)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEST62
+
+?PR?MAIN?TEST62
+  +--> ?PR?_READPCF8591?TEST62
+  +--> ?PR?_WRITEPCF8591?TEST62
+
+?PR?_READPCF8591?TEST62
+  +--> ?PR?_WRITE1BYTE?TEST62
+  +--> ?PR?IICSTART?TEST62
+  +--> ?PR?READ1BYTE?TEST62
+  +--> ?PR?IICSTOP?TEST62
+
+?PR?_WRITE1BYTE?TEST62
+  +--> ?PR?IICSTART?TEST62
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/18/2012  21:43:17  PAGE 2
+
+
+
+?PR?IICSTART?TEST62
+  +--> ?PR?DELAY?TEST62
+
+?PR?IICSTOP?TEST62
+  +--> ?PR?DELAY?TEST62
+
+?PR?_WRITEPCF8591?TEST62
+  +--> ?PR?_WRITE1BYTE?TEST62
+  +--> ?PR?IICSTOP?TEST62
+
+
+
+SYMBOL TABLE OF MODULE:  TEST62 (TEST62)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEST62
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:00D0H.6       PUBLIC        AC
+  B:00B0H.4       PUBLIC        T0
+  B:00B0H.5       PUBLIC        T1
+  B:00A8H.7       PUBLIC        EA
+  B:0090H.0       PUBLIC        T2
+  C:0070H         PUBLIC        IICstart
+  B:0080H.0       PUBLIC        P0_0
+  C:0051H         PUBLIC        _ReadPCF8591
+  B:0090H.0       PUBLIC        P1_0
+  B:0080H.1       PUBLIC        P0_1
+  B:00D0H.1       PUBLIC        FL
+  B:00A0H.0       PUBLIC        P2_0
+  B:0090H.1       PUBLIC        P1_1
+  B:0080H.2       PUBLIC        P0_2
+  B:00B0H.0       PUBLIC        P3_0
+  B:00A0H.1       PUBLIC        P2_1
+  B:0090H.2       PUBLIC        P1_2
+  B:0080H.3       PUBLIC        P0_3
+  B:00B0H.1       PUBLIC        P3_1
+  B:00A0H.2       PUBLIC        P2_2
+  B:0090H.3       PUBLIC        P1_3
+  B:0080H.4       PUBLIC        P0_4
+  B:00B0H.2       PUBLIC        P3_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:0090H.4       PUBLIC        P1_4
+  B:0080H.5       PUBLIC        P0_5
+  B:00C8H.6       PUBLIC        EXF2
+  B:00B0H.7       PUBLIC        RD
+  B:00B0H.3       PUBLIC        P3_3
+  B:00A0H.4       PUBLIC        P2_4
+  B:0090H.5       PUBLIC        P1_5
+  B:0080H.6       PUBLIC        P0_6
+  B:00B0H.4       PUBLIC        P3_4
+  B:00A0H.5       PUBLIC        P2_5
+  B:0090H.6       PUBLIC        P1_6
+  B:0080H.7       PUBLIC        P0_7
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/18/2012  21:43:17  PAGE 3
+
+
+  B:00B0H.5       PUBLIC        P3_5
+  B:00A8H.4       PUBLIC        ES
+  B:00A0H.6       PUBLIC        P2_6
+  B:0090H.7       PUBLIC        P1_7
+  B:00B0H.6       PUBLIC        P3_6
+  B:00A0H.7       PUBLIC        P2_7
+  B:00B0H.7       PUBLIC        P3_7
+  B:0098H.0       PUBLIC        RI
+  B:00D0H.7       PUBLIC        CY
+  B:00B0H.2       PUBLIC        INT0
+  B:00B0H.3       PUBLIC        INT1
+  B:0098H.1       PUBLIC        TI
+  C:0081H         PUBLIC        IICstop
+  C:0092H         PUBLIC        _WritePCF8591
+  B:00B8H.4       PUBLIC        PS
+  B:0090H.1       PUBLIC        T2EX
+  B:00D0H.2       PUBLIC        OV
+  C:00A2H         PUBLIC        main
+  B:00C8H.1       PUBLIC        C_T2
+  B:00B0H.6       PUBLIC        WR
+  B:00C8H.5       PUBLIC        RCLK
+  B:00C8H.4       PUBLIC        TCLK
+  C:000AH         PUBLIC        _Write1Byte
+  B:0088H.1       PUBLIC        IE0
+  B:0088H.3       PUBLIC        IE1
+  D:0008H         PUBLIC        ADbuf
+  B:00C8H.0       PUBLIC        CP_RL2
+  C:0030H         PUBLIC        Read1Byte
+  B:00A8H.1       PUBLIC        ET0
+  B:00A8H.3       PUBLIC        ET1
+  B:0088H.5       PUBLIC        TF0
+  B:00A8H.5       PUBLIC        ET2
+  B:0088H.7       PUBLIC        TF1
+  B:00C8H.7       PUBLIC        TF2
+  B:0098H.2       PUBLIC        RB8
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  B:00A8H.2       PUBLIC        EX1
+  B:0098H.3       PUBLIC        TB8
+  B:0088H.2       PUBLIC        IT1
+  B:00D0H.0       PUBLIC        P
+  B:0098H.7       PUBLIC        SM0
+  B:0098H.6       PUBLIC        SM1
+  B:0098H.5       PUBLIC        SM2
+  B:00B8H.1       PUBLIC        PT0
+  B:00D0H.3       PUBLIC        RS0
+  B:00B8H.3       PUBLIC        PT1
+  B:00D0H.4       PUBLIC        RS1
+  B:00B8H.5       PUBLIC        PT2
+  B:0088H.4       PUBLIC        TR0
+  B:0088H.6       PUBLIC        TR1
+  B:0090H.6       PUBLIC        SDA
+  B:00C8H.2       PUBLIC        TR2
+  B:00B8H.0       PUBLIC        PX0
+  B:00B8H.2       PUBLIC        PX1
+  B:0090H.7       PUBLIC        SCL
+  B:00C8H.3       PUBLIC        EXEN2
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/18/2012  21:43:17  PAGE 4
+
+
+  B:0098H.4       PUBLIC        REN
+  B:00B0H.0       PUBLIC        RXD
+  B:00B0H.1       PUBLIC        TXD
+  C:00BAH         PUBLIC        Delay
+  B:00D0H.5       PUBLIC        F0
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        k
+  -------         ENDDO         
+  C:00BAH         LINE#         30
+  C:00BAH         LINE#         31
+  C:00BAH         LINE#         33
+  C:00C0H         LINE#         34
+  -------         ENDPROC       DELAY
+  -------         PROC          IICSTART
+  C:0070H         LINE#         43
+  C:0070H         LINE#         44
+  C:0070H         LINE#         45
+  C:0072H         LINE#         46
+  C:0074H         LINE#         47
+  C:0077H         LINE#         48
+  C:0079H         LINE#         49
+  C:007CH         LINE#         50
+  C:007EH         LINE#         51
+  -------         ENDPROC       IICSTART
+  -------         PROC          IICSTOP
+  C:0081H         LINE#         61
+  C:0081H         LINE#         62
+  C:0081H         LINE#         63
+  C:0083H         LINE#         64
+  C:0085H         LINE#         65
+  C:0088H         LINE#         66
+  C:008AH         LINE#         67
+  C:008DH         LINE#         68
+  C:008FH         LINE#         69
+  -------         ENDPROC       IICSTOP
+  -------         PROC          L?0024
+  -------         ENDPROC       L?0024
+  -------         PROC          _WRITE1BYTE
+  D:0007H         SYMBOL        Buf1
+  -------         DO            
+  D:0006H         SYMBOL        k
+  -------         ENDDO         
+  C:000AH         LINE#         79
+  C:000AH         LINE#         80
+  C:000AH         LINE#         82
+  C:000CH         LINE#         83
+  C:000CH         LINE#         84
+  C:0010H         LINE#         85
+  C:0010H         LINE#         86
+  C:0012H         LINE#         87
+  C:0014H         LINE#         89
+  C:0014H         LINE#         90
+  C:0016H         LINE#         91
+  C:0016H         LINE#         92
+  C:0017H         LINE#         93
+  C:0018H         LINE#         94
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/18/2012  21:43:17  PAGE 5
+
+
+  C:001AH         LINE#         95
+  C:001EH         LINE#         96
+  C:001FH         LINE#         97
+  C:0021H         LINE#         98
+  C:0022H         LINE#         99
+  C:0026H         LINE#         100
+  C:0028H         LINE#         101
+  C:0029H         LINE#         102
+  C:002BH         LINE#         103
+  C:002CH         LINE#         104
+  C:002DH         LINE#         105
+  C:002FH         LINE#         106
+  -------         ENDPROC       _WRITE1BYTE
+  -------         PROC          READ1BYTE
+  -------         DO            
+  D:0006H         SYMBOL        k
+  D:0007H         SYMBOL        t
+  -------         ENDDO         
+  C:0030H         LINE#         115
+  C:0030H         LINE#         116
+  C:0030H         LINE#         118
+  C:0032H         LINE#         119
+  C:0033H         LINE#         120
+  C:0033H         LINE#         121
+  C:0037H         LINE#         122
+  C:0039H         LINE#         123
+  C:003BH         LINE#         124
+  C:003CH         LINE#         125
+  C:003DH         LINE#         126
+  C:0040H         LINE#         127
+  C:0040H         LINE#         128
+  C:0043H         LINE#         129
+  C:0045H         LINE#         131
+  C:0045H         LINE#         132
+  C:0048H         LINE#         133
+  C:0048H         LINE#         134
+  C:004AH         LINE#         135
+  C:004BH         LINE#         136
+  C:004CH         LINE#         137
+  C:0050H         LINE#         138
+  C:0050H         LINE#         139
+  -------         ENDPROC       READ1BYTE
+  -------         PROC          _WRITEPCF8591
+  D:0005H         SYMBOL        Databuf
+  C:0092H         LINE#         148
+  C:0092H         LINE#         149
+  C:0092H         LINE#         150
+  C:0092H         LINE#         152
+  C:0095H         LINE#         154
+  C:009AH         LINE#         156
+  C:009FH         LINE#         158
+  -------         ENDPROC       _WRITEPCF8591
+  -------         PROC          _READPCF8591
+  D:0005H         SYMBOL        Ch
+  -------         DO            
+  D:0006H         SYMBOL        buf
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/18/2012  21:43:17  PAGE 6
+
+
+  C:0051H         LINE#         168
+  C:0051H         LINE#         169
+  C:0051H         LINE#         171
+  C:0051H         LINE#         173
+  C:0054H         LINE#         175
+  C:005BH         LINE#         177
+  C:005EH         LINE#         179
+  C:0063H         LINE#         181
+  C:0068H         LINE#         183
+  C:006BH         LINE#         185
+  C:006FH         LINE#         186
+  -------         ENDPROC       _READPCF8591
+  -------         PROC          MAIN
+  C:00A2H         LINE#         195
+  C:00A2H         LINE#         196
+  C:00A2H         LINE#         198
+  C:00A2H         LINE#         199
+  C:00A2H         LINE#         200
+  C:00A9H         LINE#         201
+  C:00ACH         LINE#         203
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEST62
+
+Program Size: data=10.0 xdata=0 code=193
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

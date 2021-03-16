@@ -1,0 +1,165 @@
+
+<html>
+<head>
+<title>单片机系统常用软件抗干扰措施</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="STYLE.CSS" rel="stylesheet" type="text/css">
+</head>
+<bgsound src="../article/img/1000.wav" loop="0">
+<body leftmargin="10" topmargin="0" >
+<div id=menuDiv style='Z-INDEX: 2; VISIBILITY: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: #9cc5f8'></div>
+
+<table align="center" cellpadding="0" cellspacing="0" style="border:1px #44A938 solid; border-top-width: 0px; border-right-width: 1px; border-bottom-width: 0px; border-left-width: 1px;width:760;">
+  <tr class="topbg"><td height="9"></td></tr>
+  <tr>
+    <td>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="180"><a href='http://www.89s51.com/' title='编程器自制家园网'><object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0' width='180' height='60'><param name='movie' value='http://www.1000.com.cn/article/img/logo.swf'><param name='quality' value='high'><embed src='http://www.1000.com.cn/article/img/logo.swf' pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash' type='application/x-shockwave-flash' width='480' height='60'></embed></object></a></td>
+    <td><object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0' width='480' height='60'><param name='movie' value='http://www.1000.com.cn/article/img/banner.swf'><param name='quality' value='high'><embed src='http://www.1000.com.cn/article/img/banner.swf' pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash' type='application/x-shockwave-flash' width='480' height='60'></embed></object></td>
+    <td width="80"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" align="center">
+              <tr valign="middle"> 
+                <td align="center"><img src="images/home.gif" align="absmiddle" width="20" height="20"></td>
+                <td align="center"><a href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.89s51.com/')">设为首页</a></td>
+              </tr>
+              <tr valign="middle"> 
+                <td align="center"><img src="images/email.gif" align="absmiddle" width="20" height="20"></td>
+                <td align="center"><a href="mailto:21007@163.com">联系站长</a></td>
+              </tr>
+              <tr valign="middle"> 
+                <td align="center"><img src="images/bookmark.gif" align="absmiddle" width="20" height="20"></td>
+                <td align="center"><a href="javascript:window.external.addFavorite('http://www.89s51.com/','编程器自制家园网')">加入收藏</a></td>
+              </tr>
+            </table></td>
+  </tr>
+</table>
+	</td>
+  </tr>
+  <tr class="bottombg"><td height="9"></td></tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="2" cellspacing="0" class="border">
+  <tr class="title">
+    <td height="20">|&nbsp;<a href='http://www.89s51.com/'>首页</a>&nbsp;|&nbsp;<a href='Default.asp?BigClassName=初学乐园'>初学乐园</a> | <a href='Default.asp?BigClassName=51单片机'><font color='red'>51单片机</font></a> | <a href='Default.asp?BigClassName=自制编程器'>自制编程器</a> | <a href='Default.asp?BigClassName=源代码下载'>源代码下载</a> | <a href='Default.asp?BigClassName=自制单片机编程器'>自制单片机编程器</a> | <a href='Default.asp?BigClassName=单片机仿真器'>单片机仿真器</a> | <a href='Default.asp?BigClassName=单片机入门'>单片机入门</a> | <a href='Default.asp?BigClassName=软件下载'>软件下载</a> | </td>
+  </tr>
+<tr class='tdbg'><td>&nbsp;<a href='Default.asp?BigClassName=51单片机&SmallClassName=单片机编程'>单片机编程</a>&nbsp;&nbsp;&nbsp;<font color='red'>单片机教学</font>&nbsp;&nbsp;&nbsp;<a href='Default.asp?BigClassName=51单片机&SmallClassName=单片机制作'>单片机制作</a>&nbsp;&nbsp;</td></tr>
+</table>
+<br>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td valign="top"><table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" class="border" style="word-break:break-all">
+        <tr class="title"> 
+          <td width="*">
+|&nbsp;<a href='Default.asp?BigClassName=51单片机'>51单片机&nbsp;</a>&gt;&gt;&nbsp;<a href='Default.asp?BigClassName=51单片机&SmallClassName=单片机教学'>单片机教学&nbsp;</a>&gt;&gt;&nbsp;单片机系统常用软件抗干扰措施
+		  </td>
+          
+          <td width="50" align="right"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+        </tr>
+        <tr class="tdbg"> 
+          <td colspan="3"><p align="center"><font size="5">单片机系统常用软件抗干扰措施</font><br>
+              作者：佚名&nbsp;&nbsp;&nbsp;&nbsp;转贴自：本站原创&nbsp;&nbsp;&nbsp;&nbsp;点击数：44&nbsp;&nbsp;&nbsp;&nbsp;资料录入：自制编程器</p>
+            <p><TABLE cellSpacing=0 cellPadding=0 width="85%" align=center border=0>
+<TBODY>
+<TR>
+<TD style="FONT-SIZE: 14px" align=middle width="100%">
+<TABLE cellSpacing=0 cellPadding=0 align=center border=0>
+<TBODY>
+<TR>
+<TD style="FONT-SIZE: 14px">
+<P align=left><FONT size=2>可靠性设计是一项系统工程，单片机系统的可靠性必须从软件、硬件以及结构设计等方面全面考虑。硬件系统的可靠性设计是单片机系统可靠性的根本，而软件系统的可靠性设计起到抑制外来干扰的作用。软件系统的可靠性设计的主要方法有：开机自检、软件陷阱(进行程序“跑飞”检测)、设置程序运行状态标记、输出端口刷新、输入多次采样、软件“看门狗”等。通过软件系统的可靠性设计，达到最大限度地降低干扰对系统工作的影响，确保单片机及时发现因干扰导致程序出现的错误，并使系统恢复到正常工作状态或及时报警的目的。<BR>　　一、开机自检　开机后首先对单片机系统的硬件及软件状态进行检测，一旦发现不正常，就进行相应的处理。开机自检程序通常包括对RAM、ROM、I/O口状态等的检测。<BR>　　1检测RAM　检查RAM读写是否正常，实际操作是向RAM单元写“00H”，读出也应为“00H”，再向其写“FFH”，读出也应为“FFH”。如果RAM单元读写出错，应给出RAM出错提示(声光或其它形式)，等待处理。<BR>　　2检查ROM单元的内容　对ROM单元的检测主要是检查ROM单元的内容的校验和。所谓ROM的校验和是将ROM的内容逐一相加后得到一个数值，该值便称校验和。ROM单元存储的是程序、常数和表格。一旦程序编写完成，ROM中的内容就确定了，其校验和也就是唯一的。若ROM校验和出错，应给出ROM出错提示(声光或其它形式)，等待处理。<BR>　　3检查I/O口状态　首先确定系统的I/O口在待机状态应处的状态，然后检测单片机的I/O口在待机状态下的状态是否正常(如是否有短路或开路现象等)。若不正常，应给出出错提示(声光或其它形式)，等待处理。<BR>　　4其它接口电路检测　除了对上述单片机内部资源进行检测外，对系统中的其它接口电路，比如扩展的E2PROM、A/D转换电路等，又如数字测温仪中的555单稳测温电路，均应通过软件进行检测，确定是否有故障。<BR>　　只有各项检查均正常，程序方能继续执行，否则应提示出错。<BR>　　二、软件陷阱　在程序存储器中总会有一些区域未使用，如果因干扰导致单片机的指令计数器PC值被错置，程序跳到这些未用的程序存储空间，系统就会出错。软件陷阱是在程序存储器的未使用的区域中，加上若干条空操作和无条件跳转指令，无条件跳转指令指向程序“跑飞”处理子程序的入口地址。如果程序跳到这些未用区域，就会执行无条件跳转指令，转到相应的程序出错“跑飞”处理程序。除程序未用区域外，还可以在程序段之间(如子程序之间及一段处理程序完成后)及一页的末尾处插入软件陷阱，效果会更好。下面是一段带软件陷阱的程序；<BR>　　DSP：……；显示子程序<BR>　　　　RET<BR>　　　　NOP；软件陷阱<BR>　　　　NOP<BR>　　　　NOP<BR>　　　　LIMP FLY<BR>&nbsp;&nbsp;&nbsp;D10MS：MOV R0，＃010H；延时子程序<BR>　　　　……<BR>　　　　RET<BR>　　　　NOP　　　　 ；软件陷阱<BR>　　　　NOP<BR>　　　　NOP<BR>　　　　LJMP FLY<BR>　　　　……<BR>　　FLY：……　&nbsp;&nbsp;&nbsp;；“跑飞”处理子程序<BR>　　　　RET<BR>　　三、程序“跑飞”处理　要进行程序“跑飞”处理，就要分清程序“跑飞”所造成的影响，以及程序“跑飞”前运行的进程，这就需要的设置相应的标志。<BR>　　RAM数据正常标志　RAM数据正常标志是检测RAM区的数据是否已经因程序“跑飞”或其它干扰而改变。如果RAM区的数据确因程序“跑飞”或其它干扰而改变，则系统无法自行恢复到原来的出错地点，只能由人工或由软件复位从头开始执行。要进行RAM区数据正常检测，首先应在初始化程序中，对RAM的若干单元设置RAM数据正常标志。通常是在RAM区中选数个单元，在初始化程序中将其置成固定的数，如“55H”或“0AAH”，只要程序正常运行，这些单元的内容是不会被修改的，若因程序“跑飞”或其它干扰导致这些RAM单元中的任何单元的数据发生变化，说明其它RAM单元的内容也可能发生变化，无法反映程序运行的结果和状态，不能根据RAM区中的标志去恢复程序运行现场。<BR>　　程序运行标记　程序运行状态标记是在RAM区中设立一些标志位，这些标志位分别代表程序运行的不同阶段及运行后的状态。在初始化程序中，首先对这些单元置初值，在程序运行的不同阶段，这些单元的内容将被改变成特定值，标记程序运行的阶段和运行后的状态。这些标志除了在程序正常运行中起到条件转移的作用外，还能在程序“跑飞”，而RAM区数据正常时起到恢复程序运行现场的作用。<BR>　　程序“跑飞”处理　程序“跑飞”处理就是在程序由软件陷阱检测到“跑飞”后，转入“跑飞”处理程序。“跑飞”处理程序判断“跑飞”影响的程度，根据影响程度的不同，决定是报警复位还是自动恢复现场。如自动恢复现场，则需根据程序运行状态标记进行。具体如何进行程序“跑飞”处理，要根据控制系统的设计要求进行。<BR>　　四、输出端口刷新　由于单片机的I/O口很容易受到外部信号的干扰，输出口的状态也可能因此而改变。在程序中周期性地添加输出端刷新指令，可以降低干扰对输出口状态的影响。在程序中指定RAM单元存储输出口当时应处的状态，在程序运行过程中根据这些RAM单元的内容去刷新I/O口。<BR>　　五、输入多次采样　干扰对单片机的输入，会造成输入信号瞬间采样的误差或误读。要排除干扰的影响，通常采取重复采样、加权平均的方法。<BR>　　比如对于外部电平采样(如按键)，采取软件每隔10ms读一次键盘或连续读若干次，每次读出的数据都相同或者采取表决的方法确认输入的键值。又如在用单稳电路检测温度的系统中(参《电子报》1999年第51期第九版)采取对单稳电路的脉冲宽度计数，然后查表求温度值的方法。为排除干扰的影响，可以采取三次采样求平均值，也可以采取两次采样、差值小于设定值为有效，然后求平均值的方法(又称软件滤波)。总之，对输入信号进行多次采样，其后如何进行处理是要根据具体对象实际处理的效果来优选的，读者可通过实验室调试时施加干扰及现场环境调试时的效果来确定。<BR>　　六、软件“看门狗”　软件陷阱是在程序运行到ROM的非法区域时检测程序出错的方法。而“看门狗”是根据程序在运行指定时间间隔内未进行相应的操作，即未按时复位看门狗定时器，来判断程序运行出错的。<BR>　　在系统成本允许的情况下，应选择专门的看门狗电路芯片或片内带看门狗定时器的单片机。如果条件不允许，应加软件“看门狗”。关于软件“看门狗”的编制方法，请参考《电子报》2000年第8期第十二版。<BR>　　单片机软件系统的可靠性设计的方法很多，相信所有从事单片机系统软件设计的同仁都有自己的经验和体会。本文给出的只是笔者常用的方法，希望对读者有所帮助。</FONT></P></TD></TR></TBODY></TABLE></TD></TR>
+<TR><FONT size=2></FONT></TR></TBODY></TABLE></p><p align='center'><font color='red'><b>[1]</b></font></p></p> 
+            <li>上一篇资料：<a href='ArticleShow.asp?ArticleID=50' title='资料标题：PC机与单片机AT89C51的串行通信
+作    者：佚名
+更新时间：2003-7-5 15:51:11
+点击次数：93'>PC机与单片机AT89C51的串行通信</a></li><br>
+            <li>下一篇资料：没有了</li>
+			<div align="right">【<a href="Comment.asp?ArticleID=55" target="_blank">发表评论</a>】【<a href="SendMail.asp?ArticleID=55" target="_blank">告诉好友</a>】【<a href="printpage.asp?ArticleID=55">打印此文</a>】【<a href="javascript:window.close();">关闭窗口</a>】</div></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="33%" valign="top"> <table width="100%" border="0" cellspacing="0" cellpadding="2" class="border" style="word-break:break-all">
+              <tr class="title"> 
+                <td><strong>&nbsp;最新5篇热点文章资料</strong></td>
+              </tr>
+              <tr class="tdbg"> 
+                <td height="100" valign="top"><li><a href='ArticleShow.asp?ArticleID=60' title='资料标题：学单片机要多少钱
+作    者：佚名
+更新时间：2003-7-6 9:33:30
+点击次数：240' target='_blank'>学单片机要多少钱</a>[<font color=red>240</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=36' title='资料标题：电子制作之制作工具篇
+作    者：佚名
+更新时间：2003-7-5 8:48:01
+点击次数：250' target='_blank'>电子制作之制作工具篇</a>[<font color=red>250</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=30' title='资料标题：8515和LCD的接口源程序
+作    者：佚名
+更新时间：2003-7-5 7:35:43
+点击次数：254' target='_blank'>8515和LCD的接口源程序</a>[<font color=red>254</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=29' title='资料标题：功能强大的时钟中断
+作    者：佚名
+更新时间：2003-7-5 7:34:46
+点击次数：256' target='_blank'>功能强大的时钟中断</a>[<font color=red>256</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=12' title='资料标题：pic&nbsp;单片机编程器制作
+作    者：佚名
+更新时间：2003-7-4 17:51:31
+点击次数：279' target='_blank'>pic&nbsp;单片机编程器制作</a>[<font color=red>279</font>]</li><br></td>
+              </tr>
+            </table></td>
+          <td width="34%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2" class="border" style="word-break:break-all">
+              <tr class="title"> 
+                <td><strong>&nbsp;最新5篇推荐资料</strong></td>
+              </tr>
+              <tr class="tdbg"> 
+                <td height="100" valign="top">
+                  <li><a href='ArticleShow.asp?ArticleID=61' title='文章资料标题：PLCC44适配器的制作
+作    者：佚名
+更新时间：2003-7-6 9:58:40
+点击次数：147' target='_blank'>PLCC44适配器的制作</a>[<font color=red>147</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=60' title='文章资料标题：学单片机要多少钱
+作    者：佚名
+更新时间：2003-7-6 9:33:30
+点击次数：240' target='_blank'>学单片机要多少钱</a>[<font color=red>240</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=38' title='文章资料标题：电子制作之经验总结篇
+作    者：佚名
+更新时间：2003-7-5 8:54:40
+点击次数：91' target='_blank'>电子制作之经验总结篇</a>[<font color=red>91</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=37' title='文章资料标题：电子制作之元件采购篇
+作    者：佚名
+更新时间：2003-7-5 8:50:01
+点击次数：371' target='_blank'>电子制作之元件采购篇</a>[<font color=red>371</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=36' title='文章资料标题：电子制作之制作工具篇
+作    者：佚名
+更新时间：2003-7-5 8:48:01
+点击次数：250' target='_blank'>电子制作之制作工具篇</a>[<font color=red>250</font>]</li><br>
+                </td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="top"> <table width="100%" border="0" cellspacing="0" cellpadding="2" class="border" style="word-break:break-all">
+              <tr class="title"> 
+                <td><strong>&nbsp;相关资料</strong></td>
+              </tr>
+              <tr class="tdbg"> 
+                <td height="100" valign="top"><li><a href='ArticleShow.asp?ArticleID=61' title='资料标题：PLCC44适配器的制作
+作    者：佚名
+更新时间：2003-7-6 9:58:40
+点击次数：147'>PLCC44适配器的制作</a>[<font color=red>147</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=60' title='资料标题：学单片机要多少钱
+作    者：佚名
+更新时间：2003-7-6 9:33:30
+点击次数：240'>学单片机要多少钱</a>[<font color=red>240</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=59' title='资料标题：仿真器试验板
+作    者：佚名
+更新时间：2003-7-6 9:25:32
+点击次数：597'>仿真器试验板</a>[<font color=red>597</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=58' title='资料标题：LZ多功能编程器
+作    者：佚名
+更新时间：2003-5-6 9:14:00
+点击次数：609'>LZ多功能编程器</a>[<font color=red>609</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=57' title='资料标题：自制2051单片机编程器
+作    者：佚名
+更新时间：2003-7-5 17:10:15
+点击次数：541'>自制2051单片机编程器</a>[<font color=red>541</font>]</li><br></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" class="border" style="word-break:break-all">
+        <tr class="title"> 
+          <td><strong>网友评论：</strong>（只显示最新10条。评论内容只代表网友观点，与本站立场无关！）</td>
+        </tr>
+        <tr class="tdbg"> 
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;没有任何评论</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width='760' align='center' border='0' class='border' cellpadding='0' cellspacing='0'><tr height='20' align='center' class='title'><td>|&nbsp;<a href='#' onClick=this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.89s51.com/');>设为首页</a>&nbsp;|&nbsp;<a href=javascript:window.external.addFavorite('http://www.89s51.com/','编程器自制家园网')>加入收藏</a>&nbsp;|&nbsp;<a href='mailto:21007@163.com'>联系站长</a>&nbsp;|&nbsp;<a href='FriendSite.asp' target='_blank'>友情链接</a>&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有 Copyright &copy 2003 <a href='http://www.89s51.com/' target='_blank'>编程器自制家园网</a></td></tr><tr align='center' class='tdbg' height='20' valign='bottom'><td><b><a href='http://www.89s51.com' target='_blank'>编程器制作家园</a>&nbsp;&nbsp;<a href='http://www.89s51.com' target='_blank'>www.89s51.com</a></b>&nbsp;&nbsp;站长信箱：<a href='mailto:web21007@163.com'>小惠</a>&nbsp;&nbsp;</td></tr><tr align='center' class='tdbg' height='16' valign='bottom'><td>页面执行时间：46.875毫秒</td></tr></table>
+</body>
+</html>

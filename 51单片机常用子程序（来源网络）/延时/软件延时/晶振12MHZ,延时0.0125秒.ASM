@@ -1,0 +1,7 @@
+;;æß’Ò12MHZ,—” ±0.0125√Î
+       MOV  71H,#100
+LOOP2:MOV 70H,#60
+LOOP1:DJNZ 70H,LOOP1
+      DJNZ 71H,LOOP2
+      MOV  70H,#48
+LOOP3:DJNZ  70H,LOOP3              

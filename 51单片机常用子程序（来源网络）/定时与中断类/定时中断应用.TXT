@@ -1,0 +1,54 @@
+
+   由8031内部定时器1，按方式1工作，即作为16位定时器使用
+每0.05秒钟T1溢出中断一次。P1口的P1.0-P1.7分别接八个发
+光二极管。要求编写程序模拟一时序控制装置。开机后第一
+秒钟L1，L3亮，第二秒钟L2，L4亮，第三秒钟L5，L7亮，第四
+秒钟L6，L8亮，第五秒L1，L3，L5，L7亮，第六秒钟L2，L4，
+L6，L8亮，第七秒钟八个二极管全亮，第八秒钟全灭，以后又
+从头开始，L1，L3亮，然后L2，L4亮......一直循环下去。
+
+
+
+
+	ORG 0000H
+	AJMP START
+	ORG 001BH	 ;T1中断入口地址
+	AJMP INT_T1
+	ORG 0100H
+START:
+	MOV SP,#60H
+	MOV TMOD,#10H	 ;置T1为方式1
+	MOV TL1,#00H	 ;延时50mS的时间常数
+	MOV TH1,#4BH
+	MOV R0,#00H
+	MOV R1,#20
+	SETB TR1
+	SETB ET1
+	SETB EA		 ;开中断
+	SJMP $
+INT_T1: 			 ;T1中断服务子程序
+	PUSH ACC	 ;保护现场
+	PUSH PSW
+	PUSH DPL
+	PUSH DPH
+	CLR TR1		 ;关中断
+	MOV TL1,#00H	 ;延时50mS常数
+	MOV TH1,#4BH
+	SETB TR1	 ;开中断
+	DJNZ R1,EXIT
+	MOV R1,#20	 ;延时一秒的常数
+	MOV DPTR	,#DATA ;置常数表基址
+	MOV A,R0	 ;置常数表偏移量
+	MOVC A,@A+DPTR ;读常数表
+	MOV P1,A	 ;送P1口显示
+	INC R0
+	ANL 00,#07H
+EXIT:
+	POP DPH	 ;恢复现场
+	POP DPL
+	POP PSW
+	POP ACC
+	RETI
+	 		;LED显示常数表
+DATA: DB 0FAH,0F5H,0AFH,05FH,0AAH,55H,00H,0FFH
+	END

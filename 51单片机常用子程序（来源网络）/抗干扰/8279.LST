@@ -1,0 +1,82 @@
+A51 MACRO ASSEMBLER  8279                                                                   16/08/03 16:08:08 PAGE     1
+
+
+DOS MACRO ASSEMBLER A51 X4.86
+OBJECT MODULE PLACED IN 8279.OBJ
+ASSEMBLER INVOKED BY: C:\FLYTO\C51\COMPILER\BIN\A51.EXE 8279.ASM DEBUG MACRO SYMBOLS MOD51 LIST
+
+LOC  OBJ            LINE     SOURCE
+
+  FF82                 1      ADDR8279_1 EQU    0FF82H   ;8279命令\状态口
+  FF80                 2      ADDR8279_2 EQU    0FF80H    ;8279数据口
+                       3      
+                       4      
+                       5      
+                       6      
+                       7      
+0000 90FF82            8       LED:MOV      DPTR,#ADDR8279_1
+0003 74D1              9            MOV      A,#0D1H
+0005 F0               10            MOVX     @DPTR,A
+0006 E0               11       WAIT:MOVX     A,@DPTR
+0007 20E7FC           12            JB       ACC.7,WAIT
+000A 7400             13            MOV      A,#00H
+000C F0               14            MOVX     @DPTR,A
+000D 742C             15            MOV      A,#2CH
+000F F0               16            MOVX     @DPTR,A
+                      17     
+                      18          
+                      19          
+0010 90FF82           20            MOV      DPTR,#ADDR8279_1
+0013 7490             21            MOV      A,#90H
+0015 F0               22            MOVX      @DPTR,A
+0016 7930             23            MOV      R1,#30H
+0018 7F02             24            MOV      R7,#02H
+001A 90FF80           25            MOV      DPTR,#ADDR8279_2
+001D E7               26       LOOP:MOV      A,@R1
+001E 2405             27            ADD      A,#05H
+0020 83               28            MOVC     A,@A+PC
+0021 F0               29            MOVX     @DPTR,A
+0022 09               30            INC      R1
+0023 DFF8             31            DJNZ     R7,LOOP
+0025 22               32            RET
+0026 3F065B4F         33            DB       3FH,06H,5BH,4FH,66H,6DH
+002A 666D                    
+002C 7D077F6F         34            DB       7DH,07H,7FH,6FH 
+0030 E534             35      PTFO3:MOV      A, 34H
+0032 C3               36            CLR      C
+0033 9401             37            SUBB     A,#01H
+0035 30D603           38            JNB      PSW.6,NEXT
+0038 C3               39            CLR      C
+0039 9406             40            SUBB     A,#06H
+003B F534             41       NEXT:MOV      34H,A
+003D 540F             42            ANL      A,#0FH
+003F F530             43            MOV      30H,A
+0041 E534             44            MOV      A,34H
+0043 54F0             45            ANL      A,#0F0H
+0045 C4               46            SWAP     A
+0046 F531             47            MOV     31H,A
+0048 22               48            RET     
+                      49       END                             
+A51 MACRO ASSEMBLER  8279                                                                   16/08/03 16:08:08 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+ADDR8279_1 . . . .  N NUMB   FF82H   A   
+ADDR8279_2 . . . .  N NUMB   FF80H   A   
+LED. . . . . . . .  C ADDR   0000H   A   
+LOOP . . . . . . .  C ADDR   001DH   A   
+NEXT . . . . . . .  C ADDR   003BH   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+PTFO3. . . . . . .  C ADDR   0030H   A   
+WAIT . . . . . . .  C ADDR   0006H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

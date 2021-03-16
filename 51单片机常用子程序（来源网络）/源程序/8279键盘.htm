@@ -1,0 +1,434 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>8279键盘</title>
+</head>
+
+<body>
+
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font size="5">8279键盘、显示接口芯片</font></b></p>      
+<p><b>序号：</b>6-10<br>      
+<b>生产厂家：</b>Intel公司<br>      
+<b>特性：</b>Intel8279芯片是一种通用的可编程序的键盘、显示接口器件，单个芯片就能完成键盘输入和LED<br>      
+显示控制两种功能。其内部结构如图6-10-1所示。8279包括键盘输入和显示输出两个部分。<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 键盘部分提供的扫描方式，可以和64个按键或传感器的阵列相连。能自动消除开关抖动以及N个键<br>      
+同时按下的保护。<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
+显示部分按扫描的方式工作。可以显示8或16位LED显示块。<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一、8279电路工作原理<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
+根据结构框图，分别介绍各部分电路工作原理。<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.I/O控制及数据缓冲器<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
+数据缓冲器是双向缓冲器，连接内、外总线，用于传送CPU和8279之间的命令或数据；I/O控制线是<br>      
+CPU对8279进行控制的引线。<span style="text-decoration: overline">CS</span>是8279的片选信号，<span style="text-decoration: overline">CS</span>=0时，8279才被允许读出或写入信息。<span style="text-decoration: overline">WR</span>、<span style="text-decoration: overline">RD</span>为来自<br>      
+CPU的控制信号。<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A<font size="1">0</font>用于区别信息特性：A<font size="1">0</font>=1时，表示数据缓冲器输入为指令、输出为状态字；A=0时，输入、输出皆为数据。<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.控制与定时寄存器及定时控制<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
+控制与定时寄存器用来寄存键盘及显示的工作方式，以及由CPU编程的其它操作方式。这些寄存器一旦接受并锁存送来的命令，就通过译码产生相应的信号，从而完成相应的控制功能。<br>      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
+定时控制包含基本记数键。首级计数器是一个可编程的N级计数器。N可以2~31之间由软件编程，以便<br>      
+从外界时钟CLK分频得到内部所需要的100KHZ时钟。然后再经过分频为键盘扫描提供适当的逐行扫描频率和显示扫描时间。<br>      
+&nbsp;&nbsp;&nbsp;&nbsp; 3.扫描计数器<br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 扫描计数器有两种工作方式。按编码方式工作时，计数器作二进制记数。4位记数状态从扫描线SL<font size="1">0</font>~SL<font size="1">3</font><br>   
+输出，经外部译码器译码后，为键盘和显示器提供扫描线；按译码方式工作时，扫描计数器的最低二位被译码后，从SL<font size="1">0</font>~SL<font size="1">3</font>输出。因此，SL<font size="1">0</font>~SL<font size="1">3</font>提供了4中取1的扫描译码。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 4.回复缓冲器、键盘去抖及控制<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 来自RL0~RL3的8根回复线的回复信号，由回复缓冲器缓冲并锁存。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 在键盘工作方式中，回复线作为行列式键盘的行列输入线。在逐行列输入时，在逐行列扫描时，回复线用来搜索每一行列中闭合的键。当某一键闭合时，去抖电路被置位，延时等待10ms后，再检验该键是否继续闭和，并将该键的地址和附加的移位、控制状态一起形成键盘数据被送入8279内部FIFO（先进先出）存储器。键盘数据格式如下：<br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
+D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="238">   
+    <tr>   
+      <td width="59">控制</td>   
+      <td width="59">移位</td>   
+      <td width="59">扫描</td>   
+      <td width="59">回复</td>   
+    </tr>   
+  </table>   
+  </center>   
+</div>   
+<p>&nbsp;&nbsp;&nbsp;&nbsp; 控制和移位（D<font size="1">6、</font>D<font size="1">7</font>）的状态由两个独立的附加开关决定，而扫描（D<font size="1">5、</font>D<font size="1">4、</font>D<font size="1">3</font>）和回复（D<font size="1">2、</font>D<font size="1">1、</font>D<font size="1">0</font>）则是被按键置位的数据。D<font size="1">5、</font>D<font size="1">4、</font>D<font size="1">3</font>来自动扫描计数器，是按下键的行列编码，而（D<font size="1">7</font>D<font size="1">7</font>D<font size="1">7</font>）则来自行/列计数器，它们是根据回复信号而确定的行/列编码。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 在传感器开关状态矩阵方式中，回复线的内容直接被送往和相应的传感器RAM（即FIFO存储器）。<br>   
+在选通输入方式中，回复线的内容在CNTL/STB线的脉冲上升沿被送入FIFO存储器。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.FIFO/传感器及其状态寄存器<br>   
+FIFO/传感器RAM是一个双重功能的8×8RAM。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 在键盘或选通方式工作时，它是FIFO存储器，其输入或读出遵循先入先出的原则。FIFO状态寄存器用于存放FIFO的工作状态。例如，RAM是满还是空；其中存有多少数据；是否操作出错等。当FIFO存储器不空，状态逻辑将产生IRQ=1信号向CPU申请中断。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 在传感器矩阵方式工作时，这个存储器以是传感器不是存储器。它存放着传感器矩阵中的每一个传感器状态。在此方式中，若检索出传感器的变化，IRQ信号变为高电平，向CPU申请中断。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 6.显示RAM和显示地址寄存器<br>   
+&nbsp;&nbsp;&nbsp; 显示RAM用来存储显示数据。容量为16×8位。在显示过程中，存储的显示数据轮流从显示寄存器输出。显示寄存器分别为A、B两组，OUTA<font size="1">0~3</font>和OUTB<font size="1">0~3</font>可以单独送数，也可以组成一个8位的字。显示寄存器的输出与显示扫描配合，不断从显示RAM中读出显示数据，同时轮流驱动被选中的显示器件，以达到多路复用的目的，使显示器件呈现稳定的显示状态。<br>  
+&nbsp;&nbsp;&nbsp; 显示地址寄存器用来寄存由CPU进行读/写显示RAM的地址，它可以由命令设定，也可以设置成每次读写或写入之后自动递减。<br>  
+&nbsp;&nbsp;&nbsp; 二.管脚、引线与功能<br>  
+&nbsp;&nbsp;&nbsp; 8279采用40引脚封装，其管脚、引线功能如图6-10-2所示。其引脚功能如下：<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; D<font size="1">0</font>~D<font size="1">7</font>（数据总线）：双向、三态总线，和系统数据总线相连；用于CPU和8279间的数据/命令传递。<br>  
+&nbsp; &nbsp;&nbsp; CLK（系统时钟）：输入线，为8279提供内部时钟的输入端。<br>  
+&nbsp; RESET（复位）：输入线，当RESET=1时，8279复位，其复位状态为：<br>  
+&nbsp;&nbsp;&nbsp; 16个字符显示；<br>   
+&nbsp;&nbsp;&nbsp; 编码扫描键盘--双键锁定；<br>  
+&nbsp; 程序时钟编码为31。<br>  
+&nbsp; &nbsp; <span style="text-decoration: overline">CS</span>（片选）：输入线，当<span style="text-decoration: overline">CS</span>=0时8279被选中，允许CPU对其读、写，否则被禁止。<br>   
+&nbsp; &nbsp; A<font size="1">0</font>（数据选择）：输入线。当A<font size="1">0</font>=1时CPU写入数据为命令字，读出数据为状态字；A<font size="1">0</font>=0时CPU读、写的字节均为数据。<br>   
+&nbsp;&nbsp;&nbsp; <span style="text-decoration: overline">RD</span>、<span style="text-decoration: overline">WR</span>（读、写信号）：输入线。低电平有效，来自CPU的控制信号，控制8279的读、写操作。<br>   
+&nbsp;&nbsp;&nbsp; IRQ（中断请求）：输出线。高电平有效。<br>  
+&nbsp;&nbsp;&nbsp; 在键盘工作方式中，当FIFO/传感器RAM存有数据时，IRQ为高电平。CPU每次从RAM中读出数据时，IRQ变为低电平。若RAM中仍有数据，则IRQ再次恢复高电平。<br>  
+&nbsp;&nbsp;&nbsp; 在传感器工作方式中，每当检测到传感器状态变化时，IRQ就出现高电平。<br>  
+&nbsp;&nbsp;&nbsp; SL<font size="1">0</font>~SL<font size="1">3</font>（扫描线）：输出线。用来扫描键盘和显示器。它们可以编程设定为编码（4中取1）或译码输出（16取1）。   
+<br>  
+<font size="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>RL<font size="1">0</font>~RL<font size="1">7</font>（回复线）：输入线。它们是键盘矩阵或传感矩阵的列（或行）信号输入线。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHIFT（移位信号）：输入线、高电平有效。该输入信号是键盘数据的最高位（D7），通常用来扩充键开关的功能，作为控制功能键用。<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; 在选通输入方式时，该信号的上升沿可将来自<font size="1"></font>RL<font size="1">0</font>~RL<font size="1">7</font>的数据存入FIFO    
+RAM中。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 在传感器输入下，该信号无效。<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; OUTA<font size="1">0</font>~OUTA<font size="1">3（</font>A组显示信号）：输出线。<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; OUTB<font size="1">0</font>~OUTB<font size="1">3（</font>B组显示信号）：输出线。<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; 这两组引线都是显示数据输出线，与多位数字显示的扫描线SL<font size="1">0</font>~SL<font size="1">3</font>同步，两组可以独立使用，也可以合并使用。<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="text-decoration: overline">BD</span>（显示消隐）：输出线。低电平有效。该信号在数字切换显示或使用消隐命令时，将显示消隐。<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 三、命令格式与命令字<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; 8279的操作方式是通过CPU对8279送入命令时来实现编程的。当数据选择端A<font size="1">0</font>置1时，CPU对8279写入数据为命令字，读出的数据为状态字。<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; 8279共有八条命令。其功能及命令字定义分述如下。<br>  
+&nbsp;&nbsp;&nbsp; 1.键盘/显示方式设置命令字<br>  
+&nbsp;&nbsp;&nbsp; 命令格式：</p>  
+  
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp; D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="200">   
+    <tr>   
+      <td width="24">0</td>   
+      <td width="24">0</td>   
+      <td width="25">0</td>   
+      <td width="25">D</td>   
+      <td width="25">D</td>   
+      <td width="25">K</td>   
+      <td width="25">K</td>   
+      <td width="25">K</td>   
+    </tr>   
+  </table>   
+  </center>   
+</div>   
+<p>&nbsp;&nbsp;&nbsp; 其中：<br>  
+&nbsp;&nbsp;&nbsp; D<font size="1">7、</font>D<font size="1">6、</font>D<font size="1">5</font>=000方式设置命令特征位。<br>  
+&nbsp;&nbsp;&nbsp; D&nbsp; D（D<font size="1">4、</font>D<font size="1">3</font>）：来设定显示方式，其定义如下：<br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+00：8个字符显示，左入口<br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+00：16个字符显示，左入口<br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+00：8个字符显示，右入口<br>   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+00：16个字符显示，右入口<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; 所谓左入口，即显示位置从最左一位（最高位）开始，以后逐次输入的显示字符逐个向右顺序排列；   
+所谓右入口，即显示位置从最右一位（最低位）开始，以后逐次输入的显示字符时，已有的显示字符逐个向左顺序移动。<br>  
+&nbsp;&nbsp;&nbsp; KKK（D<font size="1">2、 </font>D<font size="1">1、 </font>D<font size="1">0</font>）：用来设定七种键盘、显示工作方式：<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+000&nbsp; 编码扫描键盘，双键锁定&nbsp;<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+001&nbsp; 译码扫描键盘，双键锁定&nbsp;<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+010&nbsp; 编码扫描键盘，N键轮回<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+011&nbsp; 译码扫描键盘，N键轮回<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+100&nbsp; 编码扫描传感器矩阵<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+101&nbsp; 译码扫描传感器矩阵<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+110&nbsp; 选通输入，编码显示扫描<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+111&nbsp; 选通输入，译码显示扫描<br>  
+&nbsp;&nbsp;&nbsp; 双键锁定与N键轮回是多键按下时的两种不同的保护方式。双键锁定为两键同时按下提供的保护方法。再消颤周期里，如果有两键同时按下，则只有其中一个键弹起，而另一个键保持在按下位置时，才被认可。N键轮回为N键同时按下的保护方法。当有若干键按下时，键盘扫描能够根据发现他们的顺序，依次将它们的状态送入FIFO   
+RAM中。<br>  
+&nbsp;&nbsp;&nbsp; 2.程序时钟命令<br> 
+&nbsp;&nbsp;&nbsp; 命令格式：</p> 
+ 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp; D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="200">   
+    <tr>   
+      <td width="24">0</td>   
+      <td width="24">0</td>   
+      <td width="25">1</td>  
+      <td width="25">P</td>  
+      <td width="25">P</td>  
+      <td width="25">P</td>  
+      <td width="25">P</td>  
+      <td width="25">P</td>  
+    </tr>  
+  </table>  
+  </center>  
+</div>  
+<p>&nbsp;&nbsp;&nbsp; 其中：<br> 
+&nbsp;&nbsp;&nbsp; D<font size="1">7、</font>D<font size="1">6、</font>D<font size="1">5</font>=001为时钟命令特征位。<br> 
+&nbsp;&nbsp;&nbsp; PPPPP（<font size="1">&nbsp; </font>D<font size="1">4、</font>D<font size="1">3、</font>D<font size="1">2、</font>D<font size="1">1、</font>D<font size="1">0</font>）用来设定外部输入CLK端的时钟进行分频的分频数N。N取值为2~31。例如外部时钟频率为2MHZ，PPPPP被置为10100（N=20），则对输入的外部时钟20分频，以获得8279内部要求的100KMZ的基本频率。<br> 
+&nbsp;&nbsp;&nbsp; 3.读FIFO/传感器RAM命令<br> 
+&nbsp;&nbsp;&nbsp; 命令格式：</p> 
+ 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp; D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="200">   
+    <tr>   
+      <td width="24">0</td>   
+      <td width="24">1</td>  
+      <td width="25">0</td>  
+      <td width="25">AI</td>  
+      <td width="25">X</td>  
+      <td width="25">A</td>  
+      <td width="25">A</td>  
+      <td width="25">A</td>  
+    </tr>  
+  </table>  
+  </center>  
+</div>  
+<p>&nbsp;&nbsp;&nbsp; 其中：<br> 
+&nbsp;&nbsp;&nbsp; D<font size="1">7</font>D<font size="1">6</font>D<font size="1">5 </font>=010为读FIFO/传感器RAM命令特征位。该命令字只在传感器方式时使用。在CPU读传感器RAM之前，必须使用这条命令来设定传感器RAM中的8个地址（每个地址一个字节）。<br> 
+&nbsp;&nbsp;&nbsp; AAA（<font size="1"></font>D<font size="1">2、</font>D<font size="1">1、</font>D<font size="1">0</font>）为传感器RAM中的八个字节地址。<br> 
+&nbsp;&nbsp;&nbsp; AI（D<font size="1">4</font>）为自动增量特征位。当AI=1时，每次读出传感器RAM后地址自动加1使地址指针指向下一个存储单元。这样，下一个数据便从下一个地址读出，而不必重新设置读FIFO/传感器RAM命令。<br> 
+&nbsp;&nbsp;&nbsp; 在键盘工作方式中，由于读出操做严格按照先入先出顺序，因此，不需使用此命令。<br> 
+&nbsp;&nbsp; 4.读显示RAM命令<br> 
+&nbsp;&nbsp;&nbsp; 命令格式：</p> 
+ 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp; D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="200">   
+    <tr>   
+      <td width="24">0</td>   
+      <td width="24">1</td>  
+      <td width="25">1</td>  
+      <td width="25">AI</td>  
+      <td width="25">A</td>  
+      <td width="25">A</td>  
+      <td width="25">A</td>  
+      <td width="25">A</td>  
+    </tr>  
+  </table>  
+  </center>  
+</div>  
+<p>&nbsp;&nbsp;&nbsp; 其中：<br> 
+&nbsp;&nbsp;&nbsp; D<font size="1">7</font>D<font size="1">6</font>D<font size="1">5 </font>=011为读显示RAM命令字的特征位。该命令用来设定将要读出的显示RAM地址。<br> 
+&nbsp;&nbsp;&nbsp; AAAA（<font size="1"></font>D<font size="1">3、</font>D<font size="1">2、</font>D<font size="1">1、</font>D<font size="1">0</font>）用来寻址显示RAM命令字的特征位。由位显示RAM中有16个字节单元故需要4位寻址。<br> 
+&nbsp;&nbsp;&nbsp; AI（D<font size="1">4</font>）为自动增量特征位。当AI=1时，每次读出后地址自动加1指向下一地址。<br> 
+&nbsp;&nbsp;&nbsp; 5.写显示RAM命令<br> 
+&nbsp;&nbsp;&nbsp; 命令格式：</p> 
+ 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp; D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="200">   
+    <tr>   
+      <td width="24">1</td>  
+      <td width="24">0</td>  
+      <td width="25">0</td>  
+      <td width="25">AI</td>  
+      <td width="25">A</td>  
+      <td width="25">A</td>  
+      <td width="25">A</td>  
+      <td width="25">A</td>  
+    </tr>  
+  </table>  
+  </center>  
+</div>  
+<p>&nbsp;&nbsp;&nbsp; 其中：<br> 
+&nbsp;&nbsp;&nbsp; D<font size="1">7</font>D<font size="1">6</font>D<font size="1">5 </font>=100为写显示RAM命令字的特征位。在写显示器RAM之前用该命令用来设定将要写入的显示RAM地址。<br> 
+&nbsp;&nbsp;&nbsp; AAAA（<font size="1"></font>D<font size="1">3、</font>D<font size="1">2、</font>D<font size="1">1、</font>D<font size="1">0</font>）为将要写入的存储单元地址。<br> 
+&nbsp;&nbsp; AI（D<font size="1">4</font>）为自动增量特征位。当AI=1时，每次写入后地址自动加1指向下一次写入地址。<br> 
+&nbsp;&nbsp;&nbsp; 6.显示禁止写入/消隐命令特征位<br> 
+&nbsp;&nbsp;&nbsp; 命令格式：</p> 
+ 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp; D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="200">   
+    <tr>   
+      <td width="24">1</td>  
+      <td width="24">0</td>  
+      <td width="25">1</td>  
+      <td width="25">X</td>  
+      <td width="25">IW<br>  
+        A</td>  
+      <td width="25">IW<br>  
+        B</td>  
+      <td width="25">BL<br>  
+        A</td>  
+      <td width="25">BL<br>  
+        B</td>  
+    </tr>  
+  </table>  
+  </center>  
+</div>  
+<p>&nbsp;&nbsp;&nbsp;&nbsp; 其中：<br> 
+&nbsp;&nbsp;&nbsp;&nbsp; D<font size="1">7</font>D<font size="1">6</font>D<font size="1">5 </font>=101为显示禁止写入/消隐命令特征位。<br> 
+&nbsp;&nbsp; IW/A、IW/B（D<font size="1">3、</font>D<font size="1">2</font>）为A、B组显示RAM写入屏蔽位。由于显示寄存器分成A、B两组，可以单独送数，故用两位来分别屏蔽。当A组的屏蔽位D<font size="1">3</font>=1时，A组的显示RAM禁止写入。因此，从CPU写入显示器RAM数据时，不会影响A的显示。这种情况通常在采用双4位显示器时使用。因为两个双四位显示器是相互独立的。为了给其中一个双四位显示器输入数据而又不影响另一个四位显示器，因此必须对另一组的输入实行屏蔽。<br>
+&nbsp;&nbsp;&nbsp; BL/A、BL/B（<font size="1"></font>D<font size="1">1、</font>D<font size="1">0</font>）为消隐显示位。用于对两组显示输出消隐。若BL=1时，对应组的显示输出被消隐。当BL=0时，则恢复显示。<br>
+&nbsp;&nbsp;&nbsp; 7.清除命令<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 命令格式： </p> 
+ 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp; D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="200">   
+    <tr>   
+      <td width="24">1</td>  
+      <td width="24">1</td> 
+      <td width="25">0</td> 
+      <td width="25">C<font size="1">D</font></td> 
+      <td width="25"> 
+        C<font size="1">D</font></td> 
+      <td width="25">C<font size="1">D</font></td> 
+      <td width="25">C<font size="1">F</font></td>
+      <td width="25">C<font size="1">A</font></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>&nbsp;&nbsp;&nbsp; 其中：<br> 
+&nbsp; &nbsp; D<font size="1">7</font>D<font size="1">6</font>D<font size="1">5 </font>=110清除命令特征位。<br>
+&nbsp; C<font size="1">D</font>C<font size="1">D</font>C<font size="1">D</font>（D4D3D2）用来设定清除显示RAM方式。共有四种消除方式，见表6-10-1。<br>
+&nbsp; C<font size="1">F</font>（D<font size="1">1</font>）用来置空FIFO存储器，当=1时，执行清除命令后，FIFO 
+RAM被置空，使中断输出线复位。同时，传感器RAM的读出地址也被置0。<br>
+&nbsp; <font size="1"></font><font size="1">&nbsp; </font>C<font size="1">A</font>（D<font size="1">0</font>）为总清的特征位。它兼有C<font size="1">D和</font>C<font size="1">F</font>的联合效能。在C<font size="1">D</font>=1时，对显示的清除方式由D<font size="1">3、</font>D<font size="1">2</font>的编码决定。<br>
+&nbsp;&nbsp; 清除显示RAM约需160&micro;<font size="1">S</font>。在此期间FIFO状态时的最高位D<font size="1">U</font>=1，表示显示无效。CPU不能向显示RAM写入数据。<br>
+&nbsp;&nbsp; &nbsp;8.结束中断/错误方式设置命令<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 命令格式： </p> 
+ 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp; D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="200">   
+    <tr>   
+      <td width="24">1</td>  
+      <td width="24">1</td> 
+      <td width="25">1</td> 
+      <td width="25">E</td> 
+      <td width="25">×</td> 
+      <td width="25">×</td> 
+      <td width="25">×</td> 
+      <td width="25">×</td> 
+    </tr> 
+  </table> 
+  </center> 
+</div> 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 其中：<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D<font size="1">7</font>D<font size="1">6</font>D<font size="1">5 </font>=111为该命令的特征位。此命令有两种不同的作用。<br>
+&nbsp; （1）作为结束中断命令。在传感器工作方式中使用。每当传感器状态出现变化时，扫描检测电路将其状态写入传感器RAM，并启动中断逻辑，使IRQ变高，向CPU请求中断，并且禁止写入传感器RAM。此时，若传感器RAM读出地址的自动递增特征没有置位（AI=0），则中断请求IRQ在CPU第一次从传感器RAM读出数据时就被清除。若自动递增特征已置位（AI=1），则CPU对传感器RAM的读出并不能清除IRQ，而必须通过给8279写入结束中断/错误方式设置命令才能使IRQ变低。因此在传感器工作方式中，此命令用来结束传感器RAM的中断请求。<br>
+&nbsp; （2）作为特定错误方式设置命令。在8279已被设定为键盘扫描N键轮回方式以后，如果CPU给8279又写入结束中断/错误方式设置命令（E=1），则8279将以一种特定的错误方式工作。这种方式的特点是：在8279的消颤周期内，如果发现多个按键同时按下，则FIFO状态字中的错误特征位S/E将置1，并产生中断请求信号和阻止写入FIFO 
+RAM。<br>
+&nbsp;&nbsp; 上述八种用于确定8279操作方式的命令字皆由D<font size="1">7</font>D<font size="1">6</font>D<font size="1">5</font>特征位确定，输入8279后能自动寻址相应的命令寄存器。因此，写入命令字时唯一的要求是使数据选择信号A<font size="1">0</font>=1。<br>
+&nbsp;&nbsp; 四、状态格式与状态字<br>
+&nbsp;&nbsp; 
+8279的FIFO状态字，主要用于键盘和选通工作方式，以指示FIFO 
+RAM中的字符数和有无错误发生。其格式为：</p> 
+ 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp; D<font size="1">7 &nbsp; </font>D<font size="1">6 &nbsp; </font>D<font size="1">5    
+&nbsp; </font>D<font size="1">4 &nbsp; </font>D<font size="1">3 &nbsp; </font>D<font size="1">2    
+&nbsp; </font>D<font size="1">1 &nbsp; </font>D<font size="1">0</font></p>   
+   
+<div align="center">   
+  <center>   
+  <table border="1" cellpadding="0" cellspacing="0" width="200">   
+    <tr>   
+      <td width="24">D<font size="1">U</font></td> 
+      <td width="24">S/E</td> 
+      <td width="25">O</td> 
+      <td width="25">U</td> 
+      <td width="25">F</td> 
+      <td width="25">N</td> 
+      <td width="25">N</td> 
+      <td width="25">N</td> 
+    </tr> 
+  </table> 
+  </center> 
+</div> 
+<p>&nbsp;&nbsp; 其中：<br>
+&nbsp;&nbsp; D<font size="1">U</font>（ D<font size="1">7</font>）为显示无效特征位。当D<font size="1">U</font>=1表示显示无效。当显示RAM由于清除显示或全清命令尚未完成时，D<font size="1">U</font>=1。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+表6-10-1&nbsp;&nbsp;&nbsp; C<font size="1">D</font>位定义的清除方式 </p> 
+<div align="center">
+  <center>
+  <table border="1" cellpadding="0" cellspacing="0" width="435">
+    <tr>
+      <td width="38"><font size="1"></font>D<font size="1">4 </font></td>
+      <td width="38"><font size="1">&nbsp; </font>D<font size="1">3 </font></td>
+      <td width="39"><font size="1"></font>D<font size="1">2 </font></td>
+      <td width="316">清除方式</td>
+    </tr>
+    <tr>
+      <td width="38" rowspan="3">1</td>
+      <td width="38">0</td>
+      <td width="39">×</td>
+      <td width="316">将显示RAM全部清零</td>
+    </tr>
+    <tr>
+      <td width="38">1</td>
+      <td width="39">0</td>
+      <td width="316">将显示RAM清成20H（A组=0010；B组=0000）</td>
+    </tr>
+    <tr>
+      <td width="38">1</td>
+      <td width="39">1</td>
+      <td width="316">将显示RAM全部置1</td>
+    </tr>
+    <tr>
+      <td width="38">0</td>
+      <td width="393" colspan="3">不清除（若C<font size="1">A</font>=1，则D<font size="1">3、</font>D<font size="1">2</font>仍有效）</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p><br> 
+&nbsp;&nbsp; </p> 
+<p><br> 
+</p> 
+<p><br> 
+&nbsp; <br> 
+</p> 
+<p><br> 
+</p> 
+ 
+</body> 
+ 
+</html> 

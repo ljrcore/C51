@@ -1,0 +1,67 @@
+用软件模拟89C51的串口源程序
+一、	软件清单
+RXD		EQU P3.2；选择INT0脚
+TXD		EQU P3.3;根据需要任意设置
+  		RXD_Data	equ 30h  ；接收数据单元
+		TXD_Data	equ 31h  ；发送数据单元
+		T_TimerK	equ 48;9600bps的延时时间T
+		T_TimerK1	equ T_tinerK/2;延时1/2T时间
+；*******************
+；发送程序
+；******************
+SendData:
+			Clr EA
+			Clr TXD
+			Call DelayT ；发送启动位
+			Mov b,#08
+			Mov a,TXD_Data
+SendBit:
+			Rrc a
+			Mov TXD,c
+			Call DelayT
+			Djnz b,SendBit
+			Setb TXD
+			Setb EA
+			Call DelayT；发送停止位
+			ret	
+;*****************************
+;接收程序，在INT0中断中完成
+；***************************
+ReceData:
+			Push a
+			Push psw
+			Push b
+			Jb RXD ,ReceEnd  ;是干扰则返回
+			Call DelayT1     ;延时1/2的T
+			Call DelayT		;在中心检测
+			Mov b,#08
+	ReceBit:
+			Mov c,RXD
+			Rrc A
+			Call DelayT
+			Djnz b,ReceBit
+			Mov RXD_Data,a
+	ReceEnd:
+			Pop b
+			Pop psw
+			Pop a
+			Reti
+;**************************
+;延时子程序
+；************************
+DelayT1:
+		Push b
+		Mov b,#T_TimerK1
+		Djnz b,$
+		Pop b
+Ret
+;*************************
+DelayT:
+		Push b
+		Mov b,#T_TimerK
+		Djnz b,$
+		Pop b
+Ret
+
+
+

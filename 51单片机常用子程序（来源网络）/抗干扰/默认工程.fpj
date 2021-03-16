@@ -1,0 +1,25 @@
+[Project]
+WorkDir=E:\≥Ã–Úø‚\øπ∏…»≈
+CompileCmd=C51:SMALL DEBUG OBJECTEXTEND SYMBOLS ROM(LARGE) NOCODE COND AREGS OPTIMIZE(6, SPEED);A51:DEBUG MACRO SYMBOLS MOD51 LIST;
+Target=8279.omf
+TargetType=0
+MustRebuild=1
+Locate=
+SourceCount=1
+File0=16931383
+Name0=8279.ASM
+Version=1.0
+
+[Compiler]
+Type=1
+
+[Bank]
+BankCount=-1
+
+[HardWare]
+CPUType=1
+CPUFreq=0
+P36=0
+P37=0
+AUX_RAM=1
+EnableReset=0

@@ -1,0 +1,370 @@
+BL51 BANKED LINKER/LOCATER V5.00                                                        09/25/2013  10:43:29  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE TEST87.obj TO TEST87 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  TEST87.obj (TEST87)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  TEST87 (TEST87)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0005H     UNIT         _DATA_GROUP_
+            DATA    000DH     0001H     UNIT         ?DT?TEST87
+                    000EH     0012H                  *** GAP ***
+            BIT     0020H.0   0000H.2   UNIT         ?BI?TEST87
+            BIT     0020H.2   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.3   0000H.5                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     016FH     UNIT         ?PR?MAIN?TEST87
+            CODE    0172H     006FH     UNIT         ?PR?SCANKEY?TEST87
+            CODE    01E1H     0055H     UNIT         ?C?LIB_CODE
+            CODE    0236H     003AH     UNIT         ?PR?BEEPPRO?TEST87
+            CODE    0270H     000CH     UNIT         ?C_C51STARTUP
+            CODE    027CH     000AH     UNIT         ?CO?TEST87
+
+
+
+OVERLAY MAP OF MODULE:   TEST87 (TEST87)
+
+
+SEGMENT                           BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH
+------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----
+  +--> ?PR?MAIN?TEST87
+
+?PR?MAIN?TEST87                0020H.2  0000H.1    0008H    0005H
+  +--> ?PR?SCANKEY?TEST87
+  +--> ?PR?BEEPPRO?TEST87
+  +--> ?CO?TEST87
+
+
+
+SYMBOL TABLE OF MODULE:  TEST87 (TEST87)
+
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/25/2013  10:43:29  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEST87
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  B:00D0H.6       PUBLIC        AC
+  B:00B0H.4       PUBLIC        T0
+  B:00B0H.5       PUBLIC        T1
+  B:00A8H.7       PUBLIC        EA
+  B:0090H.0       PUBLIC        T2
+  B:0080H.0       PUBLIC        P0_0
+  B:0090H.0       PUBLIC        P1_0
+  B:0080H.1       PUBLIC        P0_1
+  B:00D0H.1       PUBLIC        FL
+  B:00A0H.0       PUBLIC        P2_0
+  B:0090H.1       PUBLIC        P1_1
+  B:0080H.2       PUBLIC        P0_2
+  B:00B0H.0       PUBLIC        P3_0
+  B:00A0H.1       PUBLIC        P2_1
+  B:0090H.2       PUBLIC        P1_2
+  B:0080H.3       PUBLIC        P0_3
+  B:00B0H.1       PUBLIC        P3_1
+  B:00A0H.2       PUBLIC        P2_2
+  B:0090H.3       PUBLIC        P1_3
+  B:0080H.4       PUBLIC        P0_4
+  B:00B0H.2       PUBLIC        P3_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:0090H.4       PUBLIC        P1_4
+  B:0080H.5       PUBLIC        P0_5
+  B:00C8H.6       PUBLIC        EXF2
+  B:00B0H.7       PUBLIC        RD
+  B:00B0H.3       PUBLIC        P3_3
+  B:00A0H.4       PUBLIC        P2_4
+  B:0090H.5       PUBLIC        P1_5
+  B:0080H.6       PUBLIC        P0_6
+  B:00B0H.4       PUBLIC        P3_4
+  B:00A0H.5       PUBLIC        P2_5
+  B:0090H.6       PUBLIC        P1_6
+  B:0080H.7       PUBLIC        P0_7
+  B:00B0H.5       PUBLIC        P3_5
+  B:00A8H.4       PUBLIC        ES
+  B:00A0H.6       PUBLIC        P2_6
+  B:0090H.7       PUBLIC        P1_7
+  B:00B0H.6       PUBLIC        P3_6
+  B:00A0H.7       PUBLIC        P2_7
+  B:00B0H.7       PUBLIC        P3_7
+  B:0098H.0       PUBLIC        RI
+  B:00D0H.7       PUBLIC        CY
+  B:00B0H.2       PUBLIC        INT0
+  B:00B0H.3       PUBLIC        INT1
+  B:0098H.1       PUBLIC        TI
+  D:000DH         PUBLIC        BeepCon
+  B:00B8H.4       PUBLIC        PS
+  B:0090H.1       PUBLIC        T2EX
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/25/2013  10:43:29  PAGE 3
+
+
+  B:00D0H.2       PUBLIC        OV
+  C:0003H         PUBLIC        main
+  B:00C8H.1       PUBLIC        C_T2
+  B:00B0H.6       PUBLIC        WR
+  B:00C8H.5       PUBLIC        RCLK
+  B:00C8H.4       PUBLIC        TCLK
+  C:0236H         PUBLIC        BeepPro
+  C:0172H         PUBLIC        ScanKey
+  B:0088H.1       PUBLIC        IE0
+  B:0020H.0       PUBLIC        Beepbit
+  B:0088H.3       PUBLIC        IE1
+  B:00C8H.0       PUBLIC        CP_RL2
+  B:00A8H.1       PUBLIC        ET0
+  B:00A8H.3       PUBLIC        ET1
+  B:0088H.5       PUBLIC        TF0
+  B:00A8H.5       PUBLIC        ET2
+  B:0088H.7       PUBLIC        TF1
+  B:00C8H.7       PUBLIC        TF2
+  B:0098H.2       PUBLIC        RB8
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  B:00A8H.2       PUBLIC        EX1
+  B:0098H.3       PUBLIC        TB8
+  B:0088H.2       PUBLIC        IT1
+  B:00D0H.0       PUBLIC        P
+  B:0098H.7       PUBLIC        SM0
+  B:0098H.6       PUBLIC        SM1
+  B:0098H.5       PUBLIC        SM2
+  B:00B8H.1       PUBLIC        PT0
+  C:027CH         PUBLIC        LED
+  B:00D0H.3       PUBLIC        RS0
+  B:00B8H.3       PUBLIC        PT1
+  B:00D0H.4       PUBLIC        RS1
+  B:00B8H.5       PUBLIC        PT2
+  B:0088H.4       PUBLIC        TR0
+  B:0088H.6       PUBLIC        TR1
+  B:00C8H.2       PUBLIC        TR2
+  B:00B8H.0       PUBLIC        PX0
+  B:00B8H.2       PUBLIC        PX1
+  B:00C8H.3       PUBLIC        EXEN2
+  B:0098H.4       PUBLIC        REN
+  B:00B0H.0       PUBLIC        RXD
+  B:00B0H.1       PUBLIC        TXD
+  B:00D0H.5       PUBLIC        F0
+  B:0020H.1       PUBLIC        BeepTwobit
+  -------         PROC          SCANKEY
+  C:0172H         LINE#         35
+  C:0172H         LINE#         36
+  C:0172H         LINE#         39
+  C:0175H         LINE#         40
+  C:017BH         LINE#         41
+  C:0181H         LINE#         42
+  C:0187H         LINE#         43
+  C:018DH         LINE#         45
+  C:0190H         LINE#         46
+  C:0196H         LINE#         47
+  C:019CH         LINE#         48
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/25/2013  10:43:29  PAGE 4
+
+
+  C:01A2H         LINE#         49
+  C:01A8H         LINE#         51
+  C:01ABH         LINE#         52
+  C:01B1H         LINE#         53
+  C:01B7H         LINE#         54
+  C:01BDH         LINE#         55
+  C:01C3H         LINE#         57
+  C:01C6H         LINE#         58
+  C:01CCH         LINE#         59
+  C:01D2H         LINE#         60
+  C:01D8H         LINE#         61
+  C:01DEH         LINE#         63
+  C:01E0H         LINE#         64
+  -------         ENDPROC       SCANKEY
+  -------         PROC          BEEPPRO
+  C:0236H         LINE#         72
+  C:0236H         LINE#         73
+  C:0236H         LINE#         74
+  C:0239H         LINE#         75
+  C:0239H         LINE#         76
+  C:023EH         LINE#         77
+  C:0240H         LINE#         78
+  C:0243H         LINE#         79
+  C:0243H         LINE#         80
+  C:024AH         LINE#         81
+  C:024AH         LINE#         82
+  C:024CH         LINE#         83
+  C:024EH         LINE#         84
+  C:0255H         LINE#         85
+  C:0255H         LINE#         86
+  C:0257H         LINE#         87
+  C:0259H         LINE#         89
+  C:0259H         LINE#         90
+  C:025BH         LINE#         91
+  C:025BH         LINE#         92
+  C:025BH         LINE#         93
+  C:0262H         LINE#         94
+  C:0262H         LINE#         95
+  C:0265H         LINE#         96
+  C:0267H         LINE#         97
+  C:0267H         LINE#         98
+  C:0268H         LINE#         100
+  C:0268H         LINE#         101
+  C:026AH         LINE#         102
+  C:026DH         LINE#         103
+  C:026FH         LINE#         104
+  C:026FH         LINE#         105
+  -------         ENDPROC       BEEPPRO
+  -------         PROC          MAIN
+  -------         DO            
+  D:0007H         SYMBOL        k
+  D:0008H         SYMBOL        d
+  D:0007H         SYMBOL        c
+  D:0009H         SYMBOL        k5con
+  D:0002H         SYMBOL        f
+  D:000BH         SYMBOL        keycon
+  B:0020H.2       SYMBOL        keybit
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/25/2013  10:43:29  PAGE 5
+
+
+  -------         ENDDO         
+  C:0003H         LINE#         113
+  C:0003H         LINE#         114
+  C:0003H         LINE#         119
+  C:0006H         LINE#         123
+  C:0006H         LINE#         124
+  C:0006H         LINE#         125
+  C:0006H         LINE#         126
+  C:0009H         LINE#         127
+  C:000CH         LINE#         128
+  C:000CH         LINE#         129
+  C:0010H         LINE#         130
+  C:0013H         LINE#         131
+  C:0013H         LINE#         132
+  C:0027H         LINE#         133
+  C:0027H         LINE#         134
+  C:002CH         LINE#         135
+  C:002EH         LINE#         136
+  C:002EH         LINE#         137
+  C:0031H         LINE#         139
+  C:0036H         LINE#         140
+  C:0039H         LINE#         141
+  C:003CH         LINE#         142
+  C:003CH         LINE#         143
+  C:0042H         LINE#         144
+  C:0042H         LINE#         145
+  C:0044H         LINE#         146
+  C:0046H         LINE#         147
+  C:004FH         LINE#         148
+  C:004FH         LINE#         149
+  C:0054H         LINE#         150
+  C:0057H         LINE#         152
+  C:0057H         LINE#         153
+  C:0059H         LINE#         154
+  C:0059H         LINE#         155
+  C:0059H         LINE#         156
+  C:005CH         LINE#         157
+  C:005FH         LINE#         158
+  C:005FH         LINE#         159
+  C:0062H         LINE#         160
+  C:0062H         LINE#         161
+  C:0064H         LINE#         162
+  C:0066H         LINE#         163
+  C:006FH         LINE#         164
+  C:006FH         LINE#         165
+  C:0074H         LINE#         166
+  C:0076H         LINE#         168
+  C:0076H         LINE#         169
+  C:0078H         LINE#         170
+  C:0078H         LINE#         171
+  C:0078H         LINE#         172
+  C:007AH         LINE#         173
+  C:007DH         LINE#         174
+  C:007DH         LINE#         175
+  C:0080H         LINE#         176
+  C:0080H         LINE#         177
+  C:0091H         LINE#         178
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/25/2013  10:43:29  PAGE 6
+
+
+  C:0091H         LINE#         179
+  C:0096H         LINE#         180
+  C:0098H         LINE#         181
+  C:00A0H         LINE#         182
+  C:00A0H         LINE#         183
+  C:00A5H         LINE#         184
+  C:00A7H         LINE#         186
+  C:00A7H         LINE#         187
+  C:00A9H         LINE#         188
+  C:00A9H         LINE#         189
+  C:00A9H         LINE#         190
+  C:00A9H         LINE#         191
+  C:00ABH         LINE#         192
+  C:00AEH         LINE#         193
+  C:00AEH         LINE#         194
+  C:00B1H         LINE#         195
+  C:00B1H         LINE#         196
+  C:00C2H         LINE#         197
+  C:00C2H         LINE#         198
+  C:00C7H         LINE#         199
+  C:00C9H         LINE#         200
+  C:00D2H         LINE#         201
+  C:00D2H         LINE#         202
+  C:00D7H         LINE#         203
+  C:00D9H         LINE#         205
+  C:00D9H         LINE#         206
+  C:00DBH         LINE#         207
+  C:00DBH         LINE#         208
+  C:00DBH         LINE#         209
+  C:00DBH         LINE#         210
+  C:00DBH         LINE#         211
+  C:00DEH         LINE#         212
+  C:00E4H         LINE#         214
+  C:00E7H         LINE#         215
+  C:00F3H         LINE#         216
+  C:00F7H         LINE#         217
+  C:00F7H         LINE#         218
+  C:00FAH         LINE#         219
+  C:0102H         LINE#         220
+  C:0104H         LINE#         221
+  C:0109H         LINE#         222
+  C:0109H         LINE#         223
+  C:010CH         LINE#         224
+  C:0121H         LINE#         225
+  C:0123H         LINE#         226
+  C:0128H         LINE#         227
+  C:0128H         LINE#         228
+  C:012BH         LINE#         229
+  C:0151H         LINE#         230
+  C:0154H         LINE#         232
+  C:0154H         LINE#         233
+  C:0157H         LINE#         234
+  C:016FH         LINE#         235
+  C:016FH         LINE#         236
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEST87
+
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/25/2013  10:43:29  PAGE 7
+
+
+  -------         MODULE        ?C?UIDIV
+  C:01E1H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=15.3 xdata=0 code=646
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

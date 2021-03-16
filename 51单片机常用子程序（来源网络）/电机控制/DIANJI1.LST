@@ -1,0 +1,295 @@
+A51 MACRO ASSEMBLER  DIANJI1                                                                22/08/03 09:44:46 PAGE     1
+
+
+DOS MACRO ASSEMBLER A51 X4.86
+OBJECT MODULE PLACED IN DIANJI1.OBJ
+ASSEMBLER INVOKED BY: C:\FLYTO\C51\COMPILER\BIN\A51.EXE DIANJI1.ASM DEBUG MACRO SYMBOLS MOD51 LIST
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1            ORG 0000H
+0000 0130              2            AJMP MAIN
+0030                   3            ORG 0030H
+0030                   4       MAIN:
+  BFFF                 5            ADDR8279_1 EQU    0BFFFH
+  BFFE                 6            ADDR8279_2 EQU    0BFFEH
+                       7       
+0030 90BFFF            8            MOV      DPTR,#ADDR8279_1
+0033 74D1              9            MOV      A,#0D1H
+0035 F0               10            MOVX     @DPTR,A
+0036 E0               11       WAIT:MOVX     A,@DPTR
+0037 20E7FC           12            JB       ACC.7,WAIT
+003A 7400             13            MOV      A,#00H
+003C F0               14            MOVX     @DPTR,A
+003D 742C             15            MOV      A,#2CH
+003F F0               16            MOVX     @DPTR,A
+                      17            
+0040 C200             18            CLR 00H 
+0042 C201             19            CLR 01H
+0044 120150           20     CHAXUN:LCALL SEACH 
+0047 100002           21            JBC 00H,MAIN1 
+004A 80F8             22            SJMP CHAXUN 
+004C D28A             23      MAIN1:SETB IT1
+004E D2AF             24            SETB EA
+0050 D2AA             25            SETB EX1
+0052 908100           26     ADC0809:MOV DPTR,#8100H     ;；ADC0809首址
+0055 F0               27            MOVX @DPTR,A        ;；启动AD转换
+0056 D290             28       HERE:SETB P1.0
+0058 309002           29            JNB  P1.0,SEVER1  
+005B 80F9             30            SJMP HERE
+005D E0               31     SEVER1:MOVX A,@DPTR
+005E FB               32            MOV R3,A
+005F 908000           33            MOV DPTR ,#8000H    ;D/A口地址 
+0062 F0               34            MOVX @DPTR,A  
+0063 7A00             35            MOV R2,#00H
+0065 7F60             36            MOV R7,#60H
+0067 7E09             37            MOV R6,#09H
+0069 1200BF           38            LCALL MULD
+006C 7FFF             39            MOV  R7,#0FFH
+006E 1200E7           40            LCALL  DV31
+0071 EC               41            MOV A,R4 
+0072 FE               42            MOV R6,A 
+0073 ED               43            MOV A,R5 
+0074 FF               44            MOV R7,A 
+0075 120116           45            LCALL HB2
+0078 8D35             46            MOV 35H,R5 
+007A 8C34             47            MOV 34H,R4 
+007C 1191             48            ACALL TRANS
+007E 120130           49            LCALL LED
+0081 120150           50            LCALL SEACH 
+0084 100102           51            JBC 01H ,NEXT  
+0087 0152             52            AJMP  ADC0809 
+0089 908000           53      NEXT:MOV DPTR,#8000H
+008C 7400             54           MOV A,#00H
+008E F0               55           MOVX @DPTR,A
+008F 0130             56           AJMP MAIN   
+                      57        
+0091 7835             58     TRANS: MOV R0,#35H
+A51 MACRO ASSEMBLER  DIANJI1                                                                22/08/03 09:44:46 PAGE     2
+
+0093 7930             59            MOV R1,#30H
+0095 7E02             60            MOV R6,#02H
+0097 E6               61       LAST:MOV      A,@R0
+0098 540F             62            ANL      A,#0FH
+009A F7               63            MOV      @R1,A
+009B E6               64            MOV      A,@R0
+009C 54F0             65            ANL      A,#0F0H
+009E C4               66            SWAP     A
+009F 09               67            INC  R1
+00A0 F7               68            MOV      @R1,A
+00A1 09               69            INC  R1
+00A2 18               70            DEC R0
+00A3 DEF2             71            DJNZ R6,LAST
+00A5 22               72            RET   
+                      73        
+00A6 90BFFF           74        KEY:MOV  DPTR ,#ADDR8279_1
+00A9 7440             75            MOV  A,#40H
+00AB F0               76                MOVX @DPTR,A
+00AC 90BFFE           77                MOV DPTR,#ADDR8279_2
+00AF E0               78                MOVX A,@DPTR
+00B0 543F             79                ANL A,#3FH
+                      80     
+00B2 B40A04           81            CJNE A,#0AH,KEY1             
+00B5 D200             82            SETB 00H
+00B7 01BE             83            AJMP RETUN    
+                      84           
+00B9 B40B02           85       KEY1:CJNE A,#0BH,RETUN 
+00BC D201             86            SETB 01H  
+00BE 22               87      RETUN:RET   
+                      88        
+                      89      
+                      90       
+                      91       
+                      92       
+                      93        ;;; （５）  标号： ＭＵＬＤ    功能：双字节二进制无符号数乘法
+                      94     
+                      95     ;;入口条件：被乘数在R2、R3中，乘数在R6、R7中。
+                      96     ;;出口信息：乘积在R2、R3、R4、R5中。
+                      97     ;;;影响资源：PSW、A、B、R2～R7    堆栈需求：  ２字节
+                      98     
+00BF EB               99     MULD:   MOV     A,R3    ;;；计算R3乘R7
+00C0 8FF0            100             MOV     B,R7
+00C2 A4              101             MUL     AB
+00C3 ACF0            102             MOV     R4,B         ;; ；暂存部分积
+00C5 FD              103             MOV     R5,A
+00C6 EB              104             MOV     A,R3      ;; ；计算R3乘R6
+00C7 8EF0            105             MOV     B,R6
+00C9 A4              106             MUL     AB
+00CA 2C              107             ADD     A,R4       ;;;；累加部分积
+00CB FC              108             MOV     R4,A
+00CC E4              109             CLR     A
+00CD 35F0            110             ADDC    A,B
+00CF FB              111             MOV     R3,A
+00D0 EA              112             MOV     A,R2    ;;;；计算R2乘R7
+00D1 8FF0            113             MOV     B,R7
+00D3 A4              114             MUL     AB
+00D4 2C              115             ADD     A,R4    ;;;；累加部分积
+00D5 FC              116             MOV     R4,A
+00D6 EB              117             MOV     A,R3
+00D7 35F0            118             ADDC    A,B 
+00D9 FB              119             MOV     R3,A
+00DA E4              120             CLR     A
+00DB 33              121             RLC     A
+00DC CA              122             XCH     A,R2    ;;;；计算R2乘R6
+00DD 8EF0            123             MOV     B,R6
+00DF A4              124             MUL     AB
+A51 MACRO ASSEMBLER  DIANJI1                                                                22/08/03 09:44:46 PAGE     3
+
+00E0 2B              125             ADD     A,R3    ;;;；累加部分积
+00E1 FB              126             MOV     R3,A
+00E2 EA              127             MOV     A,R2
+00E3 35F0            128             ADDC    A,B
+00E5 FA              129             MOV     R2,A
+00E6 22              130             RET
+                     131        ;; （９）  标号：  ＤＶ３１    功能：三字节二进制无符号数除以单字节二进制数
+                     132     
+                     133     ;;;入口条件：被除数在R3、R4、R5中，除数在R7中。
+                     134     ;;出口信息：OV=0 时，双字节商在R4、R5中，OV=1 时溢出。
+                     135     ;;影响资源：PSW、A、B、R2～R7    堆栈需求：  ２字节
+                     136     
+00E7 C3              137     DV31:   CLR     C
+00E8 EB              138             MOV     A,R3
+00E9 9F              139             SUBB    A,R7
+00EA 4003            140             JC      DV30
+00EC D2D2            141             SETB    OV      ;;；商溢出
+00EE 22              142             RET
+00EF 7A10            143     DV30:   MOV     R2,#10H       ;;；求R3R4R5／R7－→R4R5
+00F1 C3              144     DM23:   CLR     C
+00F2 ED              145             MOV     A,R5
+00F3 33              146             RLC     A
+00F4 FD              147             MOV     R5,A
+00F5 EC              148             MOV     A,R4
+00F6 33              149             RLC     A
+00F7 FC              150             MOV     R4,A
+00F8 EB              151             MOV     A,R3
+00F9 33              152             RLC     A
+00FA FB              153             MOV     R3,A
+00FB 92D5            154             MOV     F0,C
+00FD C3              155             CLR     C
+00FE 9F              156             SUBB    A,R7
+00FF B0D5            157             ANL     C,/F0
+0101 4002            158             JC      DM24
+0103 FB              159             MOV     R3,A
+0104 0D              160             INC     R5
+0105 DAEA            161     DM24:   DJNZ    R2,DM23
+0107 EB              162             MOV     A,R3                ;；四舍五入
+0108 2B              163             ADD     A,R3
+0109 4003            164             JC      DM25
+010B 9F              165             SUBB    A,R7
+010C 4005            166             JC      DM26
+010E 0D              167     DM25:   INC     R5
+010F ED              168             MOV     A,R5
+0110 7001            169             JNZ     DM26
+0112 0C              170             INC     R4
+0113 C2D2            171     DM26:   CLR     OV
+0115 22              172             RET            ;;; ；商在R4R5中 
+                     173       
+                     174      
+                     175      ;    （１７）  标号： ＨＢ２   功能：双字节十六进制整数转换成双字节ＢＣＤ码整数
+                     176     
+                     177     ;入口条件：待转换的双字节十六进制整数在R6、R7中。
+                     178     ;出口信息：转换后的三字节ＢＣＤ码整数在R3、R4、R5中。
+                     179     ;;影响资源：PSW、A、R2～R7    堆栈需求：  ２字节
+                     180     
+0116 E4              181     HB2:    CLR     A           ;；ＢＣＤ码初始化
+0117 FB              182             MOV     R3,A
+0118 FC              183             MOV     R4,A
+0119 FD              184             MOV     R5,A
+011A 7A10            185             MOV     R2,#10H        ;；转换双字节十六进制整数
+011C EF              186     HB3:    MOV     A,R7                   ;        ；从高端移出待转换数的一位到CY中
+011D 33              187             RLC     A
+011E FF              188             MOV     R7,A
+011F EE              189             MOV     A,R6
+0120 33              190             RLC     A
+A51 MACRO ASSEMBLER  DIANJI1                                                                22/08/03 09:44:46 PAGE     4
+
+0121 FE              191             MOV     R6,A
+0122 ED              192             MOV     A,R5                   ;；ＢＣＤ码带进位自身相加，相当于乘２
+0123 3D              193             ADDC    A,R5
+0124 D4              194             DA      A                         ;;;;;；十进制调整
+0125 FD              195             MOV     R5,A
+0126 EC              196             MOV     A,R4
+0127 3C              197             ADDC    A,R4
+0128 D4              198             DA      A
+0129 FC              199             MOV     R4,A
+012A EB              200             MOV     A,R3
+012B 3B              201             ADDC    A,R3
+012C FB              202             MOV     R3,A                        ;；双字节十六进制数的万位数不超过６，不用调整
+012D DAED            203             DJNZ    R2,HB3                      ;   ；处理完１６ｂｉｔ
+012F 22              204             RET     
+                     205        
+                     206      
+0130 90BFFF          207        LED:MOV      DPTR,#ADDR8279_1
+0133 7490            208            MOV      A,#90H
+0135 F0              209            MOVX      @DPTR,A
+0136 7930            210            MOV      R1,#30H
+0138 7F04            211            MOV      R7,#04H
+013A 90BFFE          212            MOV      DPTR,#ADDR8279_2
+013D E7              213       LOOP:MOV      A,@R1
+013E 2405            214            ADD      A,#05H
+0140 83              215            MOVC     A,@A+PC
+0141 F0              216            MOVX     @DPTR,A
+0142 09              217            INC      R1
+0143 DFF8            218            DJNZ     R7,LOOP
+0145 22              219            RET
+0146 3F065B4F        220            DB       3FH,06H,5BH,4FH,66H,6DH
+014A 666D                    
+014C 7D077F6F        221            DB       7DH,07H,7FH,6FH  
+0150 90BFFF          222     SEACH:MOV      DPTR,#ADDR8279_1   
+0153 E0              223            MOVX     A,@DPTR
+0154 5407            224            ANL A,#07H
+0156 6003            225            JZ  RETUN4
+0158 0200A6          226            LJMP KEY
+015B 22              227     RETUN4:RET
+                     228     END        
+                                                   
+A51 MACRO ASSEMBLER  DIANJI1                                                                22/08/03 09:44:46 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+ADC0809. . . . . .  C ADDR   0052H   A   
+ADDR8279_1 . . . .  N NUMB   BFFFH   A   
+ADDR8279_2 . . . .  N NUMB   BFFEH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+CHAXUN . . . . . .  C ADDR   0044H   A   
+DM23 . . . . . . .  C ADDR   00F1H   A   
+DM24 . . . . . . .  C ADDR   0105H   A   
+DM25 . . . . . . .  C ADDR   010EH   A   
+DM26 . . . . . . .  C ADDR   0113H   A   
+DV30 . . . . . . .  C ADDR   00EFH   A   
+DV31 . . . . . . .  C ADDR   00E7H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EX1. . . . . . . .  B ADDR   00A8H.2 A   
+F0 . . . . . . . .  B ADDR   00D0H.5 A   
+HB2. . . . . . . .  C ADDR   0116H   A   
+HB3. . . . . . . .  C ADDR   011CH   A   
+HERE . . . . . . .  C ADDR   0056H   A   
+IT1. . . . . . . .  B ADDR   0088H.2 A   
+KEY. . . . . . . .  C ADDR   00A6H   A   
+KEY1 . . . . . . .  C ADDR   00B9H   A   
+LAST . . . . . . .  C ADDR   0097H   A   
+LED. . . . . . . .  C ADDR   0130H   A   
+LOOP . . . . . . .  C ADDR   013DH   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+MAIN1. . . . . . .  C ADDR   004CH   A   
+MULD . . . . . . .  C ADDR   00BFH   A   
+NEXT . . . . . . .  C ADDR   0089H   A   
+OV . . . . . . . .  B ADDR   00D0H.2 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+RETUN. . . . . . .  C ADDR   00BEH   A   
+RETUN4 . . . . . .  C ADDR   015BH   A   
+SEACH. . . . . . .  C ADDR   0150H   A   
+SEVER1 . . . . . .  C ADDR   005DH   A   
+TRANS. . . . . . .  C ADDR   0091H   A   
+WAIT . . . . . . .  C ADDR   0036H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

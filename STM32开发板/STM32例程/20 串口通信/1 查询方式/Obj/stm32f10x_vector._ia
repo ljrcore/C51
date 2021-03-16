@@ -1,0 +1,1 @@
+--cpu Cortex-M3 -g --apcs=interwork -I "d:\Keil\ARM\INC" -I "d:\Keil\ARM\INC\ST\STM32F10x" --list ".\Lst\stm32f10x_vector.lst" --xref -o ".\Obj\stm32f10x_vector.o" --depend ".\Obj\stm32f10x_vector.d" "stm32f10x_vector.s"

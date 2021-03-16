@@ -1,0 +1,144 @@
+
+<html>
+
+<head>
+<meta content="text/html; charset=gb2312" http-equiv="Content-Type">
+<style type="text/css"> <!-- .main{font-size:12px}.main1{font-size:14.8px}.main2{font-size:16px}.main3{font-size:7px}.main4{font-size:10px}A:link{text-decoration:none;color:0000ff}A:visited{text-decoration:none}
+ color:000000}A:active{text-decoration:none;color:ff0000}A:hover{text-decoration:underline;color:aa0000}.downbor{border-color:black black #FFD0A2;border-style:solid;border-top-width:0px;border-right-width:0px}
+ border-bottom-width:1px;border-left-width:0px}.downbor1{border-color:black black #FFFFFF;border-style:solid;border-top-width:0px;border-right-width:0px;border-bottom-width:2px;border-left-width:0px}.mar{margin-bottom:10px
+ .mar1{margin-bottom:10px;margin-top:10px}.mar2{margin-bottom:0px;margin-top:0px
+ --> </style>
+<script language="JavaScript">
+<!--
+<!--
+function newGuide (section) {
+        var guidewindow = window.open("", "guide", "width=500,height=480,center,toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,copyhistory=0");
+        guidewindow.location.href = section;
+                guidewindow.focus();
+}
+//  -->
+
+</script>
+<script>
+<!--
+function y2k(number) { return (number < 1000) ? number + 1900 : number; }
+
+function dispdate(){
+     var now = new Date();
+     var dd = now.getDate() , mt = now.getMonth() + 1 , yy = y2k(now.getYear()) , weekVal = now.getDay();
+
+        if (weekVal==0)
+       msg1="星期日";
+    else if (weekVal==1)
+        msg1="星期一"; 
+    else if (weekVal==2)
+        msg1="星期二"; 
+    else if (weekVal==3)
+            msg1="星期三"; 
+    else if (weekVal==4)
+            msg1="星期四"; 
+    else if (weekVal==5)
+            msg1="星期五"; 
+    else if (weekVal==6)
+            msg1="星期六"; 
+
+   document.write(yy+"年"+mt+"月"+dd+"日 "+msg1);
+}
+//-->
+</script>
+
+<meta content="Microsoft FrontPage 4.0" name="GENERATOR">
+<title>单片机抗干扰措施</title>
+<base target="_self">
+</head>
+
+<body bgColor="#FFFFFF" leftMargin="5" topMargin="4" marginwidth="5" marginheight="5">
+<font SIZE="4">
+<b>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="30%">　<p ALIGN="left"><a href="http://www.21ic.com"><img border="0" src="http://www.21ic.com/images/21ic.gif" alt="21ic"></a>---<span class=main1><b>设计与应用</p></span> </B>
+
+</td>
+    <td width="70%"><a href=../ad.htm><img src='http://www.21ic.com/images2/468x60-21ITT2.gif' border=0></a><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+  codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0"
+  id="button_xuexi" width="70" height="60">
+  <param name="movie" value="../button-xuexi.swf">
+  <param name="quality" value="high">
+  <param name="bgcolor" value="#FFFFFF">
+  <embed name="button_xuexi" src="../button-xuexi.swf" quality="high" bgcolor="#FFFFFF"
+    width="70" height="60"
+    type="application/x-shockwave-flash"
+    pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+  </embed>
+</object>
+</td>
+  </tr>
+</table>
+
+<hr size="1" width="80%"> 
+</b> 
+<div align="center">
+  <center>
+  <table border="1" width="80%" bgcolor="#CCFFCC" cellspacing="3" cellpadding="0" bordercolor="#FFFFFF">
+    <tr>
+      <td width="100%">
+<font SIZE="4">
+<p align="center"><span class="main1"><b>单片机抗干扰措施</b></span></p>
+
+<table cellpadding="1" cellspacing="2" width="100%" border="0">
+<tr><td width="80" valign="top" ><span class="main1"><b>日期</b></td>
+<td><span class="main">2001-7-24 13:26:35</span></td>
+</tr><tr><td width="80" valign="top" ><span class="main1"><b>作者</b></td>
+<td><span class="main">双龙老耿</span></td>
+</tr><tr><td width="80" valign="top" ><span class="main1"><b>内容</b></span></td>
+<td><span class="main1">
+
+</a>
+
+<BR>　　在工业控制、智能仪表都采用了单片机,单片机干扰措施提到重要议事日程上来。单片机抗干扰措施不解决,其它工作也是白费劲。要解决单片机抗干扰措施,必须先找出干扰源,然后采用单片机软、硬件技术来解决。<BR><BR>　　干扰源:主要来自外部电源、内部电源,印制板自身干扰,空中、周围电磁场干扰,外部干扰通过I/O口输入等。为了查出是否外部电源干扰源,可切换为电池供电。为叙述方便,我们分硬件、软件抗干扰措施来讲:<BR><BR>　　(一)、硬件抗干扰措施<BR><BR>　　1. 交流程稳压:使电网电压稳定。<BR><BR>　　2. 交流端用电感电容滤波:去掉高频低频干扰脉冲。<BR><BR>　　3. 变压器双隔离措施:变压器初级输入端串接电容,初、次级线圈间屏蔽层与初级间电容中心接点接大地,次级外屏蔽层接印制板地,这是硬件抗干扰的关键手段。<BR><BR>　　4. 次级加低通滤波器:吸收变压器产生的浪涌电压。<BR><BR>　　5. 采用集成式直流稳压电源:因为有过流、过压、过热等保护。<BR><BR>　　6. I/O口光电、磁电、继电器隔离:去掉公共地。<BR><BR>　　7. 通讯线用双绞线:排除平行互感。<BR><BR>　　8. 防雷电用光纤隔离最为有效<BR><BR>　　9. A/D转换,用隔离放大器或采用现场转换:减少误差。<BR><BR>　　10. 外壳接大地:解决人身安全及防外界电磁场干扰。<BR><BR>　　11. 加复位电压检测电路:仿止复位不充份,CPU就工作,尤其有EEPROM的器件,复位不充份会改变EEPROM的内容。<BR><BR>　　12. 印制板工艺抗干扰:<BR><BR>　　　　①. 电源线加粗,合理走线、接地,三总线分开: 减少互感振荡。<BR><BR>　　　　②. CPU、RAM、ROM等主芯片,VCC和GND间接电解电容及瓷片电容:去掉高、低频干扰脉冲。<BR><BR>　　　　③. 独立系统结构,减少接插件与连线:提高可靠性,减少构障率。<BR><BR>　　　　④. 集成块与插座接触可靠,用双簧插座,最好集成块直接焊在印制板上:防止器件接触不良故障。<BR><BR>　　　　⑤. 有条件采用四层以上印制板,中间两层为电源及地。<BR><BR>　　(二). 软件抗干扰措施:<BR><BR>　　1. 多用查询代替中断,把中断源减到最少:中断信号连线不大于0.1米,防止误触发、感应触发。<BR><BR>　　2. A/D转换采用数字滤波:平均法,比较平均法等:防止突发性干扰。<BR><BR>　　3. MCS-51单片机空单元写上00H,最后放跳转指令到ORG 0000H:因干扰程序走飞,可能抓回去。<BR><BR>　　4. 多次重复输出,输出信号保持在RAM中:止因干扰信止输出。<BR><BR>　　5. 开机自检、自诊断,RAM中重要内容要分区存放,经常进行比较检查,机器不能带病工作。<BR><BR>　　6. 表格参数放在EPROM中,检验和存于最后单元,防止EPROM内容被修改。<BR><BR>　　7. 加看门狗,软件走飞可从头开始。<BR><BR>　　8. 开关信号延时去抖动。<BR><BR>　　9. I/O口正确操作,必须检查口执行命令情况。防止外部故障不执行控制命令。<BR><BR>　　10. 通讯应加奇偶校验或查询、表决、比较等措施,防止通讯出错。<BR><BR>　　这里仅抛砖引玉,希望有实践经验的技术人员补充抗干扰方法,资源共享。<BR>    http://www.sl.com.cn<BR><BR><BR>
+<center>
+
+</span></td>
+</tr><tr><td width="80" valign="top" >
+<BR><span class="main1"><b>来源</b></td>
+<td><span class="main">
+<BR>21IC.com</span></td>
+</tr>
+<tr>
+<td></td>
+<td class=main><a href=http://www.21icbbs.com/ target=_blank>欢迎参与技术讨论</a>
+</td>
+</tr>
+</table>
+
+</font>
+      </td>
+    </tr>
+  </table>
+  </center>
+</div>
+</font>
+
+<hr size="1" width="80%">
+<p align="center"><span class="main">
+<a href="http://www.21icbbs.com/user/signup.asp" target="_blank">●在此注册成为21IC会员<br>可免费查询芯片资料，货源<br>每周获得最新的行业新闻和技术文章</a></font></p>
+<br>
+<form align="center">              
+  <div align="center"><center><p><input TYPE="button" class="main" NAME="Close Window"              
+  VALUE="关闭窗口" ONCLICK="window.close()"></p>              
+  </center></div>              
+</form>   
+<br><center>
+<span class="main">Copyright (C) 2000 -2002 21IC.com, 中国电子网.          
+All Rights Reserved<a href="javascript:%20newGuide('copyright.htm')"><br>        
+版权声明</a> &nbsp; 北京欣星网科技发展有限公司<a        
+href="mailto:Webmaster@21ic.com"><br>        
+Webmaster@21ic.com</a></p><br>     
+
+
+
+</body>        
+</html>        
+  
+

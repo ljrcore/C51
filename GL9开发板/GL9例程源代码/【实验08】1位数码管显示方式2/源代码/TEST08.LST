@@ -1,0 +1,51 @@
+C51 COMPILER V7.00  TEST08                                                                 07/14/2013 22:25:15 PAGE 1   
+
+
+C51 COMPILER V7.00, COMPILATION OF MODULE TEST08
+OBJECT MODULE PLACED IN TEST08.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE TEST08.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          ////////////////////////////////////////////////////////////////////////////
+   2          //                给力者单片机开发学习系统，开发学习都给力！              //
+   3          ////////////////////////////////////////////////////////////////////////////
+   4          //                     学习51单片机，其实可以很简单                       //
+   5          ////////////////////////////////////////////////////////////////////////////
+   6          //                宁波芯动电子有限公司  www.MovingChip.com                //
+   7          ////////////////////////////////////////////////////////////////////////////
+   8          
+   9          #include <AT89X52.h>       //调用51单片机的头文件
+  10          
+  11          //---------------------------------------
+  12          //名称: 主函数
+  13          //适用：给力者GL9单片机开发学习系统
+  14          //公司：宁波芯动电子有限公司
+  15          //网址：www.MovingChip.com
+  16          //日期：20120914
+  17          //---------------------------------------
+  18          void main(void)            //主函数,单片机开机后就是从这个函数开始运行
+  19          {
+  20   1      
+  21   1          P2=0x06;               //按字节方式写P2口I/O状态
+  22   1          while(1)               //死循环,单片机初始化后,将一直运行这个死循环
+  23   1          {
+  24   2      
+  25   2          }
+  26   1      }
+  27          
+  28          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      5    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

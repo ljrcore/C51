@@ -1,0 +1,26 @@
+;多字节无符号数出除法子程序D_NIDIV
+;入口条件：被除数的低位地址放在R0中，除数在R1中
+;出口参数：商存于被除数的区域，若除数为0，则（A）＝0，否则（A）＝0FFH ,R3存放字节数。
+;参数影响：A,R7,R6,R5,R4,R0,R1,R3,
+D_NIDIV:	MOV A,R0
+	MOV R4,A
+	MOV A,R1
+	MOV R5,A
+	MOV A,R3
+	MOV R7,A
+	LCALL N_ZERO
+	JZ TO_SA41
+	MOV A,R5
+	MOV R1,A
+	MOV A,R7
+	MOV R3,A 
+	LCALL D_NIDIV1
+	MOV A,#0FFH
+	MOV A,R7
+	MOV R3,A
+TO_SA41:	RET
+N_ZERO:	MOV A,@R1
+	JNZ SF40END
+	INC R1
+	DJNZ R3,N_ZERO
+SF40END:	RET 

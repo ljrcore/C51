@@ -1,0 +1,100 @@
+C51 COMPILER V7.00  TEST21                                                                 09/19/2012 08:20:13 PAGE 1   
+
+
+C51 COMPILER V7.00, COMPILATION OF MODULE TEST21
+OBJECT MODULE PLACED IN TEST21.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE TEST21.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          ////////////////////////////////////////////////////////////////////////////
+   2          //                给力者单片机开发学习系统，开发学习都给力！              //
+   3          ////////////////////////////////////////////////////////////////////////////
+   4          //                     学习51单片机，其实可以很简单                       //
+   5          ////////////////////////////////////////////////////////////////////////////
+   6          //                宁波芯动电子有限公司  www.MovingChip.com                //
+   7          ////////////////////////////////////////////////////////////////////////////
+   8          
+   9          #include <AT89X52.h>       //调用51单片机的头文件
+  10          
+  11          //---------------------------------------
+  12          //8独立按键相关I/O设置
+  13          sbit P1key=P2^0;           //按键P1接在P2.0口上
+  14          sbit P2key=P2^1;           //按键P2接在P2.1口上
+  15          sbit P3key=P2^2;           //按键P3接在P2.2口上
+  16          sbit P4key=P2^3;           //按键P4接在P2.3口上
+  17          sbit P5key=P2^4;           //按键P5接在P2.4口上
+  18          sbit P6key=P2^5;           //按键P6接在P2.5口上
+  19          sbit P7key=P2^6;           //按键P7接在P2.6口上
+  20          sbit P8key=P2^7;           //按键P8接在P2.7口上
+  21          //---------------------------------------
+  22          
+  23          //---------------------------------------
+  24          //按键部分用寄存器设置
+  25          unsigned char KEYbuf;      //设置8位的寄存器用来暂存按键键值数据
+  26          unsigned char KEYcon;
+  27          bit KEYbit;
+  28          //---------------------------------------
+  29          
+  30          //---------------------------------------
+  31          //名称: 主函数
+  32          //适用：给力者GL9单片机开发学习系统
+  33          //公司：宁波芯动电子有限公司
+  34          //网址：www.MovingChip.com
+  35          //日期：20120914
+  36          //---------------------------------------
+  37          void main(void)            //主函数,单片机开机后就是从这个函数开始运行
+  38          {
+  39   1          P1_3=1;                //按位方式写P1.3=1   
+  40   1          while(1)               //死循环,单片机初始化后,将一直运行这个死循环
+  41   1          {
+  42   2          //***8独立按键扫描部分***
+  43   2          //按P1-P8键，KEYbuf赋值1-8
+  44   2              if(P1key==0) KEYbuf=1;     //如果P1键按下，KEYbuf赋值写1
+  45   2              else if(P2key==0) KEYbuf=2; //如果P2键按下，KEYbuf赋值写2
+  46   2              else if(P3key==0) KEYbuf=3; //如果P3键按下，KEYbuf赋值写3
+  47   2              else if(P4key==0) KEYbuf=4; //如果P4键按下，KEYbuf赋值写4
+  48   2              else if(P5key==0) KEYbuf=5; //如果P5键按下，KEYbuf赋值写5
+  49   2              else if(P6key==0) KEYbuf=6; //如果P6键按下，KEYbuf赋值写6
+  50   2              else if(P7key==0) KEYbuf=7; //如果P7键按下，KEYbuf赋值写7
+  51   2              else if(P8key==0) KEYbuf=8; //如果P8键按下，KEYbuf赋值写8
+  52   2                        else 
+  53   2                        {
+  54   3                            KEYbuf=0;
+  55   3                                      if(KEYbit==0)
+C51 COMPILER V7.00  TEST21                                                                 09/19/2012 08:20:13 PAGE 2   
+
+  56   3                                      {
+  57   4                                              if(++KEYcon>250)
+  58   4                                              {
+  59   5                                                      KEYcon=0;
+  60   5                                                      KEYbit=1;              //无按键按下，KEYbit赋值为1
+  61   5                                              }
+  62   4                                      }
+  63   3                        }
+  64   2          //*********************
+  65   2                      if(KEYbuf==1)               //P1键按下后，继电器吸合
+  66   2                      {
+  67   3                              if(KEYbit==1)
+  68   3                              {
+  69   4                                      KEYbit=0;
+  70   4                                      P1_3=!P1_3;                             
+  71   4                              }
+  72   3                      }               
+  73   2          }
+  74   1      }
+  75          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    101    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

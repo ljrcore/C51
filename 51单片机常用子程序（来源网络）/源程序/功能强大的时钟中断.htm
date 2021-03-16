@@ -1,0 +1,159 @@
+
+<html>
+<head>
+<title>功能强大的时钟中断</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="STYLE.CSS" rel="stylesheet" type="text/css">
+</head>
+<bgsound src="../article/img/1000.wav" loop="0">
+<body leftmargin="10" topmargin="0" >
+<div id=menuDiv style='Z-INDEX: 2; VISIBILITY: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: #9cc5f8'></div>
+
+<table align="center" cellpadding="0" cellspacing="0" style="border:1px #44A938 solid; border-top-width: 0px; border-right-width: 1px; border-bottom-width: 0px; border-left-width: 1px;width:760;">
+  <tr class="topbg"><td height="9"></td></tr>
+  <tr>
+    <td>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="180"><a href='http://www.89s51.com/' title='编程器自制家园网'><object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0' width='180' height='60'><param name='movie' value='http://www.1000.com.cn/article/img/logo.swf'><param name='quality' value='high'><embed src='http://www.1000.com.cn/article/img/logo.swf' pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash' type='application/x-shockwave-flash' width='480' height='60'></embed></object></a></td>
+    <td><object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0' width='480' height='60'><param name='movie' value='http://www.1000.com.cn/article/img/banner.swf'><param name='quality' value='high'><embed src='http://www.1000.com.cn/article/img/banner.swf' pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash' type='application/x-shockwave-flash' width='480' height='60'></embed></object></td>
+    <td width="80"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" align="center">
+              <tr valign="middle"> 
+                <td align="center"><img src="images/home.gif" align="absmiddle" width="20" height="20"></td>
+                <td align="center"><a href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.89s51.com/')">设为首页</a></td>
+              </tr>
+              <tr valign="middle"> 
+                <td align="center"><img src="images/email.gif" align="absmiddle" width="20" height="20"></td>
+                <td align="center"><a href="mailto:21007@163.com">联系站长</a></td>
+              </tr>
+              <tr valign="middle"> 
+                <td align="center"><img src="images/bookmark.gif" align="absmiddle" width="20" height="20"></td>
+                <td align="center"><a href="javascript:window.external.addFavorite('http://www.89s51.com/','编程器自制家园网')">加入收藏</a></td>
+              </tr>
+            </table></td>
+  </tr>
+</table>
+	</td>
+  </tr>
+  <tr class="bottombg"><td height="9"></td></tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="2" cellspacing="0" class="border">
+  <tr class="title">
+    <td height="20">|&nbsp;<a href='http://www.89s51.com/'>首页</a>&nbsp;|&nbsp;<a href='Default.asp?BigClassName=初学乐园'>初学乐园</a> | <a href='Default.asp?BigClassName=51单片机'><font color='red'>51单片机</font></a> | <a href='Default.asp?BigClassName=自制编程器'>自制编程器</a> | <a href='Default.asp?BigClassName=源代码下载'>源代码下载</a> | <a href='Default.asp?BigClassName=自制单片机编程器'>自制单片机编程器</a> | <a href='Default.asp?BigClassName=单片机仿真器'>单片机仿真器</a> | <a href='Default.asp?BigClassName=单片机入门'>单片机入门</a> | <a href='Default.asp?BigClassName=软件下载'>软件下载</a> | </td>
+  </tr>
+<tr class='tdbg'><td>&nbsp;<font color='red'>单片机编程</font>&nbsp;&nbsp;&nbsp;<a href='Default.asp?BigClassName=51单片机&SmallClassName=单片机教学'>单片机教学</a>&nbsp;&nbsp;&nbsp;<a href='Default.asp?BigClassName=51单片机&SmallClassName=单片机制作'>单片机制作</a>&nbsp;&nbsp;</td></tr>
+</table>
+<br>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td valign="top"><table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" class="border" style="word-break:break-all">
+        <tr class="title"> 
+          <td width="*">
+|&nbsp;<a href='Default.asp?BigClassName=51单片机'>51单片机&nbsp;</a>&gt;&gt;&nbsp;<a href='Default.asp?BigClassName=51单片机&SmallClassName=单片机编程'>单片机编程&nbsp;</a>&gt;&gt;&nbsp;功能强大的时钟中断
+		  </td>
+          <td width='200'>[专题]<a href='Default.asp?SpecialName=单片机编程'>单片机编程</a></td>
+          <td width="50" align="right"> &nbsp;&nbsp;&nbsp;热&nbsp;&nbsp;&nbsp; </td>
+        </tr>
+        <tr class="tdbg"> 
+          <td colspan="3"><p align="center"><font size="5">功能强大的时钟中断</font><br>
+              作者：佚名&nbsp;&nbsp;&nbsp;&nbsp;转贴自：本站原创&nbsp;&nbsp;&nbsp;&nbsp;点击数：258&nbsp;&nbsp;&nbsp;&nbsp;资料录入：自制编程器</p>
+            <p><FONT size=2>功能强大的时钟中断<BR>　　在单片机程序设计中，设置一个好的时钟中断，将能使一个CPU发挥两个CPU的功效，大大方便和简化程序的编制，提高系统的效率与可操作性。我们可以把一些例行的及需要定时执行的程序放在时钟中断中，还可以利用时钟中断协助主程序完成定时、延时等操作。<BR>　　下面以6MHz时钟的AT89C51系统为例，说明时钟中断的应用。<BR>　　定时器初值与中断周期　时钟中断无需过于频繁，一般取20mS(50Hz)即可。如需要百分之一秒的时基信号，可取10mS(100Hz)。这里取20mS，用定时器T0工作于16位定时器方式(方式1)。T0的工作方式为：每过一个机器周期自动加1，当计满0FFFFh，要溢出时，便会产生中断，并由硬件设置相应的标志位供软件查询。即中断时比启动时经过了N+1个机器周期。所以，我们只要在T0中预先存入一个比满值0FFFFh小N的数，然后启动定时器，便会在N个机器周期后产生中断。这个值便是所谓的“初值”。下面计算我们需要的初值：时钟为6MHz，12个时钟周期为一个机器周期，20mS中有10000个机器周期。(10000)10=(2710)16，则0FFFFh-2710h+1=0D8F0h。由于响应中断、保护现场及重装初值还需要7~8个机器周期，把这个值再加上7，即T0应装入的初值是0D8F7h。每次中断进入后，先把A及PSW的值压入堆栈，然后即把0D8F7h装入T0。<BR>　　设置一个单元，每次中断加1　我们可以取内部RAM中一个单元，取名为INCPI(Increase Per Interrupt)，在中断中，装完T0初值后，用INC　INCPI指令将其加一。从这个单元中，无论中断程序还是主程序，都可以从中获得20mS的1~256之间任意整数倍的信号。例如：有一段向数码管送显的程序，需要每0.5秒执行一次以便刷新显示器，便可以设一单元(称为等待单元)W_DISP，用/MOV A,INCPI/ADD A,#25/MOV W_DISP,A/语句让其比当前的INCPI值大25，然后在每次中断中检查是否于INCPI值相等。若相等，说明已过了25个中断周期，便执行送显程序，并且让W_DISP再加上25，等待下个0.5秒。我们可以设置多个等待单元，以便取出多个不同的时基信号。让中断程序在每次中断时依次查询各个等待单元是否与INCPI相等，若相等，则执行相应的处理，并重新设置该等待单元的值，否则跳过。例如：用0.5秒信号刷新或闪烁显示器，用1秒信号产生实时时钟，或输出一定频率的方波，以一定间隔查询输入设备等。<BR>　　在中断中读键　通常，我们在主程序中读键盘，步骤为：扫描键盘，若有键按下，则延时几十毫秒去抖动，再次确认此键确实按下，然后处理该键对应的工作，完成后再次重上述步骤。但这有两点不足：1.处理相应工作时无法锁存按键的输入，即可能漏键。2.延时去抖时CPU无法做其它事情，效率不高。如果把读键放入时钟中断中，则可避免上述不足。方法为：如果两次相邻的中断中都读到同一个键按下，则这个键是有效的(达到了去抖目的)，并将其锁存到先入先出(队列)的键盘缓冲区，等主程序来处理。这样，主程序处理按键的同时，仍可响应键盘的输入。缓冲区深度通常可设为8级，若锁存的键数多于8个，则忽略新的按键，并报警提示用户新的按键将无效。若键盘缓冲队列停滞的时间大大长于主程序处理按键所需要的最大时间，说明主程序已出错或跑飞，可以在中断用指令将系统复位，起到了看门狗的目的。<BR>　　主程序中的延时　由于有常开的时钟中断，所以当主程序中有需要时间较短、精度较高的延时时，应暂时把时钟中断关闭。而程序中需要时间较长、精度不高的延时时，便可仿照下需的写法，避免多层嵌套的循环延时。<BR>　　例：在P1.1输出1秒的高电平脉冲<BR>&nbsp;&nbsp;&nbsp;&nbsp;MOV&nbsp;&nbsp;&nbsp;&nbsp;A,INCPI<BR>&nbsp;&nbsp;&nbsp;&nbsp;INC&nbsp;&nbsp;&nbsp;&nbsp;A<BR>&nbsp;&nbsp;&nbsp;&nbsp;CJNE&nbsp;&nbsp;&nbsp;&nbsp;A,INCPI$&nbsp;&nbsp;&nbsp;&nbsp;；等待一次中断处理完成<BR>&nbsp;&nbsp;&nbsp;&nbsp;SETB&nbsp;&nbsp;&nbsp;&nbsp;P1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;；设P1.1为H，脉冲开始<BR>&nbsp;&nbsp;&nbsp;&nbsp;ADD&nbsp;&nbsp;&nbsp;&nbsp;A,#50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;；50个20mS为1秒<BR>&nbsp;&nbsp;&nbsp;&nbsp;CJNE&nbsp;&nbsp;&nbsp;&nbsp;A,INCPI,$&nbsp;&nbsp;&nbsp;&nbsp;；等中断将INCPI加一50次<BR>&nbsp;&nbsp;&nbsp;&nbsp;CLR&nbsp;&nbsp;&nbsp;&nbsp;P1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;；设P1.1为L，脉冲结束<BR>　　结束语：从上看出，要灵活地应用时钟中断，将任务合理分配给中断和主程序，并且二者要分工明确，接口简单。这其中的技巧还需要大家在实践中多多摸索与体会。另外要注意：应尽量缩短中断处理程序的执行时间，更不要长于20mS。</FONT><BR></p><p align='center'><font color='red'><b>[1]</b></font></p></p> 
+            <li>上一篇资料：<a href='ArticleShow.asp?ArticleID=28' title='资料标题：51单片机C语言学习（三）
+作    者：佚名
+更新时间：2003-7-4 19:32:07
+点击次数：95'>51单片机C语言学习（三）</a></li><br>
+            <li>下一篇资料：<a href='ArticleShow.asp?ArticleID=30' title='资料标题：8515和LCD的接口源程序
+作    者：佚名
+更新时间：2003-7-5 7:35:43
+点击次数：254'>8515和LCD的接口源程序</a></li>
+			<div align="right">【<a href="Comment.asp?ArticleID=29" target="_blank">发表评论</a>】【<a href="SendMail.asp?ArticleID=29" target="_blank">告诉好友</a>】【<a href="printpage.asp?ArticleID=29">打印此文</a>】【<a href="javascript:window.close();">关闭窗口</a>】</div></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="33%" valign="top"> <table width="100%" border="0" cellspacing="0" cellpadding="2" class="border" style="word-break:break-all">
+              <tr class="title"> 
+                <td><strong>&nbsp;最新5篇热点文章资料</strong></td>
+              </tr>
+              <tr class="tdbg"> 
+                <td height="100" valign="top"><li><a href='ArticleShow.asp?ArticleID=60' title='资料标题：学单片机要多少钱
+作    者：佚名
+更新时间：2003-7-6 9:33:30
+点击次数：240' target='_blank'>学单片机要多少钱</a>[<font color=red>240</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=36' title='资料标题：电子制作之制作工具篇
+作    者：佚名
+更新时间：2003-7-5 8:48:01
+点击次数：250' target='_blank'>电子制作之制作工具篇</a>[<font color=red>250</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=30' title='资料标题：8515和LCD的接口源程序
+作    者：佚名
+更新时间：2003-7-5 7:35:43
+点击次数：254' target='_blank'>8515和LCD的接口源程序</a>[<font color=red>254</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=29' title='资料标题：功能强大的时钟中断
+作    者：佚名
+更新时间：2003-7-5 7:34:46
+点击次数：258' target='_blank'>功能强大的时钟中断</a>[<font color=red>258</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=12' title='资料标题：pic&nbsp;单片机编程器制作
+作    者：佚名
+更新时间：2003-7-4 17:51:31
+点击次数：279' target='_blank'>pic&nbsp;单片机编程器制作</a>[<font color=red>279</font>]</li><br></td>
+              </tr>
+            </table></td>
+          <td width="34%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="2" class="border" style="word-break:break-all">
+              <tr class="title"> 
+                <td><strong>&nbsp;最新5篇推荐资料</strong></td>
+              </tr>
+              <tr class="tdbg"> 
+                <td height="100" valign="top">
+                  <li><a href='ArticleShow.asp?ArticleID=61' title='文章资料标题：PLCC44适配器的制作
+作    者：佚名
+更新时间：2003-7-6 9:58:40
+点击次数：147' target='_blank'>PLCC44适配器的制作</a>[<font color=red>147</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=60' title='文章资料标题：学单片机要多少钱
+作    者：佚名
+更新时间：2003-7-6 9:33:30
+点击次数：240' target='_blank'>学单片机要多少钱</a>[<font color=red>240</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=38' title='文章资料标题：电子制作之经验总结篇
+作    者：佚名
+更新时间：2003-7-5 8:54:40
+点击次数：91' target='_blank'>电子制作之经验总结篇</a>[<font color=red>91</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=37' title='文章资料标题：电子制作之元件采购篇
+作    者：佚名
+更新时间：2003-7-5 8:50:01
+点击次数：371' target='_blank'>电子制作之元件采购篇</a>[<font color=red>371</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=36' title='文章资料标题：电子制作之制作工具篇
+作    者：佚名
+更新时间：2003-7-5 8:48:01
+点击次数：250' target='_blank'>电子制作之制作工具篇</a>[<font color=red>250</font>]</li><br>
+                </td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="top"> <table width="100%" border="0" cellspacing="0" cellpadding="2" class="border" style="word-break:break-all">
+              <tr class="title"> 
+                <td><strong>&nbsp;相关资料</strong></td>
+              </tr>
+              <tr class="tdbg"> 
+                <td height="100" valign="top"><li><a href='ArticleShow.asp?ArticleID=61' title='资料标题：PLCC44适配器的制作
+作    者：佚名
+更新时间：2003-7-6 9:58:40
+点击次数：147'>PLCC44适配器的制作</a>[<font color=red>147</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=60' title='资料标题：学单片机要多少钱
+作    者：佚名
+更新时间：2003-7-6 9:33:30
+点击次数：240'>学单片机要多少钱</a>[<font color=red>240</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=59' title='资料标题：仿真器试验板
+作    者：佚名
+更新时间：2003-7-6 9:25:32
+点击次数：597'>仿真器试验板</a>[<font color=red>597</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=58' title='资料标题：LZ多功能编程器
+作    者：佚名
+更新时间：2003-5-6 9:14:00
+点击次数：609'>LZ多功能编程器</a>[<font color=red>609</font>]</li><br><li><a href='ArticleShow.asp?ArticleID=57' title='资料标题：自制2051单片机编程器
+作    者：佚名
+更新时间：2003-7-5 17:10:15
+点击次数：541'>自制2051单片机编程器</a>[<font color=red>541</font>]</li><br></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" class="border" style="word-break:break-all">
+        <tr class="title"> 
+          <td><strong>网友评论：</strong>（只显示最新10条。评论内容只代表网友观点，与本站立场无关！）</td>
+        </tr>
+        <tr class="tdbg"> 
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;没有任何评论</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width='760' align='center' border='0' class='border' cellpadding='0' cellspacing='0'><tr height='20' align='center' class='title'><td>|&nbsp;<a href='#' onClick=this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.89s51.com/');>设为首页</a>&nbsp;|&nbsp;<a href=javascript:window.external.addFavorite('http://www.89s51.com/','编程器自制家园网')>加入收藏</a>&nbsp;|&nbsp;<a href='mailto:21007@163.com'>联系站长</a>&nbsp;|&nbsp;<a href='FriendSite.asp' target='_blank'>友情链接</a>&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有 Copyright &copy 2003 <a href='http://www.89s51.com/' target='_blank'>编程器自制家园网</a></td></tr><tr align='center' class='tdbg' height='20' valign='bottom'><td><b><a href='http://www.89s51.com' target='_blank'>编程器制作家园</a>&nbsp;&nbsp;<a href='http://www.89s51.com' target='_blank'>www.89s51.com</a></b>&nbsp;&nbsp;站长信箱：<a href='mailto:web21007@163.com'>小惠</a>&nbsp;&nbsp;</td></tr><tr align='center' class='tdbg' height='16' valign='bottom'><td>页面执行时间：46.875毫秒</td></tr></table>
+</body>
+</html>

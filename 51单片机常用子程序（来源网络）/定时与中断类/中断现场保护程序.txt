@@ -1,0 +1,11 @@
+   中断现场保护程序
+
+
+ INT:PUSH (1)
+     PUSH (2)
+     MOV P1,#0FH	;中断转向的状态
+     MOV R2,#0AH
+INT1:LCALL DELAY
+     DJNZ R2,INT1
+     POP (2)
+     POP (1)

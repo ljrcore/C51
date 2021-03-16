@@ -1,0 +1,25 @@
+ 标号： ＤＤＭ１功能：求单字节十六进制无符号数据块的平均值
+
+入口条件：数据块的首址在DPTR中，数据个数在R7中。
+出口信息：平均值在累加器A中。
+影响资源：PSW、A、R2～R6 堆栈需求： ４字节
+
+  DDM1: MOV A,R7 ；保存数据个数
+	MOV R2,A
+	PUSH DPH
+	PUSH DPL
+	CLR A ；初始化累加和
+	MOV R4,A
+	MOV R5,A
+  DM11: MOVX A,@DPTR ；读取一个数据
+	ADD A,R5 ；累加到累加和中
+	MOV R5,A
+	JNC DM12
+	INC R4
+  DM12: INC DPTR ；调整指针
+	DJNZ R2,DM11 ；累加完全部数据
+	LCALL D457 ；求平均值（R4R5／R7－→R3）
+	MOV A,R3 ；取平均值
+	POP DPL
+	POP DPH
+	RET

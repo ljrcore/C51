@@ -1,0 +1,22 @@
+;多字节数乘10子程序D_MUL10
+;入口条件：多字节数低位字节地址放于R1中；字节数放于R7中
+;出口参数：
+;参数影响：A，R1，R2，R7，B
+D_MUL10:	PUSH PSW
+	PUSH ACC 
+	PUSH B
+	CLR C
+	MOV R2,#00H
+SH10:	MOV A,@R1
+	MOV B,#0AH
+	PUSH PSW
+	ADDC A,R2
+	MOV @R1,A
+	MOV R2,B
+	INC R1
+	DJNZ R7,SH10
+	MOV @R1,B
+	POP B 
+	POP ACC
+	POP PSW
+	RET 

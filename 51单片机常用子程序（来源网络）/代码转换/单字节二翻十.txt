@@ -1,0 +1,13 @@
+  单字节二翻十
+ 
+ CONVERT:MOV B,#100
+	 DIV AB
+	 MOV @R0,A
+	 INC R0
+	 MOV A,#10
+	 XCH A,B
+	 DIV AB
+	 SWAP A
+	 ADD A,B
+	 MOV @R0,A
+	 RET

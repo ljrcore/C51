@@ -1,0 +1,317 @@
+BL51 BANKED LINKER/LOCATER V5.00                                                        11/11/2013  14:37:01  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE TEST61.obj TO TEST61 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  TEST61.obj (TEST61)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  TEST61 (TEST61)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?TEST61
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     3708H     UNIT         ?CO?TEST61
+            CODE    370BH     002DH     UNIT         ?PR?_WRITE1BYTE?TEST61
+            CODE    3738H     002CH     UNIT         ?PR?MAIN?TEST61
+            CODE    3764H     0021H     UNIT         ?PR?READ1BYTE?TEST61
+            CODE    3785H     001BH     UNIT         ?PR?_READPCF8591?TEST61
+            CODE    37A0H     0010H     UNIT         ?PR?_WRITEPCF8591?TEST61
+            CODE    37B0H     000DH     UNIT         ?PR?IICSTART?TEST61
+            CODE    37BDH     000DH     UNIT         ?PR?IICSTOP?TEST61
+            CODE    37CAH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   TEST61 (TEST61)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEST61
+
+?PR?MAIN?TEST61
+  +--> ?CO?TEST61
+  +--> ?PR?_WRITEPCF8591?TEST61
+
+?PR?_WRITEPCF8591?TEST61
+  +--> ?PR?_WRITE1BYTE?TEST61
+  +--> ?PR?IICSTOP?TEST61
+
+?PR?_WRITE1BYTE?TEST61
+  +--> ?PR?IICSTART?TEST61
+
+
+BL51 BANKED LINKER/LOCATER V5.00                                                      11/11/2013  14:37:01  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  TEST61 (TEST61)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEST61
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:00D0H.6       PUBLIC        AC
+  B:00B0H.4       PUBLIC        T0
+  D:0008H         PUBLIC        counter
+  B:00B0H.5       PUBLIC        T1
+  B:00A8H.7       PUBLIC        EA
+  B:0090H.0       PUBLIC        T2
+  C:37B0H         PUBLIC        IICstart
+  B:0080H.0       PUBLIC        P0_0
+  C:3785H         PUBLIC        _ReadPCF8591
+  B:0090H.0       PUBLIC        P1_0
+  B:0080H.1       PUBLIC        P0_1
+  B:00D0H.1       PUBLIC        FL
+  B:00A0H.0       PUBLIC        P2_0
+  B:0090H.1       PUBLIC        P1_1
+  B:0080H.2       PUBLIC        P0_2
+  B:00B0H.0       PUBLIC        P3_0
+  B:00A0H.1       PUBLIC        P2_1
+  B:0090H.2       PUBLIC        P1_2
+  B:0080H.3       PUBLIC        P0_3
+  B:00B0H.1       PUBLIC        P3_1
+  B:00A0H.2       PUBLIC        P2_2
+  B:0090H.3       PUBLIC        P1_3
+  B:0080H.4       PUBLIC        P0_4
+  B:00B0H.2       PUBLIC        P3_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:0090H.4       PUBLIC        P1_4
+  B:0080H.5       PUBLIC        P0_5
+  B:00C8H.6       PUBLIC        EXF2
+  B:00B0H.7       PUBLIC        RD
+  B:00B0H.3       PUBLIC        P3_3
+  B:00A0H.4       PUBLIC        P2_4
+  B:0090H.5       PUBLIC        P1_5
+  B:0080H.6       PUBLIC        P0_6
+  B:00B0H.4       PUBLIC        P3_4
+  B:00A0H.5       PUBLIC        P2_5
+  B:0090H.6       PUBLIC        P1_6
+  B:0080H.7       PUBLIC        P0_7
+  B:00B0H.5       PUBLIC        P3_5
+  B:00A8H.4       PUBLIC        ES
+  B:00A0H.6       PUBLIC        P2_6
+  B:0090H.7       PUBLIC        P1_7
+  B:00B0H.6       PUBLIC        P3_6
+  B:00A0H.7       PUBLIC        P2_7
+  B:00B0H.7       PUBLIC        P3_7
+  B:0098H.0       PUBLIC        RI
+  B:00D0H.7       PUBLIC        CY
+  B:00B0H.2       PUBLIC        INT0
+  B:00B0H.3       PUBLIC        INT1
+BL51 BANKED LINKER/LOCATER V5.00                                                      11/11/2013  14:37:01  PAGE 3
+
+
+  B:0098H.1       PUBLIC        TI
+  C:37BDH         PUBLIC        IICstop
+  C:37A0H         PUBLIC        _WritePCF8591
+  B:00B8H.4       PUBLIC        PS
+  B:0090H.1       PUBLIC        T2EX
+  B:00D0H.2       PUBLIC        OV
+  C:3738H         PUBLIC        main
+  B:00C8H.1       PUBLIC        C_T2
+  B:00B0H.6       PUBLIC        WR
+  B:00C8H.5       PUBLIC        RCLK
+  B:00C8H.4       PUBLIC        TCLK
+  C:3712H         PUBLIC        _Write1Byte
+  B:0088H.1       PUBLIC        IE0
+  B:0088H.3       PUBLIC        IE1
+  D:000AH         PUBLIC        ADbuf
+  B:00C8H.0       PUBLIC        CP_RL2
+  C:3764H         PUBLIC        Read1Byte
+  B:00A8H.1       PUBLIC        ET0
+  B:00A8H.3       PUBLIC        ET1
+  B:0088H.5       PUBLIC        TF0
+  B:00A8H.5       PUBLIC        ET2
+  B:0088H.7       PUBLIC        TF1
+  B:00C8H.7       PUBLIC        TF2
+  B:0098H.2       PUBLIC        RB8
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  B:00A8H.2       PUBLIC        EX1
+  B:0098H.3       PUBLIC        TB8
+  B:0088H.2       PUBLIC        IT1
+  B:00D0H.0       PUBLIC        P
+  B:0098H.7       PUBLIC        SM0
+  B:0098H.6       PUBLIC        SM1
+  B:0098H.5       PUBLIC        SM2
+  B:00B8H.1       PUBLIC        PT0
+  B:00D0H.3       PUBLIC        RS0
+  B:00B8H.3       PUBLIC        PT1
+  B:00D0H.4       PUBLIC        RS1
+  B:00B8H.5       PUBLIC        PT2
+  B:0088H.4       PUBLIC        TR0
+  B:0088H.6       PUBLIC        TR1
+  B:0090H.6       PUBLIC        SDA
+  B:00C8H.2       PUBLIC        TR2
+  B:00B8H.0       PUBLIC        PX0
+  B:00B8H.2       PUBLIC        PX1
+  B:0090H.7       PUBLIC        SCL
+  B:00C8H.3       PUBLIC        EXEN2
+  B:0098H.4       PUBLIC        REN
+  C:0003H         PUBLIC        WAV
+  B:00B0H.0       PUBLIC        RXD
+  B:00B0H.1       PUBLIC        TXD
+  B:00D0H.5       PUBLIC        F0
+  -------         PROC          IICSTART
+  C:37B0H         LINE#         920
+  C:37B0H         LINE#         921
+  C:37B0H         LINE#         922
+  C:37B2H         LINE#         923
+  C:37B4H         LINE#         924
+BL51 BANKED LINKER/LOCATER V5.00                                                      11/11/2013  14:37:01  PAGE 4
+
+
+  C:37B5H         LINE#         925
+  C:37B6H         LINE#         926
+  C:37B8H         LINE#         927
+  C:37B9H         LINE#         928
+  C:37BAH         LINE#         929
+  C:37BCH         LINE#         930
+  -------         ENDPROC       IICSTART
+  -------         PROC          IICSTOP
+  C:37BDH         LINE#         939
+  C:37BDH         LINE#         940
+  C:37BDH         LINE#         941
+  C:37BFH         LINE#         942
+  C:37C1H         LINE#         943
+  C:37C2H         LINE#         944
+  C:37C3H         LINE#         945
+  C:37C5H         LINE#         946
+  C:37C6H         LINE#         947
+  C:37C7H         LINE#         948
+  C:37C9H         LINE#         949
+  -------         ENDPROC       IICSTOP
+  -------         PROC          L?0022
+  -------         ENDPROC       L?0022
+  -------         PROC          _WRITE1BYTE
+  D:0007H         SYMBOL        Buf1
+  -------         DO            
+  D:0006H         SYMBOL        k
+  -------         ENDDO         
+  C:3712H         LINE#         958
+  C:3712H         LINE#         959
+  C:3712H         LINE#         961
+  C:3714H         LINE#         962
+  C:3714H         LINE#         963
+  C:3718H         LINE#         964
+  C:3718H         LINE#         965
+  C:371AH         LINE#         966
+  C:371CH         LINE#         968
+  C:371CH         LINE#         969
+  C:371EH         LINE#         970
+  C:371EH         LINE#         971
+  C:371FH         LINE#         972
+  C:3720H         LINE#         973
+  C:3722H         LINE#         974
+  C:3726H         LINE#         975
+  C:3727H         LINE#         976
+  C:3729H         LINE#         977
+  C:372AH         LINE#         978
+  C:372EH         LINE#         979
+  C:3730H         LINE#         980
+  C:3731H         LINE#         981
+  C:3733H         LINE#         982
+  C:3734H         LINE#         983
+  C:3735H         LINE#         984
+  C:3737H         LINE#         985
+  -------         ENDPROC       _WRITE1BYTE
+  -------         PROC          READ1BYTE
+  -------         DO            
+  D:0006H         SYMBOL        k
+BL51 BANKED LINKER/LOCATER V5.00                                                      11/11/2013  14:37:01  PAGE 5
+
+
+  D:0007H         SYMBOL        t
+  -------         ENDDO         
+  C:3764H         LINE#         994
+  C:3764H         LINE#         995
+  C:3764H         LINE#         997
+  C:3766H         LINE#         998
+  C:3767H         LINE#         999
+  C:3767H         LINE#         1000
+  C:376BH         LINE#         1001
+  C:376DH         LINE#         1002
+  C:376FH         LINE#         1003
+  C:3770H         LINE#         1004
+  C:3771H         LINE#         1005
+  C:3774H         LINE#         1006
+  C:3774H         LINE#         1007
+  C:3777H         LINE#         1008
+  C:3779H         LINE#         1010
+  C:3779H         LINE#         1011
+  C:377CH         LINE#         1012
+  C:377CH         LINE#         1013
+  C:377EH         LINE#         1014
+  C:377FH         LINE#         1015
+  C:3780H         LINE#         1016
+  C:3784H         LINE#         1017
+  C:3784H         LINE#         1018
+  -------         ENDPROC       READ1BYTE
+  -------         PROC          _WRITEPCF8591
+  D:0005H         SYMBOL        Databuf
+  C:37A0H         LINE#         1027
+  C:37A0H         LINE#         1028
+  C:37A0H         LINE#         1029
+  C:37A0H         LINE#         1031
+  C:37A3H         LINE#         1033
+  C:37A8H         LINE#         1035
+  C:37ADH         LINE#         1037
+  -------         ENDPROC       _WRITEPCF8591
+  -------         PROC          _READPCF8591
+  D:0005H         SYMBOL        Ch
+  -------         DO            
+  D:0007H         SYMBOL        buf
+  -------         ENDDO         
+  C:3785H         LINE#         1047
+  C:3785H         LINE#         1048
+  C:3785H         LINE#         1050
+  C:3785H         LINE#         1052
+  C:3788H         LINE#         1054
+  C:378FH         LINE#         1056
+  C:3792H         LINE#         1058
+  C:3797H         LINE#         1060
+  C:379AH         LINE#         1062
+  C:379DH         LINE#         1064
+  C:379FH         LINE#         1065
+  -------         ENDPROC       _READPCF8591
+  -------         PROC          MAIN
+  C:3738H         LINE#         1074
+  C:3738H         LINE#         1075
+  C:3738H         LINE#         1077
+BL51 BANKED LINKER/LOCATER V5.00                                                      11/11/2013  14:37:01  PAGE 6
+
+
+  C:3738H         LINE#         1078
+  C:3738H         LINE#         1079
+  C:3740H         LINE#         1080
+  C:374EH         LINE#         1081
+  C:3762H         LINE#         1082
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEST61
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_READPCF8591?TEST61
+
+Program Size: data=12.0 xdata=0 code=14294
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

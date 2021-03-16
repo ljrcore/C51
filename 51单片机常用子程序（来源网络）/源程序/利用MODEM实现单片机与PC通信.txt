@@ -1,0 +1,421 @@
+
+#include <string.h>
+#include <reg51.h>
+#define uchar unsigned char
+#define uint unsigned int
+#define MAXLEN 14
+#define DELAY  120
+
+
+
+/************
+fsec  秒标志　1为到一秒，必须进入加秒处理
+mstat MODEM状态, 0 为命令状态，1为数据状态
+Wrec  等待回应标志。wsec为等待时间上限
+Wsend 发送标志，为1时表示有内容要发送
+WARN 报警标志，为1时要拔号
+stat为状态指示
+00 空闲
+0* 表示拔号进程　
+  01 发送初始化指令 ATZ           等待回应时间限为2秒     wait for OK
+  02 发送置MODEM用数字回应指令 ATV0  等待回应时间限为2秒   wait for 0
+  03 发送拔号指令 ATDT??????   等待回应时间限为59秒  wait for connect
+  04 已连通进入数据传送       等待回应时间限为30秒    wait for time out or no carry
+  05 发送　＋＋＋返回命令状态指令,   等待回应时间限为2秒  wait for 0
+  06 发送 ATH 挂机指令             等待回应时间限为5秒   wait for　0
+
+1*　表示接收呼叫进程
+  11..15 收到第一至五次铃  ,　等待时间限为5秒   wait for 2
+  16 已发送ATA指令   等待回应时间限为59秒  wait for connect
+  17 已连通进入数据传送M_STAT=1, 等待命令时间为30秒 wait form time out or no carry
+  18 当超时或掉线时，发送+++返回命令状态,等待回应时间限为2秒。WAIT　FOR　0
+  19 发送 ATH挂机指令,等待回应时间限为5秒 WAIT FOR 0
+
+2* 表示进入初始化进程
+  21 发送 ATZ
+  22 发送　ATE0V0
+  23
+
+MODEM的初始化内容
+ATE0  不回显
+ATV0　数字回应结果
+ATS0=12
+AT&W0  写入0号记忆
+*********/
+
+
+void jl(uint);
+void init(void);
+void clock(void);
+void puttimeout(void);
+void settimeout(uchar []);
+void putc(uint);
+void command(uint);
+void modem_com(void);
+void no_echo(void);
+void resetsys(void);
+void serial_init(void);
+void clear_dial(void);
+void checkequ(uint *,uint *,uint *);
+void inttostr(uchar *,uint,uint);
+
+struct jl{
+  uint hour,min,stat;
+  };
+uchar s_buff[15],r_buff[15],number[12]={"9580900009"};
+/* 时，分，秒，秒计数，等待回应秒，modem运行状态，重拔次数，收指针,设备操作延时 */
+uint day,hour,min,sec,count,wsec=0,stat=0,redial=0,rptr,WN_sec=0;
+/* 标志,紧急呼叫标志,等待回应标志，内容待发标志，收到内容标志，MODEM状态标志，设备操作延时标志 */
+bit fSec=0,WARN=0,W_rec=0,W_send=0,Rec, M_stat=0,WNWT;
+struct jl gzm[3];
+main()
+{
+ uint kb1=0,kb2=0,kb3=0;
+
+ serial_init();
+ init();
+ while(!fSec);
+ rptr=0;
+
+ while(1){
+   if( fSec  ) {        /*   到一秒处理 */
+     fSec=0;
+     clock();
+   }
+
+   checkequ(&kb1,&kb2,&kb3);                  /* 检查设备状态 */
+
+   if( WARN && stat==0 ){       /* 如MODEM空闲且要报警，则开始拔号进程 */
+      P20=WARN;
+      P21=!WARN;
+      W_send=1;
+      strcpy(s_buff,"ATDT0W");  /* 已自动回拔0和等待二次拔号音 */
+      putc(0);
+      strcpy(s_buff,number);
+      putc(0);
+      strcpy(s_buff,"779");
+      stat=3;
+      wsec=59;
+      W_rec=1;                  /* 置等待标志 */
+      }
+
+  if(W_send ) {          /* 有内容待发　*/
+     putc(1);
+     W_send=0;
+     continue;          /*  因为发送内容可能占用较多时间，为了保证秒处理先循环 */
+   }
+
+   if ( Rec ){            /* 收到字串处理　*/
+     if ( M_stat )         /* 如果是数据状态则为命令处理 */
+        command(kb1);
+     else
+        modem_com();      /* MODEM控制处理 */
+      Rec=0;
+     }
+  else                    /* 无收到内容则 */
+    {
+       if( W_rec && wsec==0 )    /* 等待时间已超出上限*/
+          no_echo();             /* 超时无回应处理 */
+     }
+  }
+}
+
+void no_echo()          /* 在指定时间内无回应 */
+{
+  W_rec=0;
+  rptr=0;
+  switch(stat){
+    case 3:                     /*  拔号后无任何回应 */
+       redial++;
+       if( redial<3 )   /* 三次重拔 */
+         stat=0;
+       else{
+         jl(01);          /* 进行状态记录 */
+         resetsys();    /*　RESET　系统 */
+         WARN=0;
+         clear_dial();
+         }
+       break;
+    case 4:             /* 连通后无回应 */
+    case 17:
+       strcpy(s_buff,"+++");      /* 挂机 */
+       M_stat=0;                 /* MODEM入指令状态 */
+       stat=5;
+       W_rec=1;
+       wsec=5;
+       putc(0);
+       break;
+    case 5:             /* 发＋＋＋后无回应 */
+       clear_dial();
+       break;
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+       stat=0;
+       break;
+    case 16:            /* 发 ATA无回应 */
+       strcpy(s_buff,"ATH");
+       stat=0;
+       W_send=1;
+       break;
+    }
+}
+
+
+void modem_com()    /* MODEM控制处理 */
+{
+  uint i;
+  W_rec=1;
+   switch(stat){
+       case 0:
+            if( r_buff[0]=='2' ){
+               stat=12;
+               wsec=7;
+               }
+             break;
+        case 12:
+        case 13:
+             if( r_buff[0]=='2'){
+             stat++;
+             wsec=7;
+             }
+             break;
+        case 14:   /*  铃响五次了 */
+             if( r_buff[0]=='2'){
+               stat=16;
+               strcpy(s_buff,"ATA");  /* 发应答命令 */
+               wsec=59;
+               W_send=1;
+             }
+             break;
+        case 16:                /* 已发过应答命令 */
+             if( r_buff[0]=='1' )  /* 已握手 */
+             {
+                stat++;
+                wsec=60;
+                M_stat=1;
+		。。。。。。     /*  PC与单片机之间的通迅 */
+               
+             }
+             else
+                clear_dial();
+             break;
+       case 5:
+              strcpy(s_buff,"ATH");
+              W_send=1;
+              clear_dial();
+              break;
+       case 3:                    /*  已发过号，等待连接有回应，检查回应 */
+           stat=4;
+           WARN=0;
+           M_stat=0;
+           wsec=5;
+           break;
+      case 17:
+           if( r_buff[0]=='0' )
+             stat=0;
+       }
+}
+
+void clear_dial(void)
+{
+  WARN=0;
+  P20=WARN;
+  P21=!WARN;
+  redial=0;
+  stat=0;
+  W_rec=0;
+}
+
+void jl(uint i)
+{
+}
+
+void command(uint kb)
+{
+     uint i;
+     W_rec=1;
+     wsec=60;
+     switch( r_buff[0] ){
+        ...
+	...
+	...	/*  根据收到的内容解释命令，进行相应的动作*/
+        default:
+          strcat(s_buff,"无此命令!");
+        }
+        W_send=1;
+}
+
+
+void putc(uint k)	/*  发送子程序*/
+{
+    uint i=0;
+    while( s_buff[i] ){
+     TI=0;
+     SBUF=s_buff[i];
+     s_buff[i++]=0;
+     while(!TI);
+    }
+    if( k){
+      TI=0;
+      SBUF=0xa;
+      while(!TI);
+      TI=0;
+      SBUF=0xd;
+      while(!TI);
+    }
+ }
+
+void clock(void)
+{
+     sec++;
+     P23=sec%2;
+     if( W_rec) wsec--;
+     if ( sec>=60 ){
+       sec=0;
+       min++;
+       if ( min>=60 ){
+         min=0;
+         hour++;
+         if( hour>=24 ){
+           day++;
+           if( day>31) day=0;
+           hour=0;
+           }
+         }
+       }
+}
+void serial_init(void) {    /*　初始化串口设定波特率为2400 ,晶振为 6M */
+ s_buff[0]=0;                //  TF1 TR1 TF0 TR0 IE1 IT1 IE0 IT0 (TCON BIT MAP )
+ TMOD &= 0x0F;               // CLEAR T1 TMOD.
+ TMOD |= 0x20;               // SET T1 TO MODE 2
+ PCON = 0X80;                //  SET SMOD=1; AUTO FULL.
+ TH1 = TL1 = 0xf3;          // When osc=6Mhz, 2400bps use 0xf3
+ REN=1;
+ EX1=0;
+ EX0=0;
+ EA=1;                  // open all ir
+ ES= 1;               //  OPEN SERIAL IR
+ TR1=1;                 //  ENABLE T1
+ RI=0;                  //  CLEAR RI
+ SCON=0x50;              // 11000000 mode=3 speed can change.
+}
+void init(void) {
+ P1=0;
+ P2=0;
+ hour=min=sec=count=0;
+ fSec = 0;
+ TCON &= 0xCF;               // Timer0
+ TMOD &= 0xF0;
+ TMOD |= 0x01;
+ TH0 = TL0 = 0;
+ ET0   = 1;
+ TR0   = 1;
+}
+
+timerint () interrupt 1 {
+  EA=0;
+   TR0 = 0;
+   TL0 = 0x12;
+   TH0 = 0xf7;                     //  0xf712 for 4.5ms
+   TR0 = 1;
+    count++;
+    if(count==217) {            // 215, fast,  2m/4h; 218 slow  5m/10h;
+    count = 0; fSec = 1;
+   }
+ EA=1;
+}
+
+
+
+
+void SerInt() interrupt 4
+{
+ uchar c;
+ ES=0;
+ if(RI&&(!Rec)) {              /*  如果上次收到的内容没处理完就不接收 */
+    c=SBUF;
+    if (M_stat)     SBUF=c;         /* MODEM为数据状态时回送字符 */
+    RI=0;
+    if( rptr>=MAXLEN||c==0x0d||c==0x0a ){
+      c=0;
+      r_buff[rptr]=c;
+      rptr=0;
+      Rec=1;                    /* 收到标志　*/
+    }
+    else
+     r_buff[rptr++]=c;
+ }
+/***********
+ if( (s_buff[0])&&(TI) ){
+     TI=0;
+     SBUF= s_buff[sptr];
+     sptr++;
+     if( sptr>19||s_buff[sptr]==0 ){
+       sptr=0;
+       s_buff[0]=0;
+       }
+   }
+*************/
+  ES=1;
+}
+
+
+/*  计划将P0口接设备，应将SW8全部放在OFF位置 */
+/* P00-NORMAL, P01-FAULT, P02-MAIN1, P03-MAIN2; P04-M1, P05-M2,P06-RESET,P07-OFF */
+/*  S0          S4        S8         SC   对应开关位置*/
+/* P0在设备正常时应全为1 */
+/* P2接到几个发光二极管上,用于指示工作状态 */
+void checkequ(uint *kb1, uint *kb2,uint *kb3)
+{
+
+   uint i,k;
+   P0=0x0f;
+   k=P0;
+   if( (!(k&2)) &&(*kb1<DELAY ) )
+      (*kb1)++;
+   else
+      (*kb1)=0;
+
+   if( (!(k&4))&&(*kb2<DELAY) )
+       (*kb2)++;
+   else
+       (*kb2)=0;
+
+   if ( (!(k&8) )&&(*kb3<DELAY) )
+      (*kb3)++;
+   else
+      (*kb3)=0;
+
+   if ( ( (*kb1>=DELAY)||( *kb2>=DELAY && *kb3>=DELAY) )&& (!WARN ) ){
+         WARN=1;
+        if( gzm[0].stat!=k ){
+          for( i=2;i>0;i--){
+             gzm[i].stat=gzm[i-1].stat;
+             gzm[i].hour=gzm[i-1].hour;
+             gzm[i].min=gzm[i-1].min;
+             }
+          gzm[0].stat=k;
+          gzm[0].hour=hour;
+          gzm[0].min=min;
+        }
+    }
+}
+
+void inttostr(uchar *ch,uint k,uint m)
+{
+
+   if( m>2 ){
+     *ch++=k/100+'0';
+     k%=100;
+     }
+   if( m>1 ){
+      *ch++=k/10+'0';
+      k%=10;
+     }
+   *ch++=k+'0';
+   *ch=0;
+ }
+

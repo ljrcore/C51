@@ -1,0 +1,540 @@
+
+
+
+<html>
+
+<head>
+<title>CETINet 中国电子技术信息网---综合文章---编程规范与范例(2)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<link rel="stylesheet" href="style.css" type="text/css">
+<style type="text/css">body         { scrollbar-face-color: 5B9595; scrollbar-shadow-color: ffffff; 
+               scrollbar-highlight-color: ffffff; scrollbar-3dlight-color: 
+               ffffff; scrollbar-darkshadow-color: ffffff; 
+               scrollbar-track-color: ffffff; scrollbar-arrow-color: ffffff }
+</style>
+</head>
+
+<body bgcolor="#F3F3F3" text="#000000">
+
+<div align="center">
+  <table width="750" border="0" height="60" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="150">
+        <div align="center">
+          <img border="0" src="images/myad.gif">
+         </div>
+      </td>
+      <td width="450">
+        <div align="center">
+         <a href="images/ad1.asp" target="_blank"><img border="0" src="images/ad1.gif"></a>
+        </div>
+      </td>
+      <td width="150">
+        <div align="center">
+        <a href="images/adsmall.asp" target="_blank"><img border="0" src="images/adsmall.gif"></a>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table width="750" border="0" cellspacing="0" cellpadding="0" height="20">
+    <tr>
+      <td width="57" bgcolor="#5B9595" align="center"><font color="#FFFFFF">其他栏目</font></td>
+      <td width="57" bgcolor="#D7E3E3" align="center"><a href="../bbs/index.asp" target="_blank">技术论坛</a></td>
+      <td width="57" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=1" target="_blank">微控制器</a></td>
+      <td width="57" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=2" target="_blank">IC设计</a></td>
+      <td bgcolor="#D7E3E3" align="center" width="58"><a href="../t_article/index.asp?topid=3" target="_blank">EDA技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=4" target="_blank">电路基础</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=5" target="_blank">电源技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=6" target="_blank">通信技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=7" target="_blank">测试测量</a></td>
+      <td bgcolor="#D7E3E3" align="center" width="58"><a href="../t_article/index.asp?topid=8" target="_blank">综合技术</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=9" target="_blank">编程学堂</a></td>
+      <td width="58" bgcolor="#D7E3E3" align="center"><a href="../t_article/index.asp?topid=10" target="_blank">版主专栏</a></td>
+      <td bgcolor="#D7E3E3" width="58" align="center"><a href="../download/Default.asp" target="_blank">下载中心</a></td>
+    </tr>
+  </table>
+  <br>
+</div>
+
+</body>
+
+<body bgcolor="#F3F3F3" text="#000000">
+
+<div align="center">
+  <table width="750" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>您目前的位置：<a href=index.asp?topid=9>编程学堂</a> - <a href=step.asp?topid=9&topname=编程学堂&typeid=106&typename=综合文章>综合文章</a> - 编程规范与范例(2)</td>       
+    </tr>
+  </table>
+  <table width="750" border="0" cellspacing="0" cellpadding="0" height="250">
+    <tr>
+      <td width="150" valign="top" bgcolor="#5B9595" height="240">
+        <table width="150" border="0" cellspacing="0">
+          <tr>
+            <td height="20"></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">文章类别：</font></td>
+          </tr>
+          <tr>
+            <td height="20">
+              <p align="center"><font color="#F3F3F3">综合文章</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">文章来源：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">未知</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">文章作者：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">未知</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">关 键 字：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">规范</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">今天阅读：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">5</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">总共阅读：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">920</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#FFFFFF">加入日期：</font></td>
+          </tr>
+          <tr>
+            <td height="20"><font color="#F3F3F3">
+              <p align="center">2004-3-20 18:39:06</font></td>
+          </tr>
+        </table>
+        <table width="150" border="0" cellspacing="0">
+          <tr>
+            <td height="20">
+                <font color="#FFFFFF">相关文章：</font>
+            </td>
+          </tr>
+          <tr>
+            <td height="20">
+              <div align="center">
+                <a href=list.asp?indexid=1811><font color='#FFFFFF'>编程规范与范例(6)</font></a><br><a href=list.asp?indexid=1810><font color='#FFFFFF'>编程规范与范例(5)</font></a><br><a href=list.asp?indexid=1809><font color='#FFFFFF'>编程规范与范例(4)</font></a><br><a href=list.asp?indexid=1808><font color='#FFFFFF'>编程规范与范例(3)</font></a><br><a href=list.asp?indexid=1800><font color='#FFFFFF'>编程规范与范例(1)</font></a><br><a href=list.asp?indexid=1479><font color='#FFFFFF'>NUXAS代码风格规范</font></a><br><a href=list.asp?indexid=1461><font color='#FFFFFF'>C语言编程规范</font></a><br><a href=list.asp?indexid=706><font color='#FFFFFF'>电路板最新国际规范导读</font></a><br><a href=list.asp?indexid=633><font color='#FFFFFF'>改进电路设计规程提高可测试性</font></a><br><a href=list.asp?indexid=632><font color='#FFFFFF'>PCB全面质量管理</font></a><br>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <table width="150" border="0" cellspacing="0">
+          <tr>
+            <td height="20"></td>
+          </tr>
+          <tr>
+            <td height="20">
+              <p align="center"><font color="#FFFFFF">==关于文章版权==</font></td>
+          </tr>
+		  <tr>
+            <td height="20"><font color="#FFFFFF"><br>
+              “本站”本站站主原创文章，未经本人（帝国老手/aoe）许可其他媒体一律不得转载。<br><br>
+              “本站整理”本站站主根据个人见解及他人经验总结整理的文章，其他媒体转载必须标明出处为我站。<br><br>
+              “某单位或个人”全文转载来自网络上的文章，其他媒体转载与我站无关。<br><br>
+              “未知”（1）来自网络，由于来源混乱，无从考证作者，其他媒体转载与我站无关。<br><br>
+              “未知”（2）其文章也是本站站主原创的，只所以标注“未知”，主要是因为引用文字过多或其他原因。建议其他媒体转载标明出处为我站。<br><br>
+              我站版权请标注：“www.cetinet.com”或“中国电子技术信息网”字样。</font></td>
+          </tr>
+          <tr>
+            <td height="20"></td>
+          </tr>
+		</table>
+      </td>
+      <td width="600" valign="top" height="240">
+        <table width="600" border="0" cellspacing="0" cellpadding="0" height="20">
+          <tr>
+            <td bgcolor="#5B9595">&nbsp;</td>
+          </tr>
+        </table>
+        <table width="600" border="0" cellspacing="3" cellpadding="0">
+          <tr>
+            <td height="20" bgcolor="#AECECE">
+              <div align="center">
+                <font color="#0A52D8"><b>编程规范与范例(2)</b></font>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td width="600">〖文章转载或出处〗≡中国电子技术信息网≡ 网址：www.CETINet.com</td>  
+          </tr>
+          <tr>
+            <td width="600">编程规范与范例(2)<br>
+<br>
+目&nbsp;&nbsp;录<br>
+1&nbsp;排版&nbsp;6<br>
+2&nbsp;注释&nbsp;11<br>
+3&nbsp;标识符命名&nbsp;18<br>
+4&nbsp;可读性&nbsp;20<br>
+5&nbsp;变量、结构&nbsp;22<br>
+6&nbsp;函数、过程&nbsp;28<br>
+7&nbsp;可测性&nbsp;36<br>
+8&nbsp;程序效率&nbsp;40<br>
+9&nbsp;质量保证&nbsp;44<br>
+10&nbsp;代码编辑、编译、审查&nbsp;50<br>
+11&nbsp;代码测试、维护&nbsp;52<br>
+12&nbsp;宏&nbsp;53<br>
+<br>
+3&nbsp;标识符命名<br>
+&amp;sup1;&nbsp;3-1：标识符的命名要清晰、明了，有明确含义，同时使用完整的单词或大家基本可以理解的缩写，避免使人产生误解。<br>
+说明：较短的单词可通过去掉“元音”形成缩写；较长的单词可取单词的头几个字母形成缩写；一些单词有大家公认的缩写。<br>
+示例：如下单词的缩写能够被大家基本认可。<br>
+temp&nbsp;可缩写为&nbsp;&nbsp;tmp&nbsp;&nbsp;;<br>
+flag&nbsp;可缩写为&nbsp;&nbsp;flg&nbsp;&nbsp;;<br>
+statistic&nbsp;可缩写为&nbsp;&nbsp;stat&nbsp;;<br>
+increment&nbsp;可缩写为&nbsp;&nbsp;inc&nbsp;&nbsp;;<br>
+message&nbsp;可缩写为&nbsp;&nbsp;msg&nbsp;&nbsp;;<br>
+&amp;sup1;&nbsp;3-2：命名中若使用特殊约定或缩写，则要有注释说明。<br>
+说明：应该在源文件的开始之处，对文件中所使用的缩写或约定，特别是特殊的缩写，进行必要的注释说明。<br>
+&amp;sup1;&nbsp;3-3：自己特有的命名风格，要自始至终保持一致，不可来回变化。<br>
+说明：个人的命名风格，在符合所在项目组或产品组的命名规则的前提下，才可使用。（即命名规则中没有规定到的地方才可有个人命名风格）。<br>
+&amp;sup1;&nbsp;3-4：对于变量命名，禁止取单个字符（如i、j、k...），建议除了要有具体含义外，还能表明其变量类型、数据类型等，但i、j、k作局部循环变量是允许的。<br>
+说明：变量，尤其是局部变量，如果用单个字符表示，很容易敲错（如i写成j），而编译时又检查不出来，有可能为了这个小小的错误而花费大量的查错时间。<br>
+示例：下面所示的局部变量名的定义方法可以借鉴。<br>
+int&nbsp;liv_Width<br>
+其变量名解释如下：<br>
+l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;局部变量（Local）&nbsp;&nbsp;（其它：g&nbsp;&nbsp;&nbsp;&nbsp;全局变量（Global）...）<br>
+i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据类型（Interger）<br>
+v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;变量（Variable）&nbsp;&nbsp;&nbsp;（其它：c&nbsp;&nbsp;&nbsp;&nbsp;常量（Const）...）<br>
+Width&nbsp;&nbsp;变量含义<br>
+这样可以防止局部变量与全局变量重名。<br>
+&amp;sup1;&nbsp;3-5：命名规范必须与所使用的系统风格保持一致，并在同一项目中统一，比如采用UNIX的全小写加下划线的风格或大小写混排的方式，不要使用大小写与下划线混排的方式，用作特殊标识如标识成员变量或全局变量的m_和g_，其后加上大小写混排的方式是允许的。<br>
+示例：&nbsp;Add_User不允许，add_user、AddUser、m_AddUser允许。&nbsp;<br>
+&amp;frac12;&nbsp;3-1：除非必要，不要用数字或较奇怪的字符来定义标识符。<br>
+示例：如下命名，使人产生疑惑。<br>
+#define&nbsp;_EXAMPLE_0_TEST_<br>
+#define&nbsp;_EXAMPLE_1_TEST_<br>
+void&nbsp;set_sls00(&nbsp;BYTE&nbsp;sls&nbsp;);<br>
+<br>
+应改为有意义的单词命名<br>
+#define&nbsp;_EXAMPLE_UNIT_TEST_<br>
+#define&nbsp;_EXAMPLE_ASSERT_TEST_<br>
+void&nbsp;set_udt_msg_sls(&nbsp;BYTE&nbsp;sls&nbsp;);<br>
+&amp;frac12;&nbsp;3-2：在同一软件产品内，应规划好接口部分标识符（变量、结构、函数及常量）的命名，防止编译、链接时产生冲突。<br>
+说明：对接口部分的标识符应该有更严格限制，防止冲突。如可规定接口部分的变量与常量之前加上“模块”标识等。<br>
+&amp;frac12;&nbsp;3-3：用正确的反义词组命名具有互斥意义的变量或相反动作的函数等。<br>
+说明：下面是一些在软件中常用的反义词组。<br>
+add&nbsp;/&nbsp;remove&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin&nbsp;/&nbsp;end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;/&nbsp;destroy&nbsp;<br>
+insert&nbsp;/&nbsp;delete&nbsp;&nbsp;&nbsp;&nbsp;first&nbsp;/&nbsp;last&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get&nbsp;/&nbsp;release<br>
+increment&nbsp;/&nbsp;decrement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;put&nbsp;/&nbsp;get<br>
+add&nbsp;/&nbsp;delete&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lock&nbsp;/&nbsp;unlock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;open&nbsp;/&nbsp;close<br>
+min&nbsp;/&nbsp;max&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;old&nbsp;/&nbsp;new&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start&nbsp;/&nbsp;stop<br>
+next&nbsp;/&nbsp;previous&nbsp;&nbsp;&nbsp;&nbsp;source&nbsp;/&nbsp;target&nbsp;&nbsp;&nbsp;&nbsp;show&nbsp;/&nbsp;hide<br>
+send&nbsp;/&nbsp;receive&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source&nbsp;/&nbsp;destination<br>
+cut&nbsp;/&nbsp;paste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up&nbsp;/&nbsp;down<br>
+示例：<br>
+int&nbsp;&nbsp;min_sum;<br>
+int&nbsp;&nbsp;max_sum;<br>
+int&nbsp;&nbsp;add_user(&nbsp;BYTE&nbsp;*user_name&nbsp;);<br>
+int&nbsp;&nbsp;delete_user(&nbsp;BYTE&nbsp;*user_name&nbsp;);<br>
+&amp;frac12;&nbsp;3-4：除了编译开关/头文件等特殊应用，应避免使用_EXAMPLE_TEST_之类以下划线开始和结尾的定义。<br>
+&nbsp;&nbsp;<br>
+4&nbsp;可读性<br>
+&amp;sup1;&nbsp;4-1：注意运算符的优先级，并用括号明确表达式的操作顺序，避免使用默认优先级。<br>
+说明：防止阅读程序时产生误解，防止因默认的优先级与设计思想不符而导致程序出错。<br>
+示例：下列语句中的表达式<br>
+word&nbsp;=&nbsp;(high&nbsp;&lt;&lt;&nbsp;8)&nbsp;|&nbsp;low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)<br>
+if&nbsp;((a&nbsp;|&nbsp;b)&nbsp;&amp;&amp;&nbsp;(a&nbsp;&amp;&nbsp;c))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)<br>
+if&nbsp;((a&nbsp;|&nbsp;b)&nbsp;&lt;&nbsp;(c&nbsp;&amp;&nbsp;d))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)<br>
+如果书写为<br>
+high&nbsp;&lt;&lt;&nbsp;8&nbsp;|&nbsp;low<br>
+a&nbsp;|&nbsp;b&nbsp;&amp;&amp;&nbsp;a&nbsp;&amp;&nbsp;c<br>
+a&nbsp;|&nbsp;b&nbsp;&lt;&nbsp;c&nbsp;&amp;&nbsp;d<br>
+由于<br>
+high&nbsp;&lt;&lt;&nbsp;8&nbsp;|&nbsp;low&nbsp;=&nbsp;(&nbsp;high&nbsp;&lt;&lt;&nbsp;8)&nbsp;|&nbsp;low,<br>
+a&nbsp;|&nbsp;b&nbsp;&amp;&amp;&nbsp;a&nbsp;&amp;&nbsp;c&nbsp;=&nbsp;(a&nbsp;|&nbsp;b)&nbsp;&amp;&amp;&nbsp;(a&nbsp;&amp;&nbsp;c)，<br>
+(1)(2)不会出错，但语句不易理解；<br>
+a&nbsp;|&nbsp;b&nbsp;&lt;&nbsp;c&nbsp;&amp;&nbsp;d&nbsp;=&nbsp;a&nbsp;|&nbsp;（b&nbsp;&lt;&nbsp;c）&nbsp;&amp;&nbsp;d，(3)造成了判断条件出错。<br>
+&amp;sup1;&nbsp;4-2：避免使用不易理解的数字，用有意义的标识来替代。涉及物理状态或者含有物理意义的常量，不应直接使用数字，必须用有意义的枚举或宏来代替。<br>
+示例：如下的程序可读性差。<br>
+if&nbsp;(Trunk[index].trunk_state&nbsp;==&nbsp;0)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Trunk[index].trunk_state&nbsp;=&nbsp;1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+<br>
+应改为如下形式。<br>
+#define&nbsp;TRUNK_IDLE&nbsp;0<br>
+#define&nbsp;TRUNK_BUSY&nbsp;1<br>
+<br>
+if&nbsp;(Trunk[index].trunk_state&nbsp;==&nbsp;TRUNK_IDLE)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Trunk[index].trunk_state&nbsp;=&nbsp;TRUNK_BUSY;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+&amp;frac12;&nbsp;4-1：源程序中关系较为紧密的代码应尽可能相邻。<br>
+说明：便于程序阅读和查找。<br>
+示例：以下代码布局不太合理。<br>
+rect.length&nbsp;=&nbsp;10;<br>
+char_poi&nbsp;=&nbsp;str;<br>
+rect.width&nbsp;=&nbsp;5;<br>
+<br>
+若按如下形式书写，可能更清晰一些。<br>
+rect.length&nbsp;=&nbsp;10;<br>
+rect.width&nbsp;=&nbsp;5;&nbsp;//&nbsp;矩形的长与宽关系较密切，放在一起。<br>
+char_poi&nbsp;=&nbsp;str;<br>
+&amp;frac12;&nbsp;4-2：不要使用难懂的技巧性很高的语句，除非很有必要时。<br>
+说明：高技巧语句不等于高效率的程序，实际上程序的效率关键在于算法。<br>
+示例：如下表达式，考虑不周就可能出问题，也较难理解。<br>
+*&nbsp;stat_poi&nbsp;++&nbsp;+=&nbsp;1;<br>
+<br>
+*&nbsp;++&nbsp;stat_poi&nbsp;+=&nbsp;1;<br>
+<br>
+应分别改为如下。<br>
+*stat_poi&nbsp;+=&nbsp;1;<br>
+stat_poi++;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;此二语句功能相当于“&nbsp;*&nbsp;stat_poi&nbsp;++&nbsp;+=&nbsp;1;&nbsp;”<br>
+<br>
+++&nbsp;stat_poi;<br>
+*stat_poi&nbsp;+=&nbsp;1;&nbsp;//&nbsp;此二语句功能相当于“&nbsp;*&nbsp;++&nbsp;stat_poi&nbsp;+=&nbsp;1;&nbsp;”<br>
+5&nbsp;变量、结构<br>
+&amp;sup1;&nbsp;5-1：去掉没必要的公共变量。<br>
+说明：公共变量是增大模块间耦合的原因之一，故应减少没必要的公共变量以降低模块间的耦合度。<br>
+&amp;sup1;&nbsp;5-2：仔细定义并明确公共变量的含义、作用、取值范围及公共变量间的关系。<br>
+说明：在对变量声明的同时，应对其含义、作用及取值范围进行注释说明，同时若有必要还应说明与其它变量的关系。<br>
+&amp;sup1;&nbsp;5-3：明确公共变量与操作此公共变量的函数或过程的关系，如访问、修改及创建等。<br>
+说明：明确过程操作变量的关系后，将有利于程序的进一步优化、单元测试、系统联调以及代码维护等。这种关系的说明可在注释或文档中描述。<br>
+示例：在源文件中，可按如下注释形式说明。<br>
+RELATION&nbsp;&nbsp;&nbsp;&nbsp;System_Init&nbsp;&nbsp;&nbsp;&nbsp;Input_Rec&nbsp;&nbsp;&nbsp;&nbsp;Print_Rec&nbsp;&nbsp;&nbsp;Stat_Score<br>
+Student&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modify&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access<br>
+Score&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modify&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access,&nbsp;Modify<br>
+<br>
+注：RELATION为操作关系；System_Init、Input_Rec、Print_Rec、Stat_Score为四个不同的函数；Student、Score为两个全局变量；Create表示创建，Modify表示修改，Access表示访问。<br>
+其中，函数Input_Rec、Stat_Score都可修改变量Score，故此变量将引起函数间较大的耦合，并可能增加代码测试、维护的难度。<br>
+&amp;sup1;&nbsp;5-4：当向公共变量传递数据时，要十分小心，防止赋与不合理的值或越界等现象发生。<br>
+说明：对公共变量赋值时，若有必要应进行合法性检查，以提高代码的可靠性、稳定性。<br>
+&amp;sup1;&nbsp;5-5：防止局部变量与公共变量同名。<br>
+说明：若使用了较好的命名规则，那么此问题可自动消除。<br>
+&amp;sup1;&nbsp;5-6：严禁使用未经初始化的变量作为右值。<br>
+说明：特别是在C/C++中引用未经赋值的指针，经常会引起系统崩溃。<br>
+&amp;frac12;&nbsp;5-1：构造仅有一个模块或函数可以修改、创建，而其余有关模块或函数只访问的公共变量，防止多个不同模块或函数都可以修改、创建同一公共变量的现象。<br>
+说明：降低公共变量耦合度。<br>
+&amp;frac12;&nbsp;5-2：使用严格形式定义的、可移植的数据类型，尽量不要使用与具体硬件或软件环境关系密切的变量。<br>
+说明：使用标准的数据类型，有利于程序的移植。<br>
+示例：如下例子（在DOS下BC3.1环境中），在移植时可能产生问题。<br>
+void&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;int&nbsp;index;&nbsp;//&nbsp;寄存器变量<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;_AX&nbsp;=&nbsp;0x4000;&nbsp;//&nbsp;_AX是BC3.1提供的寄存器“伪变量”<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;//&nbsp;program&nbsp;code<br>
+}<br>
+&amp;frac12;&nbsp;5-3：结构的功能要单一，是针对一种事务的抽象。<br>
+说明：设计结构时应力争使结构代表一种现实事务的抽象，而不是同时代表多种。结构中的各元素应代表同一事务的不同侧面，而不应把描述没有关系或关系很弱的不同事务的元素放到同一结构中。<br>
+示例：如下结构不太清晰、合理。<br>
+typedef&nbsp;struct&nbsp;STUDENT_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;name[8];&nbsp;/*&nbsp;student's&nbsp;name&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;age;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;student's&nbsp;age&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;sex;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;student's&nbsp;sex,&nbsp;as&nbsp;follows&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;0&nbsp;-&nbsp;FEMALE;&nbsp;1&nbsp;-&nbsp;MALE&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;teacher_name[8];&nbsp;/*&nbsp;the&nbsp;student&nbsp;teacher's&nbsp;name&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unisgned&nbsp;char&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;teacher_sex;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;his&nbsp;teacher&nbsp;sex&nbsp;*/<br>
+}&nbsp;STUDENT;<br>
+<br>
+若改为如下，可能更合理些。<br>
+typedef&nbsp;struct&nbsp;TEACHER_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;name[8];&nbsp;/*&nbsp;teacher&nbsp;name&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unisgned&nbsp;char&nbsp;sex;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;teacher&nbsp;sex,&nbsp;as&nbsp;follows&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;0&nbsp;-&nbsp;FEMALE;&nbsp;1&nbsp;-&nbsp;MALE&nbsp;*/<br>
+}&nbsp;TEACHER;<br>
+<br>
+typedef&nbsp;struct&nbsp;STUDENT_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;name[8];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;student's&nbsp;name&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;age;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;student's&nbsp;age&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;sex;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;student's&nbsp;sex,&nbsp;as&nbsp;follows&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;0&nbsp;-&nbsp;FEMALE;&nbsp;1&nbsp;-&nbsp;MALE&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;&nbsp;teacher_ind;&nbsp;/*&nbsp;his&nbsp;teacher&nbsp;index&nbsp;*/<br>
+}&nbsp;STUDENT;<br>
+&amp;frac12;&nbsp;5-4：不要设计面面俱到、非常灵活的数据结构。<br>
+说明：面面俱到、灵活的数据结构反而容易引起误解和操作困难。<br>
+&amp;frac12;&nbsp;5-5：不同结构间的关系不要过于复杂。<br>
+说明：若两个结构间关系较复杂、密切，那么应合为一个结构。<br>
+示例：如下两个结构的构造不合理。<br>
+typedef&nbsp;struct&nbsp;PERSON_ONE_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;name[8];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;addr[40];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;sex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;city[15];<br>
+}&nbsp;PERSON_ONE;<br>
+<br>
+typedef&nbsp;struct&nbsp;PERSON_TWO_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;name[8];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;age;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;tel;<br>
+}&nbsp;PERSON_TWO;<br>
+<br>
+由于两个结构都是描述同一事物的，那么不如合成一个结构。<br>
+typedef&nbsp;struct&nbsp;PERSON_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;name[8];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;age;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;sex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;addr[40];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;city[15];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;tel;<br>
+}&nbsp;PERSON;<br>
+&amp;frac12;&nbsp;5-6：结构中元素的个数应适中。若结构中元素个数过多可考虑依据某种原则把元素组成不同的子结构，以减少原结构中元素的个数。<br>
+说明：增加结构的可理解性、可操作性和可维护性。<br>
+示例：假如认为如上的_PERSON结构元素过多，那么可如下对之划分。<br>
+typedef&nbsp;struct&nbsp;PERSON_BASE_INFO_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;name[8];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;age;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;sex;<br>
+}&nbsp;PERSON_BASE_INFO;<br>
+<br>
+typedef&nbsp;struct&nbsp;PERSON_ADDRESS_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;addr[40];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;city[15];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;char&nbsp;tel;<br>
+}&nbsp;PERSON_ADDRESS;<br>
+<br>
+typedef&nbsp;struct&nbsp;PERSON_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PERSON_BASE_INFO&nbsp;person_base;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PERSON_ADDRESS&nbsp;person_addr;<br>
+}&nbsp;PERSON;<br>
+&amp;frac12;&nbsp;5-7：仔细设计结构中元素的布局与排列顺序，使结构容易理解、节省占用空间，并减少引起误用现象。<br>
+说明：合理排列结构中元素顺序，可节省空间并增加可理解性。<br>
+示例：如下结构中的位域排列，将占较大空间，可读性也稍差。<br>
+typedef&nbsp;struct&nbsp;EXAMPLE_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;valid:&nbsp;1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PERSON&nbsp;person;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;set_flg:&nbsp;1;<br>
+}&nbsp;EXAMPLE;<br>
+<br>
+若改成如下形式，不仅可节省1字节空间，可读性也变好了。<br>
+typedef&nbsp;struct&nbsp;EXAMPLE_STRU<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;valid:&nbsp;1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;set_flg:&nbsp;1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PERSON&nbsp;person&nbsp;;<br>
+}&nbsp;EXAMPLE;<br>
+&amp;frac12;&nbsp;5-8：结构的设计要尽量考虑向前兼容和以后的版本升级，并为某些未来可能的应用保留余地（如预留一些空间等）。<br>
+说明：软件向前兼容的特性，是软件产品是否成功的重要标志之一。如果要想使产品具有较好的前向兼容，那么在产品设计之初就应为以后版本升级保留一定余地，并且在产品升级时必须考虑前一版本的各种特性。<br>
+&amp;frac12;&nbsp;5-9：留心具体语言及编译器处理不同数据类型的原则及有关细节。<br>
+说明：如在C语言中，static局部变量将在内存“数据区”中生成，而非static局部变量将在“堆栈”中生成。这些细节对程序质量的保证非常重要。<br>
+&amp;frac12;&nbsp;5-10：编程时，要注意数据类型的强制转换。<br>
+说明：当进行数据类型强制转换时，其数据的意义、转换后的取值等都有可能发生变化，而这些细节若考虑不周，就很有可能留下隐患。<br>
+&amp;frac12;&nbsp;5-11：对编译系统默认的数据类型转换，也要有充分的认识。<br>
+示例：如下赋值，多数编译器不产生告警，但值的含义还是稍有变化。<br>
+char&nbsp;chr;<br>
+unsigned&nbsp;short&nbsp;int&nbsp;exam;<br>
+<br>
+chr&nbsp;=&nbsp;-1;<br>
+exam&nbsp;=&nbsp;chr;&nbsp;//&nbsp;编译器不产生告警，此时exam为0xFFFF。<br>
+&amp;frac12;&nbsp;5-12：尽量减少没有必要的数据类型默认转换与强制转换。<br>
+&amp;frac12;&nbsp;5-13：合理地设计数据并使用自定义数据类型，避免数据间进行不必要的类型转换。<br>
+&amp;frac12;&nbsp;5-14：对自定义数据类型进行恰当命名，使它成为自描述性的，以提高代码可读性。注意其命名方式在同一产品中的统一。<br>
+说明：使用自定义类型，可以弥补编程语言提供类型少、信息量不足的缺点，并能使程序清晰、简洁。<br>
+示例：可参考如下方式声明自定义数据类型。<br>
+<br>
+下面的声明可使数据类型的使用简洁、明了。<br>
+typedef&nbsp;unsigned&nbsp;char&nbsp;&nbsp;BYTE;<br>
+typedef&nbsp;unsigned&nbsp;short&nbsp;WORD;<br>
+typedef&nbsp;unsigned&nbsp;int&nbsp;&nbsp;&nbsp;DWORD;<br>
+<br>
+下面的声明可使数据类型具有更丰富的含义。<br>
+typedef&nbsp;float&nbsp;DISTANCE;<br>
+typedef&nbsp;float&nbsp;SCORE;<br>
+&amp;frac12;&nbsp;5-15：当声明用于分布式环境或不同CPU间通信环境的数据结构时，必须考虑机器的字节顺序、使用的位域及字节对齐等问题&nbsp;。<br>
+说明：比如Intel&nbsp;CPU与68360&nbsp;CPU，在处理位域及整数时，其在内存存放的“顺序”正好相反。<br>
+示例：假如有如下短整数及结构。<br>
+unsigned&nbsp;short&nbsp;int&nbsp;exam;<br>
+typedef&nbsp;struct&nbsp;EXAM_BIT_STRU<br>
+{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Intel&nbsp;68360&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;A1:&nbsp;1;&nbsp;/*&nbsp;bit&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;A2:&nbsp;1;&nbsp;/*&nbsp;bit&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;A3:&nbsp;1;&nbsp;/*&nbsp;bit&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;*/<br>
+}&nbsp;EXAM_BIT;<br>
+<br>
+如下是Intel&nbsp;CPU生成短整数及位域的方式。<br>
+内存：&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;（从低到高，以字节为单位）<br>
+exam&nbsp;&nbsp;exam低字节&nbsp;&nbsp;exam高字节<br>
+<br>
+内存：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;bit&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;（字节的各“位”）<br>
+EXAM_BIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A3<br>
+<br>
+如下是68360&nbsp;CPU生成短整数及位域的方式。<br>
+内存：&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;（从低到高，以字节为单位）<br>
+exam&nbsp;&nbsp;exam高字节&nbsp;&nbsp;exam低字节<br>
+<br>
+内存：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;bit&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;（字节的各“位”）<br>
+EXAM_BIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A3<br>
+<br>
+说明：在对齐方式下，CPU的运行效率要快得多。<br>
+示例：如下图，当一个long型数（如图中long1）在内存中的位置正好与内存的字边界对齐时，CPU存取这个数只需访问一次内存，而当一个long型数（如图中的long2）在内存中的位置跨越了字边界时，CPU存取这个数就需要多次访问内存，如i960cx访问这样的数需读内存三次（一个BYTE、一个SHORT、一个BYTE，由CPU的微代码执行，对软件透明），所有对齐方式下CPU的运行效率明显快多了。<br>
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;32<br>
+-------&nbsp;-------&nbsp;-------&nbsp;-------<br>
+|&nbsp;long1&nbsp;|&nbsp;long1&nbsp;|&nbsp;long1&nbsp;|&nbsp;long1&nbsp;|<br>
+-------&nbsp;-------&nbsp;-------&nbsp;-------<br>
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;long2&nbsp;|<br>
+-------&nbsp;-------&nbsp;-------&nbsp;--------<br>
+|&nbsp;long2&nbsp;|&nbsp;long2&nbsp;|&nbsp;long2&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+-------&nbsp;-------&nbsp;-------&nbsp;--------<br>
+|&nbsp;....&nbsp;</td> 
+          </tr>
+          <tr>
+            <td width="600"></td> 
+          </tr>
+		  <tr>
+            <td width="600"><b>郑重声明</b><br>
+              &nbsp;&nbsp; 近年来我站数百篇“原创文章”被一些媒体肆意转载，不但不标明出自“中国电子技术信息网”，而且把相关字眼删除！这是无视技术价值的盗窃行为，是对技术人员辛勤劳动的蔑视，我对此种行为表示强烈的谴责。<br>
+              &nbsp;&nbsp; “本是同根生，相煎何太急”，考虑到我们做技术的都是同门兄弟，对以前的盗窃行为不再追究，今后再有此类事件，最低处理限度是“明示于天下”。在这里向转载过又标注了出处的兄弟媒体表示崇高的敬意！<br>
+              &nbsp;&nbsp; 兄弟网站如果引用本站“原创文章”，请首先经本人许可，并标注“www.cetinet.com”或“中国电子技术信息网”字样。<br>
+              &nbsp;&nbsp; 欢迎个人下载使用！</td> 
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+</div>
+
+</body>
+<body bgcolor="#FFFFFF" text="#000000">
+  <p align="center">
+  本站所载文章力求原创，部分资料转自网上，假如您认为某些文章侵犯了您的权益，<br>
+  请告知我们，我们将在最短的时间内删除有关文章。本站转载文章均注明出处。<br>
+  兄弟网站如果转载本站文章请注明本站版权，谢谢！
+  <p align="center">中国电子技术信息网 文章管理系统由：Aoe 制作<br>      
+  Copyright (C) 2001-2004 CETINet.COM All Rights Reserved      
+</body>    
+
+</html>
+

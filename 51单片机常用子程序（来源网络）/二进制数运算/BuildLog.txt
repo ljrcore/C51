@@ -1,0 +1,19 @@
+Flyto teamView C51 输出文件
+这个文件记录的是编译器的原始输出信息
+
+MS-DOS MCS-51 MACRO ASSEMBLER A51 V4.86
+*
+
+(C) KEIL ELEKTRONIK GmbH / Franklin Software Inc. 1988-1994
+
+A51 FATAL ERROR -
+  FILE:       双分节_2.ASM
+  ERROR:      FILE DOES NOT EXIST
+A51 TERMINATED.
+
+
+*
+
+
+
+*

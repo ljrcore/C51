@@ -1,0 +1,130 @@
+.
+
+16位
+
+整型数开方
+ .include "8515def.inc"
+         .def   numlo   = r16
+         .def   numhi   = r17
+         .def   sqrt    = r18
+         .def   suber   = r24
+         .def   suberh  = r25
+; enter with the 16 bit Number in r16,r17
+         .org   0x00
+         rjmp   reset
+         .org   0x20
+reset:   ldi    r16,0x02      ; Stack Pointer Setup 
+         out    SPH,r16       ; Stack Pointer High Byte 
+         ldi    r16,0x5f      ; Stack Pointer Setup 
+         out    SPL,r16       ; Stack Pointer Low Byte 
+loopm:
+         ldi    r16,0x64
+         ldi    r17,0x01
+         rcall  sqrt
+         nop
+         rjmp   loopm
+
+Sqrt:
+         clr    sqrt
+         ldi    suber,1       ; initialize the seed to be subtracted
+         clr    suberh        ; for each iteration
+ loop:   sub    numlo,suber
+         sbc    numhi,suberh
+         brlo   exit
+         inc    sqrt
+         adiw   suber,2       ; keep the number to subtract ODD.
+         rjmp loop
+ exit: 
+         ret                  ; the sqrt(num) on exit is stored in r18
+
+ 
+.
+
+32位
+
+整型数开方
+ ;input r15:r14:r13:r12 (it make a copy from r3::r0)
+;output r25:r24
+;use r20,r21,r22,r26,r28
+;输入返回数据：lsqrt(0x5300164) = 0x2471
+;对应于8M晶振时开方所用时间为 48.38us;原程序提供者：Jens NL,Email:jensnl@home.com
+.include "8515def.inc"
+        .org 0x00
+         rjmp    reset
+        .org 0x20
+         reset:
+         ldi     r16,0x02      ; Stack Pointer Setup 
+         out     SPH,r16       ; Stack Pointer High Byte 
+         ldi     r16,0x5F      ; Stack Pointer Setup 
+         out     SPL,r16       ; Stack Pointer Low Byte
+; 验证 
+;test r25:r24 = lsqrt(0x5300164)
+ loopm:
+         ldi     r16,0x64
+         mov     r12,r16
+         ldi     r16,0x01
+         mov     r13,r16
+         ldi     r16,0x30
+         mov     r14,r16
+         ldi     r16,0x05
+         mov     r15,r16
+         rcall   lsqrt
+         nop
+         rjmp    loopm
+         
+ lsqrt:
+         clr     r20
+         clr     r21
+         clr     r22
+         clr     r24
+         clr     r25
+         clr     r26
+         ldi     r28,16
+  m03:
+         rol     r15
+         rol     r20
+         rol     r21
+         rol     r22
+         rol     r15
+         rol     r20
+         rol     r21
+         rol     r22
+         
+         lsl     r24
+         rol     r25
+         rol     r26
+         
+         cp      r24,r20
+         cpc     r25,r21
+         cpc     r26,r22
+         brsh    m01
+         sbc     r20,r24
+         sbc     r21,r25
+         sbc     r22,r26
+         subi    r24,-2
+   m05:
+   m01:
+         dec     r28
+         sbrs    r28,0
+         sbrc    r28,1
+         rjmp    m03
+         breq    m08
+         mov     r15,r14
+         mov     r14,r13
+         mov     r13,r12
+         rjmp    m03
+   m08:
+         lsr     r26
+         ror     r25
+         ror     r24
+         ret
+
+ 
+ASM源程序 汇编精华推荐网站： JACKT 汇编系统推荐：AVR Studio3 非常友好的工作界面 
+ASM软件下载 最新版本 AVR Studio3.53 软件使用手册(E) ATMEL AVR论坛 
+
+--------------------------------------------------------------------------------
+ 
+Copyright? 1999-2001, 晓奇工作室 E-Mail:info@xiao-qi.com  
+
+ 

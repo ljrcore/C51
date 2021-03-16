@@ -1,0 +1,92 @@
+BL51 BANKED LINKER/LOCATER V5.00                                                        09/18/2012  22:36:43  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE TEST80.obj TO TEST80 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  TEST80.obj (TEST80)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  TEST80 (TEST80)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         _DATA_GROUP_
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0093H     UNIT         ?PR?MAIN?TEST80
+            CODE    0096H     006BH     UNIT         ?C?LIB_CODE
+            CODE    0101H     004AH     UNIT         ?PR?_NUM?TEST80
+            CODE    014BH     0032H     UNIT         ?PR?_WRITE_DATA?TEST80
+            CODE    017DH     002BH     UNIT         ?PR?_WRITE_XY?TEST80
+            CODE    01A8H     002BH     UNIT         ?PR?INIT_LCD?TEST80
+            CODE    01D3H     001AH     UNIT         ?PR?_WRITE_COM?TEST80
+            CODE    01EDH     0012H     UNIT         ?PR?_DELAY?TEST80
+            CODE    01FFH     000CH     UNIT         ?C_C51STARTUP
+            CODE    020BH     000AH     UNIT         ?CO?TEST80
+
+
+
+OVERLAY MAP OF MODULE:   TEST80 (TEST80)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?TEST80
+
+?PR?MAIN?TEST80                0008H    0004H
+  +--> ?PR?INIT_LCD?TEST80
+  +--> ?PR?_WRITE_XY?TEST80
+  +--> ?PR?_WRITE_DATA?TEST80
+  +--> ?CO?TEST80
+
+?PR?INIT_LCD?TEST80            -----    -----
+  +--> ?PR?_DELAY?TEST80
+  +--> ?PR?_WRITE_COM?TEST80
+BL51 BANKED LINKER/LOCATER V5.00                                                      09/18/2012  22:36:43  PAGE 2
+
+
+
+?PR?_WRITE_COM?TEST80          -----    -----
+  +--> ?PR?_NUM?TEST80
+
+?PR?_WRITE_XY?TEST80           -----    -----
+  +--> ?PR?_WRITE_COM?TEST80
+
+?PR?_WRITE_DATA?TEST80         -----    -----
+  +--> ?CO?TEST80
+  +--> ?PR?_NUM?TEST80
+
+
+
+SYMBOL TABLE OF MODULE:  TEST80 (TEST80)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C?UIDIV
+  C:0096H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        ?C?SLCMP
+  C:00EBH         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+Program Size: data=13.0 xdata=0 code=533
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
